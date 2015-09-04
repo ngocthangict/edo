@@ -101,7 +101,7 @@
 			                                <span class="toal-price pull-right">$279.96</span>
 			                            </div>
 			                            <div class="cart-buttons">
-			                                <a href="checkout.html" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
+			                                <a href="#" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
 			                            </div>
 			                        </div>
 								</div>
@@ -128,9 +128,9 @@
 		                            </div>
 		                            <div id="navbar" class="navbar-collapse collapse">
 		                                <ul class="nav navbar-nav">
-		                                    <li class="active"><a href="index.html">Home</a></li>
+		                                    <li class="active"><a href="#">Home</a></li>
 		                                    <li class="dropdown">
-		                                        <a href="category-grid.html" class="dropdown-toggle" data-toggle="dropdown">
+		                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		                                        <img src="data/icon_sale.png" alt="Category status">
 		                                        Fashion</a>
 		                                        <ul class="dropdown-menu mega_dropdown" role="menu" style="width: 850px;">
@@ -301,7 +301,7 @@
 		                                        </ul>
 		                                    </li>
 		                                    <li class="dropdown">
-		                                        <a href="category-list2.html" class="dropdown-toggle" data-toggle="dropdown">Auto Accessories</a>
+		                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Auto Accessories</a>
 		                                        <ul class="dropdown-menu mega_dropdown container-fluid">
 		                                            <li class="block-container">
 		                                                <ul class="block-megamenu-link">
@@ -314,8 +314,8 @@
 		                                            </li>
 		                                        </ul> 
 		                                    </li>
-		                                    <li><a href="category-grid.html">Jewelry & Watches</a></li>
-		                                    <li><a href="blog.html">Blog</a></li>
+		                                    <li><a href="#">Jewelry & Watches</a></li>
+		                                    <li><a href="#">Blog</a></li>
 		                                </ul>
 		                                <ul class="nav navbar-nav navbar-right">
 								            <li>
@@ -363,7 +363,7 @@
 								                                <span class="toal-price pull-right">$279.96</span>
 								                            </div>
 								                            <div class="cart-buttons">
-								                                <a href="checkout.html" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
+								                                <a href="#" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
 								                            </div>
 								                        </div>
 													</div>

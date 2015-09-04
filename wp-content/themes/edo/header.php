@@ -4,7 +4,7 @@
  *
  * Displays all of the head element and everything up until the "site-content" div.
  *
- * @package WordPress
+ * @package KuteTheme
  * @subpackage Kutethemes
  * @since Edo 1.0
  */
@@ -19,4 +19,4 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php kt_get_header();?>
+<?php edo_get_header();?>

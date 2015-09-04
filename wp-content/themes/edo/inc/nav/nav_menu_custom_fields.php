@@ -27,7 +27,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                 }
             ?>
             <label for="menu-item-image-<?php echo $item_id; ?>">
-                <?php _e( 'Image Icon', 'kutetheme'); ?><br />
+                <?php _e( 'Image Icon', 'edo'); ?><br />
                 <input type="hidden" value="<?php echo esc_attr( $item->img_icon ); ?>" name="menu-item-megamenu-img_icon[<?php echo $item_id; ?>]" id="menu-item-imgicon-<?php echo $item_id; ?>" class="widefat edit-menu-item-image" />
             </label>
             <span class="clearfix"></span>
@@ -36,45 +36,49 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                 <i class="fa fa-times">X</i>
             </span>
             <span class="clearfix"></span>
-            <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', 'kutetheme'); ?>" />
+            <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', 'edo'); ?>" />
         </p>
-        <?php if(post_type_exists('megamenu')){
-            $post_type = 'megamenu';
-        }else{
-            $post_type = 'page';
-        }
-        $pages = new WP_Query( array( 'post_type' => $post_type, 'posts_per_page' => -1 ));
-        if($pages->have_posts()):
-        ?>
-        <div class="wrapper-megamenu">
-            <p class="field-enable description description-wide">
-                <label for="menu-item-enable-<?php echo $item_id; ?>">
-                    <input type="checkbox" <?php checked($item->enable, 'enabled'); ?> data-id="<?php echo $item_id; ?>" id="menu-item-enable-<?php echo $item_id; ?>" name="menu-item-megamenu-enable[<?php echo $item_id; ?>]" value="enabled" class="edit-menu-item-enable"/>
-                    <b><?php _e( 'Enable Mega Menu (only for main menu)', 'kutetheme'); ?></b>
-                </label>
-            </p>
-            <div id="content-megamenu-<?php echo $item_id; ?>" class="megamenu-layout clearfix">
-                <div class="megamenu-layout-depth-1">
-                    <p class="field-menu_page description description-wide">
-                        <label for="menu-item-menu_page-<?php echo $item_id; ?>">
-                            <?php _e('Menu Page', 'kutetheme'); ?><br />
-                            <select class="widefat"  id="menu-item-menu_page-<?php echo $item_id; ?>" name="menu-item-megamenu-menu_page[<?php echo $item_id; ?>]">
-                                <option value="0">Choose Menu Page</option>
-                                <?php
-                                while($pages->have_posts()): $pages->the_post();
-                                    $id = get_the_ID();
-                                    echo '<option '.selected($id, $item->menu_page, false).' value="'.$id.'">'.get_the_title().'</option>';
-                                endwhile;
-                                ?>
-                            </select>
-                        </label>
-                    </p>
-                </div>
-            </div><!-- #content-megamenu-<?php echo $item_id; ?> -->
-        </div><!-- .wrapper-megamenu -->
-        <?php endif; 
-        wp_reset_query();
-        wp_reset_postdata();
+        <?php 
+            if( post_type_exists( 'megamenu' ) ){
+                $post_type = 'megamenu';
+            }else{
+                $post_type = 'page';
+            }
+            
+            $pages = new WP_Query( array( 'post_type' => $post_type, 'posts_per_page' => -1 ));
+            
+            ?>
+            <div class="wrapper-megamenu">
+                <p class="field-enable description description-wide">
+                    <label for="menu-item-enable-<?php echo $item_id; ?>">
+                        <input type="checkbox" <?php checked($item->enable, 'enabled'); ?> data-id="<?php echo $item_id; ?>" id="menu-item-enable-<?php echo $item_id; ?>" name="menu-item-megamenu-enable[<?php echo $item_id; ?>]" value="enabled" class="edit-menu-item-enable"/>
+                        <b><?php _e( 'Enable Mega Menu (only for main menu)', 'edo'); ?></b>
+                    </label>
+                </p>
+                <div id="content-megamenu-<?php echo $item_id; ?>" class="megamenu-layout clearfix">
+                    <div class="megamenu-layout-depth-1">
+                        <p class="field-menu_page description description-wide">
+                            <label for="menu-item-menu_page-<?php echo $item_id; ?>">
+                                <?php _e('Menu Page', 'edo'); ?><br />
+                                <select class="widefat"  id="menu-item-menu_page-<?php echo $item_id; ?>" name="menu-item-megamenu-menu_page[<?php echo $item_id; ?>]">
+                                    <option value="0"><?php _e( 'Choose Menu Page', 'edo' ); ?></option>
+                                    <?php
+                                    if($pages->have_posts()):
+                                        while($pages->have_posts()): $pages->the_post();
+                                            $id = get_the_ID();
+                                            echo '<option '.selected($id, $item->menu_page, false).' value="'.$id.'">'.get_the_title().'</option>';
+                                        endwhile;
+                                    endif;
+                                    ?>
+                                </select>
+                            </label>
+                        </p>
+                    </div>
+                </div><!-- #content-megamenu-<?php echo $item_id; ?> -->
+            </div><!-- .wrapper-megamenu -->
+        <?php  
+            wp_reset_query();
+            wp_reset_postdata();
         ?>
     </div><!-- .container-megamenu -->
 <?php }

@@ -2,9 +2,9 @@
 /**
  * The template for displaying search results pages.
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @package KuteTheme
+ * @subpackage edo
+ * @since edo 1.0
  */
 
 get_header(); ?>
@@ -15,7 +15,7 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'edo' ), get_search_query() ); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php
@@ -35,9 +35,9 @@ get_header(); ?>
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
+				'prev_text'          => __( 'Previous page', 'edo' ),
+				'next_text'          => __( 'Next page', 'edo' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'edo' ) . ' </span>',
 			) );
 
 		// If no content, include the "No posts found" template.

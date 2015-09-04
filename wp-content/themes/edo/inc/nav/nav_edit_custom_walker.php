@@ -4,7 +4,7 @@
  * This is a copy of Walker_Nav_Menu_Edit class in core
  * Create HTML list of nav menu input items.
  *
- * @package WordPress
+ * @package KuteTheme
  * @since 3.0.0
  * @uses Walker_Nav_Menu
  */
@@ -87,11 +87,11 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 		if ( ! empty( $item->_invalid ) ) {
 			$classes[] = 'menu-item-invalid';
 			/* translators: %s: title of menu item which is invalid */
-			$title = sprintf( __( '%s (Invalid)' , 'kutetheme'), $item->title );
+			$title = sprintf( __( '%s (Invalid)' , 'edo'), $item->title );
 		} elseif ( isset( $item->post_status ) && 'draft' == $item->post_status ) {
 			$classes[] = 'pending';
 			/* translators: %s: title of menu item in draft status */
-			$title = sprintf( __('%s (Pending)' , 'kutetheme'), $item->title );
+			$title = sprintf( __('%s (Pending)' , 'edo'), $item->title );
 		}
 
 		$title = ( ! isset( $item->label ) || '' == $item->label ) ? $title : $item->label;
@@ -104,7 +104,7 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 		<li id="menu-item-<?php echo esc_attr($item_id); ?>" class="<?php echo implode(' ', $classes ); ?>">
 			<dl class="menu-item-bar">
 				<dt class="menu-item-handle">
-					<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' , 'kutetheme' ); ?></span></span>
+					<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' , 'edo' ); ?></span></span>
 					<span class="item-controls">
 						<span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
 						<span class="item-order hide-if-js">
@@ -119,7 +119,7 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 									),
 									'move-menu_item'
 								);
-							?>" class="item-move-up"><abbr title="<?php esc_attr_e('Move up', 'kutetheme'); ?>">&#8593;</abbr></a>
+							?>" class="item-move-up"><abbr title="<?php esc_attr_e('Move up', 'edo'); ?>">&#8593;</abbr></a>
 							|
 							<a href="<?php
 								echo wp_nonce_url(
@@ -132,11 +132,11 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 									),
 									'move-menu_item'
 								);
-							?>" class="item-move-down"><abbr title="<?php esc_attr_e('Move down', 'kutetheme'); ?>">&#8595;</abbr></a>
+							?>" class="item-move-down"><abbr title="<?php esc_attr_e('Move down', 'edo'); ?>">&#8595;</abbr></a>
 						</span>
-						<a class="item-edit" id="edit-<?php echo esc_attr($item_id); ?>" title="<?php esc_attr_e('Edit Menu Item', 'kutetheme'); ?>" href="<?php
+						<a class="item-edit" id="edit-<?php echo esc_attr($item_id); ?>" title="<?php esc_attr_e('Edit Menu Item', 'edo'); ?>" href="<?php
 							echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
-						?>"><?php _e( 'Edit Menu Item'  , 'kutetheme'); ?></a>
+						?>"><?php _e( 'Edit Menu Item'  , 'edo'); ?></a>
 					</span>
 				</dt>
 			</dl>
@@ -145,46 +145,46 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 				<?php if( 'custom' == $item->type ) : ?>
 					<p class="field-url description description-wide">
 						<label for="edit-menu-item-url-<?php echo $item_id; ?>">
-							<?php _e( 'URL'  , 'kutetheme'); ?><br />
+							<?php _e( 'URL'  , 'edo'); ?><br />
 							<input type="text" id="edit-menu-item-url-<?php echo $item_id; ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->url ); ?>" />
 						</label>
 					</p>
 				<?php endif; ?>
 				<p class="description description-thin">
 					<label for="edit-menu-item-title-<?php echo $item_id; ?>">
-						<?php _e( 'Navigation Label'  , 'kutetheme'); ?><br />
+						<?php _e( 'Navigation Label'  , 'edo'); ?><br />
 						<input type="text" id="edit-menu-item-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
 					</label>
 				</p>
 				<p class="description description-thin">
 					<label for="edit-menu-item-attr-title-<?php echo $item_id; ?>">
-						<?php _e( 'Title Attribute'  , 'kutetheme'); ?><br />
+						<?php _e( 'Title Attribute'  , 'edo'); ?><br />
 						<input type="text" id="edit-menu-item-attr-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
 					</label>
 				</p>
 				<p class="field-link-target description">
 					<label for="edit-menu-item-target-<?php echo $item_id; ?>">
 						<input type="checkbox" id="edit-menu-item-target-<?php echo $item_id; ?>" value="_blank" name="menu-item-target[<?php echo $item_id; ?>]"<?php checked( $item->target, '_blank' ); ?> />
-						<?php _e( 'Open link in a new window/tab'  , 'kutetheme'); ?>
+						<?php _e( 'Open link in a new window/tab'  , 'edo'); ?>
 					</label>
 				</p>
 				<p class="field-css-classes description description-thin">
 					<label for="edit-menu-item-classes-<?php echo $item_id; ?>">
-						<?php _e( 'CSS Classes (optional)'  , 'kutetheme'); ?><br />
+						<?php _e( 'CSS Classes (optional)'  , 'edo'); ?><br />
 						<input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode(' ', $item->classes ) ); ?>" />
 					</label>
 				</p>
 				<p class="field-xfn description description-thin">
 					<label for="edit-menu-item-xfn-<?php echo $item_id; ?>">
-						<?php _e( 'Link Relationship (XFN)'  , 'kutetheme'); ?><br />
+						<?php _e( 'Link Relationship (XFN)'  , 'edo'); ?><br />
 						<input type="text" id="edit-menu-item-xfn-<?php echo $item_id; ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->xfn ); ?>" />
 					</label>
 				</p>
 				<p class="field-description description description-wide">
 					<label for="edit-menu-item-description-<?php echo $item_id; ?>">
-						<?php _e( 'Description'  , 'kutetheme'); ?><br />
+						<?php _e( 'Description'  , 'edo'); ?><br />
 						<textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
-						<span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.' , 'kutetheme'); ?></span>
+						<span class="description"><?php _e('The description will be displayed in the menu if the current theme supports it.' , 'edo'); ?></span>
 					</label>
 				</p>
                 
@@ -192,19 +192,19 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
                 
 				<p class="field-move hide-if-no-js description description-wide">
 					<label>
-						<span><?php _e( 'Move'  , 'kutetheme'); ?></span>
-						<a href="#" class="menus-move-up"><?php _e( 'Up one'  , 'kutetheme'); ?></a>
-						<a href="#" class="menus-move-down"><?php _e( 'Down one'  , 'kutetheme'); ?></a>
+						<span><?php _e( 'Move'  , 'edo'); ?></span>
+						<a href="#" class="menus-move-up"><?php _e( 'Up one'  , 'edo'); ?></a>
+						<a href="#" class="menus-move-down"><?php _e( 'Down one'  , 'edo'); ?></a>
 						<a href="#" class="menus-move-left"></a>
 						<a href="#" class="menus-move-right"></a>
-						<a href="#" class="menus-move-top"><?php _e( 'To the top'  , 'kutetheme'); ?></a>
+						<a href="#" class="menus-move-top"><?php _e( 'To the top'  , 'edo'); ?></a>
 					</label>
 				</p>
 
 				<div class="menu-item-actions description-wide submitbox">
 					<?php if( 'custom' != $item->type && $original_title !== false ) : ?>
 						<p class="link-to-original">
-							<?php printf( __('Original: %s' , 'kutetheme'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+							<?php printf( __('Original: %s' , 'edo'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 						</p>
 					<?php endif; ?>
 					<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="<?php
@@ -217,8 +217,8 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu {
 							admin_url( 'nav-menus.php' )
 						),
 						'delete-menu_item_' . $item_id
-					); ?>"><?php _e( 'Remove'  , 'kutetheme'); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
-						?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e('Cancel' , 'kutetheme'); ?></a>
+					); ?>"><?php _e( 'Remove'  , 'edo'); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+						?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e('Cancel' , 'edo'); ?></a>
 				</div>
 
 				<input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />

@@ -444,7 +444,7 @@
 					                                <span class="toal-price pull-right">$279.96</span>
 					                            </div>
 					                            <div class="cart-buttons">
-					                                <a href="checkout.html" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
+					                                <a href="#" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
 					                            </div>
 					                        </div>
 										</div>

@@ -9,9 +9,9 @@
  *
  * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @package KuteTheme
+ * @subpackage edo
+ * @since edo 1.0
  */
 
 get_header(); ?>
@@ -43,9 +43,9 @@ get_header(); ?>
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
+				'prev_text'          => __( 'Previous page', 'edo' ),
+				'next_text'          => __( 'Next page', 'edo' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'edo' ) . ' </span>',
 			) );
 
 		// If no content, include the "No posts found" template.

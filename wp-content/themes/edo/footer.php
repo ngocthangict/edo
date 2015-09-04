@@ -4,12 +4,16 @@
  *
  * Contains the closing of the "site-content" div and all content after.
  *
- * @package WordPress
+ * @package KuteTheme
  * @subpackage Kutethemes
  * @since Edo 1.0
  */
 ?>
-
+<?php 
+    $hotline   = edo_get_info_hotline();
+    $copyright = edo_get_info_copyrights();
+    $social_icons = edo_get_socials();
+?>
 <!-- footer -->
 <footer id="footer">
 	<div class="footer-top">
@@ -182,22 +186,15 @@
 			<div class="row">
 				<div class="block-social">
 					<ul class="list-social">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-						<li><a href="#"><i class="fa fa-pied-piper"></i></a></li>
-						<li><a href="#"><i class="fa fa-skype"></i></a></li>
+						<?php echo $social_icons; ?>
 					</ul>
 				</div>
 				<div class="block-payment">
 					<ul class="list-logo">
-						<li><a href="#"><img src="data/payment1.png" alt="Payment Logo"></a></li>
-						<li><a href="#"><img src="data/payment2.png" alt="Payment Logo"></a></li>
-						<li><a href="#"><img src="data/payment3.png" alt="Payment Logo"></a></li>
-						<li><a href="#"><img src="data/payment4.png" alt="Payment Logo"></a></li>
+						<li><a href="#"><img src="data/payment1.png" alt="Payment Logo" /></a></li>
+						<li><a href="#"><img src="data/payment2.png" alt="Payment Logo" /></a></li>
+						<li><a href="#"><img src="data/payment3.png" alt="Payment Logo" /></a></li>
+						<li><a href="#"><img src="data/payment4.png" alt="Payment Logo" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -207,10 +204,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="block-coppyright">
-					© 2015 Edo Demo Store. All Rights Reserved.
+					<?php echo esc_attr( $copyright ) ?>
 				</div>
 				<div class="block-shop-phone">
-					Shop by phone <strong>1-899-353-2268</strong>
+					<?php _e( 'Shop by phone', 'edo' ) ?> <strong><?php echo esc_attr( $hotline ) ?></strong>
 				</div>
 			</div>
 		</div>
