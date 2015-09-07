@@ -814,7 +814,6 @@ img.alignright{
   transform: translateX(-50%);
 }
 .page-content{
-  margin-top: 15px;
   width:100%;
   float: left;
 }

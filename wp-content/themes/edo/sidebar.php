@@ -10,7 +10,7 @@
 $kt_used_sidebar = edo_option('kt_used_sidebar','sidebar-shop');
 
 if(is_page()){
-	$kt_page_used_sidebar = kt_get_post_meta(get_the_ID(),'kt_page_used_sidebar','none');
+	$kt_page_used_sidebar = edo_get_post_meta(get_the_ID(),'kt_page_used_sidebar','none');
 	if($kt_page_used_sidebar!="none"){
 		$kt_used_sidebar = $kt_page_used_sidebar;
 	}

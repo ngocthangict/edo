@@ -8,22 +8,14 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		// Post thumbnail.
-		edo_post_thumbnail();
-	?>
-    
-    <?php //_kt_page_page_title
-        $show_page_title = get_post_meta( get_the_ID(), '_kt_page_page_title' )
-    ?>
-    
-    <?php if( $show_page_title ): ?>
-    	<header class="entry-header">
-    		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-    	</header><!-- .entry-header -->
+<?php 
+    $kt_show_page_title = edo_get_post_meta(get_the_ID(),'kt_show_page_title','show');
+    $kt_page_extra_class = edo_get_post_meta(get_the_ID(),'kt_page_extra_class','show');
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class($kt_page_extra_class); ?>>
+    <?php if( $kt_show_page_title=='show'): ?>
+        <h1 class="page-title"><?php the_title();?></h1>
     <?php endif; ?>
-    
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
@@ -37,7 +29,5 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
-
-	<?php edit_post_link( __( 'Edit', 'edo' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
-
 </article><!-- #post-## -->
+
