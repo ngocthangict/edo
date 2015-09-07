@@ -317,3 +317,13 @@ a img.aligncenter {
     width: 100%;
     font-weight: normal;
 }
+
+/*-----------
+[404]
+------------*/
+.error-404.not-found{
+    text-align: center;
+}
+.error-404.not-found .screen-reader-text{
+    display: none;
+}

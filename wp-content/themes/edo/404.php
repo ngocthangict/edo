@@ -9,22 +9,22 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div class="container">
+		<div class="row">
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+					<section class="error-404 not-found">
+						<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'edo' ); ?></h1>
+						<div class="page-content">
+							<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'edo' ); ?></p>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'edo' ); ?></h1>
-				</header><!-- .page-header -->
+							<?php get_search_form(); ?>
+						</div><!-- .page-content -->
+					</section><!-- .error-404 -->
 
-				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'edo' ); ?></p>
-
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+				</main><!-- .site-main -->
+			</div><!-- .content-area -->
+		</div>
+	</div>
 
 <?php get_footer(); ?>

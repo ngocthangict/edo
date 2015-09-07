@@ -212,6 +212,8 @@ function kt_scripts() {
 	wp_enqueue_style( 'animate-style', THEME_URL . '/assets/css/animate.css', array( ), '1.0' );
 	// Edo style 
 	wp_enqueue_style( 'edo-style', THEME_URL . '/assets/css/style.css', array( ), '1.0' );
+	// Woo style 
+	wp_enqueue_style( 'woo-style', THEME_URL . '/assets/css/woocommerce.css', array( ), '1.0' );
 	// responsive style 
 	wp_enqueue_style( 'edo-responsive-style', THEME_URL . '/assets/css/responsive.css', array( ), '1.0' );
 

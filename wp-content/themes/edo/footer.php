@@ -220,7 +220,7 @@
 	</div>
 </footer>
 <!-- ./footer -->
-
+<a href="#" class="scroll_top" title="Scroll to Top" style="display: block;">Scroll</a>
 <?php wp_footer(); ?>
 
 </body>
