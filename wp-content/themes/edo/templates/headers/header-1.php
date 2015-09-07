@@ -53,10 +53,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-header-banner">
 						<div class="herader-banner">
-							<ul class="list-banner">
-								<li><div class="banner1"><a href="#"><img src="data/option1/banner1.png" alt="Banner"></a></div></li>
-								<li><div class="banner1"><a href="#"><img src="data/option1/banner2.png" alt="Banner"></a></div></li>
-							</ul>
+							<?php do_action( 'edo_get_banner_header_option_1' ) ?>
 						</div>
 					</div>
 				</div>

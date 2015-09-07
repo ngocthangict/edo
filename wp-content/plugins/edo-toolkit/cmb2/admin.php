@@ -106,7 +106,7 @@ class KT_Admin {
     
 	/**
      * Admin page markup. Mostly handled by CMB2
-     * @since  0.1.0
+     * @since  1.0
      */
     public function admin_page_display() {
         $link = $this->page_link();
@@ -348,6 +348,34 @@ class KT_Admin {
     			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
                 '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v4.jpg',
     		),
+    	) );
+        
+        $cmb_options_header->add_field( array(
+    		'name'    => __( 'Link 1', 'edo' ),
+    		'id'      => 'kt_link_header_1',
+    		'type'    => 'text',
+            'desc'    => __( 'Link of banner 1', 'edo' ),
+    	) );
+        
+    	$cmb_options_header->add_field( array(
+    		'name'    => __( 'Banner Header 1', 'edo' ),
+    		'id'      => 'kt_banner_header_1',
+    		'type'    => 'file',
+            'desc'    => __( 'Setting Banner Header 1', 'edo' )
+    	) );
+        
+        
+        $cmb_options_header->add_field( array(
+    		'name'    => __( 'Link 2', 'edo' ),
+    		'id'      => 'kt_link_header_2',
+    		'type'    => 'text',
+            'desc'    => __( 'Link of banner 2', 'edo' ),
+    	) );
+    	$cmb_options_header->add_field( array(
+    		'name'    => __( 'Banner Header 2', 'edo' ),
+    		'id'      => 'kt_banner_header_2',
+    		'type'    => 'file',
+            'desc'    => __( 'Setting Banner Header 2', 'edo' )
     	) );
         
         /**

@@ -36,6 +36,9 @@
 /*-----------------------
 [1. Top bar]
 ------------------------*/
+.main-bg{
+    background-color: #5a88ca;
+}
 .top-bar{
 	min-height: 34px;
 }
@@ -120,7 +123,6 @@
 	top: 2px;
 	width: 28px;
 	height: 28px;
-	background: #5a88ca;
 	border-radius: 90%;
 	color: #fff;
 	border: none;
@@ -2711,7 +2713,6 @@
   position: absolute;
   top: 2px;
   right: 2px;
-  background: #5a88ca;
   color: #fff;
   text-transform: uppercase;
   height: 28px;
@@ -2766,15 +2767,16 @@
 	font-size: 12px;
 }
 
-.block-link ul>li.head{
+.block-link .widget-title{
 	text-transform: uppercase;
 	font-size: 14px;
 	font-weight: 600;
+    margin: 0;
 }
 .block-link ul>li img{
 	margin-right: 5px;
 }
-.block-link ul.flag{
+.footer-list-image ul li{
 	line-height: 35px;
 }
 .block-link ul.flag .head{
@@ -2822,14 +2824,17 @@
 	float: right;
 	margin-top: 3px;
 }
-.block-payment ul.list-logo{
+.block-payment ul{
 	padding: 0;
 }
-.block-payment ul.list-logo>li{
+.block-payment ul > li{
 	display: inline;
 	float: left;
 	list-style: none;
 	padding-left: 20px;
+}
+.block-payment ul li a span.title{
+    display: none;
 }
 .footer-bottom{
 	padding: 25px 0;

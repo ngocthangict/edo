@@ -74,7 +74,8 @@ function kt_setup() {
 		'default-color'      => $default_color,
 		'default-attachment' => 'fixed',
 	) ) );
-
+    
+    
 	
 }
 endif; // edo setup
@@ -97,6 +98,88 @@ function kt_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 1', 'edo'),
+        'id'            => 'footer-menu-1',
+        'description'   => __( 'The footer menu 1 widget area', 'edo'),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 2', 'edo'),
+        'id'            => 'footer-menu-2',
+        'description'   => __( 'The footer menu 2 widget area', 'edo'),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 3', 'edo'),
+        'id'            => 'footer-menu-3',
+        'description'   => __( 'The footer menu 3 widget area', 'edo'),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 4', 'edo'),
+        'id'            => 'footer-menu-4',
+        'description'   => __( 'The footer menu 4 widget area', 'edo'),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 5', 'edo'),
+        'id'            => 'footer-menu-5',
+        'description'   => __( 'The footer menu 5 widget area', 'edo'),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 6', 'edo'),
+        'id'            => 'footer-menu-6',
+        'description'   => __( 'The footer menu 6 widget area', 'edo' ),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 7', 'edo'),
+        'id'            => 'footer-menu-7',
+        'description'   => __( 'The footer menu 7 widget area', 'edo' ),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name'          => __( 'Footer Menu 8', 'edo'),
+        'id'            => 'footer-menu-8',
+        'description'   => __( 'The footer menu 8 widget area', 'edo' ),
+        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'kt_widgets_init' );
 
@@ -163,6 +246,28 @@ function kt_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'kt_scripts' );
 
+
+add_action( 'admin_enqueue_scripts', 'edo_enqueue_script' );
+
+if( ! function_exists("edo_enqueue_script")){
+    function edo_enqueue_script(){
+        wp_register_style( 'framework-core', THEME_URL.'assets/css/framework-core.css');
+        wp_enqueue_style( 'framework-core');
+        
+        wp_enqueue_script( 'kt_image', THEME_URL.'assets/js/kt_image.js', array('jquery'), '1.0.0', true);
+        
+        wp_localize_script( 'kt_image', 'kt_image_lange', array(
+            'frameTitle' => __( 'Select your image', 'edo' )
+        ));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        
+        wp_register_script( 'framework-core', THEME_URL.'assets/js/framework-core.js', array('jquery', 'jquery-ui-tabs'), '1.0.0', true);
+        wp_enqueue_script('framework-core');
+        
+        wp_enqueue_media();
+    }
+}
+
+
 if( ! class_exists( 'wp_bootstrap_navwalker' ) && file_exists( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' ) ){
     require_once( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' );
 }
@@ -200,3 +305,7 @@ require THEME_DIR . '/inc/utility.php';
  * Customizer woocommerce
  * */
 require THEME_DIR . '/inc/woocommerce.php';
+/**
+ * Register Widget
+ * */
+require THEME_DIR . '/inc/widget.php';

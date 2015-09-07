@@ -9,14 +9,14 @@ if ( ! function_exists( 'edo_option' ) ){
         if($option === FALSE){
             return FALSE;
         }
-        $option_name = apply_filters('theme_option_name', 'edo_options' );
+        $option_name = apply_filters('theme_option_name', 'kt_options' );
         $edo_options  = wp_cache_get( $option_name );
         if(  ! $edo_options ){
             $edo_options = get_option( $option_name );
             if( empty($edo_options)  ){
                 // get default theme option
                 if( defined( 'ICL_LANGUAGE_CODE' ) ){
-                    $edo_options = get_option( 'edo_options' );
+                    $edo_options = get_option( 'kt_options' );
                 }
             }
             wp_cache_delete( $option_name );
@@ -34,14 +34,51 @@ if ( ! function_exists( 'edo_option' ) ){
  * Get template header in theme option
  * @since edo 1.0
  * */
-if(!function_exists('edo_get_header')){
+if( ! function_exists( 'edo_get_header' )){
 	 function edo_get_header(){
         global $edo_used_header;
-        $setting = edo_option('edo_used_header', '1');
+        $setting = edo_option('kt_used_header', '1');
         $edo_used_header = intval($setting);
         get_template_part( 'templates/headers/header',  $setting);
     }
 }
+/**
+ * Get Banner Header in template header 1
+ * @since edo 1.0
+ * */
+if( ! function_exists( 'edo_get_banner_header_option_1' ) ){
+    function edo_get_banner_header_option_1(){
+        $link_1  = edo_option( 'kt_link_header_1', '#');
+        $link_2  = edo_option( 'kt_link_header_2', '#' );
+        
+        $banner_1 = edo_option( 'kt_banner_header_1' );
+        $banner_2 = edo_option( 'kt_banner_header_2' );
+        ?>
+        <ul class="list-banner">
+            <?php if( $banner_1 ): ?>
+    			<li>
+                    <div class="banner1">
+                        <a href="<?php echo esc_attr( $link_1 ); ?>">
+                            <img src="<?php echo esc_url( $banner_1 ) ?>" alt="<?php _e( 'Banner', 'edo' ); ?>" />
+                        </a>
+                    </div>
+                </li>
+            <?php endif; ?>
+            
+            <?php if( $banner_2 ): ?>
+    			<li>
+                    <div class="banner1">
+                        <a href="<?php echo esc_attr( $link_1 ); ?>">
+                            <img src="<?php echo esc_url( $banner_2 ) ?>" alt="<?php _e( 'Banner', 'edo' ); ?>" />
+                        </a>
+                    </div>
+                </li>
+            <?php endif; ?>
+		</ul>
+        <?php
+    }
+}
+add_action( 'edo_get_banner_header_option_1', 'edo_get_banner_header_option_1' );
 
 /**
  * Get Logo setting in theme option
@@ -49,7 +86,7 @@ if(!function_exists('edo_get_header')){
  * */
 if( ! function_exists( "edo_get_logo" ) ){
     function edo_get_logo(){
-        $default = edo_option("edo_logo" , THEME_URL . '/assets/images/logo.png');
+        $default = edo_option("kt_logo" , THEME_URL . '/assets/images/logo.png');
         
         $html = '<a href="'.get_home_url().'"><img alt="'.get_bloginfo('name').'" src="'.esc_url($default).'" /></a>';
         return $html;
@@ -62,7 +99,7 @@ if( ! function_exists( "edo_get_logo" ) ){
  * */
 if( ! function_exists( 'edo_get_info_address' )){
     function edo_get_info_address(){
-        return  edo_option('edo_address', false);
+        return  edo_option('kt_address', false);
     }
 }
 
@@ -72,7 +109,7 @@ if( ! function_exists( 'edo_get_info_address' )){
  * */
 if( ! function_exists( 'edo_get_info_hotline' )){
     function edo_get_info_hotline(){
-        return  edo_option('edo_phone', false);
+        return  edo_option('kt_phone', false);
     }
 }
 /**
@@ -81,7 +118,7 @@ if( ! function_exists( 'edo_get_info_hotline' )){
  * */
 if( ! function_exists( 'edo_get_info_email' )){
     function edo_get_info_email(){
-        return edo_option('edo_email', false);
+        return edo_option('kt_email', false);
     }
 }
 
@@ -91,7 +128,7 @@ if( ! function_exists( 'edo_get_info_email' )){
  * */
 if( ! function_exists('edo_get_info_copyrights') ){
     function edo_get_info_copyrights(){
-        return edo_option( 'edo_copyrights', false );
+        return edo_option( 'kt_copyrights', false );
     }
 }
 
@@ -101,7 +138,7 @@ if( ! function_exists('edo_get_info_copyrights') ){
  * */
 if( ! function_exists( 'edo_get_inline_css' ) ){
     function edo_get_inline_css(){
-        return edo_option( 'edo_add_css', '' );
+        return edo_option( 'kt_add_css', '' );
     }
 }
 
@@ -111,23 +148,23 @@ if( ! function_exists( 'edo_get_inline_css' ) ){
  * */
 if( ! function_exists( 'edo_get_customize_js' ) ){
     function edo_get_customize_js(){
-        return edo_option( 'edo_add_js', '' );
+        return edo_option( 'kt_add_js', '' );
     }
 }
 if( ! function_exists( 'edo_get_socials' ) ){
     function edo_get_socials(){
-        $facebook   = edo_option('edo_facebook_link_id');
-        $twitter    = edo_option('edo_twitter_link_id');
-        $pinterest  = edo_option('edo_pinterest_link_id');
-        $dribbble   = edo_option('edo_dribbble_link_id');
-        $vimeo      = edo_option('edo_vimeo_link_id');
-        $tumblr     = edo_option('edo_tumblr_link_id');
-        $skype      = edo_option('edo_skype_link_id');
-        $linkedin   = edo_option('edo_linkedIn_link_id');
-        $vk         = edo_option('edo_vk_link_id');
-        $googleplus = edo_option('edo_google_plus_link_id');
-        $youtube    = edo_option('edo_youtube_link_id');
-        $instagram  = edo_option('edo_instagram_link_id');
+        $facebook   = edo_option('kt_facebook_link_id');
+        $twitter    = edo_option('kt_twitter_link_id');
+        $pinterest  = edo_option('kt_pinterest_link_id');
+        $dribbble   = edo_option('kt_dribbble_link_id');
+        $vimeo      = edo_option('kt_vimeo_link_id');
+        $tumblr     = edo_option('kt_tumblr_link_id');
+        $skype      = edo_option('kt_skype_link_id');
+        $linkedin   = edo_option('kt_linkedIn_link_id');
+        $vk         = edo_option('kt_vk_link_id');
+        $googleplus = edo_option('kt_google_plus_link_id');
+        $youtube    = edo_option('kt_youtube_link_id');
+        $instagram  = edo_option('kt_instagram_link_id');
         
         $social_icons = '';
         
