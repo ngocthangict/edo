@@ -182,15 +182,15 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                         </p>
                         
                         <p>
-                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', 'edo'); ?></label> 
-                            <input class="widefat widget-name" id="<?php echo $this->get_field_id('link'); ?>" tpl-name="<?php echo $this->get_field_name('link'); ?>[]" type="text" />
+                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'edo' ); ?></label> 
+                            <input class="widefat widget-name" id="<?php echo $this->get_field_id( 'link' ); ?>" tpl-name="<?php echo $this->get_field_name('link'); ?>[]" type="text" />
                         </p>
                         
                         <p>
                 			<label><?php _e( 'Target:', 'edo'); ?></label>
-                			<select tpl-name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat widget-name">
-                				<option value="_blank"><?php _e('Open New Window', 'edo'); ?></option>
-                				<option value="_self"><?php _e('Stay in Window', 'edo'); ?></option>
+                			<select tpl-name="<?php echo $this->get_field_name( 'target' ); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat widget-name">
+                				<option value="_blank"><?php _e( 'Open New Window', 'edo' ); ?></option>
+                				<option value="_self"><?php _e( 'Stay in Window', 'edo' ); ?></option>
                 			</select>
                 		</p>
                     </div>

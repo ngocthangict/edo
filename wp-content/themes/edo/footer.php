@@ -25,7 +25,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="data/location-icon.png" alt="store icon">
+										<img src="<?php echo THEME_URL . 'assets/' ?>images/location-icon.png" alt="store icon" />
 									</div>
 									<div class="block-title-text text-sm">FIND A</div>
 									<div class="block-title-text text-lg">edo store</div>
@@ -47,7 +47,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="data/email-icon.png" alt="store icon">
+										<img src="<?php echo THEME_URL . 'assets/' ?>images/email-icon.png" alt="store icon">
 									</div>
 									<div class="block-title-text text-sm">SUBSCRIBE TO</div>
 									<div class="block-title-text text-lg">edo shop EMAILS</div>
@@ -64,28 +64,56 @@
 							</div>
 						</div>
 					</div>
+                    <?php 
+                    $args = array(
+                          'post_type'      => 'partner',
+                          'orderby'        => 'date',
+                          'order'          => 'desc',
+                          'post_status'    => 'publish'
+                    );
+                    $partners = new WP_Query( $args );
+                    
+                    if( $partners->have_posts() ):
+                    ?>
+                    <?php ob_start(); $i = 0; ?>
+                    <?php while ( $partners->have_posts() ): $partners->the_post(); ?>
+                        <?php if( has_post_thumbnail() ):?>
+                            <li class="partner">
+                                <a target="_blank" href="<?php the_permalink() ?>">
+                                    <?php the_post_thumbnail();?>
+                                </a>
+                            </li>
+                            <?php $i ++ ; ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                    <?php 
+                        $html = ob_get_clean(); 
+                        $loop = "false";
+                        if( $i > 1 ){
+                            $loop = "true";
+                        }
+                    ?>
 					<div class="col-sm-12 col-md-4">
 						<div class="block footer-block-box">
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="data/partners-icon.png" alt="store icon">
+										<img src="<?php echo THEME_URL . 'assets/' ?>images/partners-icon.png" alt="store icon" />
 									</div>
-									<div class="block-title-text text-sm">our</div>
-									<div class="block-title-text text-lg">partners</div>
+									<div class="block-title-text text-sm"><?php _e( 'our', 'edo' ) ?></div>
+									<div class="block-title-text text-lg"><?php _e( 'partners', 'edo' ) ?></div>
 								</div>
 							</div>
 							<div class="block-inner">
 								<div class="block-owl">
-									<ul class="kt-owl-carousel list-partners" data-nav="true" data-autoplay="true" data-loop="true" data-items="1">
-										<li class="partner"><a href="#"><img src="data/partner1.jpg" alt="partner"></a></li>
-										<li class="partner"><a href="#"><img src="data/partner2.jpg" alt="partner"></a></li>
-										<li class="partner"><a href="#"><img src="data/partner3.jpg" alt="partner"></a></li>
+									<ul class="kt-owl-carousel list-partners" data-nav="true" data-autoplay="true" data-loop="<?php echo $loop; ?>" data-items="1">
+                                        <?php echo $html; ?>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
+                    <?php endif; ?>
 				</div>
 			</div>
 		</div>

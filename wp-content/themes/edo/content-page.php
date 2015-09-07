@@ -13,11 +13,17 @@
 		// Post thumbnail.
 		edo_post_thumbnail();
 	?>
-
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
+    
+    <?php //_kt_page_page_title
+        $show_page_title = get_post_meta( get_the_ID(), '_kt_page_page_title' )
+    ?>
+    
+    <?php if( $show_page_title ): ?>
+    	<header class="entry-header">
+    		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    	</header><!-- .entry-header -->
+    <?php endif; ?>
+    
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php

@@ -1,28 +1,28 @@
 <?php
 
-if ( !defined('ABSPATH')) exit;
+if ( ! defined('ABSPATH')) exit;
 
 function register_post_type_init() {
     
     $labels = array(
-        'name'          => __( 'Mega Menu', 'kutetheme' ),
-        'singular_name' => __( 'Mega Menu Item', 'kutetheme' ),
-        'add_new'       => __( 'Add New', 'kutetheme' ),
-        'add_new_item'  => __( 'Add New Menu Item', 'kutetheme' ),
-        'edit_item'     => __( 'Edit Menu Item', 'kutetheme' ),
-        'new_item'      => __( 'New Menu Item', 'kutetheme' ),
-        'view_item'     => __( 'View Menu Item', 'kutetheme' ),
-        'search_items'  => __( 'Search Menu Items', 'kutetheme' ),
-        'not_found'     => __( 'No Menu Items found', 'kutetheme' ),
-        'not_found_in_trash' => __( 'No Menu Items found in Trash', 'kutetheme' ),
-        'parent_item_colon'  => __( 'Parent Menu Item:', 'kutetheme' ),
-        'menu_name'     => __( 'Mega Menu', 'kutetheme' ),
+        'name'          => __( 'Mega Menu', 'edo' ),
+        'singular_name' => __( 'Mega Menu Item', 'edo' ),
+        'add_new'       => __( 'Add New', 'edo' ),
+        'add_new_item'  => __( 'Add New Menu Item', 'edo' ),
+        'edit_item'     => __( 'Edit Menu Item', 'edo' ),
+        'new_item'      => __( 'New Menu Item', 'edo' ),
+        'view_item'     => __( 'View Menu Item', 'edo' ),
+        'search_items'  => __( 'Search Menu Items', 'edo' ),
+        'not_found'     => __( 'No Menu Items found', 'edo' ),
+        'not_found_in_trash' => __( 'No Menu Items found in Trash', 'edo' ),
+        'parent_item_colon'  => __( 'Parent Menu Item:', 'edo' ),
+        'menu_name'     => __( 'Mega Menu', 'edo' ),
     );
 
     $args = array(
         'labels' => $labels,
         'hierarchical'        => false,
-        'description'         => __('Mega Menus.', 'kutetheme'),
+        'description'         => __('Mega Menus.', 'edo'),
         'supports'            => array( 'title', 'editor' ),
         'public'              => true,
         'show_ui'             => true,
@@ -41,21 +41,21 @@ function register_post_type_init() {
 
     register_post_type( 'megamenu', $args );
     
-    /* Testimonials */
+    /* Partners */
     $labels = array(
-        'name'               => __( 'Testimonial', 'kutetheme' ),
-        'singular_name'      => __( 'Testimonial', 'kutetheme'),
-        'add_new'            => __( 'Add New', 'kutetheme' ),
-        'all_items'          => __( 'Testimonials', 'kutetheme' ),
-        'add_new_item'       => __( 'Add New Testimonial', 'kutetheme' ),
-        'edit_item'          => __( 'Edit Testimonial', 'kutetheme' ),
-        'new_item'           => __( 'New Testimonial', 'kutetheme' ),
-        'view_item'          => __( 'View Testimonial', 'kutetheme' ),
-        'search_items'       => __( 'Search Testimonial', 'kutetheme' ),
-        'not_found'          => __( 'No Testimonial found', 'kutetheme' ),
-        'not_found_in_trash' => __( 'No Testimonial found in Trash', 'kutetheme' ),
-        'parent_item_colon'  => __( 'Parent Testimonial', 'kutetheme' ),
-        'menu_name'          => __( 'Testimonials', 'kutetheme' )
+        'name'               => __( 'Partner', 'edo' ),
+        'singular_name'      => __( 'Partner', 'edo'),
+        'add_new'            => __( 'Add New', 'edo' ),
+        'all_items'          => __( 'Partners', 'edo' ),
+        'add_new_item'       => __( 'Add New Partner', 'edo' ),
+        'edit_item'          => __( 'Edit Partner', 'edo' ),
+        'new_item'           => __( 'New Partner', 'edo' ),
+        'view_item'          => __( 'View Partner', 'edo' ),
+        'search_items'       => __( 'Search Partner', 'edo' ),
+        'not_found'          => __( 'No Partner found', 'edo' ),
+        'not_found_in_trash' => __( 'No Partner found in Trash', 'edo' ),
+        'parent_item_colon'  => __( 'Parent Partner', 'edo' ),
+        'menu_name'          => __( 'Partner', 'edo' )
     );
     $args = array(
         'labels'             => $labels,
@@ -72,23 +72,23 @@ function register_post_type_init() {
         
 
     );
-    register_post_type( 'testimonial', $args );
+    register_post_type( 'partner', $args );
 
     /* Services */
     $labels = array(
-        'name'               => __( 'Services', 'kutetheme' ),
-        'singular_name'      => __( 'Services', 'kutetheme'),
-        'add_new'            => __( 'Add New', 'kutetheme' ),
-        'all_items'          => __( 'Services', 'kutetheme' ),
-        'add_new_item'       => __( 'Add New Service', 'kutetheme' ),
-        'edit_item'          => __( 'Edit Service', 'kutetheme' ),
-        'new_item'           => __( 'New Service', 'kutetheme' ),
-        'view_item'          => __( 'View Service', 'kutetheme' ),
-        'search_items'       => __( 'Search Service', 'kutetheme' ),
-        'not_found'          => __( 'No Service found', 'kutetheme' ),
-        'not_found_in_trash' => __( 'No Service found in Trash', 'kutetheme' ),
-        'parent_item_colon'  => __( 'Parent Service', 'kutetheme' ),
-        'menu_name'          => __( 'Services', 'kutetheme' )
+        'name'               => __( 'Services', 'edo' ),
+        'singular_name'      => __( 'Services', 'edo'),
+        'add_new'            => __( 'Add New', 'edo' ),
+        'all_items'          => __( 'Services', 'edo' ),
+        'add_new_item'       => __( 'Add New Service', 'edo' ),
+        'edit_item'          => __( 'Edit Service', 'edo' ),
+        'new_item'           => __( 'New Service', 'edo' ),
+        'view_item'          => __( 'View Service', 'edo' ),
+        'search_items'       => __( 'Search Service', 'edo' ),
+        'not_found'          => __( 'No Service found', 'edo' ),
+        'not_found_in_trash' => __( 'No Service found in Trash', 'edo' ),
+        'parent_item_colon'  => __( 'Parent Service', 'edo' ),
+        'menu_name'          => __( 'Services', 'edo' )
     );
     $args = array(
         'labels'             => $labels,
