@@ -5,7 +5,7 @@
  * Displays all of the head element and everything up until the "site-content" div.
  *
  * @package KuteTheme
- * @subpackage Kutethemes
+ * @subpackage edo
  * @since Edo 1.0
  */
 ?><!DOCTYPE html>

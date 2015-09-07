@@ -5,8 +5,8 @@
  * Contains the closing of the "site-content" div and all content after.
  *
  * @package KuteTheme
- * @subpackage Kutethemes
- * @since Edo 1.0
+ * @subpackage edo
+ * @since edo 1.0
  */
 ?>
 <?php 

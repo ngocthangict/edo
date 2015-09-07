@@ -7,41 +7,21 @@
  * @since edo 1.0
  */
 
-if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) || is_active_sidebar( 'sidebar-1' )  ) : ?>
-	<div id="secondary" class="secondary">
+$kt_used_sidebar = edo_option('kt_used_sidebar','sidebar-shop');
 
-		<?php if ( has_nav_menu( 'primary' ) ) : ?>
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php
-					// Primary navigation menu.
-					wp_nav_menu( array(
-						'menu_class'     => 'nav-menu',
-						'theme_location' => 'primary',
-					) );
-				?>
-			</nav><!-- .main-navigation -->
-		<?php endif; ?>
+if(is_page()){
+	$kt_page_used_sidebar = edo_get_post_meta(get_the_ID(),'kt_page_used_sidebar','none');
+	if($kt_page_used_sidebar!="none"){
+		$kt_used_sidebar = $kt_page_used_sidebar;
+	}
+}
+?>
+<div id="secondary" class="secondary">
+	<?php if ( is_active_sidebar( $kt_used_sidebar ) ) : ?>
+		<div id="widget-area" class="widget-area" role="complementary">
+			<?php dynamic_sidebar( $kt_used_sidebar ); ?>
+		</div><!-- .widget-area -->
+	<?php endif; ?>
 
-		<?php if ( has_nav_menu( 'social' ) ) : ?>
-			<nav id="social-navigation" class="social-navigation" role="navigation">
-				<?php
-					// Social links navigation menu.
-					wp_nav_menu( array(
-						'theme_location' => 'social',
-						'depth'          => 1,
-						'link_before'    => '<span class="screen-reader-text">',
-						'link_after'     => '</span>',
-					) );
-				?>
-			</nav><!-- .social-navigation -->
-		<?php endif; ?>
+</div><!-- .secondary -->
 
-		<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-			<div id="widget-area" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'sidebar-1' ); ?>
-			</div><!-- .widget-area -->
-		<?php endif; ?>
-
-	</div><!-- .secondary -->
-
-<?php endif; ?>

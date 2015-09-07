@@ -383,3 +383,31 @@ if( ! function_exists( 'edo_is_cp' ) ){
         return defined( 'YITH_WOOCOMPARE' );
     }
 }
+if(!function_exists('edo_paging_nav')){
+    function edo_paging_nav() {
+        global $wp_query, $wp_rewrite;
+        
+        // Don't print empty markup if there's only one page.
+        if ( $wp_query->max_num_pages < 2 ) {
+            return;
+        }
+        
+        echo get_the_posts_pagination( array(
+            'prev_text'          => __( '<i class="fa fa-angle-double-left"></i> Previous', 'edo' ),
+            'next_text'          => __( 'Next <i class="fa fa-angle-double-right"></i>', 'edo' ),
+            'screen_reader_text' => '&nbsp;',
+            'before_page_number' => '',
+        ) );
+        
+    }
+}
+
+if(!function_exists('edo_get_post_meta')){
+    function edo_get_post_meta($post_id,$key,$default=""){
+        $meta = get_post_meta( $post_id,$key,true);
+        if($meta){
+            return $meta;
+        }
+        return $default;
+    }
+}

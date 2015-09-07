@@ -76,7 +76,10 @@ function kt_setup() {
 	) ) );
     
     
-	
+	// Image size
+	add_image_size ( 'blog-full', 1170, 543, true );
+	add_image_size ( 'blog-thumb', 870, 400, true );
+	add_image_size ( 'blog-thumb-small', 229, 105, true );
 }
 endif; // edo setup
 add_action( 'after_setup_theme', 'kt_setup' );
@@ -267,6 +270,37 @@ if( ! function_exists("edo_enqueue_script")){
     }
 }
 
+if(!function_exists('edo_comment')){
+	function edo_comment($comment, $args, $depth){
+		$GLOBALS['comment'] = $comment;
+		?>
+		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+			<div class="comment-avatar">
+				 <?php echo get_avatar( $comment); ?>
+			</div>
+			<div class="comment-content">
+				<div class="comment-meta">
+					<span class="comment-author"><?php printf(__('%s'), get_comment_author_link()) ?></span>
+					<span class="comment-date"><?php comment_date(); ?> <?php _e('at','edo');?> <?php comment_time(); ?></span>
+				</div>
+				<div class="comment-entry">
+					<?php comment_text(); ?>
+				</div>
+				<div class="comment-actions">
+					<?php 
+		            comment_reply_link( array_merge( $args, array( 
+					'reply_text' => '<i class="fa fa-share"></i> '.__('Reply','edo'),
+					'depth'      => $depth,
+					'max_depth'  => $args['max_depth'] 
+		            ) ) ); 
+		            ?>
+				</div>
+			</div>
+		</li>
+		<?php
+	}
+}
+
 
 if( ! class_exists( 'wp_bootstrap_navwalker' ) && file_exists( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' ) ){
     require_once( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' );
@@ -309,3 +343,7 @@ require THEME_DIR . '/inc/woocommerce.php';
  * Register Widget
  * */
 require THEME_DIR . '/inc/widget.php';
+/**
+ * Breadcrumbs
+ * */
+require THEME_DIR . '/inc/breadcrumbs.php';
