@@ -1,12 +1,20 @@
 <?php
-/*
-  Plugin Name: Edo toolkit
-  Plugin URI: http://kutethemes.com
-  Description: A Toolkit for Edo theme
-  Author: AngelsIT
-  Version: 1.0.0
-  Author URI: http://kutethemes.com
+/**
+ * Plugin Name: Edo toolkit
+ * Plugin URI: http://kutethemes.com/
+ * Description: A Toolkit for edo theme.
+ * Version: 1.0
+ * Author: AngelsIT
+ * Author URI: http://kutethemes.com/
+ *
+ * Text Domain: edo
+ * Domain Path: /languages/
+ *
+ * @package edo
+ * @since 1.0
+ * @author AngelsIT
  */
+ 
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
 

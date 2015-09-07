@@ -57,20 +57,25 @@ function register_post_type_init() {
         'parent_item_colon'  => __( 'Parent Partner', 'edo' ),
         'menu_name'          => __( 'Partner', 'edo' )
     );
+    
     $args = array(
-        'labels'             => $labels,
-        'hierarchical'       => true,
-        'show_ui'            => true,
-        'show_in_menu'       => true,
-        'show_in_nav_menus'  => false,
-        'supports'           => array( 'title', 'thumbnail', 'editor' ),
-        'rewrite'            => false,
-        'query_var'          => false,
-        'publicly_queryable' => false,
-        'public'             => true,
-        'menu_icon' => 'dashicons-editor-quote',
-        
-
+        'labels'              => $labels,
+        'hierarchical'        => false,
+        'description'         => __('Partner', 'edo'),
+        'supports'            => array( 'title', 'thumbnail', 'editor' ),
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_position'       => 41,
+        'show_in_nav_menus'   => true,
+        'publicly_queryable'  => false,
+        'exclude_from_search' => true,
+        'has_archive'         => false,
+        'query_var'           => true,
+        'can_export'          => true,
+        'rewrite'             => false,
+        'capability_type'     => 'post',
+        'menu_icon'           => 'dashicons-welcome-widgets-menus',
     );
     register_post_type( 'partner', $args );
 

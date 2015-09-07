@@ -86,6 +86,7 @@
                             <?php $i ++ ; ?>
                         <?php endif; ?>
                     <?php endwhile; ?>
+                    
                     <?php 
                         $html = ob_get_clean(); 
                         $loop = "false";
@@ -114,6 +115,7 @@
 						</div>
 					</div>
                     <?php endif; ?>
+                    <?php wp_reset_postdata(); wp_reset_query(); ?>
 				</div>
 			</div>
 		</div>

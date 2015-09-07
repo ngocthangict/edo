@@ -81,7 +81,7 @@ if( function_exists( 'vc_map' ) ):
 
 endif;
 
-if( class_exists( 'WPBakeryShortCode' ) ){
+if( class_exists( 'WPBakeryShortCode' ) ):
     class WPBakeryShortCode_Categories extends WPBakeryShortCode {
         protected function content($atts, $content = null) {
             $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories', $atts ) : $atts;
@@ -126,4 +126,4 @@ if( class_exists( 'WPBakeryShortCode' ) ){
             return ob_get_clean();
         }
     }    
-}
+endif;
