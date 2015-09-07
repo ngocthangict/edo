@@ -20,7 +20,7 @@ if( function_exists( 'vc_map' ) ):
                 "type" => "edo_number",
                 "heading" => __( "Number", 'edo' ),
                 "param_name" => "number",
-                "value" => "3",
+                "value" => 9,
                 "admin_label" => true,
                 'description' => __( 'The number of category shows.', 'edo' )
             ),
@@ -50,8 +50,8 @@ if( function_exists( 'vc_map' ) ):
     			'heading' => __( 'Hide Empty', 'js_composer' ),
     			'param_name' => 'hide',
     			'value' => array(
-    				__( 'Yes', 'js_composer' ) => '0',
-    				__( 'No', 'js_composer' ) => '1'
+    				__( 'Yes', 'js_composer' ) => '1',
+    				__( 'No', 'js_composer' ) => '0'
     			)
     		),
             array(
@@ -59,8 +59,8 @@ if( function_exists( 'vc_map' ) ):
     			'heading' => __( 'Show Count', 'js_composer' ),
     			'param_name' => 'show_count',
     			'value' => array(
-    				__( 'Yes', 'js_composer' ) => '0',
-    				__( 'No', 'js_composer' ) => '1'
+    				__( 'Yes', 'js_composer' ) => '1',
+    				__( 'No', 'js_composer' ) => '0'
     			)
     		),
             array(
@@ -118,11 +118,53 @@ if( class_exists( 'WPBakeryShortCode' ) ):
     			'hide_empty' => $hide,
     			'show_count' => $show_count,
                 'number'     => $number,
-                'depth'      => $depth
+                'depth'      => $depth,
+                'taxonomy'   => 'product_cat'
     		);
-            $categories = wp_list_categories( $atts );
-            
-            
+            $categories = get_categories( $args );
+            ?>
+            <!-- block category -->
+			<div class="block block-category">
+				<div class="block-head">
+					<ul class="nav-tab">
+                        <li class="active"><a data-toggle="tab" href="#tab-categories">categories</a></li>
+                        <li><a data-toggle="tab" href="#tab-guarantee">GUARANTEE</a></li>
+                  	</ul>
+				</div>
+				<div class="block-inner">
+					<div class="tab-container">
+						<div id="tab-categories" class="tab-panel active">
+							<ul class="categories">
+                                <?php foreach( $categories as $cate ): ?>
+                                <?php $term_link = get_term_link( $cate ); ?>
+								<li>
+									<a href="<?php echo $term_link; ?>" title="<?php echo $cate->name ?>">
+										<span class="text"><?php echo $cate->name ?></span>
+										<span class="count">(<?php echo $cate->count ?>)</span>
+									</a>
+								</li>
+                                <?php endforeach; ?>
+							</ul>
+						</div>
+						<div id="tab-guarantee" class="tab-panel">
+							<div class="block-guarantee">
+								<h5>
+									<span>THE OFFICIAL FAMISHOP® SHOP GUARANTEE</span>
+								</h5>
+								<ul>
+									<li><a href="#">Free Shipping Every Day</a></li>
+									<li><a href="#">Earn VIP Rewards</a></li>
+									<li><a href="#">Dedicated FamiShop Experts</a></li>
+									<li><a href="#">Order Missing Pieces</a></li>
+								</ul>
+								<a href="#" class="button-radius">Learn more<span class="icon"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ./block category -->
+            <?php
             return ob_get_clean();
         }
     }    

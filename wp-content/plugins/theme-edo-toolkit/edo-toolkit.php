@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Edo toolkit
+ * Plugin Name: Theme Edo Toolkit
  * Plugin URI: http://kutethemes.com/
  * Description: A Toolkit for edo theme.
  * Version: 1.0
@@ -10,13 +10,14 @@
  * Text Domain: edo
  * Domain Path: /languages/
  *
- * @package edo
- * @since 1.0
+ * @package KuteTheme
+ * @since edo 1.0
+ * @subpackage edo
  * @author AngelsIT
  */
  
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
-define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
+define("KUTETHEME_PLUGIN_URL" , trailingslashit( plugin_dir_url(__FILE__) ) );
 
 
 if( ! function_exists( 'edo_check_active_plugin' ) ){
