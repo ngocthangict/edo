@@ -11,10 +11,7 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php _e( 'Nothing Found', 'edo' ); ?></h1>
-	</header><!-- .page-header -->
-
+	<h1 class="page-title"><?php _e( 'Nothing Found', 'edo' ); ?></h1>
 	<div class="page-content">
 
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
