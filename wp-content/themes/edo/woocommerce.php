@@ -19,6 +19,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
 }else{
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
+
 ?>
     <div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
         <main id="main" class="site-main" role="main">
@@ -31,6 +32,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                     <div class="<?php echo esc_attr($col_class);?>">
                         <?php do_action( 'kt_before_shop_product' ); ?>
                         <?php woocommerce_content(); ?>
+                        <?php do_action( 'kt_after_shop_product' ); ?>
                     </div>
                     <?php
                     if($kt_sidebar_are!='full'){

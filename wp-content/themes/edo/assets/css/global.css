@@ -690,11 +690,12 @@ img.alignright{
 .products .product-star{
   font-size: 12px;
   color: #ccc;
+  margin-top: 5px;
 }
 .products .product-right{
   padding: 10px 10px 0 10px;
   position: absolute;
-  bottom: -60px;
+  bottom: -50px;
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.9);
