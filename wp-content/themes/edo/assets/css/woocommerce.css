@@ -51,3 +51,31 @@
 	border: none;
 	border-radius: 0;
 }
+
+/*----------------
+[Widget]
+-----------------*/
+.woocommerce.widget_product_search {
+    padding: 0;
+    border: none;
+    webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+}
+.woocommerce.widget_product_search .widget-title {
+    display: none;
+}
+.woocommerce.widget_product_search form {
+    position: relative;
+}
+.woocommerce.widget_product_search .screen-reader-text {
+    display: none;
+}
+.woocommerce.widget_product_search .search-field {
+    padding-right: 70px;
+}
+.woocommerce.widget_product_search input[type="submit"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

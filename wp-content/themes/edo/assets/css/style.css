@@ -280,6 +280,12 @@
 	line-height: 24px;
 	font-size: 14px;
 }
+.block-wrap-cart .block-mini-cart .remove_link{
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	background: url('../images/delete_icon.png') no-repeat left center;
+}
 .block-wrap-cart:hover .block-mini-cart{
 	-webkit-transform: translate(0,0);
 	-moz-transform: translate(0,0);

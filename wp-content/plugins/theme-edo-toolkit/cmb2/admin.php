@@ -446,7 +446,7 @@ class KT_Admin {
         
         $cmb_options_woocommerce->add_field( array(
     		'name'    => __( 'Shop page sidebar', 'edo' ),
-    		'id'      => 'kt_woowoo_shop_used_sidebar',
+    		'id'      => 'kt_woo_shop_used_sidebar',
     		'type'    => 'select',
     		'default' => 'sidebar-shop',
             'options' => $sidebars,
@@ -494,22 +494,10 @@ class KT_Admin {
     		'name'    => __( 'Single page sidebar', 'edo' ),
     		'id'      => 'kt_woo_single_used_sidebar',
     		'type'    => 'select',
-    		'default' => 'full',
+    		'default' => 'sidebar-shop-single',
             'options' => $sidebars,
             'desc'    => __( 'Setting sidebar in the area sidebar on single page', 'edo' ),
     	) );
-
-        // $cmb_options_woocommerce->add_field( array(
-        //     'name'    => __( 'Select display style of the image product', 'edo' ),
-        //     'id'      => 'kt_woo_style_image_product',
-        //     'type'    => 'select',
-        //     'default' => 'popup',
-        //     'options' => array(
-        //         'popup'=>'Default',
-        //         'zoom'=>'Zoom'
-        //     ),
-        //     'desc'    => __( 'Choose either popup or zoom style of the image product', 'edo' ),
-        // ) );
         
         /**
          * Sidebar
