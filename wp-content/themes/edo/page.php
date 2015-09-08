@@ -41,29 +41,31 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
         	}
         	?>
             <div class="row">
-                <div class="<?php echo esc_attr($col_class);?>">
-                    <?php
-					// Start the loop.
-					while ( have_posts() ) : the_post();
-
-						// Include the page content template.
-						get_template_part( 'content', 'page' );
-
-					// End the loop.
-					endwhile;
-					?>
-                </div>
-                <?php
-                if($kt_sidebar_are!='full'){
-                    ?>
-                    <div class="col-xs-12 col-sm-4 col-md-3">
-                        <div class="sidebar">
-                            <?php get_sidebar();?>
-                        </div>
+                <div class="row">
+                    <div class="<?php echo esc_attr($col_class);?>">
+                        <?php
+    					// Start the loop.
+    					while ( have_posts() ) : the_post();
+    
+    						// Include the page content template.
+    						get_template_part( 'content', 'page' );
+    
+    					// End the loop.
+    					endwhile;
+    					?>
                     </div>
                     <?php
-                }
-                ?>
+                    if($kt_sidebar_are!='full'){
+                        ?>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="sidebar">
+                                <?php get_sidebar();?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
         </div>
 	</main><!-- .site-main -->
