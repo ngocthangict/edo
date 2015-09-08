@@ -128,3 +128,58 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'edo_custom_cart_button_text
 function edo_custom_cart_button_text() {
         return __( 'Buy', 'woocommerce' );
 }
+
+
+// Custom rating
+add_filter("woocommerce_product_get_rating_html", "edo_get_rating_html", 10, 2);
+function edo_get_rating_html($rating_html, $rating){
+    $rating_html = '';
+    global $product;
+    if ( ! is_numeric( $rating ) ) {
+        $rating = $product->get_average_rating();
+    }
+    $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+    for($i = 1;$i <= 5 ;$i++){
+        if($rating >= $i){
+            if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
+                $rating_html .= '<i class="fa fa-star-half-o"></i>';    
+            }else{
+                $rating_html .= '<i class="fa fa-star"></i>';
+            }
+        }else{
+            $rating_html .= '<i class="fa fa-star-o"></i>';
+        }
+    }
+    $rating_html .= '</div>';
+    return $rating_html;
+}
+
+/* Remove pagination on the bottom of shop page */
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+
+/* Show pagination on the top of shop page */
+add_action( 'woocommerce_after_shop_loop', 'edo_paging_nav', 10 );
+add_action( 'woocommerce_before_shop_loop', 'edo_paging_nav', 10 );
+//remove woocommerce resultcount
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+
+add_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+// add products display
+
+if( ! function_exists( 'edo_custom_display_view' ) ){
+    add_filter( 'woocommerce_before_shop_loop' , 'edo_custom_display_view' );
+    add_filter( 'woocommerce_after_shop_loop' , 'edo_custom_display_view' );
+    function edo_custom_display_view(){
+       ?>
+       <ul class="display-product-option">
+            <li class="view-as-grid selected">
+                <span>grid</span>
+            </li>
+            <li class="view-as-list">
+                <span>list</span>
+            </li>
+        </ul>
+       <?php
+    }
+}

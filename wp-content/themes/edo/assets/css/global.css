@@ -690,12 +690,11 @@ img.alignright{
 .products .product-star{
   font-size: 12px;
   color: #ccc;
-  margin-top: 5px;
 }
 .products .product-right{
   padding: 10px 10px 0 10px;
   position: absolute;
-  bottom: -50px;
+  bottom: -55px;
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.9);
@@ -705,6 +704,7 @@ img.alignright{
   transition: all 0.3s ease-out 0s;
   z-index: 2;
   overflow: hidden;
+  line-height: 30px;
 }
 .products .product-container:hover .product-right{
  bottom: 0;
@@ -756,32 +756,67 @@ img.alignright{
   transition: opacity 0.3s ease-out 0s;
 }
 
-.products .btn-add-comparre{
+.products .btn-add-comparre,
+.products .compare,
+.products .compare.button{
   width: 17px;
   height: 34px;
   background: url('../images/compare-icon.png') no-repeat left center;
   font-size: 0px;
   float: left;
+  margin: 0;
   margin-right: 15px;
+  padding: 0;
+  display: inline-block;
+  float: left;
 }
-
-.products .btn-add-comparre:hover{
+.products .product-button .clear{
+  display: none;
+}
+.products .btn-add-comparre:hover,
+.products .compare:hover,
+.products .compare.button:hover{
   background: url('../images/compare-icon.png') no-repeat right;
 }
-.products .btn-add-wishlist{
+.products .btn-add-wishlist,
+.products .yith-wcwl-add-to-wishlist{
   width: 19px;
   height: 34px;
   background: url('../images/wishlist-icon.png') no-repeat left center;
   font-size: 0px;
   float: left;
+  margin: 0;
+  padding: 0;
   margin-right: 15px;
+  display: inline-block;
+  float: left;
 }
-.products .btn-add-wishlist:hover{
+.products .btn-add-wishlist:hover,
+.products .yith-wcwl-add-to-wishlist:hover{
   background: url('../images/wishlist-icon.png') no-repeat right;
 }
 .products .btn-add-cart{
   margin-top: 0;
   float: left;
+}
+.products .btn-add-cart.added{
+  display: none;
+}
+.products a.added_to_cart{
+  padding: 0;
+}
+.products a.added_to_cart:before{
+  content: "\f07a";
+  font-family: 'FontAwesome';
+  font-size: 14px;
+  margin-right: 10px;
+}
+.products .yith-wcwl-wishlistexistsbrowse a,
+.products .yith-wcwl-add-button a,
+.products .yith-wcwl-wishlistaddedbrowse a{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
 }
 .products .btn-add-cart:hover,
 .products .btn-add-cart:hover .icon:before{
@@ -853,4 +888,11 @@ label{
 /* Layout */
 .sidebar-left .main-content{
   float: right;
+}
+.pagination{
+  margin: 0;
+  padding: 0;
+}
+.pagination .screen-reader-text{
+  display: none;
 }

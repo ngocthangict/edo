@@ -63,7 +63,7 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
 						do_action( 'woocommerce_before_shop_loop_item_title' );
 					?>
 					</a>
-					<a title="<?php echo esc_attr( __('Quick View' , 'edo') );?>" href="#" class="btn-quick-view"><?php _e('Quick View' , 'edo')?></a>
+					<a data-id="<?php echo esc_attr( $product->id );?>" title="<?php echo esc_attr( __('Quick View' , 'edo') );?>" href="#" class="btn-quick-view"><?php _e('Quick View' , 'edo')?></a>
 				</div>
 			</div>
 			<div class="product-right">
@@ -89,9 +89,13 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
 				do_action( 'woocommerce_after_shop_loop_item_title' );
 				?>
                 <div class="product-button">
-                	<a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                	<a class="btn-add-comparre" title="Add to Compare" href="#">Add Compare</a>
                 	<?php
+					if(class_exists('YITH_WCWL_UI')){
+			            echo do_shortcode('[yith_wcwl_add_to_wishlist]');    
+			        }
+			        if(defined( 'YITH_WOOCOMPARE' )){
+			            echo do_shortcode('[yith_compare_button]');
+			        }
 					/**
 					 * woocommerce_after_shop_loop_item hook
 					 *

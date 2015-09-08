@@ -225,16 +225,20 @@ del{
 .woocommerce ul.products li.product, 
 .woocommerce-page ul.products li.product{
 	width: 33.33333%;
-	margin: 0;
-	padding: 0 15px;
-	margin-bottom: 30px;
-	line-height: 24px;
+    margin: 0;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    line-height: 24px;
+    margin-top: 20px;
 }
 
 .woocommerce ul.products,
 .woocommerce-page ul.products{
 	margin-left: -15px;
 	margin-right: -15px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 15px;
 }
 .list-1-columns ul.products li.product{
 	width: 100%;
@@ -258,7 +262,7 @@ del{
 .woocommerce ul.products li.product .price{
 	font-weight: bold;
     color: #ffb424;
-    font-style: 14px;
+    font-size: 14px;
     line-height: 24px;
     margin: 0;
 }
@@ -299,4 +303,43 @@ del{
 	right: inherit;
 	left: 0px;
 	top: 0px;
+}
+
+/*--------------
+['Sort product']
+---------------*/
+.woocommerce .woocommerce-ordering {
+    width: auto;
+    margin: 0;
+    border: 1px solid #eaeaea;
+}
+.woocommerce .woocommerce-ordering .orderby {
+    display: inline-block;
+    float: left;
+    width: auto;
+    border: none;
+    height: 27px;
+    padding: 0 10px;
+}
+.woocommerce .woocommerce-ordering:before {
+    content: "\f15d";
+    display: inline-block;
+    width: 38px;
+    text-align: center;
+    float: right;
+    height: 27px;
+    border-left: 1px solid #eaeaea;
+    background: #fafafa;
+    line-height: 27px;
+    font-family: 'FontAwesome';
+}
+
+.category-products .navigation {
+	float: right;
+	margin-left: 30px;
+}
+
+.woocommerce.product.compare-button{
+	margin: 0;
+	padding: 0;
 }
