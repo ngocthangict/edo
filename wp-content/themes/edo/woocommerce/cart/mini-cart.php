@@ -42,14 +42,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                     if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
                     
                         $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
-        				$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x122'), $cart_item, $cart_item_key );
+        				$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x100'), $cart_item, $cart_item_key );
         				$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
                     ?>
                     <li class="product-info <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
                         <div class="p-left">
                             <?php
         						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-        							'<a href="%s" class="remove remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
+        							'<a href="%s" class="remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
         							esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
         							__( 'Remove this item', 'edo' ),
         							esc_attr( $product_id ),

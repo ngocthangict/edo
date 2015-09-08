@@ -285,6 +285,9 @@
 	height: 9px;
 	display: inline-block;
 	background: url('../images/delete_icon.png') no-repeat left center;
+	position: absolute;
+	top: 5px;
+	left: 5px;
 }
 .block-wrap-cart:hover .block-mini-cart{
 	-webkit-transform: translate(0,0);

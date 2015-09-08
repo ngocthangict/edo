@@ -29,6 +29,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                 <div class="row">
                     <div class="row">
                     <div class="<?php echo esc_attr($col_class);?>">
+                        <?php do_action( 'kt_before_shop_product' ); ?>
                         <?php woocommerce_content(); ?>
                     </div>
                     <?php

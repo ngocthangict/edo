@@ -179,11 +179,9 @@
             });
         })
         /// tre menu category
-        $(document).on('click','.tree-menu li',function(){
+        $(document).on('click','.widget_product_categories .product-categories li',function(){
             $(this).toggleClass('active');
             $(this).children('ul').slideToggle();
-            
-            return false;
         })
         // Zoom
         if($('.easyzoom').length >0){
