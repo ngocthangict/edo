@@ -3,7 +3,7 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name" => __( "List Product", 'edo'),
+    "name" => __( "List Products", 'edo'),
     "base" => "list_product",
      "category" => __('by Edo', 'edo' ),
     "description" => __( "Display list product by id input in setting shortcode", 'edo'),
@@ -175,8 +175,6 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
             'navigation' => 'false',
             'margin'    => 30,
             'slidespeed' => 200,
-            'css' => '',
-            'el_class' => '',
             'nav' => 'true',
             'loop'  => 'true',
             //Default
@@ -287,7 +285,7 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
     				<div class="block-head">
     					<div class="block-title">
     						<div class="block-icon">
-    							<img alt="<?php  echo ( isset( $title ) && $title ) ? $title : __( 'Today\'s Offers', 'edo' );  ?>" src="<?php echo $att_icon_url; ?>" />
+    							<img alt="<?php  echo $title;  ?>" title="<?php echo $title; ?>" src="<?php echo $att_icon_url; ?>" />
     						</div>
     						<div class="block-title-text text-sm"><?php echo $title_sm; ?></div>
     						<div class="block-title-text text-lg"><?php echo $title_lg; ?></div>
@@ -296,7 +294,8 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
     				<div class="block-inner">
                         <?php do_action( "woocommerce_shortcode_before_list_product_loop" ); ?>
         					<ul class="products kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                                <?php while( $products->have_posts() ): $products->the_post(); $id = get_the_ID(); $link = get_permalink( $id ); ?>
+                                <?php while( $products->have_posts() ): 
+                                    $products->the_post(); $id = get_the_ID(); $link = get_permalink( $id ); ?>
                                     <?php edo_woocommerce_product_loop_item_before(); ?>
             							<?php 
                                             wc_get_template_part( 'content', 'list-product' );

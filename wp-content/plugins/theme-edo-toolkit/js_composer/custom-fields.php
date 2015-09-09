@@ -88,6 +88,11 @@ if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/categories.php
 if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/list_product.php' ) ){
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/list_product.php' ;
 }
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/images.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/images.php' ;
+}
 if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
-    
+    if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ) ){
+        require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ;
+    }
 }
