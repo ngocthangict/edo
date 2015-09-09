@@ -29,7 +29,7 @@ vc_map( array(
             "param_name" => "taxonomy",
             "value" => '',
             'parent' => 0,
-            'multiple' => false,
+            'multiple' => true,
             'placeholder' => __('Choose categoy', 'edo'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'edo')
         ),
@@ -215,6 +215,8 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
 		<!-- block  top sellers -->
         <?php
         endif;
+        wp_reset_postdata();
+        wp_reset_query();
         $result = ob_get_clean();
         return $result;
     }

@@ -19,7 +19,7 @@ vc_map( array(
     		'type' => 'attach_image',
     		'heading' => __( 'Icon', 'edo' ),
     		'param_name' => 'icon',
-            'description' => __( 'Setup icon for the tab', 'edo' )
+            'description' => __( 'Setup icon for the box', 'edo' )
     	),
         array(
             "type" => "textfield",
@@ -310,6 +310,8 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
             <?php
             endif;
         endif;
+        wp_reset_postdata();
+        wp_reset_query();
         $result = ob_get_clean();
         return $result;
     }

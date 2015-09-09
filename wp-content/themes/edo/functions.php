@@ -300,7 +300,7 @@ if(!function_exists('edo_comment')){
 			</div>
 			<div class="comment-content">
 				<div class="comment-meta">
-					<span class="comment-author"><?php printf(__('%s'), get_comment_author_link()) ?></span>
+					<span class="comment-author"><?php printf( '%s', get_comment_author_link()) ?></span>
 					<span class="comment-date"><?php comment_date(); ?> <?php _e('at','edo');?> <?php comment_time(); ?></span>
 				</div>
 				<div class="comment-entry">
