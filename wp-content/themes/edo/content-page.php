@@ -13,7 +13,7 @@
     $kt_page_extra_class = edo_get_post_meta(get_the_ID(),'kt_page_extra_class','show');
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class($kt_page_extra_class); ?>>
-    <?php if( $kt_show_page_title=='show'): ?>
+    <?php if( $kt_show_page_title == 'show'): ?>
         <h1 class="page-title"><?php the_title();?></h1>
     <?php endif; ?>
 	<div class="entry-content">
