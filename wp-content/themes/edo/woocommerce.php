@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); 
 $kt_sidebar_are = edo_option('kt_woo_shop_sidebar_are','full');
+
+// option Single product
+if(is_product()){
+    $kt_sidebar_are = edo_option('kt_woo_single_sidebar_are','full');
+}
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
 if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-8 col-md-9"; 

@@ -88,6 +88,9 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
 				 */
 				do_action( 'woocommerce_after_shop_loop_item_title' );
 				?>
+				<div class="desc">
+					<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
+				</div>
                 <div class="product-button">
                 	<?php
 					if(class_exists('YITH_WCWL_UI')){

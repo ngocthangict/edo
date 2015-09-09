@@ -8,6 +8,10 @@
  */
 
 $kt_used_sidebar = edo_option('kt_woo_shop_used_sidebar','sidebar-shop');
+// option Single product
+if(is_product()){
+    $kt_used_sidebar = edo_option('kt_woo_single_used_sidebar','full');
+}
 ?>
 <div id="secondary" class="secondary">
 	<?php if ( is_active_sidebar( $kt_used_sidebar ) ) : ?>

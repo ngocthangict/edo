@@ -88,8 +88,15 @@ function edo_add_div_before_shop_page(){
 	if(is_product_category() || is_shop()){
 		$kt_woo_grid_column = edo_option('kt_woo_grid_column',3);
 
+		$list_style='';
+		if(isset($_SESSION['shop_products_list_style'])){
+	        $shop_products_list_style = $_SESSION['shop_products_list_style'];
+	        if($shop_products_list_style=='list'){
+	        	$list_style = 'products-list-view';
+	        }
+	    }
 		?>
-		<div class="category-products <?php echo esc_attr('list-'.$kt_woo_grid_column.'-columns');?>">
+		<div class="category-products <?php echo esc_attr( $list_style );?> <?php echo esc_attr('list-'.$kt_woo_grid_column.'-columns');?>">
 		<?php
 	}
 }
@@ -171,15 +178,100 @@ if( ! function_exists( 'edo_custom_display_view' ) ){
     add_filter( 'woocommerce_before_shop_loop' , 'edo_custom_display_view' );
     add_filter( 'woocommerce_after_shop_loop' , 'edo_custom_display_view' );
     function edo_custom_display_view(){
+    	$shop_products_list_style ='grid';
+    	if(isset($_SESSION['shop_products_list_style'])){
+	        $shop_products_list_style = $_SESSION['shop_products_list_style'];
+	    }
        ?>
        <ul class="display-product-option">
-            <li class="view-as-grid selected">
+            <li data-type="grid" class="view-as-grid <?php if($shop_products_list_style=='grid'): echo esc_attr( 'selected' ); endif;?>">
                 <span>grid</span>
             </li>
-            <li class="view-as-list">
+            <li data-type="list" class="view-as-list <?php if($shop_products_list_style=='list'): echo esc_attr( 'selected' ); endif;?>">
                 <span>list</span>
             </li>
         </ul>
        <?php
     }
 }
+
+// Ajax set product list style
+function  wp_ajax_fronted_set_products_view_style_callback(){
+    check_ajax_referer( 'ajax_frontend', 'security' );
+    $type = $_POST['type'];
+    
+    $_SESSION['shop_products_list_style'] = $type;
+    die;
+}
+add_action( 'wp_ajax_fronted_set_products_view_style', 'wp_ajax_fronted_set_products_view_style_callback' );
+add_action( 'wp_ajax_nopriv_fronted_set_products_view_style', 'wp_ajax_fronted_set_products_view_style_callback' );
+/**
+ * Product Quick View callback AJAX request 
+ *
+ * @since 1.0
+ * @return html
+ */
+
+function wp_ajax_frontend_product_quick_view_callback() {
+    check_ajax_referer( 'ajax_frontend', 'security' );
+    global $product, $woocommerce, $post;
+
+	$product_id = $_POST["product_id"];
+	
+	$post = get_post( $product_id );
+
+	$product = wc_get_product( $product_id );
+    
+    // Call our template to display the product infos
+    wc_get_template( 'content-single-product-quick-view.php');
+    die();
+    
+}
+add_action( 'wp_ajax_frontend_product_quick_view', 'wp_ajax_frontend_product_quick_view_callback' );
+add_action( 'wp_ajax_nopriv_frontend_product_quick_view', 'wp_ajax_frontend_product_quick_view_callback' );
+
+// Custom hock Single product
+
+// Rating
+remove_action( 'woocommerce_single_product_summary' ,'woocommerce_template_single_rating',10);
+add_filter("woocommerce_single_product_summary", "woocommerce_template_single_rating", 11);
+
+
+// Custom add to cart single product
+function edo_single_add_to_cart_text( $wcpgsk_single_cart_button_text, $number ) 
+{
+    // make filter magic happen here...
+    $wcpgsk_single_cart_button_text = __('Buy','edo');
+    return $wcpgsk_single_cart_button_text;
+};
+        
+// add the filter
+add_filter( 'single_add_to_cart_text', 'edo_single_add_to_cart_text', 10, 3 );
+
+// remove hock woocommerce_template_single_meta
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta' , 40 );
+
+// Custom compare wishilist share print
+
+if(!function_exists('edo_group_button_single_product')){
+	add_filter( 'woocommerce_single_product_summary','edo_group_button_single_product' ,60);
+	function edo_group_button_single_product(){
+		?>
+		<div class="box-control-button">
+			<?php
+			if(class_exists('YITH_WCWL_UI')){
+	            echo do_shortcode('[yith_wcwl_add_to_wishlist]');    
+	        }
+	        if(defined( 'YITH_WOOCOMPARE' )){
+	            echo do_shortcode('[yith_compare_button]');
+	        }
+	        ?>
+	        <a class="link-sendmail" href="#">Email to a Friend</a>
+	        <a class="link-print" href="#">Print</a>
+		</div>
+		<?php
+	}
+}
+
+
+

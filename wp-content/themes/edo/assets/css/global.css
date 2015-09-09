@@ -517,8 +517,8 @@ img.alignright{
 /*-----------------------
 [4. Owl]
 ------------------------*/
-.kt-owl-carousel .owl-prev, 
-.kt-owl-carousel .owl-next,
+.owl-carousel .owl-prev, 
+.owl-carousel .owl-next,
 .customNavigation-owl .prev,
 .customNavigation-owl .next{
   width: 20px;
@@ -534,18 +534,18 @@ img.alignright{
 
 }
 
-.kt-owl-carousel .owl-next:hover{
+.owl-carousel .owl-next:hover{
   background-image:url('../images/next-hover.png');
   background-color: #5a88ca;
   border-color: #5a88ca;
 }
-.kt-owl-carousel .owl-prev:hover{
+.owl-carousel .owl-prev:hover{
   background-image:url('../images/prev-hover.png');
   background-color: #5a88ca;
   border-color: #5a88ca;
 }
 
-.kt-owl-carousel .owl-next {
+.owl-carousel .owl-next {
   position: absolute;
   right: 0;
   top: 50%;
@@ -556,7 +556,7 @@ img.alignright{
   background-repeat: no-repeat;
   background-position: 7px center;
 }
-.kt-owl-carousel .owl-prev {
+.owl-carousel .owl-prev {
   position: absolute;
   left: 0;
   top: 50%;
@@ -758,7 +758,10 @@ img.alignright{
 
 .products .btn-add-comparre,
 .products .compare,
-.products .compare.button{
+.products .compare.button,
+.summary .compare,
+.summary .btn-add-comparre,
+.summary .compare.button{
   width: 17px;
   height: 34px;
   background: url('../images/compare-icon.png') no-repeat left center;
@@ -775,11 +778,16 @@ img.alignright{
 }
 .products .btn-add-comparre:hover,
 .products .compare:hover,
-.products .compare.button:hover{
+.products .compare.button:hover,
+.summary .btn-add-comparre:hover,
+.summary .compare:hover,
+.summary .compare.button:hover{
   background: url('../images/compare-icon.png') no-repeat right;
 }
 .products .btn-add-wishlist,
-.products .yith-wcwl-add-to-wishlist{
+.products .yith-wcwl-add-to-wishlist,
+.summary .btn-add-wishlist,
+.summary .yith-wcwl-add-to-wishlist{
   width: 19px;
   height: 34px;
   background: url('../images/wishlist-icon.png') no-repeat left center;
@@ -792,7 +800,9 @@ img.alignright{
   float: left;
 }
 .products .btn-add-wishlist:hover,
-.products .yith-wcwl-add-to-wishlist:hover{
+.products .yith-wcwl-add-to-wishlist:hover,
+.summary .btn-add-wishlist:hover,
+.summary .yith-wcwl-add-to-wishlist:hover{
   background: url('../images/wishlist-icon.png') no-repeat right;
 }
 .products .btn-add-cart{
@@ -804,16 +814,31 @@ img.alignright{
 }
 .products a.added_to_cart{
   padding: 0;
+  border: 1px solid #eaeaea;
+  border-radius: 17px;
+  height: 34px;
+  background: #fff;
+  line-height: 34px;
+  padding-left: 15px;
+  padding-right: 35px;
 }
 .products a.added_to_cart:before{
-  content: "\f07a";
-  font-family: 'FontAwesome';
-  font-size: 14px;
-  margin-right: 10px;
+  width: 28px;
+  height: 28px;
+  float: right;
+  background: #5a88ca;
+  content: '';
+  border-radius: 90%;
+  margin-top: 2px;
+  margin-right: -33px;
+  background: #5a88ca url('../images/cart-icon.png') no-repeat center center;
 }
 .products .yith-wcwl-wishlistexistsbrowse a,
 .products .yith-wcwl-add-button a,
-.products .yith-wcwl-wishlistaddedbrowse a{
+.products .yith-wcwl-wishlistaddedbrowse a,
+.summary .yith-wcwl-wishlistexistsbrowse a,
+.summary .yith-wcwl-add-button a,
+.summary .yith-wcwl-wishlistaddedbrowse a{
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -825,6 +850,7 @@ img.alignright{
 .products .desc{
   padding: 20px 0;
   line-height: 20px;
+  display: none;
 }
 
 .products.list .product-right{

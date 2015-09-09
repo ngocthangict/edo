@@ -411,3 +411,9 @@ if(!function_exists('edo_get_post_meta')){
         return $default;
     }
 }
+function kt_init_session_start(){
+    if(!session_id()) {
+        session_start();
+    }
+}
+add_action('init', 'kt_init_session_start', 1);
