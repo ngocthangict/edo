@@ -222,6 +222,7 @@ function kt_scripts() {
 	wp_enqueue_style( 'owl-carousel-style', THEME_URL . '/assets/lib/owl.carousel/owl.carousel.css', array( ), '1.0' );
 	// Jquery Ui
 	wp_enqueue_style( 'jquery-ui-style', THEME_URL . '/assets/lib/jquery-ui/jquery-ui.css', array( ), '1.0' );
+	wp_enqueue_style( 'fancyBox-style', THEME_URL . '/assets/lib/fancyBox/jquery.fancybox.css', array( ), '1.0' );
 	// Load our main stylesheet.
 	wp_enqueue_style( 'edo-main-style', get_stylesheet_uri() );
 	// Global style 
@@ -249,13 +250,20 @@ function kt_scripts() {
 	wp_enqueue_script( 'edo-owl-js', THEME_URL . '/assets/lib/owl.carousel/owl.carousel.min.js', array( 'jquery' ) );
 	// Jquery Ui
 	wp_enqueue_script( 'edo-jquery-ui-js', THEME_URL . '/assets/lib/jquery-ui/jquery-ui.min.js', array( 'jquery' ) );
+	// fancyBox
+	wp_enqueue_script( 'edo-fancyBox-js', THEME_URL . '/assets/lib/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
 	// COUNT DOWN
 	wp_enqueue_script( 'edo-countdown-plugin-js', THEME_URL . '/assets/lib/countdown/jquery.plugin.js', array( 'jquery' ) );
 	wp_enqueue_script( 'edo-countdown-js', THEME_URL . '/assets/lib/countdown/jquery.countdown.js', array( 'jquery' ) );
 	// Main javasript
 	wp_enqueue_script( 'edo-main-js', THEME_URL . '/assets/js/script.js', array( 'jquery' ) );
 	wp_enqueue_script( 'edo-actual-js', THEME_URL . '/assets/js/jquery.actual.min.js', array( 'jquery' ) );
-    
+
+    wp_localize_script( 'edo-main-js', 'ajax_frontend', array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'security' => wp_create_nonce( 'ajax_frontend' ),
+        'current_date' => date_i18n('Y-m-d H:i:s')
+    ));
     /*
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
@@ -265,7 +273,6 @@ function kt_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
 }
 add_action( 'wp_enqueue_scripts', 'kt_scripts' );
 

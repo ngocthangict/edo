@@ -132,7 +132,34 @@
             $(this).width((full_width - menu_width)-2);
         });
     }
-
+    /* ---------------------------------------------
+     Woocommercer Quantily
+     --------------------------------------------- */
+     function woo_quantily(){
+        $('body').on('click','.quantity-plus',function(){
+            var obj_qty = $(this).closest('.box-qty').find('input.qty'),
+                val_qty = parseInt(obj_qty.val()),
+                min_qty = parseInt(obj_qty.attr('min')),
+                max_qty = parseInt(obj_qty.attr('max')),
+                step_qty = parseInt(obj_qty.attr('step'));
+            val_qty = val_qty + step_qty;
+            if(max_qty && val_qty > max_qty){ val_qty = max_qty; }
+            obj_qty.val(val_qty);
+            return false;
+        });
+        $('body').on('click','.quantity-minus',function(){
+            var obj_qty = $(this).closest('.box-qty').find('input.qty'), 
+                val_qty = parseInt(obj_qty.val()),
+                min_qty = parseInt(obj_qty.attr('min')),
+                max_qty = parseInt(obj_qty.attr('max')),
+                step_qty = parseInt(obj_qty.attr('step'));
+            val_qty = val_qty - step_qty;
+            if(min_qty && val_qty < min_qty){ val_qty = min_qty; }
+            if(!min_qty && val_qty < 0){ val_qty = 0; }
+            obj_qty.val(val_qty);
+            return false;
+        });
+      }
     /* ---------------------------------------------
      Scripts ready
      --------------------------------------------- */
@@ -141,6 +168,7 @@
         resizeTopmenu();
         kt_bxslider();
         auto_width_megamenu();
+        woo_quantily();
         // Select menu
         $( "#category-select" ).selectmenu();
         // count downt
@@ -179,11 +207,9 @@
             });
         })
         /// tre menu category
-        $(document).on('click','.tree-menu li',function(){
+        $(document).on('click','.widget_product_categories .product-categories li',function(){
             $(this).toggleClass('active');
             $(this).children('ul').slideToggle();
-            
-            return false;
         })
         // Zoom
         if($('.easyzoom').length >0){
@@ -304,6 +330,81 @@
             });
             //slider.reloadSlider();
         }
+
+        // Display list product
+        $(document).on('click','.display-product-option li',function(){
+            var type = $(this).data('type');
+            $(this).closest('.display-product-option').find('li').each(function(){
+                $(this).removeClass('selected');
+            })
+            $(this).addClass('selected');
+            if(type=='list'){
+                $('body').find('.category-products').addClass('products-list-view');
+            }else if(type=="grid"){
+                $('body').find('.category-products').removeClass('products-list-view');
+            }
+
+            // ajax set product style view
+            var data = {
+                action: 'fronted_set_products_view_style',
+                security : ajax_frontend.security,
+                type: type
+            };
+            $.post(ajax_frontend.ajaxurl, data, function(response){
+                console.log(response);
+            })
+        })
+
+        // Quick view product
+        $(document).on('click','.btn-quick-view',function(){
+            var product_id = $(this).data('id');
+            var data = {
+                action: 'frontend_product_quick_view',
+                security : ajax_frontend.security,
+                product_id: product_id
+            };
+            $(this).append('<i class="fa fa-spinner fa-spin"></i>');
+            var t = $(this);
+            $.post(ajax_frontend.ajaxurl, data, function(response){
+                $.fancybox(response, {
+                  // fancybox API options
+                  fitToView: false,
+                  autoSize: false,
+                  closeClick: false,
+                  openEffect: 'none',
+                  closeEffect: 'none'
+                }); // fancybox
+            })
+            return false;
+         })
+
+        // OWL Product thumb
+        $('.product .thumbnails').owlCarousel(
+            {
+                dots:false,
+                nav:true,
+                navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                margin:20,
+                responsive : {
+                  // breakpoint from 0 up
+                  0 : {
+                      items : 1,
+                  },
+                  // breakpoint from 480 up
+                  480 : {
+                      items : 2,
+                  },
+                  // breakpoint from 768 up
+                  768 : {
+                      items : 2,
+                  },
+                  1000 : {
+                      items : 3,
+                  }
+              }
+            }
+        );
+
     });
     /* ---------------------------------------------
      Scripts initialization

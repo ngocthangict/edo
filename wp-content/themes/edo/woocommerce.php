@@ -13,12 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); 
 $kt_sidebar_are = edo_option('kt_woo_shop_sidebar_are','full');
+
+// option Single product
+if(is_product()){
+    $kt_sidebar_are = edo_option('kt_woo_single_sidebar_are','full');
+}
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
 if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-8 col-md-9"; 
 }else{
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
+
 ?>
     <div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
         <main id="main" class="site-main" role="main">
@@ -29,7 +35,9 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                 <div class="row">
                     <div class="row">
                     <div class="<?php echo esc_attr($col_class);?>">
+                        <?php do_action( 'kt_before_shop_product' ); ?>
                         <?php woocommerce_content(); ?>
+                        <?php do_action( 'kt_after_shop_product' ); ?>
                     </div>
                     <?php
                     if($kt_sidebar_are!='full'){
