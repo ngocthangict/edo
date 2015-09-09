@@ -651,7 +651,6 @@ img.alignright{
 .products .product-container{
   overflow: hidden;
   position: relative;
-  padding-bottom: 57px;
 }
 .products .product-container .inner{
   overflow: hidden;
@@ -694,7 +693,7 @@ img.alignright{
 .products .product-right{
   padding: 10px 10px 0 10px;
   position: absolute;
-  bottom: -55px;
+  bottom: -65px;
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.9);

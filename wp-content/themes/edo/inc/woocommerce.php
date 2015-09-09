@@ -414,3 +414,17 @@ if(!function_exists('edo_group_button_single_product')){
 	}
 }
 
+// Add top sell in single product
+if( ! function_exists( 'edo_box_topsell_single_product' ) ){
+	add_filter( 'edo_single_product_box_right','edo_box_topsell_single_product' ,1);
+	function edo_box_topsell_single_product(){
+		wc_get_template_part('content','box-topsell');
+	}
+}
+// Add sub category in single product
+if( ! function_exists( 'edo_box_sub_category_single_product' ) ) {
+	add_filter( 'edo_single_product_box_bottom','edo_box_sub_category_single_product' ,1);
+	function edo_box_sub_category_single_product(){
+		wc_get_template_part('content','box-sub-cat-single-product');
+	}
+}
