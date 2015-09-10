@@ -22,25 +22,25 @@ if ( ! defined( 'ABSPATH' ) ) {
     $count         = WC()->cart->cart_contents_count; 
     $edo_used_header = edo_option('edo_used_header', '1');
 ?>
-<div class="iner-block-cart box-radius">
-	<a href="<?php echo $check_out_url; ?>">
-		<span class="total"><?php echo $total; ?></span>
-	</a>
-</div>
-<?php if ( ! WC()->cart->is_empty() ) : ?>
-<div class="block-mini-cart">
-	<div class="mini-cart-content">
-        <h5 class="mini-cart-head">
-            <?php _e( sprintf ( _n( '%d item in my cart', '%d items in my cart', $count, 'edo' ), $count ), 'edo' ); ?>
-        </h5>
-        <div class="mini-cart-list">
-            <ul>
-                <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
-                    $bag_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-                    $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-                
-                    if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
+<div class="widget_shopping_cart_content">
+    <div class="iner-block-cart box-radius">
+    	<a href="<?php echo $check_out_url; ?>">
+    		<span class="total"><?php echo $total; ?></span>
+    	</a>
+    </div>
+    <?php if ( ! WC()->cart->is_empty() ) : ?>
+    <div class="block-mini-cart">
+    	<div class="mini-cart-content">
+            <h5 class="mini-cart-head">
+                <?php echo _n( '%d item in my cart', '%d items in my cart', $count, 'edo' ); ?>
+            </h5>
+            <div class="mini-cart-list">
+                <ul>
+                    <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
+                        $bag_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                        $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
                     
+                    if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
                         $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
         				$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x100'), $cart_item, $cart_item_key );
         				$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
@@ -75,7 +75,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="toal-price pull-right"><?php echo $total; ?></span>
         </div>
         <div class="cart-buttons">
-            <a href="<?php echo esc_url( $check_out_url ); ?>" class="button-radius btn-check-out"><?php echo _e( 'Checkout', 'kutetheme' ); ?><span class="icon"></span></a>
+            <a href="<?php echo esc_url( $check_out_url ); ?>" class="button-radius btn-check-out"><?php echo _e( 'Checkout', 'edo' ); ?><span class="icon"></span></a>
         </div>
     </div>
 </div>

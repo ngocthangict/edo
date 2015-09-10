@@ -411,6 +411,23 @@ if(!function_exists('edo_get_post_meta')){
         return $default;
     }
 }
+
+/**
+ * Render data option for carousel
+ * 
+ * @param $data array. All data for carousel
+ * 
+ */
+function _data_carousel( $data ){
+    $output = "";
+    foreach($data as $key => $val){
+        if($val){
+            $output .= ' data-'.$key.'="'.esc_attr($val).'"';
+        }
+    }
+    return $output;
+}
+
 function kt_init_session_start(){
     if(!session_id()) {
         session_start();
