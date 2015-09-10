@@ -5,7 +5,7 @@
  * Be sure to replace all instances of 'kt_' with your project's prefix.
  * http://nacin.com/2010/05/11/in-wordpress-prefix-everything/
  *
- * @category KuteTheme
+ * @category edo
  * @package  ThemeOption
  */
 
@@ -30,78 +30,96 @@ function kt_register_demo_metabox() {
 	 */
 	$page_option = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
-		'title'         => __( 'Page Option', 'kutetheme' ),
+		'title'         => __( 'Page Option', 'edo' ),
 		'object_types'  => array( 'page', )
 	) );
 
     $page_option->add_field( array(
-	    'name'             => __('Page Title','kutetheme'),
-	    'desc'             => __("Display of title.",'kutetheme'),
+	    'name'             => __('Page Title','edo'),
+	    'desc'             => __("Display of title.",'edo'),
 	    'id'               => 'kt_show_page_title',
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','kutetheme'),
-	        'hide'   => __( 'Hide', 'kutetheme' ),
+	    	'show'=>__('Show','edo'),
+	        'hide'   => __( 'Hide', 'edo' ),
 	    ),
 	) );
 	$page_option->add_field( array(
-	    'name'             => __('Page breadcrumb','kutetheme'),
-	    'desc'             => __("Display Page breadcrumb.",'kutetheme'),
+	    'name'             => __('Page breadcrumb','edo'),
+	    'desc'             => __("Display Page breadcrumb.",'edo'),
 	    'id'               => 'kt_show_page_breadcrumb',
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','kutetheme'),
-	        'hide'   => __( 'Hide', 'kutetheme' ),
+	    	'show'=>__('Show','edo'),
+	        'hide'   => __( 'Hide', 'edo' ),
 	    ),
 	) );
 	$page_option->add_field( array(
-	    'name'             => __('Page layout','kutetheme'),
-	    'desc'             => __("Please choose this page's layout.",'kutetheme'),
+	    'name'             => __('Page layout','edo'),
+	    'desc'             => __("Please choose this page's layout.",'edo'),
 	    'id'               => 'kt_page_layout',
 	    'type'             => 'select',
 	    'show_option_none' => true,
 	    'options'          => array(
-	    	'left'=>__('Left Sidebar','kutetheme'),
-	    	'right'=>__('Right Sidebar','kutetheme'),
-	        'full'   => __( 'Full width layout', 'kutetheme' ),
+	    	'left'=>__('Left Sidebar','edo'),
+	    	'right'=>__('Right Sidebar','edo'),
+	        'full'   => __( 'Full width layout', 'edo' ),
 	    ),
 	) );
 
 	$page_option->add_field( array(
-		'name'    => __( 'Sidebar for page layout', 'kutetheme' ),
+		'name'    => __( 'Sidebar for page layout', 'edo' ),
 		'id'      => 'kt_page_used_sidebar',
 		'type'    => 'select',
 		'show_option_none' => true,
         'options' => $sidebars,
-        'desc'    => __( 'Setting sidebar in the area sidebar', 'kutetheme' ),
+        'desc'    => __( 'Setting sidebar in the area sidebar', 'edo' ),
 	) );
         
 	$page_option->add_field( array(
-		'name' => __( 'Extra page class', 'kutetheme' ),
-		'desc' => __( 'If you wish to add extra classes to the body class of the page (for custom css use), then please add the class(es) here.', 'kutetheme' ),
+		'name' => __( 'Extra page class', 'edo' ),
+		'desc' => __( 'If you wish to add extra classes to the body class of the page (for custom css use), then please add the class(es) here.', 'edo' ),
 		'id'   => 'kt_page_extra_class',
 		'type' => 'text',
 	) );
+
+	/**
+	* Megamenu option
+	*/
+	$mega_menu_option = new_cmb2_box( array(
+		'id'            => $prefix . 'megamenu_metabox',
+		'title'         => __( 'Mega menu Option', 'edo' ),
+		'object_types'  => array( 'megamenu', )
+	) );
+
+	$mega_menu_option->add_field( array(
+		'name' => __( 'Menu width', 'edo' ),
+		'desc' => __( 'Setup menu width (Unit px)', 'edo' ),
+		'id'   => 'edo_megamenu_width',
+		'default'=>800,
+		'type' => 'text',
+	) );
+
 	/**
 	 * Service option
 	 */
 	$service_option = new_cmb2_box( array(
 		'id'            => $prefix . 'service_metabox',
-		'title'         => __( 'Service Option', 'kutetheme' ),
+		'title'         => __( 'Service Option', 'edo' ),
 		'object_types'  => array( 'service' )
 	) );
 
 	$service_option->add_field( array(
-		'name' => __( 'Sub Title', 'kutetheme' ),
-		'desc' => __( 'Sub title', 'kutetheme' ),
+		'name' => __( 'Sub Title', 'edo' ),
+		'desc' => __( 'Sub title', 'edo' ),
 		'id'   => $prefix . 'service_sub_title',
 		'type' => 'text',
 	) );
 	$service_option->add_field( array(
-		'name' => __( 'Description', 'kutetheme' ),
-		'desc' => __( 'Short description', 'kutetheme' ),
+		'name' => __( 'Description', 'edo' ),
+		'desc' => __( 'Short description', 'edo' ),
 		'id'   => $prefix . 'service_desc',
 		'type' => 'text',
 	) );
@@ -112,13 +130,13 @@ function kt_register_demo_metabox() {
 	 */
 	$product_option = new_cmb2_box( array(
 		'id'            => 'kt_product_metabox',
-		'title'         => __( 'Product Option', 'kutetheme' ),
+		'title'         => __( 'Product Option', 'edo' ),
 		'object_types'  => array( 'product' )
 	) );
 
 	$product_option->add_field( array(
-		'name' => __( 'Size Chart', 'kutetheme' ),
-		'desc' => __( 'Select an image', 'kutetheme' ),
+		'name' => __( 'Size Chart', 'edo' ),
+		'desc' => __( 'Select an image', 'edo' ),
 		'id'   => 'kt_product_size_chart',
 		'type' => 'file',
 	) );
@@ -139,7 +157,7 @@ function kt_register_about_page_metabox() {
 	 */
 	$cmb_about_page = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'About Page Metabox', 'kutetheme' ),
+		'title'        => __( 'About Page Metabox', 'edo' ),
 		'object_types' => array( 'page', ), // Post type
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -148,8 +166,8 @@ function kt_register_about_page_metabox() {
 	) );
 
 	$cmb_about_page->add_field( array(
-		'name' => __( 'Test Text', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'Test Text', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'text',
 		'type' => 'text',
 	) );
@@ -171,7 +189,7 @@ function kt_register_repeatable_group_field_metabox() {
 	 */
 	$cmb_group = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Repeating Field Group', 'kutetheme' ),
+		'title'        => __( 'Repeating Field Group', 'edo' ),
 		'object_types' => array( 'page', ),
 	) );
 
@@ -179,11 +197,11 @@ function kt_register_repeatable_group_field_metabox() {
 	$group_field_id = $cmb_group->add_field( array(
 		'id'          => $prefix . 'demo',
 		'type'        => 'group',
-		'description' => __( 'Generates reusable form entries', 'kutetheme' ),
+		'description' => __( 'Generates reusable form entries', 'edo' ),
 		'options'     => array(
-			'group_title'   => __( 'Entry {#}', 'kutetheme' ), // {#} gets replaced by row number
-			'add_button'    => __( 'Add Another Entry', 'kutetheme' ),
-			'remove_button' => __( 'Remove Entry', 'kutetheme' ),
+			'group_title'   => __( 'Entry {#}', 'edo' ), // {#} gets replaced by row number
+			'add_button'    => __( 'Add Another Entry', 'edo' ),
+			'remove_button' => __( 'Remove Entry', 'edo' ),
 			'sortable'      => true, // beta
 		),
 	) );
@@ -195,27 +213,27 @@ function kt_register_repeatable_group_field_metabox() {
 	 * The parent field's id needs to be passed as the first argument.
 	 */
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'       => __( 'Entry Title', 'kutetheme' ),
+		'name'       => __( 'Entry Title', 'edo' ),
 		'id'         => 'title',
 		'type'       => 'text',
 		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'        => __( 'Description', 'kutetheme' ),
-		'description' => __( 'Write a short description for this entry', 'kutetheme' ),
+		'name'        => __( 'Description', 'edo' ),
+		'description' => __( 'Write a short description for this entry', 'edo' ),
 		'id'          => 'description',
 		'type'        => 'textarea_small',
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name' => __( 'Entry Image', 'kutetheme' ),
+		'name' => __( 'Entry Image', 'edo' ),
 		'id'   => 'image',
 		'type' => 'file',
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name' => __( 'Image Caption', 'kutetheme' ),
+		'name' => __( 'Image Caption', 'edo' ),
 		'id'   => 'image_caption',
 		'type' => 'text',
 	) );
@@ -236,58 +254,58 @@ function kt_register_user_profile_metabox() {
 	 */
 	$cmb_user = new_cmb2_box( array(
 		'id'               => $prefix . 'edit',
-		'title'            => __( 'User Profile Metabox', 'kutetheme' ),
+		'title'            => __( 'User Profile Metabox', 'edo' ),
 		'object_types'     => array( 'user' ), // Tells CMB2 to use user_meta vs post_meta
 		'show_names'       => true,
 		'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
 	) );
 
 	$cmb_user->add_field( array(
-		'name'     => __( 'Extra Info', 'kutetheme' ),
-		'desc'     => __( 'field description (optional)', 'kutetheme' ),
+		'name'     => __( 'Extra Info', 'edo' ),
+		'desc'     => __( 'field description (optional)', 'edo' ),
 		'id'       => $prefix . 'extra_info',
 		'type'     => 'title',
 		'on_front' => false,
 	) );
 
 	$cmb_user->add_field( array(
-		'name'    => __( 'Avatar', 'kutetheme' ),
-		'desc'    => __( 'field description (optional)', 'kutetheme' ),
+		'name'    => __( 'Avatar', 'edo' ),
+		'desc'    => __( 'field description (optional)', 'edo' ),
 		'id'      => $prefix . 'avatar',
 		'type'    => 'file',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Facebook URL', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'Facebook URL', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'facebookurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Twitter URL', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'Twitter URL', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'twitterurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Google+ URL', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'Google+ URL', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'googleplusurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Linkedin URL', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'Linkedin URL', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'linkedinurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'User Field', 'kutetheme' ),
-		'desc' => __( 'field description (optional)', 'kutetheme' ),
+		'name' => __( 'User Field', 'edo' ),
+		'desc' => __( 'field description (optional)', 'edo' ),
 		'id'   => $prefix . 'user_text_field',
 		'type' => 'text',
 	) );
@@ -309,7 +327,7 @@ function kt_register_theme_options_metabox() {
 	 */
 	$cmb_options = new_cmb2_box( array(
 		'id'      => $option_key . 'page',
-		'title'   => __( 'Theme Options Metabox', 'kutetheme' ),
+		'title'   => __( 'Theme Options Metabox', 'edo' ),
 		'hookup'  => false, // Do not need the normal user/post hookup
 		'show_on' => array(
 			// These are important, don't remove
@@ -324,8 +342,8 @@ function kt_register_theme_options_metabox() {
 	 * Prefix is not needed.
 	 */
 	$cmb_options->add_field( array(
-		'name'    => __( 'Site Background Color', 'kutetheme' ),
-		'desc'    => __( 'field description (optional)', 'kutetheme' ),
+		'name'    => __( 'Site Background Color', 'edo' ),
+		'desc'    => __( 'field description (optional)', 'edo' ),
 		'id'      => 'bg_color',
 		'type'    => 'colorpicker',
 		'default' => '#ffffff',

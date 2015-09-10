@@ -37,7 +37,11 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
         <div class="container">
         	<?php
         	if($kt_show_page_breadcrumb=='show'){
-        		breadcrumb_trail();
+        		?>
+                <div class="row">
+                    <?php breadcrumb_trail(); ?>
+                </div>
+                <?php
         	}
         	?>
             <div class="row">

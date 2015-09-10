@@ -289,3 +289,14 @@ if(!function_exists( 'edo_box_sub_category_single_product' )){
 }
 
 
+/*
+* Custom Quick view
+*/
+add_filter( 'woocommerce_before_quickview_product', 'woocommerce_show_product_sale_flash', 10 );
+add_filter( 'woocommerce_before_quickview_product', 'woocommerce_show_product_images', 20 );
+add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_title', 5 );
+add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_price', 6 );
+add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_rating', 10 );
+add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_excerpt', 20 );
+add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+

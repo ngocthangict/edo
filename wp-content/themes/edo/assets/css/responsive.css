@@ -78,7 +78,6 @@
 	.advanced-search .search-input{
 		padding-left: 15px;
 		padding-right: 30px;
-		margin-top: 4px;
 	}
 	.advanced-search .search-input>input{
 		width: 100%;
@@ -95,13 +94,15 @@
 		display: block;
 	}
 	.main-menu .navbar-header .navbar-toggle{
-		padding: 4px 10px;
+		padding: 0 10px;
+		background-color: #5a88ca;
 	}
 	.main-menu .navbar-collapse{
 		margin: 0;
 		overflow: hidden;
 		background: #fafafa;
 		border-top: 1px solid #eaeaea;
+		overflow-y: inherit;
 	}
 	.main-menu .navbar-nav{
 		padding: 0;
@@ -117,6 +118,15 @@
 		margin: 5px 0;
 		border-radius: 0;
 		padding: 0 10px;
+		position: relative;
+	}
+	.main-menu .navbar-nav>li.dropdown>a:before{
+		content: "\f107";
+	    font-family: "FontAwesome";
+	    font-size: 14px;
+		position: absolute;
+		top: 0;
+		right: 10px;
 	}
 	.main-menu .navbar-nav>li>a:hover, 
 	.main-menu .navbar-nav>li.active>a, 
@@ -139,6 +149,43 @@
 		border-top: 1px solid #eaeaea;
 		padding: 15px 0;
 		border-right: 1px solid #eaeaea;
+		max-width: 100%!important;
+		-webkit-transform: translate(0,0);
+	    -moz-transform: translate(0,0);
+	    -o-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	    transform: translate(0,0);
+	}
+	.main-menu .dropdown-menu{
+		min-width: 100%;
+		
+	}
+	.main-menu .navbar-nav > li:hover .dropdown-menu{
+		position: static;
+		webkit-transform: translate(0,0);
+	    -moz-transform: translate(0,0);
+	    -o-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	    transform: translate(0,0);
+	    display: none;
+	}
+	.main-menu .navbar-nav > li.open .dropdown-menu{
+		display: block;
+		border-radius: 0;
+	}
+	.main-menu .dropdown-menu>li{
+		padding: 0;
+		background: #fff;
+	}
+	.main-menu .navbar-nav .open .dropdown-menu>li>a{
+		padding: 0 15px;
+		line-height: 30px;
+	}
+	.megamenu .widget .widgettitle{
+		margin-top: 15px;
+	}
+	.megamenu .widget_nav_menu ul{
+		background: #fff;
 	}
 	.block-megamenu-link{
 		padding: 15px;
@@ -154,6 +201,28 @@
 	}
 	.block-shop-phone{
 		float: left;
+	}
+	.block-tabs .nav-tab li a{
+		padding: 0 10px;
+		font-size: 13px;
+	}
+	.easyzoom img{
+		width: 100%;
+	}
+	.block-product-image .text{
+		display: none;
+	}
+	.block-product-info .product-name{
+		font-size: 18px;
+	}
+	.block-product-image{
+		margin-top: 30px;
+	}
+	.block-product-info{
+		margin-top: 30px;
+	}
+	.product-page .block-top-sellers{
+		margin-top: 30px;
 	}
 	.sortPagiBar .pagination{
 		width: 100%;
@@ -204,13 +273,15 @@
 		display: block;
 	}
 	.main-menu .navbar-header .navbar-toggle{
-		padding: 4px 10px;
+		padding: 0 10px;
+		background-color: #5a88ca;
 	}
 	.main-menu .navbar-collapse{
 		margin: 0;
 		overflow: hidden;
 		background: #fafafa;
 		border-top: 1px solid #eaeaea;
+		overflow-y: inherit;
 	}
 	.main-menu .navbar-nav{
 		padding: 0;
@@ -226,6 +297,15 @@
 		margin: 5px 0;
 		border-radius: 0;
 		padding: 0 10px;
+		position: relative;
+	}
+	.main-menu .navbar-nav>li.dropdown>a:before{
+		content: "\f107";
+	    font-family: "FontAwesome";
+	    font-size: 14px;
+		position: absolute;
+		top: 0;
+		right: 10px;
 	}
 	.main-menu .navbar-nav>li>a:hover, 
 	.main-menu .navbar-nav>li.active>a, 
@@ -248,7 +328,43 @@
 		border-top: 1px solid #eaeaea;
 		padding: 15px 0;
 		border-right: 1px solid #eaeaea;
-		max-width: 100%;
+		max-width: 100%!important;
+		-webkit-transform: translate(0,0);
+	    -moz-transform: translate(0,0);
+	    -o-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	    transform: translate(0,0);
+	}
+	.main-menu .dropdown-menu{
+		min-width: 100%;
+		
+	}
+	.main-menu .navbar-nav > li:hover .dropdown-menu{
+		position: static;
+		webkit-transform: translate(0,0);
+	    -moz-transform: translate(0,0);
+	    -o-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	    transform: translate(0,0);
+	    display: none;
+	}
+	.main-menu .navbar-nav > li.open .dropdown-menu{
+		display: block;
+		border-radius: 0;
+	}
+	.main-menu .dropdown-menu>li{
+		padding: 0;
+		background: #fff;
+	}
+	.main-menu .navbar-nav .open .dropdown-menu>li>a{
+		padding: 0 15px;
+		line-height: 30px;
+	}
+	.megamenu .widget .widgettitle{
+		margin-top: 15px;
+	}
+	.megamenu .widget_nav_menu ul{
+		background: #fff;
 	}
 	.block-megamenu-link{
 		padding: 15px;

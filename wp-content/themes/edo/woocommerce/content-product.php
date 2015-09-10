@@ -43,7 +43,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 }
 // Bootstrap Column
 $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
-$classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColumn;
+//$classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColumn;
 ?>
 <li <?php post_class( $classes ); ?>>
 

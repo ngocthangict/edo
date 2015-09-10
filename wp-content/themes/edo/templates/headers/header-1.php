@@ -78,7 +78,7 @@
                             wp_nav_menu( array(
                                 'menu'              => 'primary-menu',
                                 'theme_location'    => 'primary-menu',
-                                'depth'             => 1,
+                                'depth'             => 2,
                                 'container'         => '',
                                 'container_class'   => '',
                                 'container_id'      => '',

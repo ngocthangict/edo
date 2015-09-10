@@ -1,0 +1,47 @@
+/*---------------------
+[ Mega Menu widget]
+---------------------*/
+.megamenu .widget {
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0);
+}
+.megamenu .widget .widgettitle{
+	font-size: 14px;
+	margin-top: 0;
+	text-transform: uppercase;
+	padding-left: 20px;
+}
+.megamenu .widget_nav_menu ul{
+	background: #fbfbfb;
+}
+.megamenu .widget_nav_menu ul li{
+	padding-left: 20px;
+}
+.megamenu .widget_nav_menu ul>li>a:before{
+	font-family: 'FontAwesome';
+    content: "\f105";
+    margin-right: 10px;
+}
+.megamenu .widget_nav_menu ul>li:hover{
+	background-color: #5a88ca;
+}
+.megamenu .widget_nav_menu ul>li:hover>a{
+	color: #fff;
+}
+
+.megamenu .widget_text .widgettitle{
+	padding-left: 0;
+}
+.megamenu .wpb_row, 
+.megamenu .wpb_content_element, 
+.megamenu ul.wpb_thumbnails-fluid > li, 
+.megamenu .wpb_button{
+	margin-bottom: 0;
+}
+.wishlist_table tr td.product-thumbnail a img{
+	width: 100px;
+}
