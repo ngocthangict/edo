@@ -91,7 +91,7 @@
             var h = $(window).scrollTop();
             var width = $(window).width();
             if(width > 767){
-                if(header_height==0){
+                if(header_height == 0){
                     $('#header .main-menu').removeClass('main-menu-ontop');
                     return;
                 }

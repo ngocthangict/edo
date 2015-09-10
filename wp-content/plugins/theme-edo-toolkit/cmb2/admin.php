@@ -146,85 +146,6 @@ class KT_Admin {
 			),
 		) );
         
-        /**
-    	 * Theme color
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Theme Color', 'edo' ),
-    		'id'      => 'kt_theme_color',
-    		'type'    => 'colorpicker',
-    		'default' => '#ff3366',
-            'desc'    => __( 'Setting main color for your site', 'edo' ),
-    	) );
-        
-        /**
-    	 * Font color
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Color', 'edo' ),
-    		'id'      => 'kt_font_color',
-    		'type'    => 'colorpicker',
-    		'default' => '#666666',
-            'desc'    => __( 'Setting font color for your site', 'edo' ),
-    	) );
-        
-        /**
-    	 * Font color hover 
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Color Hover', 'edo' ),
-    		'id'      => 'kt_font_color_hover',
-    		'type'    => 'colorpicker',
-    		'default' => '#ff3366',
-            'desc'    => __( 'When you hover on text in your site, It will tranfer the color', 'edo' ),
-    	) );
-        
-        /**
-    	 * Background
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Background', 'edo' ),
-    		'id'      => 'kt_bg',
-    		'type'    => 'select',
-    		'default' => 'color',
-            'options'          => array(
-    			'color' => __( 'Color', 'edo' ),
-    			'image' => __( 'Image', 'edo' ),
-    		),
-            'desc'    => __( 'Setting background for your site image or color(default)', 'edo' ),
-    	) );
-        
-        $cmb_options_general->add_field( array(
-    		'name'    => __( 'Background Color', 'edo' ),
-    		'desc'    => __( 'Setting background color for your site', 'edo' ),
-    		'id'      => 'kt_bg_color',
-    		'type'    => 'colorpicker',
-    		'default' => '#ffffff',
-    	) );
-        
-        
-        $cmb_options_general->add_field( array(
-    		'name'    => __( 'Background Image', 'edo' ),
-    		'desc'    => __( 'Setting background image for your site', 'edo' ),
-    		'id'      => 'kt_bg_image',
-    		'type'    => 'file'
-    	) );
-        
-        /**
-    	 * Page Layout
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Layout', 'edo' ),
-    		'id'      => 'kt_layout',
-    		'type'    => 'select',
-    		'default' => 'full',
-            'options'          => array(
-    			'full' => __( 'Full', 'edo' ),
-    			'box'  => __( 'Boxed', 'edo' ),
-    		),
-            'desc'    => __( 'Setting background for your site image or color(default)', 'edo' ),
-    	) );
-        
         global $wp_registered_sidebars;
         $sidebars = array();
         
@@ -258,28 +179,6 @@ class KT_Admin {
             'desc'    => __( 'Setting sidebar in the area sidebar', 'edo' ),
     	) );
         
-        $cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Service', 'edo' ),
-    		'id'      => 'kt_page_service',
-    		'type'    => 'page',
-            'desc'    => __( 'Setting page service', 'edo' ),
-    	) );
-        
-        $cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Support', 'edo' ),
-    		'id'      => 'kt_page_support',
-    		'type'    => 'page',
-            'desc'    => __( 'Setting page support ', 'edo' ),
-    	) );
-        
-        $cmb_options_general->add_field( array(
-    		'name'    => __( 'About Us', 'edo' ),
-    		'id'      => 'kt_page_about_us',
-    		'type'    => 'page',
-            'desc'    => __( 'Setting page about us', 'edo' ),
-    	) );
-        
-        
         $cmb_options_logo = new_cmb2_box( array(
 			'id'      => 'kt_logo_favicon',
 			'hookup'  => false,
@@ -300,17 +199,6 @@ class KT_Admin {
     		'type'    => 'file',
             'desc'    => __( 'Setting your site\'s logo', 'edo' ),
     	) );
-        
-        /**
-    	 * Logo Footer
-    	 */
-    	$cmb_options_logo->add_field( array(
-    		'name'    => __( 'Logo Footer', 'edo' ),
-    		'id'      => 'kt_logo_footer',
-    		'type'    => 'file',
-            'desc'    => __( 'Setting your site\'s logo in footer', 'edo' ),
-    	) );
-        
         /**
     	 * Favicon
     	 */
@@ -399,19 +287,6 @@ class KT_Admin {
     		'type' => 'textarea',
     	) );
         
-        /**
-         * Typography
-         * */
-       $cmb_options_typography = new_cmb2_box( array(
-			'id'      => 'kt_typography',
-			'hookup'  => false,
-            'title'   => 'Typography',
-			'show_on' => array(
-				// These are important, don't remove
-				'key'   => 'options-page',
-				'value' => array( $this->key, )
-			),
-		) );
         
         /**
          * Woocommerce
