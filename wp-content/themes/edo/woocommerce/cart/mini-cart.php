@@ -68,14 +68,15 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
-            </ul>
-        </div>
-        <div class="toal-cart">
-            <span><?php _e( 'Total', 'edo' ); ?></span>
-            <span class="toal-price pull-right"><?php echo $total; ?></span>
-        </div>
-        <div class="cart-buttons">
-            <a href="<?php echo esc_url( $check_out_url ); ?>" class="button-radius btn-check-out"><?php echo _e( 'Checkout', 'edo' ); ?><span class="icon"></span></a>
+                </ul>
+            </div>
+            <div class="toal-cart">
+                <span><?php _e( 'Total', 'edo' ); ?></span>
+                <span class="toal-price pull-right"><?php echo $total; ?></span>
+            </div>
+            <div class="cart-buttons">
+                <a href="<?php echo esc_url( $check_out_url ); ?>" class="button-radius btn-check-out"><?php echo _e( 'Checkout', 'edo' ); ?><span class="icon"></span></a>
+            </div>
         </div>
     </div>
 </div>

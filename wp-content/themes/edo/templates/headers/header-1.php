@@ -35,26 +35,24 @@
 					</div>
 				</div>
                 <?php if( edo_is_wc() ): ?>
-				    <div class="block-wrap-cart col-sm-3 col-md-3 col-lg-2">
-                        <?php do_action( 'edo_mini_cart' ); ?>
-				    </div>
+			    <div class="block-wrap-cart col-sm-3 col-md-3 col-lg-2">
+                    <?php do_action( 'edo_mini_cart' ); ?>
+			    </div>
                 <?php endif; ?>
 			</div>
 		</div>
 		<!-- ./box header -->
 		<!-- main header -->
-		<div class="row">
-			<div class="main-header">
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-						<div class="logo">
-							<?php echo edo_get_logo();?>
-						</div>
+		<div class="main-header">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					<div class="logo">
+						<?php echo edo_get_logo();?>
 					</div>
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-header-banner">
-						<div class="herader-banner">
-							<?php do_action( 'edo_get_banner_header_option_1' ) ?>
-						</div>
+				</div>
+				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-header-banner">
+					<div class="herader-banner">
+						<?php do_action( 'edo_get_banner_header_option_1' ) ?>
 					</div>
 				</div>
 			</div>
