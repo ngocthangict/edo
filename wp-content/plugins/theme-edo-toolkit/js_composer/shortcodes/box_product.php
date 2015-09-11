@@ -8,7 +8,6 @@ vc_map( array(
     "category" => __('by Edo', 'edo' ),
     "description" => __( "Show list product in box hot deal, best selling,...", 'edo'),
     "content_element" => true,
-    "show_settings_on_create" => true,
     "params" => array(
         array(
             "type"        => "textfield",
@@ -194,7 +193,7 @@ vc_map( array(
     "js_view" => 'VcColumnView'
 ));
 
-class WPBakeryShortCode_Box_Products extends WPBakeryShortCodesContainer {
+class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'box_products', $atts ) : $atts;
         extract( shortcode_atts( array(
