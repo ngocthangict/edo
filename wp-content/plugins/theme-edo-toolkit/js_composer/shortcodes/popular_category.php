@@ -64,13 +64,55 @@ vc_map( array(
 				__( 'Yes', 'js_composer' ) => '1',
 				__( 'No', 'js_composer' ) => '0'
 			)
+		),//Carousel
+        array(
+			'type' => 'dropdown',
+			'heading' => __( 'AutoPlay', 'edo' ),
+			'param_name' => 'autoplay',
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 'true',
+				__( 'No', 'js_composer' )  => 'false'
+			),
+            'group' => __( 'Carousel settings', 'edo' ),
+            'admin_label' => false,
 		),
-        
+        array(
+			'type' => 'dropdown',
+            'heading' => __( 'Loop', 'edo' ),
+			'param_name' => 'loop',
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 'true',
+				__( 'No', 'js_composer' )  => 'false'
+			),
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'edo' ),
+            'group' => __( 'Carousel settings', 'edo' ),
+            'admin_label' => false,
+		),
+        array(
+			"type" => "edo_number",
+			"heading" => __("Slide Speed", 'edo'),
+			"param_name" => "slidespeed",
+			"value" => "250",
+            "suffix" => __("milliseconds", 'edo'),
+			"description" => __('Slide speed in milliseconds', 'edo'),
+            'group' => __( 'Carousel settings', 'edo' ),
+            'admin_label' => false,
+	  	),
+        array(
+			"type" => "edo_number",
+			"heading" => __("Margin", 'edo'),
+			"param_name" => "margin",
+			"value" => "0",
+            "suffix" => __("px", 'edo'),
+			"description" => __('Distance( or space) between 2 item', 'edo'),
+            'group' => __( 'Carousel settings', 'edo' ),
+            'admin_label' => false,
+	  	),
         array(
 			"type" => "edo_number",
 			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'edo'),
 			"param_name" => "items_destop",
-			"value" => "4",
+			"value" => "3",
             "suffix" => __("item", 'edo'),
 			"description" => __('The number of items on destop', 'edo'),
             'group' => __( 'Carousel responsive', 'edo' ),
@@ -120,9 +162,14 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
             'number'    => 5,
             'orderby'   => 'id',
             'order'     => 'desc',
-            'hide'      => 0,
+            'hide'      => 1,
             
-            'items_destop' => 4,
+            'autoplay'     => 'false', 
+            'loop'         => 'false',
+            'margin'       => 0,
+            'slidespeed'   => 250,
+            
+            'items_destop' => 3,
             'items_tablet' => 2,
             'items_mobile' => 1,
             
@@ -161,11 +208,37 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         $arg_child = array(
 			'orderby'    => $orderby,
 			'order'      => $order,
-			'hide_empty' => 0,
+			'hide_empty' => $hide,
 			'pad_counts' => true,
             'number'     => $number
 		);
         
+        $data_carousel = array(
+            "autoplay"   => $autoplay,
+            "navigation" => 'false',
+            "margin"     => $margin,
+            "slidespeed" => $slidespeed,
+            "theme"      => 'style-navigation-center',
+            "autoheight" => 'false',
+            'nav'        => 'true',
+            'dots'       => 'false',
+            'loop'       => $loop,
+            'autoplayTimeout'    => 1000,
+            'autoplayHoverPause' => 'true'
+        );
+        $arr = array(
+            '0' => array(
+                "items" => $items_mobile
+            ), 
+            '768' => array(
+                "items" => $items_tablet
+            ), 
+            '992' => array(
+                "items" => $items_destop
+            )
+        );
+        $data_responsive = json_encode($arr);
+        $data_carousel["responsive"] = $data_responsive;
         ?>
         <!-- block-popular-cat-->
 		<div class="<?php echo $elementClass; ?>">
@@ -173,7 +246,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
 				<span class="text"><?php echo $title; ?></span>
 			</h3>
 			<div class="popular-inner">
-				<div class="list-popular-cat kt-owl-carousel" data-margin="0" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":2},"1000":{"items":3}}'>
+				<div class="list-popular-cat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
 					<?php 
                     if( $product_categories ):
                         foreach($product_categories as $term): 

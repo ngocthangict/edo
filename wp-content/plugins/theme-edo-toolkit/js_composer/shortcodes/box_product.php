@@ -1,13 +1,12 @@
 <?php
 // Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+if ( ! defined('ABSPATH')) exit;
 
 vc_map( array(
     "name" => __( "Box Products", 'edo'),
     "base" => "box_products",
     "category" => __('by Edo', 'edo' ),
     "description" => __( "Show list product in box hot deal, best selling,...", 'edo'),
-    "content_element" => true,
     "params" => array(
         array(
             "type"        => "textfield",
@@ -87,33 +86,39 @@ vc_map( array(
         
         // Carousel
         array(
-			'type'        => 'checkbox',
-			'heading'     => __( 'AutoPlay', 'edo' ),
-			'param_name'  => 'autoplay',
-			'value'       => array( __( 'Yes, please', 'edo' ) => 'true' ),
-            'group'       => __( 'Carousel settings', 'edo' ),
+			'type' => 'dropdown',
+			'heading' => __( 'AutoPlay', 'edo' ),
+			'param_name' => 'autoplay',
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 'true',
+				__( 'No', 'js_composer' )  => 'false'
+			),
+            'group' => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type'        => 'checkbox',
+			'type'        => 'dropdown',
             'heading'     => __( 'Navigation', 'edo' ),
 			'param_name'  => 'navigation',
-			'value'       => array( __( "Don't use Navigation", 'edo' ) => 'false' ),
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 'true',
+				__( 'No', 'js_composer' )  => 'false'
+			),
             'description' => __( "Don't display 'next' and 'prev' buttons.", 'edo' ),
             'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type'        => 'checkbox',
-            'heading'     => __( 'Loop', 'edo' ),
-			'param_name'  => 'loop',
-			'value'       => array( __( "Loop", 'edo' ) => 'false' ),
+			'type' => 'dropdown',
+            'heading' => __( 'Loop', 'edo' ),
+			'param_name' => 'loop',
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 'true',
+				__( 'No', 'js_composer' )  => 'false'
+			),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'edo' ),
-            'group'       => __( 'Carousel settings', 'edo' ),
+            'group' => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
 			"type"        => "edo_number",
@@ -124,7 +129,6 @@ vc_map( array(
 			"description" => __('Slide speed in milliseconds', 'edo'),
             'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
 			"type"        => "edo_number",
@@ -135,17 +139,18 @@ vc_map( array(
 			"description" => __('Distance( or space) between 2 item', 'edo'),
             'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			'type'        => 'checkbox',
+			'type'        => 'dropdown',
             'heading'     => __( 'Don\'t Use Carousel Responsive', 'edo' ),
 			'param_name'  => 'use_responsive',
-			'value'       => array( __( "Don't use Responsive", 'edo' ) => 'false' ),
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => 1,
+				__( 'No', 'js_composer' )  => 0
+			),
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'edo' ),
             'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
 			"type"        => "edo_number",
@@ -156,7 +161,6 @@ vc_map( array(
 			"description" => __('The number of items on destop', 'edo'),
             'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
 			"type"        => "edo_number",
@@ -167,7 +171,6 @@ vc_map( array(
 			"description" => __('The number of items on destop', 'edo'),
             'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
 			"type"        => "edo_number",
@@ -178,7 +181,6 @@ vc_map( array(
 			"description" => __('The numbers of item on destop', 'edo'),
             'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
 			'type'        => 'css_editor',
@@ -197,7 +199,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'box_products', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'      => '',
+            'title'      => __( 'hot deals', 'edo' ),
             'icon'       => '',
             'per_page'   => 5,
             'box_type'   => 'box-1',
@@ -263,14 +265,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         }
         
         $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+        
         if( $products->have_posts() ): 
-            if( ! $title ){
-                if( $type == 'hot-deals' ){
-                    $title = __( 'hot deals', 'edo' );
-                }else{
-                    $title = __( 'box title', 'edo' );
-                }
-            }
             $new_title = $title;
             $new_title = explode( ',', $new_title );
             
