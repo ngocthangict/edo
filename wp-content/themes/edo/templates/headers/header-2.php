@@ -16,74 +16,34 @@
 								<li class="item">
 									<a href="#">
 										<span class="icon phone"></span>
-										<span class="line1">Call us:<br><strong>0904567823</strong></span>
+										<span class="line1"><?php _e( 'Call us:', 'edo' ) ?><br /><strong>0904567823</strong></span>
 									</a>
 								</li>
 								<li class="item">
 									<a href="#">
 										<span class="icon wish-list"></span>
-										<span class="line1">Wish<br><strong>List</strong></span>
+										<span class="line1">Wish<br /><strong>List</strong></span>
 									</a>
 								</li>
 								<li class="item">
 									<a href="#">
 										<span class="icon login"></span>
-										<span class="line1">Login<br><strong>Facebook  Twitter</strong></span>
+										<span class="line1">Login<br /><strong>Facebook  Twitter</strong></span>
 									</a>
 								</li>
+                                <?php if( edo_is_wc() ): ?>
+                                
 								<li class="item">
-									<a href="#">
+									<a href="<?php echo WC()->cart->get_cart_url(); ?>">
 										<span class="icon checkout"></span>
-										<span class="line1">Checkout<br><strong>Order</strong></span>
+										<span class="line1"><?php _e( 'Checkout', 'edo' ) ?><br /><strong><?php _e( 'Order', 'edo' ) ?></strong></span>
 									</a>
 								</li>
-								<li class="item item-cart block-wrap-cart">
-									<a href="cart.html">
-										<span class="icon cart"></span>
-										<span class="line1">Shopping Cart<br><strong>$0.00</strong></span>
-									</a>
-                                    <div class="block-mini-cart">
-                                        <div class="mini-cart-content">
-                                        <h5 class="mini-cart-head">2 Items in my cart</h5>
-                                        <div class="mini-cart-list">
-                                            <ul>
-                                                <li class="product-info">
-                                                    <div class="p-left">
-                                                        <a href="#" class="remove_link"></a>
-                                                        <a href="#">
-                                                        <img class="img-responsive" src="data/p1.jpg" alt="Product">
-                                                        </a>
-                                                    </div>
-                                                    <div class="p-right">
-                                                        <p class="p-name">Donec Ac Tempus</p>
-                                                        <p class="product-price">$139.98</p>
-                                                        <p>Qty: 1</p>
-                                                    </div>
-                                                </li>
-                                                <li class="product-info">
-                                                    <div class="p-left">
-                                                        <a href="#" class="remove_link"></a>
-                                                        <a href="#">
-                                                        <img class="img-responsive" src="data/p2.jpg" alt="Product">
-                                                        </a>
-                                                    </div>
-                                                    <div class="p-right">
-                                                        <p class="p-name">Donec Ac Tempus</p>
-                                                        <p class="product-price">$139.98</p>
-                                                        <p>Qty: 1</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            </div>
-                                            <div class="toal-cart">
-                                                <span>Total</span>
-                                                <span class="toal-price pull-right">$279.96</span>
-                                            </div>
-                                            <div class="cart-buttons">
-                                                <a href="#" class="button-radius btn-check-out">Checkout<span class="icon"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                
+            				    <li class="item item-cart block-wrap-cart">
+                                    <?php do_action( 'edo_mini_cart' ); ?>
+            				    </li>
+                                <?php endif; ?>
 								</li>
 							</ul>
 						</div>
@@ -103,7 +63,7 @@
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="#">MENU</a>
+                            <a class="navbar-brand" href="#"><?php _e( 'MENU', 'edo' ) ?></a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <?php

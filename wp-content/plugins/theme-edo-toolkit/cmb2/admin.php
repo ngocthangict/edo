@@ -606,6 +606,13 @@ class KT_Admin {
     	) );
         
         $cmb_options_info->add_field( array(
+    		'name' => __( 'Phone Support', 'edo' ),
+    		'desc' => __( 'Setting support phone number for your site', 'edo' ),
+    		'id'   => 'kt_phone_support',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_info->add_field( array(
     		'name' => __( 'Email', 'edo' ),
     		'desc' => __( 'Setting email for your site', 'edo' ),
     		'id'   => 'kt_email',

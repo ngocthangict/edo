@@ -20,19 +20,26 @@ if ( ! defined( 'ABSPATH' ) ) {
     $check_out_url = WC()->cart->get_cart_url();
     $total         = WC()->cart->get_cart_total();
     $count         = WC()->cart->cart_contents_count; 
-    $edo_used_header = edo_option('edo_used_header', '1');
+    $edo_used_header = edo_option( 'kt_used_header', '1' );
 ?>
 <div class="widget_shopping_cart_content">
+    <?php if( $edo_used_header == 2 ): ?>
+    <a href="<?php echo $check_out_url; ?>">
+		<span class="icon cart"></span>
+		<span class="line1"><?php _e( 'Shopping Cart', 'edo' ) ?><br /><strong><?php echo $total; ?></strong></span>
+	</a>
+    <?php else: //Option 1 ?>
     <div class="iner-block-cart box-radius">
     	<a href="<?php echo $check_out_url; ?>">
     		<span class="total"><?php echo $total; ?></span>
     	</a>
     </div>
+    <?php endif; ?>
     <?php if ( ! WC()->cart->is_empty() ) : ?>
     <div class="block-mini-cart">
     	<div class="mini-cart-content">
             <h5 class="mini-cart-head">
-                <?php echo _n( '%d item in my cart', '%d items in my cart', $count, 'edo' ); ?>
+                <?php echo sprintf( _n( '%s item in my cart', '%s items in my cart', $count, 'edo' ), $count ); ?>
             </h5>
             <div class="mini-cart-list">
                 <ul>
