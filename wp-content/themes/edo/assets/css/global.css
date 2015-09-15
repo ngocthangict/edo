@@ -605,6 +605,13 @@ img.alignright{
 .product-star {
   font-size: 12px;
   color: #ccc;
+  line-height: 24px;
+}
+.product-star .fa{
+  margin-right: 4px;
+}
+.product-star .fa:last-child{
+  margin-right: 0;
 }
 .btn-add-cart .icon:before{
   content: ' ';
@@ -810,6 +817,11 @@ img.alignright{
 .products .btn-add-cart{
   margin-top: 0;
   float: left;
+}
+.summary .product-star{
+  display: inline-block;
+  float:left;
+  margin-right: 15px;
 }
 .products .btn-add-cart.added{
   display: none;

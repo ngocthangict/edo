@@ -114,6 +114,29 @@ if( ! function_exists( 'edo_wc_loop_product_rating' )){
         return $rating_html;
     }
 }
+if(!function_exists('edo_display_rating')){
+    function edo_display_rating( $rating ){
+        $rating_html = '';
+        global $product;
+        if ( ! is_numeric( $rating ) ) {
+            $rating = $product->get_average_rating();
+        }
+        $rating_html  = '<div class="product-star edo-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+        for($i = 1;$i <= 5 ;$i++){
+            if($rating >= $i){
+                if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
+                    $rating_html .= '<i class="fa fa-star-half-o"></i>';    
+                }else{
+                    $rating_html .= '<i class="fa fa-star"></i>';
+                }
+            }else{
+                $rating_html .= '<i class="fa fa-star-o"></i>';
+            }
+        }
+        $rating_html .= '</div>';
+        return $rating_html;
+    }
+}
 
 /**
  * Output the before in product loop. By default this is a li.product
@@ -433,7 +456,8 @@ if(!function_exists('edo_group_button_single_product')){
 if( ! function_exists( 'edo_box_topsell_single_product' ) ){
 	add_filter( 'edo_single_product_box_right','edo_box_topsell_single_product' ,1);
 	function edo_box_topsell_single_product(){
-		wc_get_template_part('content','box-topsell');
+        echo do_shortcode( '[top_seller taxonomy="" title="TOP SELLERS" icon="1776"]' );
+		//wc_get_template_part('content','box-topsell');
 	}
 }
 /**
@@ -461,3 +485,30 @@ add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_singl
 add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_excerpt', 20 );
 add_filter( 'woocommerce_quickview_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 
+
+
+/**
+ * custom_woocommerce_template_loop_add_to_cart
+*/
+add_filter( 'woocommerce_product_add_to_cart_text' , 'edo_custom_woocommerce_product_add_to_cart_text' );
+function edo_custom_woocommerce_product_add_to_cart_text() {
+    global $product;
+    $product_type = $product->product_type;
+    switch ( $product_type ) {
+        case 'external':
+            return __( 'Buy', 'woocommerce' );
+        break;
+        case 'grouped':
+            return __( 'View', 'woocommerce' );
+        break;
+        case 'simple':
+            return __( 'Buy', 'woocommerce' );
+        break;
+        case 'variable':
+            return __( 'View', 'woocommerce' );
+        break;
+        default:
+            return __( 'Read more', 'woocommerce' );
+    }
+    
+}

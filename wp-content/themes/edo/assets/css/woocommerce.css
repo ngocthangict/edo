@@ -785,8 +785,15 @@ div.swatch-wrapper.selected:before{
     padding: 0;
 }
 .woocommerce #reviews #comments h2{
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 0;
+    margin-bottom: 25px;
+}
+#review_form_wrapper .comment-reply-title{
+    margin-bottom: 25px;
+}
+.woocommerce #reviews #comments .product-star{
+    float: right;
 }
 .woocommerce .star-rating{
     color: #ccc;
@@ -803,7 +810,19 @@ div.swatch-wrapper.selected:before{
     margin-top: 0;
     font-size: 24px;
 }
-
+.woocommerce #reviews h3{
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.woocommerce #reviews #comments ol.commentlist li img.avatar{
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    padding: 5px;
+}
+.woocommerce #reviews #comments ol.commentlist li .comment-text{
+    margin-left: 90px;
+}
 /*---------------
 [ Quick view]
 ----------------*/
