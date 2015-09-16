@@ -14,7 +14,19 @@ vc_map( array(
             "param_name" => "title",
             "admin_label" => true,
             'description' => __( 'Display title box categories', 'edo' )
-        ),array(
+        ),
+        array(
+            "type"        => "dropdown",
+        	"heading"     => __("Type", 'edo'),
+        	"param_name"  => "type",
+            "admin_label" => true,
+            'std'         => 'type-1',
+            'value'       => array(
+        		__( 'Show children categories', 'edo' ) => 'type-1',
+                __( 'Show products', 'edo' ) => 'type-2',
+        	),
+        ),
+        array(
             "type" => "edo_taxonomy",
             "taxonomy" => "product_cat",
             "class" => "",
@@ -27,13 +39,49 @@ vc_map( array(
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'edo')
         ),
         array(
+            "type"        => "colorpicker",
+            "heading"     => __("Color", 'edo'),
+            "param_name"  => "color",
+            "admin_label" => false,
+            'description' => __( 'It shows background color of banner', 'edo' ),
+            "dependency"  => array( 
+                "element" => "type", 
+                "value" => array( 
+                    'type-2' 
+                ) 
+            ),
+        ),
+        array(
             "type" => "edo_number",
             "heading" => __( "Number", 'edo' ),
             "param_name" => "number",
             "value" => "5",
             "admin_label" => true,
             'description' => __( 'The `number` field is used to display the number of subcategory.', 'edo' )
-        ),array(
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order by", 'edo'),
+        	"param_name" => "orderby2",
+        	"value" => array(
+        		__('None', 'edo')     => 'none',
+                __('ID', 'edo')       => 'ID',
+                __('Author', 'edo')   => 'author',
+                __('Name', 'edo')     => 'name',
+                __('Date', 'edo')     => 'date',
+                __('Modified', 'edo') => 'modified',
+                __('Rand', 'edo')     => 'rand',
+        	),
+            'std' => 'date',
+        	"description" => __("Select how to sort retrieved posts.",'edo'),
+            "dependency"  => array( 
+                "element" => "type", 
+                "value" => array( 
+                    'type-2' 
+                ) 
+            ),
+        ),
+        array(
 			'type' => 'dropdown',
 			'heading' => __( 'Order by', 'js_composer' ),
 			'param_name' => 'orderby',
@@ -44,7 +92,13 @@ vc_map( array(
 				__( 'Slug', 'edo' )  => 'slug',
                 __( 'Term Group ', 'edo' )  => 'term_group',
                 __( 'None', 'edo' )  => 'none',
-			)
+			),
+            "dependency"  => array( 
+                "element" => "type", 
+                "value" => array( 
+                    'type-1' 
+                ) 
+            ),
 		),
         array(
 			'type' => 'dropdown',
@@ -158,11 +212,14 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                         
         $atts = shortcode_atts( array(
             'title'     => __('Popular categories', 'edo'),
+            'type'      => 'type-1',
             'taxonomy'  => '',
             'number'    => 5,
+            'orderby2'  => 'date',
             'orderby'   => 'id',
             'order'     => 'desc',
             'hide'      => 1,
+            'color'     => '',
             
             'autoplay'     => 'false', 
             'loop'         => 'false',
@@ -181,7 +238,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         extract($atts);
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'block-popular-cat ', $this->settings['base'], $atts ),
+        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' ', $this->settings['base'], $atts ),
         	'extra' => $this->getExtraClass( $el_class ),
         	'css_animation' => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -204,14 +261,6 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
 			'pad_counts' => true,
 		);
         $product_categories = get_terms( 'product_cat', $args );
-        
-        $arg_child = array(
-			'orderby'    => $orderby,
-			'order'      => $order,
-			'hide_empty' => $hide,
-			'pad_counts' => true,
-            'number'     => $number
-		);
         
         $data_carousel = array(
             "autoplay"   => $autoplay,
@@ -239,9 +288,18 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         );
         $data_responsive = json_encode($arr);
         $data_carousel["responsive"] = $data_responsive;
+        if( $type == 'type-1' ):
+        
+        $arg_child = array(
+			'orderby'    => $orderby,
+			'order'      => $order,
+			'hide_empty' => $hide,
+			'pad_counts' => true,
+            'number'     => $number
+		);
         ?>
         <!-- block-popular-cat-->
-		<div class="<?php echo $elementClass; ?>">
+		<div class="block-popular-cat <?php echo $elementClass; ?>">
 			<h3 class="title">
 				<span class="text"><?php echo $title; ?></span>
 			</h3>
@@ -293,7 +351,61 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
 			</div>
 		</div>
 		<!-- ./block-popular-cat-->
+        <?php else: ?>
+        <div class="block-popular-cat2 <?php echo $elementClass; ?>">
+            <h3 class="title"><?php echo $title; ?></h3>
+            <?php 
+            if( $product_categories ):
+                $meta_query = WC()->query->get_meta_query();
+                $args = array(
+        			'post_type'			  => 'product',
+        			'post_status'		  => 'publish',
+        			'ignore_sticky_posts' => 1,
+        			'posts_per_page' 	  => $number,
+                    'suppress_filter'     => true,
+        			'meta_query'          => $meta_query,
+                    'orderby'             => $orderby2,
+                    'order'               => $order
+        		);
+                foreach($product_categories as $term): 
+                    $args['tax_query'] = array(
+                        array(
+                			'taxonomy' => 'product_cat',
+                			'field' => 'id',
+                			'terms' => $term->term_id
+                		)
+                    );
+                    $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                    if( $products->have_posts() ):
+                    ?>
+                        <div class="block block-popular-cat2-item">
+                            <div class="block-inner">
+                                <div class="cat-name"><?php echo $term->name ?></div>
+                                <div class="box-subcat">
+                                    <ul class="list-subcat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                        <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                            <li class="item">
+                                                <a href="<?php the_permalink(); ?>">
+                                                    <?php 
+                                						echo woocommerce_get_product_thumbnail();
+                                					?>
+                                                </a>
+                                            </li>
+                                        <?php endwhile; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php 
+                        wp_reset_query();
+                        wp_reset_postdata(); 
+                    ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
         <?php
+        endif;
         $result = ob_get_clean();
         return $result;
     }

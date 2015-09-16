@@ -15,6 +15,71 @@ vc_map( array(
             "admin_label" => true,
         ),
         array(
+            "type"        => "dropdown",
+        	"heading"     => __("Box Type", 'edo'),
+        	"param_name"  => "box_type",
+            "admin_label" => true,
+            'std'         => 'box-1',
+            'value'       => array(
+        		__( 'Box 1', 'edo' ) => 'box-1',
+                __( 'Box 2', 'edo' ) => 'box-2'
+        	),
+        ),
+        array(
+            "type"        => "dropdown",
+        	"heading"     => __("Type", 'edo'),
+        	"param_name"  => "type",
+            "admin_label" => true,
+            'std'         => 'hot-deals',
+            'value'       => array(
+        		__( 'Hot Deals', 'edo' ) => 'hot-deals',
+                __( 'Best selling', 'edo' ) => 'best-selling',
+                __( 'New Arrivals', 'edo' ) => 'recent-product'
+        	),
+        ),
+        array(
+            "type"        => "edo_taxonomy",
+            "taxonomy"    => "product_cat",
+            "class"       => "",
+            "heading"     => __("Category", 'edo'),
+            "param_name"  => "taxonomy",
+            "value"       => '',
+            'parent'      => 0,
+            'multiple'    => true,
+            'placeholder' => __('Choose categoy', 'edo'),
+            "description" => __("Note: Selected categories will be hide if it empty. Only selected categories will be displayed.", 'edo')
+        ),
+        
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order by", 'edo'),
+        	"param_name" => "orderby",
+        	"value" => array(
+        		__('None', 'edo')     => 'none',
+                __('ID', 'edo')       => 'ID',
+                __('Author', 'edo')   => 'author',
+                __('Name', 'edo')     => 'name',
+                __('Date', 'edo')     => 'date',
+                __('Modified', 'edo') => 'modified',
+                __('Rand', 'edo')     => 'rand',
+        	),
+            'std' => 'date',
+        	"description" => __("Select how to sort retrieved posts.",'edo'),
+            "dependency"  => array( "element" => "type", "value" => array( 'hot-deals' ) ),
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order way", 'edo'),
+        	"param_name" => "order",
+        	"value" => array(
+                __('ASC', 'edo') => 'ASC',
+                __('DESC', 'edo') => 'DESC'
+        	),
+            'std' => 'DESC',
+        	"description" => __("Designates the ascending or descending order.",'edo'),
+            "dependency"  => array( "element" => "type", "value" => array( 'hot-deals' ) ),
+        ),
+        array(
     		'type'        => 'attach_images',
     		'heading'     => __( 'Icon', 'edo' ),
     		'param_name'  => 'icon',
@@ -28,62 +93,6 @@ vc_map( array(
             "admin_label" => false,
             'description' => __( 'Number post in a slide', 'edo' )
         ),
-        array(
-            "type"        => "textfield",
-            "heading"     => __( "Column", 'edo' ),
-            "param_name"  => "number_column",
-            "admin_label" => false,
-            'std'         => 4,
-            'description' => __( 'Number column display', 'edo' )
-        ),
-        array(
-            "type"        => "dropdown",
-        	"heading"     => __("Box Type", 'edo'),
-        	"param_name"  => "box_type",
-            "admin_label" => true,
-            'std'         => 'box-1',
-            'value'       => array(
-        		__( 'Box 1', 'edo' ) => 'box-1'
-        	),
-        ),
-        array(
-            "type"        => "dropdown",
-        	"heading"     => __("Type", 'edo'),
-        	"param_name"  => "type",
-            "admin_label" => true,
-            'std'         => 'hot-deals',
-            'value'       => array(
-        		__( 'Hot Deals', 'edo' ) => 'hot-deals'
-        	),
-        ),
-        array(
-            "type"        => "edo_taxonomy",
-            "taxonomy"    => "product_cat",
-            "class"       => "",
-            "heading"     => __("Category", 'edo'),
-            "param_name"  => "taxonomy",
-            "value"       => '',
-            'parent'      => 0,
-            'multiple'    => true,
-            'placeholder' => __('Choose categoy', 'edo'),
-            "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'edo')
-        ),
-        array(
-        	'type'        => 'dropdown',
-        	'heading'     => __( 'CSS Animation', 'js_composer' ),
-        	'param_name'  => 'css_animation',
-        	'admin_label' => false,
-        	'value' => array(
-        		__( 'No', 'js_composer' ) => '',
-        		__( 'Top to bottom', 'js_composer' ) => 'top-to-bottom',
-        		__( 'Bottom to top', 'js_composer' ) => 'bottom-to-top',
-        		__( 'Left to right', 'js_composer' ) => 'left-to-right',
-        		__( 'Right to left', 'js_composer' ) => 'right-to-left',
-        		__( 'Appear from center', 'js_composer' ) => "appear"
-        	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'js_composer' )
-        ),
-        
         // Carousel
         array(
 			'type' => 'dropdown',
@@ -142,12 +151,13 @@ vc_map( array(
 	  	),
         array(
 			'type'        => 'dropdown',
-            'heading'     => __( 'Don\'t Use Carousel Responsive', 'edo' ),
+            'heading'     => __( 'Use Carousel Responsive', 'edo' ),
 			'param_name'  => 'use_responsive',
 			'value' => array(
 				__( 'Yes', 'js_composer' ) => 1,
 				__( 'No', 'js_composer' )  => 0
 			),
+            'std'         => 1,
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'edo' ),
             'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
@@ -183,6 +193,21 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
+        	'type'        => 'dropdown',
+        	'heading'     => __( 'CSS Animation', 'js_composer' ),
+        	'param_name'  => 'css_animation',
+        	'admin_label' => false,
+        	'value' => array(
+        		__( 'No', 'js_composer' ) => '',
+        		__( 'Top to bottom', 'js_composer' ) => 'top-to-bottom',
+        		__( 'Bottom to top', 'js_composer' ) => 'bottom-to-top',
+        		__( 'Left to right', 'js_composer' ) => 'left-to-right',
+        		__( 'Right to left', 'js_composer' ) => 'right-to-left',
+        		__( 'Appear from center', 'js_composer' ) => "appear"
+        	),
+        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'js_composer' )
+        ),
+        array(
 			'type'        => 'css_editor',
 			'heading'     => __( 'Css', 'js_composer' ),
 			'param_name'  => 'css',
@@ -191,8 +216,7 @@ vc_map( array(
             'admin_label' => false,
 		),
         
-    ),
-    "js_view" => 'VcColumnView'
+    )
 ));
 
 class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
@@ -205,7 +229,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             'box_type'   => 'box-1',
             'type'       => 'hot-deals',
             'taxonomy'   => 0,
-            'number_column' => '',
+            'orderby'      => 'date',
+            'order'        => 'DESC',
             
             //Carousel            
             'autoplay'   => 'false', 
@@ -215,7 +240,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             'nav'        => 'true',
             'loop'       => 'true',
             //Default
-            'use_responsive' => 0,
+            'use_responsive' => 1,
             'items_destop'   => 5,
             'items_tablet'   => 3,
             'items_mobile'   => 1,
@@ -241,25 +266,37 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         $meta_query = WC()->query->get_meta_query();
         
         $args = array(
-			'post_type'				=> 'product',
-			'post_status'			=> 'publish',
-			'ignore_sticky_posts'	=> 1,
-			'posts_per_page' 		=> $per_page,
-            'suppress_filter'       => true,
+			'post_type'			  => 'product',
+			'post_status'		  => 'publish',
+			'ignore_sticky_posts' => 1,
+			'posts_per_page' 	  => $per_page,
+            'suppress_filter'     => true,
+			'meta_query'          => $meta_query
 		);
+        
         if( $type == 'hot-deals' ){
-            $args['orderby']    = 'meta_value_num';
-            $args['meta_key']   = 'total_sales';
-			$args['meta_query'] = $meta_query;
-        }else{
+            $product_ids_on_sale = wc_get_product_ids_on_sale();
             
+            $args['post__in'] = array_merge( array( 0 ), $product_ids_on_sale );
+            $args['orderby'] = $orderby;
+            $args['order'] 	= $order;
+        }elseif( $type == 'best-selling' ){
+            $newargs['meta_key'] = 'total_sales';
+            $newargs['orderby']  = 'meta_value_num';
+        }elseif( $type == 'recent-product' ){
+            $args['orderby'] = $orderby;
+            $args['order'] 	= $order;
         }
+        $cate_ids = array();
+        
         if( $taxonomy ){
+            $cate_ids = explode( ",", $taxonomy );
+            
             $args['tax_query'] = array(
                 array(
         			'taxonomy' => 'product_cat',
         			'field' => 'id',
-        			'terms' => explode( ",", $taxonomy )
+        			'terms' => $cate_ids
         		)
             );
         }
@@ -302,8 +339,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 'autoplayHoverPause' => 'true'
             );
             
-            if( ! $use_responsive){
-                
+            if( $use_responsive ){
                 $arr = array(   
                     '0' => array(
                         "items" => $items_mobile
@@ -321,7 +357,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             }else{
                 $data_carousel['items'] =  5;
             }
-            if( $box_type ){
+            $unique_id = uniqid();
+            if( $box_type == 'box-1' ){
                 ?>
                 <!-- block  host deals -->
                 <div class="block block-hot-deals">
@@ -337,7 +374,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 			<span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
                 		</div>
                 	</div>
-                	<div class="block-inner">
+                	<div class="block-inner box-type-1">
                         <?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
                     		<ul class="products kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php while( $products->have_posts() ): $products->the_post(); ?>
@@ -352,6 +389,78 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 	</div>
                 </div>
                 <!-- ./block hot deals -->
+                <?php
+            }elseif ( $box_type == 'box-2' ){
+                $cate_obj = array();
+                $carousel = _data_carousel($data_carousel);
+                ?>
+                <!-- block tabs -->
+				<div class="block block-tabs">
+					<div class="block-head">
+						<div class="block-title">
+							<div class="block-title-text text-lg"><?php echo $title; ?></div>
+						</div>
+						<ul class="nav-tab">                                   
+	                        <li class="active"><a data-toggle="tab" href="#tab-all-<?php echo $unique_id ?>"><?php _e( 'All', 'edo' ) ?></a></li>
+	                        <?php if( count( $cate_ids ) ): ?>
+                                <?php foreach( $cate_ids as $id ):  ?>
+                                    <?php $term = get_term( $id, 'product_cat' ); $cate_obj[] = $term;  ?>
+                                    <li><a data-toggle="tab" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                      	</ul>
+					</div>
+					<div class="block-inner">
+						<div class="tab-container">
+							<div id="tab-all-<?php echo $unique_id ?>" class="tab-panel active">
+								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                    <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
+    									<?php while( $products->have_posts() ): $products->the_post(); ?>
+                                            <?php edo_woocommerce_product_loop_item_before(); ?>
+                            					<?php wc_get_template_part( 'content', 'list-product' ); ?>
+                                            <?php edo_woocommerce_product_loop_item_after(); ?>
+                            			<?php endwhile; ?>
+                                        <?php 
+                                            wp_reset_query();
+                                            wp_reset_postdata(); 
+                                        ?>
+    								</ul>
+                                <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+							</div>
+                            <?php if( count( $cate_obj ) > 0 ): ?>
+                                <?php foreach( $cate_obj as  $term ): 
+                                    $args['tax_query'] = array(
+                                        array(
+                                			'taxonomy' => 'product_cat',
+                                			'field' => 'id',
+                                			'terms' => $term->term_id
+                                		)
+                                    );
+                                    $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                    if( $term_products->have_posts() ):
+                                    ?>
+        							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
+        								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                            <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
+            									<?php while( $term_products->have_posts() ): $term_products->the_post(); ?>
+                                                    <?php edo_woocommerce_product_loop_item_before(); ?>
+                                    					<?php wc_get_template_part( 'content', 'list-product' );?>
+                                                    <?php edo_woocommerce_product_loop_item_after(); ?>
+                                    			<?php endwhile; ?>
+            								</ul>
+                                        <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+        							</div>
+                                    <?php endif; ?>
+                                    <?php 
+                                        wp_reset_query();
+                                        wp_reset_postdata();
+                                     ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<!-- ./block tabs -->
                 <?php
             }
         endif;
