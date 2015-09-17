@@ -114,7 +114,6 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
             'css_animation' => '',
             'el_class'      => '',
             'css'           => '',
-            'default_icon'      => '',
             
         ), $atts );
         extract($atts);
@@ -154,7 +153,7 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
         if( $products->have_posts() ): 
         
         $new_title = $title;
-        $new_title = explode( ',', $new_title );
+        $new_title = explode( ' ', $new_title );
         
         if( count($new_title) > 1 ){
             $title_sm = $new_title[0];
@@ -164,19 +163,18 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
             $title_sm = __( 'Top', 'edo' );
             $title_lg = __( 'sellers', 'edo' );
         }
-        if( ! $default_icon ){
-            $default_icon = KUTETHEME_PLUGIN_URL . 'js_composer/imgs/top-seller-icon.png';
-        }
-        
-        
-        
-        if( isset( $icon ) && $icon ){
+
+        if( intval($icon) > 0 ){
             $att_icon = wp_get_attachment_image_src( $icon, array( 43, 42 ) );  
             $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : $default_icon; 
         }else{
-            $att_icon_url = $default_icon;
+            if( filter_var( $icon, FILTER_VALIDATE_URL ) ){
+                $att_icon_url = $icon;
+            }else{
+                $att_icon_url = KUTETHEME_PLUGIN_URL . 'js_composer/imgs/top-seller-icon.png';
+            }
         }
-        
+
         $data_carousel = array(
             "autoplay" => $autoplay,
             "navigation" => $navigation,
