@@ -386,6 +386,10 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                     <?php edo_woocommerce_product_loop_item_after(); ?>
                     			<?php endwhile; ?>
                     		</ul>
+                            <?php 
+                                wp_reset_query();
+                                wp_reset_postdata(); 
+                            ?>
                         <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
                 	</div>
                 </div>
