@@ -58,8 +58,10 @@ function edo_taxonomy_settings_field($settings, $value) {
         if(isset($settings['placeholder']) && $settings['placeholder']){
             $terms_fields[] = "<option value=''>".$settings['placeholder']."</option>";
         }
-        
-        $terms = get_terms( $settings['taxonomy'] , array('hide_empty' => false, 'parent' => $settings['parent']));
+        if( empty( $settings['hide_empty'] ) ){
+            $settings['hide_empty'] = false;
+        }
+        $terms = get_terms( $settings['taxonomy'] , array('hide_empty' => $settings['hide_empty'], 'parent' => $settings['parent']));
 		if ( $terms && !is_wp_error($terms) ) {
 			foreach( $terms as $term ) {
                 $selected = (in_array( $term->term_id, $value_arr )) ? ' selected="selected"' : '';

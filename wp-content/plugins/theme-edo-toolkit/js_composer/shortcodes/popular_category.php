@@ -27,41 +27,29 @@ vc_map( array(
         	),
         ),
         array(
-            "type" => "edo_taxonomy",
-            "taxonomy" => "product_cat",
-            "class" => "",
-            "heading" => __("Category", 'edo'),
-            "param_name" => "taxonomy",
-            "value" => '',
-            'parent' => 0,
-            'multiple' => true,
+            "type"        => "edo_taxonomy",
+            "taxonomy"    => "product_cat",
+            "class"       => "",
+            "heading"     => __("Category", 'edo'),
+            "param_name"  => "taxonomy",
+            "value"       => '',
+            'parent'      => 0,
+            'hide_empty'  => false,
+            'multiple'    => true,
             'placeholder' => __('Choose categoy', 'edo'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'edo')
         ),
         array(
-            "type"        => "colorpicker",
-            "heading"     => __("Color", 'edo'),
-            "param_name"  => "color",
-            "admin_label" => false,
-            'description' => __( 'It shows background color of banner', 'edo' ),
-            "dependency"  => array( 
-                "element" => "type", 
-                "value" => array( 
-                    'type-2' 
-                ) 
-            ),
-        ),
-        array(
-            "type" => "edo_number",
-            "heading" => __( "Number", 'edo' ),
-            "param_name" => "number",
-            "value" => "5",
+            "type"        => "edo_number",
+            "heading"     => __( "Number", 'edo' ),
+            "param_name"  => "number",
+            "value"       => "5",
             "admin_label" => true,
             'description' => __( 'The `number` field is used to display the number of subcategory.', 'edo' )
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'edo'),
+            "type"       => "dropdown",
+        	"heading"    => __("Order by", 'edo'),
         	"param_name" => "orderby2",
         	"value" => array(
         		__('None', 'edo')     => 'none',
@@ -101,8 +89,8 @@ vc_map( array(
             ),
 		),
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'Order Way', 'js_composer' ),
+			'type'       => 'dropdown',
+			'heading'    => __( 'Order Way', 'js_composer' ),
 			'param_name' => 'order',
 			'value' => array(
 				__( 'Descending', 'js_composer' ) => 'desc',
@@ -111,8 +99,8 @@ vc_map( array(
 		),
         
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'Hide Empty', 'js_composer' ),
+			'type'       => 'dropdown',
+			'heading'    => __( 'Hide Empty', 'js_composer' ),
 			'param_name' => 'hide',
 			'value' => array(
 				__( 'Yes', 'js_composer' ) => '1',
@@ -120,8 +108,8 @@ vc_map( array(
 			)
 		),//Carousel
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'AutoPlay', 'edo' ),
+			'type'       => 'dropdown',
+			'heading'    => __( 'AutoPlay', 'edo' ),
 			'param_name' => 'autoplay',
 			'value' => array(
 				__( 'Yes', 'js_composer' ) => 'true',
@@ -143,66 +131,65 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-			"type" => "edo_number",
-			"heading" => __("Slide Speed", 'edo'),
+			"type"       => "edo_number",
+			"heading"    => __("Slide Speed", 'edo'),
 			"param_name" => "slidespeed",
-			"value" => "250",
-            "suffix" => __("milliseconds", 'edo'),
+			"value"      => "250",
+            "suffix"     => __("milliseconds", 'edo'),
 			"description" => __('Slide speed in milliseconds', 'edo'),
-            'group' => __( 'Carousel settings', 'edo' ),
+            'group'      => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-			"type" => "edo_number",
-			"heading" => __("Margin", 'edo'),
+			"type"       => "edo_number",
+			"heading"    => __("Margin", 'edo'),
 			"param_name" => "margin",
-			"value" => "0",
-            "suffix" => __("px", 'edo'),
+			"value"      => "0",
+            "suffix"     => __("px", 'edo'),
 			"description" => __('Distance( or space) between 2 item', 'edo'),
-            'group' => __( 'Carousel settings', 'edo' ),
+            'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-			"type" => "edo_number",
-			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'edo'),
+			"type"       => "edo_number",
+			"heading"    => __("The items on destop (Screen resolution of device >= 992px )", 'edo'),
 			"param_name" => "items_destop",
-			"value" => "3",
-            "suffix" => __("item", 'edo'),
+			"value"      => "3",
+            "suffix"     => __("item", 'edo'),
 			"description" => __('The number of items on destop', 'edo'),
-            'group' => __( 'Carousel responsive', 'edo' ),
+            'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-			"type" => "edo_number",
-			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'edo'),
+			"type"       => "edo_number",
+			"heading"    => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'edo'),
 			"param_name" => "items_tablet",
-			"value" => "2",
-            "suffix" => __("item", 'edo'),
+			"value"      => "2",
+            "suffix"     => __("item", 'edo'),
 			"description" => __('The number of items on destop', 'edo'),
-            'group' => __( 'Carousel responsive', 'edo' ),
+            'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-			"type" => "edo_number",
-			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'edo'),
+			"type"       => "edo_number",
+			"heading"    => __("The items on mobile (Screen resolution of device < 768px)", 'edo'),
 			"param_name" => "items_mobile",
-			"value" => "1",
-            "suffix" => __("item", 'edo'),
+			"value"      => "1",
+            "suffix"     => __("item", 'edo'),
 			"description" => __('The numbers of item on destop', 'edo'),
-            'group' => __( 'Carousel responsive', 'edo' ),
+            'group'       => __( 'Carousel responsive', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-            "type" => "textfield",
-            "heading" => __( "Extra class name", 'edo' ),
-            "param_name" => "el_class",
+            "type"      => "textfield",
+            "heading"   => __( "Extra class name", 'edo' ),
+            "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         ),array(
-			'type' => 'css_editor',
-			'heading' => __( 'Css', 'js_composer' ),
+			'type'       => 'css_editor',
+			'heading'    => __( 'Css', 'js_composer' ),
 			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-			'group' => __( 'Design options', 'js_composer' )
+            'group' => __( 'Design options', 'js_composer' )
 		),
     )
 ));
@@ -219,7 +206,6 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
             'orderby'   => 'id',
             'order'     => 'desc',
             'hide'      => 1,
-            'color'     => '',
             
             'autoplay'     => 'false', 
             'loop'         => 'false',
@@ -367,6 +353,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                     'orderby'             => $orderby2,
                     'order'               => $order
         		);
+                $i = 1;
                 foreach($product_categories as $term): 
                     $args['tax_query'] = array(
                         array(
@@ -378,7 +365,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                     $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
                     if( $products->have_posts() ):
                     ?>
-                        <div class="block block-popular-cat2-item">
+                        <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo $term->slug ?>">
                             <div class="block-inner">
                                 <div class="cat-name"><?php echo $term->name ?></div>
                                 <div class="box-subcat">
@@ -396,7 +383,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                                 </div>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php $i++; endif; ?>
                     <?php 
                         wp_reset_query();
                         wp_reset_postdata(); 
