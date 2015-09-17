@@ -192,8 +192,11 @@
 				</div>
 				<div class="block-payment">
 					<?php
-                        if(is_active_sidebar('footer-menu-7')){
-                            dynamic_sidebar('footer-menu-7');
+                        $payment_logo = edo_option('kt_payment_logo','');
+                        if($payment_logo != ""){
+                        	?>
+                        	<img src="<?php echo esc_url( $payment_logo );?>" alt="Payment Logo">
+                        	<?php
                         }
                     ?>
 				</div>

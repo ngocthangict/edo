@@ -286,6 +286,12 @@ class KT_Admin {
     		'id'   => 'kt_copyrights',
     		'type' => 'textarea',
     	) );
+        $cmb_options_footer->add_field( array(
+            'name'    => __( 'Payment logo', 'edo' ),
+            'id'      => 'kt_payment_logo',
+            'type'    => 'file',
+            'desc'    => __( 'Select a image', 'edo' ),
+        ) );
         
         
         /**
