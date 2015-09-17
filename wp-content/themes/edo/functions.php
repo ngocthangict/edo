@@ -182,25 +182,6 @@ function kt_widgets_init() {
         'after_title'   => '</h3>',
     ) );
     
-    register_sidebar( array(
-        'name'          => __( 'Footer Menu 7', 'edo'),
-        'id'            => 'footer-menu-7',
-        'description'   => __( 'The footer menu 7 widget area', 'edo' ),
-        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ) );
-    
-    register_sidebar( array(
-        'name'          => __( 'Footer Menu 8', 'edo'),
-        'id'            => 'footer-menu-8',
-        'description'   => __( 'The footer menu 8 widget area', 'edo' ),
-        'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ) );
 }
 add_action( 'widgets_init', 'kt_widgets_init' );
 
@@ -376,3 +357,13 @@ require THEME_DIR . '/inc/widget.php';
  * Breadcrumbs
  * */
 require THEME_DIR . '/inc/breadcrumbs.php';
+
+/*
+* Custom Single product cart button
+*/
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'edo_custom_cart_button_text' );    // 2.1 +
+function edo_custom_cart_button_text() {
+ 
+        return __( 'Buy', 'woocommerce' );
+ 
+}

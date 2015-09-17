@@ -166,20 +166,14 @@
                                 if(is_active_sidebar('footer-menu-5')){
                                     dynamic_sidebar('footer-menu-5');
                                 }
-                            ?>
-                            
-                            <?php
-                                if(is_active_sidebar('footer-menu-6')){
-                                    dynamic_sidebar('footer-menu-6');
-                                }
-                            ?>
+                            ?>	
 						</div>
 					</div>
 					<div class="col-md-2 col-sm-4 block-link-wapper">
 						<div class="block-link footer-list-image">
                             <?php
-                                if(is_active_sidebar('footer-menu-7')){
-                                    dynamic_sidebar('footer-menu-7');
+                                if(is_active_sidebar('footer-menu-6')){
+                                    dynamic_sidebar('footer-menu-6');
                                 }
                             ?>
 						</div>
@@ -198,8 +192,8 @@
 				</div>
 				<div class="block-payment">
 					<?php
-                        if(is_active_sidebar('footer-menu-8')){
-                            dynamic_sidebar('footer-menu-8');
+                        if(is_active_sidebar('footer-menu-7')){
+                            dynamic_sidebar('footer-menu-7');
                         }
                     ?>
 				</div>

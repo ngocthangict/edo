@@ -373,6 +373,24 @@ class KT_Admin {
             'options' => $sidebars,
             'desc'    => __( 'Setting sidebar in the area sidebar on single page', 'edo' ),
     	) );
+
+        $cmb_options_woocommerce->add_field( array(
+            'name'    => __( 'Display box top sellers in Single page', 'edo' ),
+            'id'      => 'kt_woo_single_display_topsellers',
+            'type'    => 'select',
+            'default' => 'enable',
+            'options' => array(
+                'enable'  => 'Enable',
+                'disable'  => 'Disable',
+            ),
+            'desc'    => __( 'Setting Display box top sellers in Single page', 'edo' ),
+        ) );
+        $cmb_options_woocommerce->add_field( array(
+            'name'    => __( 'Icon for box top sellers', 'edo' ),
+            'id'      => 'kt_woo_single_icon_topsellers',
+            'type'    => 'file',
+            'desc'    => __( 'Icon for box top seller', 'edo' ),
+        ) );
         
         /**
          * Sidebar

@@ -2356,10 +2356,16 @@
 .block-specials .block-head{
 	font-weight: 600;
 }
-.block-specials .product{
+.block-specials div.product{
 	border-bottom: 1px solid #eaeaea;
 	padding-bottom: 20px;
 	overflow: hidden;
+	margin-bottom: 20px;
+}
+div.block-specials div.product:last-child{
+	border-bottom: none;
+	margin-bottom: 0;
+	background: #000;
 }
 .block-specials .product .image{
 	width: 100px;
@@ -2373,7 +2379,7 @@
 	margin-left: 110px;
 }
 .block-specials .button-radius{
-	margin-top: 20px;
+	margin-top: 0;
 }
 /*--------------------------
 [27. Product detail]
