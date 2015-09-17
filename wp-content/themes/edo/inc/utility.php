@@ -433,4 +433,21 @@ function kt_init_session_start(){
         session_start();
     }
 }
+
+if( ! function_exists('edo_get_all_attributes') ){
+    function edo_get_all_attributes( $tag, $text )
+    {
+        preg_match_all( '/' . get_shortcode_regex() . '/s', $text, $matches );
+        $out = array();
+        if( isset( $matches[2] ) )
+        {
+            foreach( (array) $matches[2] as $key => $value )
+            {
+                if( $tag === $value )
+                    $out[] = shortcode_parse_atts( $matches[3][$key] );  
+            }
+        }
+        return $out;
+    }
+}
 add_action('init', 'kt_init_session_start', 1);

@@ -5,6 +5,16 @@
 if(is_admin())
     remove_action( 'admin_notices', 'woothemes_updater_notice' );
 
+add_action( 'woocommerce_save_product_variation', 'edo_wc_save_product_variation', 10, 2 );
+
+add_action( 'woocommerce_variable_product_sync', 'edo_wc_variable_product_sync', 10, 2 );
+
+add_action( 'woocommerce_process_product_meta_simple', 'edo_wc_process_product_meta', 10, 1 );
+
+add_action( 'woocommerce_process_product_meta_external', 'edo_wc_process_product_meta', 10, 1 );
+
+add_action( 'woocommerce_process_product_meta_grouped', 'edo_wc_process_product_meta_grouped', 10, 1 );
+
 //LOOP THUMBNAIL
 add_action( 'edo_wc_loop_product_thumbnail', 'woocommerce_template_loop_product_thumbnail' );
 
@@ -33,6 +43,106 @@ add_action( 'edo_wc_loop_function_quickview', 'edo_get_tool_quickview' );
 
 //MINICART
 add_action( 'edo_mini_cart', 'woocommerce_mini_cart' );
+
+
+/**
+ * Save product variation
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_save_product_variation hook
+ * */
+if( ! function_exists( 'edo_wc_save_product_variation' ) ){
+    function edo_wc_save_product_variation( $variation_id, $i ){
+        // Price handling
+        $variable_regular_price = $_POST['variable_regular_price'];
+        $variable_sale_price    = $_POST['variable_sale_price'];
+        
+    	$regular_price = wc_format_decimal( $variable_regular_price[ $i ] );
+    	$sale_price    = $variable_sale_price[ $i ] === '' ? '' : wc_format_decimal( $variable_sale_price[ $i ] );
+        
+        if( $sale_price ) {
+            $reduction_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+            update_post_meta( $variation_id, '_reduction_percent', $reduction_percent );
+        }else{
+            update_post_meta( $variation_id, '_reduction_percent', 0 );
+        }
+    }
+}
+
+/**
+ * Sync product variation
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_variable_product_sync hook
+ * */
+if ( ! function_exists( 'edo_wc_variable_product_sync' ) ){
+    function edo_wc_variable_product_sync( $product_id, $children ){
+        $min_reduction_percent = null ;
+        $min_reduction_percent_id = null;
+        
+        $max_reduction_percent = null ;
+        $max_reduction_percent_id = null;
+        
+        foreach ( $children as $child_id ) {
+			$reduction_price = get_post_meta( $child_id, '_reduction_percent', true );
+            
+			// Find min reduction
+			if ( is_null( $min_reduction_percent ) || $reduction_price < $min_reduction_percent ) {
+				$min_reduction_percent    = $reduction_price;
+				$min_reduction_percent_id = $child_id;
+			}
+
+			// Find max reduction
+			if ( $reduction_price > $max_reduction_percent ) {
+				$max_reduction_percent    = $reduction_price;
+				$max_reduction_percent_id = $child_id;
+			}
+		}
+
+		// Store reduction
+		update_post_meta( $product_id, '_min_variation_reduction_percent', $min_reduction_percent );
+		update_post_meta( $product_id, '_max_variation_reduction_percent', $min_reduction_percent_id );
+
+		// Store ids
+		update_post_meta( $product_id, '_min_reduction_percent_variation_id', $max_reduction_percent );
+        update_post_meta( $product_id, '_max_reduction_percent_variation_id', $max_reduction_percent_id );
+        
+        update_post_meta( $product_id, '_reduction_percent', $min_reduction_percent );
+    }
+}
+
+/**
+ * Save product simple, external
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_process_product_meta_simple hook
+ * @hook woocommerce_process_product_meta_external hook
+ * */
+if ( ! function_exists( 'edo_wc_process_product_meta' ) ){
+    function edo_wc_process_product_meta( $product ){
+        $regular_price = ( $_POST['_regular_price'] === '' ) ? '' : wc_format_decimal( $_POST['_regular_price'] );
+		$sale_price    = ( $_POST['_sale_price'] === '' ? '' : wc_format_decimal( $_POST['_sale_price'] ) );
+        
+		if( $sale_price ) {
+            $reduction_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+            update_post_meta( $product, '_reduction_percent', $reduction_percent );
+        }else{
+            update_post_meta( $product, '_reduction_percent', 0 );
+        }
+    }
+}
+
+/**
+ * Save product grouped
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_process_product_meta_grouped hook
+ * */
+if( ! function_exists( 'edo_wc_process_product_meta_grouped' ) ){
+    function edo_wc_process_product_meta_grouped( $product ){
+        update_post_meta( $product, '_reduction_percent', 0 );
+    }
+}
 
 /**
  * Mini cart template

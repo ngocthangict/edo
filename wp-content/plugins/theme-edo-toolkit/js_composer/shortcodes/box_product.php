@@ -274,18 +274,19 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 			'meta_query'          => $meta_query
 		);
         
+        
         if( $type == 'hot-deals' ){
             $product_ids_on_sale = wc_get_product_ids_on_sale();
             
             $args['post__in'] = array_merge( array( 0 ), $product_ids_on_sale );
-            $args['orderby'] = $orderby;
-            $args['order'] 	= $order;
+            $args['orderby']  = $orderby;
+            $args['order'] 	  = $order;
         }elseif( $type == 'best-selling' ){
             $newargs['meta_key'] = 'total_sales';
             $newargs['orderby']  = 'meta_value_num';
         }elseif( $type == 'recent-product' ){
             $args['orderby'] = $orderby;
-            $args['order'] 	= $order;
+            $args['order'] 	 = $order;
         }
         $cate_ids = array();
         
@@ -295,8 +296,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             $args['tax_query'] = array(
                 array(
         			'taxonomy' => 'product_cat',
-        			'field' => 'id',
-        			'terms' => $cate_ids
+        			'field'    => 'id',
+        			'terms'    => $cate_ids
         		)
             );
         }
