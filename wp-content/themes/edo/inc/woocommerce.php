@@ -456,7 +456,7 @@ if(!function_exists('edo_group_button_single_product')){
 if( ! function_exists( 'edo_box_topsell_single_product' ) ){
 	add_filter( 'edo_single_product_box_right','edo_box_topsell_single_product' ,1);
 	function edo_box_topsell_single_product(){
-        echo do_shortcode( '[top_seller taxonomy="" title="TOP SELLERS" icon="1776"]' );
+        echo do_shortcode( '[top_seller taxonomy="" title="TOP SELLERS"  default_icon="xxx"]' );
 		//wc_get_template_part('content','box-topsell');
 	}
 }

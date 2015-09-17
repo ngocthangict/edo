@@ -2362,11 +2362,6 @@
 	overflow: hidden;
 	margin-bottom: 20px;
 }
-div.block-specials div.product:last-child{
-	border-bottom: none;
-	margin-bottom: 0;
-	background: #000;
-}
 .block-specials .product .image{
 	width: 100px;
 	float: left;

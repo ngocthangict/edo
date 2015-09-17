@@ -114,6 +114,7 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
             'css_animation' => '',
             'el_class'      => '',
             'css'           => '',
+            'default_icon'      => '',
             
         ), $atts );
         extract($atts);
@@ -163,8 +164,11 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
             $title_sm = __( 'Top', 'edo' );
             $title_lg = __( 'sellers', 'edo' );
         }
+        if( ! $default_icon ){
+            $default_icon = KUTETHEME_PLUGIN_URL . 'js_composer/imgs/top-seller-icon.png';
+        }
         
-        $default_icon = KUTETHEME_PLUGIN_URL . 'js_composer/imgs/top-seller-icon.png';
+        
         
         if( isset( $icon ) && $icon ){
             $att_icon = wp_get_attachment_image_src( $icon, array( 43, 42 ) );  
