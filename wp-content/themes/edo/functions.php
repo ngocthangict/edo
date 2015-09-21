@@ -55,6 +55,7 @@ function kt_setup() {
 		'primary-menu' => __( 'Primary Menu',      'edo' ),
 		'vertical-menu'  => __( 'Vertical Menu', 'edo' ),
 		'topbar-menu'  => __( 'Topbar Menu', 'edo' ),
+		'single-product-custom-menu'  => __( 'Single Product Custom link', 'edo' ),
 	) );
 
 	/*
@@ -358,12 +359,7 @@ require THEME_DIR . '/inc/widget.php';
  * */
 require THEME_DIR . '/inc/breadcrumbs.php';
 
-/*
-* Custom Single product cart button
-*/
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'edo_custom_cart_button_text' );    // 2.1 +
-function edo_custom_cart_button_text() {
- 
-        return __( 'Buy', 'woocommerce' );
- 
-}
+/**
+ * Recommend plugins
+ * */
+require THEME_DIR . '/inc/recommend-plugins.php';

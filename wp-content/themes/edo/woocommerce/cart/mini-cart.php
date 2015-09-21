@@ -35,6 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     	</a>
     </div>
     <?php endif; ?>
+
     <?php if ( ! WC()->cart->is_empty() ) : ?>
     <div class="block-mini-cart">
     	<div class="mini-cart-content">
@@ -49,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     
                     if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
                         $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
-        				$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x100'), $cart_item, $cart_item_key );
+        				$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image( ), $cart_item, $cart_item_key );
         				$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
                     ?>
                     <li class="product-info <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
@@ -86,6 +87,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
-<?php endif; ?>
 <?php do_action( 'woocommerce_after_mini_cart' ); ?>

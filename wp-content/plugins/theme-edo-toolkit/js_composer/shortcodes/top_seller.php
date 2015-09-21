@@ -149,7 +149,7 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
             );
         }
         $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-        
+       
         if( $products->have_posts() ): 
         
         $new_title = $title;
@@ -174,7 +174,10 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
                 $att_icon_url = KUTETHEME_PLUGIN_URL . 'js_composer/imgs/top-seller-icon.png';
             }
         }
-
+        // Check lopp
+        if( $products->post_count <=1){
+            $loop = 'false';
+        }
         $data_carousel = array(
             "autoplay" => $autoplay,
             "navigation" => $navigation,

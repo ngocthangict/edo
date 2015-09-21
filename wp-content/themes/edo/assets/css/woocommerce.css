@@ -552,6 +552,7 @@ ul.products li.product .onsale{
     font-size: 14px;
     color: #ffb424;
     font-weight: bold;
+    margin-bottom: 0;
 }
 .woocommerce div.product p.price del ,
 .woocommerce div.product span.price del{
@@ -678,18 +679,18 @@ div.swatch-wrapper.selected:before{
 .woocommerce div.product form.cart .single_add_to_cart_button:hover:before{
     border-radius: 0%;
 }
-.summary .yith-wcwl-add-to-wishlist{
+.summary .yith-wcwl-add-to-wishlist + div.clear{
     display: none;
+}
+.summary .btn-add-comparre,
+.summary .compare.button{
+    margin-right: 20px;
 }
 .summary .box-control-button{
-    margin-top: 5px;
+    overflow: hidden;
 }
-.summary .box-control-button .clear{
-    display: none;
-}
-.summary .box-control-button .yith-wcwl-add-to-wishlist{
-    display: block;
-}
+
+
 .woocommerce div.product form.cart .variations{
     margin: 0;
     padding: 0;

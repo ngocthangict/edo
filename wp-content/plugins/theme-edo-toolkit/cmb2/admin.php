@@ -381,21 +381,26 @@ class KT_Admin {
     	) );
 
         $cmb_options_woocommerce->add_field( array(
-            'name'    => __( 'Display box top sellers in Single page', 'edo' ),
-            'id'      => 'kt_woo_single_display_topsellers',
+            'name'    => __( 'Display box right single product summary', 'edo' ),
+            'id'      => 'kt_woo_box_right_single_product_summary',
             'type'    => 'select',
             'default' => 'enable',
             'options' => array(
                 'enable'  => 'Enable',
                 'disable'  => 'Disable',
             ),
-            'desc'    => __( 'Setting Display box top sellers in Single page', 'edo' ),
+            'desc'    => __( 'Setting Display box right single product summary', 'edo' ),
         ) );
         $cmb_options_woocommerce->add_field( array(
-            'name'    => __( 'Icon for box top sellers', 'edo' ),
-            'id'      => 'kt_woo_single_icon_topsellers',
-            'type'    => 'file',
-            'desc'    => __( 'Icon for box top seller', 'edo' ),
+            'name'    => __( 'Display box bottom single product summary', 'edo' ),
+            'id'      => 'kt_woo_box_bottom_single_product_summary',
+            'type'    => 'select',
+            'default' => 'enable',
+            'options' => array(
+                'enable'  => 'Enable',
+                'disable'  => 'Disable',
+            ),
+            'desc'    => __( 'Setting Display box right single product summary', 'edo' ),
         ) );
         
         /**

@@ -240,7 +240,7 @@ if( ! function_exists('edo_menu_my_account')){
                 <?php $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
                 <li><a href="<?php echo $url; ?>"><?php _e( 'My Account', 'edo' ) ?></a></li>
             <?php endif; ?>
-            <?php if( edo_is_wl() && is_user_logged_in() ):
+            <?php if( edo_is_wc() && edo_is_wl() && is_user_logged_in() ):
                 $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
                 <li><a href="<?php echo $wishlist_url; ?>"><?php _e( 'My Wishlist', 'edo' ) ?></a></li>
             <?php endif; ?>
@@ -253,7 +253,7 @@ if( ! function_exists('edo_menu_my_account')){
             <?php else: ?>
                 <li><a href="<?php echo wp_login_url(); ?>"><?php _e('Login', 'edo') ?></a></li>
             <?php endif; ?>
-            <?php if( edo_is_cp() ): 
+            <?php if( edo_is_wc() && edo_is_cp() ): 
                 global $yith_woocompare; 
                 $count = count($yith_woocompare->obj->products_list); ?>
                 <li><a class="yith-woocompare-open" href="#"><?php _e( "Compare", 'edo') ?></a></li>

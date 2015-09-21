@@ -28,7 +28,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 	return;
 	 }
 ?>
-
+<?php
+$kt_woo_box_right_single_product_summary 	= edo_option('kt_woo_box_right_single_product_summary','enable');
+$kt_woo_box_bottom_single_product_summary 	= edo_option('kt_woo_box_bottom_single_product_summary','enable');
+?>
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
 		<div class="col-sm-5">
@@ -46,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 		<div class="col-sm-7">
 			<div class="row">
-				<div class="col-sm-12 col-md-7">
+				<div class="col-sm-12 <?php if( $kt_woo_box_right_single_product_summary == 'enable') echo esc_attr( 'col-md-7' ); else echo esc_attr( 'col-sm-12' ); ?>">
 					<div class="summary entry-summary">
 						<?php
 							/**
@@ -65,6 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					</div><!-- .summary -->
 				</div>
+				<?php if( $kt_woo_box_right_single_product_summary == 'enable' ):?>
 				<div class="col-sm-12 col-md-5">
 					<div class="single-box-right">
 						<?php
@@ -77,6 +81,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 					</div>
 				</div>
+				<?php endif;?>
+				<?php if($kt_woo_box_bottom_single_product_summary == 'enable'):?>
 				<div class="col-sm-12 col-md-12">
 					<?php
 						/**
@@ -87,6 +93,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						do_action( 'edo_single_product_box_bottom' );
 					?>
 				</div>
+			<?php endif;?>
 			</div>
 		</div>
 	</div>

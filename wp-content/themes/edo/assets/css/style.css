@@ -116,6 +116,7 @@
 	height: 30px;
 	padding-left: 10px;
 	padding-right: 20px;
+	border-radius: 20px;
 }
 .advanced-search .btn-search{
 	position: absolute;
@@ -2536,7 +2537,7 @@
 }
 .summary .box-control-button .link-sendmail:before{
 	font-family: 'FontAwesome';
-	font-size: 14px;
+	font-size: 18px;
 	content: "\f0e0";
 	color: #e5e5e5;
 }
@@ -2553,7 +2554,7 @@
 }
 .summary .box-control-button .link-print:before{
 	font-family: 'FontAwesome';
-	font-size: 14px;
+	font-size: 18px;
 	content: "\f02f";
 	color: #e5e5e5;
 }
@@ -2563,9 +2564,14 @@
 .block-category-list{
 	margin-top: 30px;
 	background: #fbfbfb;
+	padding: 30px;
 }
 .block-category-list .block-inner{
 	padding: 30px;
+}
+
+.block-category-list li{
+	list-style: none;
 }
 .block-category-list a{
 	height: 40px;

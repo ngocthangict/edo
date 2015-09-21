@@ -1,5 +1,5 @@
 <div class="advanced-search box-radius">
-	<form class="form-inline woocommerce">
+	<form class="form-inline" action="<?php echo esc_url( home_url( '/' ) ) ?>">
 		<div class="form-group search-input">
 			<input type="text" name="s" placeholder="<?php _e( 'What are you looking for?', 'edo' ); ?>" />
 		</div>

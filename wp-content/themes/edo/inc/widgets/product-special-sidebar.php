@@ -54,7 +54,7 @@ class Widget_KT_Product_Special extends WP_Widget {
                     <div class="product">
                         <div class="image">
                             <a href="<?php the_permalink();?>">
-                            <?php echo woocommerce_get_product_thumbnail('single_product_small_thumbnail_size');?>
+                            <?php the_post_thumbnail( array(100,100) );?>
                             </a>
                         </div>
                         <div class="product-name">
