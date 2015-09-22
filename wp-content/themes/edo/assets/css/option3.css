@@ -752,12 +752,21 @@ a:focus{
 .option3 .tab-cat-products .sub-cat li:hover a{
 	color: #333;
 }
+.option3 .tab-cat-products .sub-cat ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
 .option3 .tab-cat-products .sub-cat a{
 	color: #fff;
 }
 .option3 .tab-cat-products .cat-product{
 	margin-left: 23%;
 	padding-left: 22px;
+}
+.option3 .tab-cat-products .cat-product.hasnt_subcate{
+    margin-left: 0;
+    padding-left: 0;
 }
 .option3 .tab-cat-products .owl-prev{
 	top: -50px;

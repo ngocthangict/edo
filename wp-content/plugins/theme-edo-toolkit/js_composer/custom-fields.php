@@ -116,4 +116,8 @@ if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab_hot_deal.php' ) ){
         require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab_hot_deal.php' ;
     }
+    
+    if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_sidebar.php' ) ){
+        require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_sidebar.php' ;
+    }
 }

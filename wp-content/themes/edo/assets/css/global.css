@@ -487,7 +487,9 @@ img.alignright{
   padding: 3px;
 }
 .block3 .block-head .nav-tab.tab-category{
-
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 .block3 .block-head .nav-tab.tab-category li{
   list-style: none;
@@ -764,7 +766,9 @@ img.alignright{
   -o-transition: opacity 0.3s ease-out 0s;
   transition: opacity 0.3s ease-out 0s;
 }
-
+.hasnt_subcate .products .btn-quick-view{
+    top: 40%;
+}
 .products .btn-add-comparre,
 .products .compare,
 .products .compare.button,

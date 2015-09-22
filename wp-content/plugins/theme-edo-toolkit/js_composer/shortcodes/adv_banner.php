@@ -205,7 +205,7 @@ class WPBakeryShortCode_Banner_Adv extends WPBakeryShortCodesContainer {
         ob_start();
         ?>
         <!-- block banner -->
-        <div class="col-sm-12">
+        <div class="adv_banner">
             <div class="block block-banner2">
                 <div class="row">
                     <div class="box-left col-sm-12 col-md-8" style="<?php echo $style; ?>">
