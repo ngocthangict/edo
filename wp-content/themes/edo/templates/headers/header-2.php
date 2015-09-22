@@ -1,4 +1,7 @@
 <!-- header -->
+<?php
+$kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
+?>
 <header id="header" class="option2">
 	<div class="container">
 		<!-- main header -->
@@ -16,19 +19,22 @@
 								<li class="item">
 									<a href="#">
 										<span class="icon phone"></span>
-										<span class="line1"><?php _e( 'Call us:', 'edo' ) ?><br /><strong>0904567823</strong></span>
+										<span class="line1"><?php _e( 'Call us:', 'edo' ) ?><br /><strong><?php echo $kt_phone;?></strong></span>
 									</a>
 								</li>
-								<li class="item">
-									<a href="#">
-										<span class="icon wish-list"></span>
-										<span class="line1">Wish<br /><strong>List</strong></span>
-									</a>
-								</li>
+								<?php if( function_exists( 'YITH_WCWL' ) ):
+							        $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
+							        <li class="item">
+								        <a href="<?php echo esc_url( $wishlist_url ); ?>">
+											<span class="icon wish-list"></span>
+											<span class="line1"><?php _e( 'Wish' , 'edo' );?><br /><strong><?php _e('List' ,'edo'); ?></strong></span>
+										</a>
+									</li>
+							    <?php endif; ?>
 								<li class="item">
 									<a href="#">
 										<span class="icon login"></span>
-										<span class="line1">Login<br /><strong>Facebook  Twitter</strong></span>
+										<span class="line1"><?php _e('Login' , 'edo')?><br /><strong><?php _e('Facebook  Twitter' ,'edo');?></strong></span>
 									</a>
 								</li>
                                 <?php if( edo_is_wc() ): ?>
