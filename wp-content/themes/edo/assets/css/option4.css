@@ -143,7 +143,7 @@ a:focus{
 /*----------------------
 [2. Manin header]
 ----------------------*/
-.option4 #header{
+.header-style4{
 	border-top: 1px solid #aaaaab;
 	box-shadow: 0px 1px 5px #999;
 	background: #fff;
@@ -156,6 +156,7 @@ a:focus{
 	padding-top: 0;
 	width: auto;
 	display: inline-block;
+	float: left;
 }
 .option4 .advanced-search{
 	height: 42px;
@@ -195,7 +196,7 @@ a:focus{
 }
 .option4 .wrap-block-cl .language{
 	height: 40px;
-	width: 25%;
+	width: 50%;
 }
 .option4 .wrap-block-cl .currency{
 	width: 25%;
@@ -213,6 +214,19 @@ a:focus{
 	text-align: center;
 	line-height: 40px;
 	color: #1bd172;
+}
+.option4 .wrap-block-cl .user-info .main-link{
+	font-size: 0;
+}
+.option4 .wrap-block-cl .user-info.not-language{
+	width: 50%;
+	text-align: left;
+	border:none;
+}
+.option4 .wrap-block-cl .user-info.not-language .main-link{
+	font-size: 14px;
+}
+.option4 .wrap-block-cl .user-info .main-link .fa{
 	font-size: 18px;
 }
 .option4 .wrap-block-cl .user-info .fa{
@@ -244,6 +258,9 @@ a:focus{
 	width: 30%;
 	float: left;
 	border-left: 1px solid #eaeaea;
+}
+.option4 .block-wrap-cart.not-language{
+	width: 50%;
 }
 .option4 .block-wrap-cart .iner-block-cart{
 	height: 38px;

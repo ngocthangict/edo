@@ -288,8 +288,9 @@ if( ! function_exists( "edo_get_wpml" )){
             ob_start();
             ?>
             <div class="dropdown language">
-                <a data-toggle="dropdown" role="button">
+                <a class="curent-laguage" data-toggle="dropdown" role="button">
                     <img src="<?php echo esc_url($active_lang['country_flag_url']); ?>" alt="<?php echo $active_lang["translated_name"]; ?>" />
+                    <?php echo esc_attr( $active_lang["translated_name"] ) ?>
                 </a>
                 <ul class="dropdown-menu">
                     <?php foreach($languages as $lang): ?>
@@ -324,7 +325,7 @@ if( ! function_exists( 'edo_get_currency' ) ){
     }
 }
 add_action( 'edo_header_language', 'edo_get_wpml' );
-add_action( 'edo_header_language', 'edo_get_currency' );
+//add_action( 'edo_header_language', 'edo_get_currency' );
 
 if( ! function_exists('edo_search_form') ){
     function edo_search_form(){

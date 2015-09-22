@@ -26,18 +26,21 @@
 		<div class="row">
 			<div class="box-header">
 				<div class="col-sm-12 col-md-12 col-lg-3"></div>
+				<?php if(!edo_is_wpml()): ?>
+				<div class="block-wrap-search col-sm-6 col-md-6 col-lg-7">
+				<?php else:?>
 				<div class="block-wrap-search col-sm-6 col-md-6 col-lg-5">
+				<?php endif;?>
 					<?php do_action( 'edo_search_form_template' ) ?>
 				</div>
-                <?php if( edo_is_wc() ): ?>
-				<div class="wrap-block-cl col-sm-3 col-md-3 col-lg-2">
-                <?php else: ?>
-                <div class="wrap-block-cl col-sm-6 col-md-6 col-lg-4">
-                <?php endif; ?>
+				<?php if(edo_is_wpml()): ?>
+				<div class="wrap-block-cl col-sm-2 col-md-3 col-lg-2">
 					<div class="inner-cl box-radius">
-						<?php do_action( 'edo_header_language' ) ;?>
+						<?php edo_get_wpml() ;?>
 					</div>
 				</div>
+				<?php endif;?>
+
                 <?php if( edo_is_wc() ): ?>
 				    <div class="block-wrap-cart col-sm-3 col-md-3 col-lg-2">
                         <?php do_action( 'edo_mini_cart' ); ?>

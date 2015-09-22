@@ -24,10 +24,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="widget_shopping_cart_content">
     <?php if( $edo_used_header == 2 ): ?>
-    <a href="<?php echo $check_out_url; ?>">
+    <a class="link-cart" href="<?php echo esc_url( $check_out_url ); ?>">
 		<span class="icon cart"></span>
 		<span class="line1"><?php _e( 'Shopping Cart', 'edo' ) ?><br /><strong><?php echo $total; ?></strong></span>
 	</a>
+    <?php elseif( $edo_used_header == 3):?>
+        <div class="iner-block-cart">
+            <a href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="total"><?php echo $total; ?></span>
+            </a>
+        </div>
+    <?php elseif( $edo_used_header == 4 ):?>
+        <div class="iner-block-cart">
+            <a href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="total">
+                    <?php 
+                    if( $count > 1){
+                        echo $count." ".__( 'Items', 'edo');
+                    }else{
+                        echo $count." ".__( 'Item', 'edo');
+                    }
+                    ?>
+                </span>
+            </a>
+        </div>
     <?php else: //Option 1 ?>
     <div class="iner-block-cart box-radius">
     	<a href="<?php echo $check_out_url; ?>">
