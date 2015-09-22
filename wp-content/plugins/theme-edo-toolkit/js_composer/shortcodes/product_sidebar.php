@@ -180,20 +180,13 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
             //Carousel            
             'autoplay'    => 'false', 
             'navigation'  => 'false',
-            'margin'      => 20,
             'slidespeed'  => 250,
             'nav'         => 'true',
             'loop'        => 'true',
             
-            //Default
-            'use_responsive' => 1,
-            'items_destop'   => 5,
-            'items_tablet'   => 3,
-            'items_mobile'   => 1,
-            
-            'css' => '',
+            'css'         => '',
             'css_animation' => '',
-            'el_class' => '',
+            'el_class'    => '',
         ), $atts ) );
         
          global $woocommerce_loop;
@@ -279,6 +272,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
             
             if( $template == 'template-1' ){
                 ?>
+            <div class="option3">
                 <!-- specail -->
 				<div class="block block-specail3 template-1">
 					<div class="block-head">
@@ -291,6 +285,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
 					</div>
 				</div>
 				<!-- ./specail -->
+            </div>
                 <?php
             }elseif( $template == 'template-2' ){
                 
