@@ -543,6 +543,11 @@ a:focus{
 .block-top-review .block-inner{
 	padding: 0;
 }
+.block-top-review ul.list-product {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 .block-top-review .list-product .product{
 	border-bottom: 1px solid #eaeaea;
 	padding: 7px 20px;
@@ -552,13 +557,14 @@ a:focus{
 	display: none;
 }
 .block-top-review .list-product .product .product-name{
-	width: 100%;
-	overflow: hidden;
-	float: left;
+	
 }
 .block-top-review .list-product .product .price-box,
 .block-top-review .list-product .product .product-star{
 	padding-left: 36px;
+}
+.block-top-review .list-product .price-box .price del{
+    padding-left:15px;
 }
 .block-top-review .list-product .product .order{
 	width: 26px;

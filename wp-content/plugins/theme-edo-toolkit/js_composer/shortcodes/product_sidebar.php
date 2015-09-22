@@ -119,9 +119,10 @@ vc_map( array(
             'heading' => __( 'Loop', 'edo' ),
 			'param_name' => 'loop',
 			'value' => array(
+				__( 'No', 'js_composer' )  => 'false',
 				__( 'Yes', 'js_composer' ) => 'true',
-				__( 'No', 'js_composer' )  => 'false'
 			),
+            'std'         => 'false',
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'edo' ),
             'group' => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
@@ -272,25 +273,74 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
             
             if( $template == 'template-1' ){
                 ?>
-            <div class="option3">
-                <!-- specail -->
-				<div class="block block-specail3 template-1">
-					<div class="block-head">
-						<h4 class="widget-title"><?php echo $title; ?></h4>
-					</div>
-					<div class="block-inner">
-						<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                    		<?php $this->edo_loop_product( $products, $carousel, 'list-product-sidebar-1' ) ?>
-                        <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
-					</div>
-				</div>
-				<!-- ./specail -->
-            </div>
+                <div class="option3">
+                    <!-- specail -->
+    				<div class="block block-specail3 template-1">
+    					<div class="block-head">
+    						<h4 class="widget-title"><?php echo $title; ?></h4>
+    					</div>
+    					<div class="block-inner">
+    						<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                        		<?php $this->edo_loop_product( $products, $carousel, 'list-product-sidebar-1' ) ?>
+                            <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+    					</div>
+    				</div>
+    				<!-- ./specail -->
+                </div>
                 <?php
             }elseif( $template == 'template-2' ){
-                
+                ?>
+                <div class="option3">
+                    <!-- carousel-slide -->
+                    <div class="block carousel-slide template-2">
+                    	<div class="block-head">
+                    		<h4 class="widget-title"><?php echo $title; ?></h4>
+                    	</div>
+                    	<div class="block-inner">
+                            <?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                        		<?php $this->edo_loop_product( $products, $carousel, 'list-product-sidebar-2' ) ?>
+                            <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+                    	</div>
+                    </div>
+                    <!-- ./carousel-slide -->
+                </div>
+                <?php
             }elseif( $template == 'template-3' ){
-                
+                $i = 1;
+                ?>
+                <div class="option3">
+                    <!-- Top review -->
+    				<div class="block block-top-review template-3">
+    					<div class="block-head">
+    						<h4 class="widget-title"><?php echo $title; ?></h4>
+    					</div>
+    					<div class="block-inner">
+    						<div class="kt-owl-carousel" <?php echo $carousel; ?>>
+    							<?php while( $products->have_posts() ): $products->the_post(); ?>
+                                    <?php if( $i == 1 ): ?>
+                                        <ul class="list-product">
+                                    <?php endif; ?>
+                                        <li class="product <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
+                                            <div class="product-name">
+                                                <a class="product-name" href="<?php the_permalink(); ?>"><span class="order"><?php echo $i; ?></span><?php the_title(); ?></a>
+                                            </div>
+                                            <?php wc_get_template_part( 'content', 'list-product-sidebar-3' ); ?>
+                                        </li>
+                                     <?php  $i++; ?>
+                                     <?php if( $i == 6 ): $i = 1; ?>
+    	      						   </ul>
+                                     <?php endif; ?>
+                                <?php endwhile; ?>
+                                <?php 
+                                    wp_reset_query();
+                                    wp_reset_postdata(); 
+                                ?>
+    						</div>
+    					</div>
+    				</div>
+    				<!-- ./Top review -->
+                </div>
+                <?php
             }
         if( $type == 'most-review' ){
             remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
