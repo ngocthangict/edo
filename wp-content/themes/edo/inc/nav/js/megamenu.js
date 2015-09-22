@@ -72,7 +72,7 @@
             $preview.hide();
         });
         
-        
+        jQuery( '.edit-menu-item-color' ).wpColorPicker({defaultColor:true});
         
         
         $( 'body' ).on( 'click', '.kt_image_menu', function ( e ){

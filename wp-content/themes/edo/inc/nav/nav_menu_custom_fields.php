@@ -17,6 +17,12 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
     ?>
     <div class="clearfix"></div>
     <div class="container-megamenu container-<?php echo $depth; ?>">
+        <p class="field-enable description description-wide">
+            <div class="wide"><?php _e( 'Item color: ', 'edo'); ?></div>
+            <label for="menu-item-color-<?php echo $item_id; ?>">
+                <input type="text" name="menu-item-megamenu-color[<?php echo $item_id; ?>]" value="<?php echo $item->color; ?>" class="edit-menu-item-color" data-default-color="#ef4896" data-id="<?php echo $item_id; ?>" id="menu-item-color-<?php echo $item_id; ?>" />
+            </label>
+        </p>
         <p class="field-image description description-wide">
             <?php
                 $preview = false;
@@ -38,6 +44,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
             <span class="clearfix"></span>
             <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', 'edo'); ?>" />
         </p>
+        
         <?php 
             if( post_type_exists( 'megamenu' ) ){
                 $post_type = 'megamenu';
@@ -74,7 +81,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                             </label>
                         </p>
                     </div>
-                </div><!-- #content-megamenu-<?php echo $item_id; ?> -->
+                </div><!-- #content-megamenu -->
             </div><!-- .wrapper-megamenu -->
         <?php  
             wp_reset_query();

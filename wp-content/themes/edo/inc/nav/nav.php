@@ -30,7 +30,7 @@ if( ! class_exists( 'KT_MEGAMENU' ) ) {
     	 */
     	function __construct() {
     		
-            $this->custom_fields = array('img_icon', 'menu_page', 'enable');
+            $this->custom_fields = array('img_icon', 'menu_page', 'enable', 'color');
             
     		// add custom menu fields to menu
     		add_filter( 'wp_setup_nav_menu_item', array( $this, 'kt_add_custom_nav_fields' ) );
@@ -103,6 +103,7 @@ if( ! class_exists( 'KT_MEGAMENU' ) ) {
 		 */
 		function register_scripts($hook) {
             if ( 'nav-menus.php' != $hook ) return;
+            wp_enqueue_style( 'wp-color-picker' );
             
             wp_enqueue_style( 'kt-style-mega-menu', THEME_URL . '/inc/nav/css/megamenu.css');
             wp_enqueue_media();

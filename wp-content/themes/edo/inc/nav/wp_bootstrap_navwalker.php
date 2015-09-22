@@ -19,7 +19,6 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
 	 */
-     
     /**
 	 * @var string $megamenu_enable
 	 */
@@ -33,6 +32,11 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @var string $megamenu_menu_page
 	 */
     private $megamenu_menu_page = 0;
+    
+    /**
+     * @string $megamenu_menu_color
+     */
+    private $megamenu_color = '';
     
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -52,9 +56,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         
-        $this->megamenu_enable = get_post_meta( $item->ID, '_menu_item_megamenu_enable', true );
+        $this->megamenu_enable    = get_post_meta( $item->ID, '_menu_item_megamenu_enable', true );
         $this->megamenu_menu_page = get_post_meta( $item->ID, '_menu_item_megamenu_menu_page', true );
-        $this->megamenu_img_icon = get_post_meta( $item->ID, '_menu_item_megamenu_img_icon', true );
+        $this->megamenu_img_icon  = get_post_meta( $item->ID, '_menu_item_megamenu_img_icon', true );
+        $this->megamenu_color     = get_post_meta( $item->ID, '_menu_item_megamenu_color', true );
 		/**
 		 * Dividers, Headers or Disabled
 		 * =============================
@@ -94,8 +99,12 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output .= $indent . '<li' . $id . $value . $class_names .'>';
-
+			$output .= $indent . '<li' . $id . $value . $class_names;
+            
+            if( $this->megamenu_color ){
+                $output .= 'data-color="' .$this->megamenu_color. '"';
+            }
+            $output .= '>';
 			$atts = array();
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
