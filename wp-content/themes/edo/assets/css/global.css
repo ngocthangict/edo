@@ -412,8 +412,7 @@ img.alignright{
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #eaeaea;
-  border-left: 1px solid #eaeaea;
+  border: 1px solid #eaeaea;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -421,6 +420,12 @@ img.alignright{
   max-width: 100%;
   width: 100%;
   margin-top: 30px;
+}
+.block-categories-4{
+    background-color: transparent;
+}
+.block-categories-4 .block3{
+  margin-top: 0px;
 }
 .block3 .block-head{
   border-bottom: 1px solid #eaeaea;

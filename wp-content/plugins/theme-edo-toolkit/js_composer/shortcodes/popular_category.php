@@ -24,6 +24,7 @@ vc_map( array(
             'value'       => array(
         		__( 'Show children categories', 'edo' ) => 'type-1',
                 __( 'Show products', 'edo' ) => 'type-2',
+                __( 'Show box', 'edo' ) => 'type-3',
         	),
         ),
         array(
@@ -238,15 +239,6 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         }else{
             $ids = array();
         }
-        // get terms and workaround WP bug with parents/pad counts
-		$args = array(
-			'orderby'    => 'id',
-			'order'      => 'desc',
-			'hide_empty' => 0,
-            'include'    => $ids,
-			'pad_counts' => true,
-		);
-        $product_categories = get_terms( 'product_cat', $args );
         
         $data_carousel = array(
             "autoplay"   => $autoplay,
@@ -292,56 +284,57 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
 			<div class="popular-inner">
 				<div class="list-popular-cat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
 					<?php 
-                    if( $product_categories ):
-                        foreach($product_categories as $term): 
-                        
-                        $arg_child['parent'] = $term->term_id;
-                        
-                        $term_link = esc_attr(get_term_link( $term ) );
-                        
-                        $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
-                        
-                        if ( $thumbnail_id ) {
-                        	$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-                            if( is_array($image) && isset($image[0]) && $image[0] ){
-                                $image = $image[0];
-                            }else{
-                                $image = wc_placeholder_img_src();
-                            }
-                        } else {
-                        	$image = wc_placeholder_img_src();
-                        }
-                        $children = get_terms( 'product_cat', $arg_child );
-                    ?>
-                    <div class="item">
-						<div class="image">
-							<img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($term->name) ?>" />
-						</div>
-						<div class="inner">
-							<h5 class="parent-categories"><?php echo esc_attr($term->name) ?></h5>
-                            <?php if( count( $children ) >0 ): ?>
-    							<ul class="sub-categories">
-    								<?php foreach($children as $child): ?>
-                                        <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
-                                        <li>
-                                            <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-    							</ul>
-                            <?php endif; ?>
-						</div>
-					</div>
+                    if( $ids && count( $ids ) > 0 ):
+                        foreach($ids as $id): 
+                            $term = get_term( $id, 'product_cat' );
+                            if( $term ):
+                                $arg_child['parent'] = $term->term_id;
+                                
+                                
+                                $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+                                
+                                if ( $thumbnail_id ) {
+                                	$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                                    if( is_array($image) && isset($image[0]) && $image[0] ){
+                                        $image = $image[0];
+                                    }else{
+                                        $image = wc_placeholder_img_src();
+                                    }
+                                } else {
+                                	$image = wc_placeholder_img_src();
+                                }
+                                $children = get_terms( 'product_cat', $arg_child );
+                            ?>
+                            <div class="item">
+        						<div class="image">
+        							<img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($term->name) ?>" />
+        						</div>
+        						<div class="inner">
+        							<h5 class="parent-categories"><?php echo esc_attr($term->name) ?></h5>
+                                    <?php if( count( $children ) >0 ): ?>
+            							<ul class="sub-categories">
+            								<?php foreach($children as $child): ?>
+                                                <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
+                                                <li>
+                                                    <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
+                                                </li>
+                                            <?php endforeach; ?>
+            							</ul>
+                                    <?php endif; ?>
+        						</div>
+        					</div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                     <?php endif; ?>               
 				</div>
 			</div>
 		</div>
 		<!-- ./block-popular-cat-->
-        <?php else: ?>
+        <?php elseif( $type == 'type-2' ): ?>
         <div class="block-popular-cat2 <?php echo $elementClass; ?>">
             <h3 class="title"><?php echo $title; ?></h3>
             <?php 
-            if( $product_categories ):
+            if( $ids && count( $ids ) > 0 ):
                 $meta_query = WC()->query->get_meta_query();
                 $args = array(
         			'post_type'			  => 'product',
@@ -354,42 +347,108 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                     'order'               => $order
         		);
                 $i = 1;
-                foreach($product_categories as $term): 
-                    $args['tax_query'] = array(
-                        array(
-                			'taxonomy' => 'product_cat',
-                			'field' => 'id',
-                			'terms' => $term->term_id
-                		)
-                    );
-                    $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                    if( $products->have_posts() ):
-                    ?>
-                        <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo $term->slug ?>">
-                            <div class="block-inner">
-                                <div class="cat-name"><?php echo $term->name ?></div>
-                                <div class="box-subcat">
-                                    <ul class="list-subcat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                                        <?php while( $products->have_posts() ): $products->the_post(); ?>
-                                            <li class="item">
-                                                <a href="<?php the_permalink(); ?>">
-                                                    <?php 
-                                						echo woocommerce_get_product_thumbnail();
-                                					?>
-                                                </a>
-                                            </li>
-                                        <?php endwhile; ?>
-                                    </ul>
+                foreach($ids as $id):
+                    $term = get_term( $id, 'product_cat' );
+                    if( $term ):
+                        $args['tax_query'] = array(
+                            array(
+                    			'taxonomy' => 'product_cat',
+                    			'field' => 'id',
+                    			'terms' => $term->term_id
+                    		)
+                        );
+                        $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                        if( $products->have_posts() ):
+                        ?>
+                            <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo $term->slug ?>">
+                                <div class="block-inner">
+                                    <div class="cat-name"><?php echo $term->name ?></div>
+                                    <div class="box-subcat">
+                                        <ul class="list-subcat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                            <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                                <li class="item">
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <?php 
+                                    						echo woocommerce_get_product_thumbnail();
+                                    					?>
+                                                    </a>
+                                                </li>
+                                            <?php endwhile; ?>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php $i++; endif; ?>
-                    <?php 
-                        wp_reset_query();
-                        wp_reset_postdata(); 
-                    ?>
+                        <?php $i++; endif; ?>
+                        <?php 
+                            wp_reset_query();
+                            wp_reset_postdata(); 
+                        ?>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
+        </div>
+        <?php else: ?>
+        <div class="option4">
+            <!-- block categories -->
+			<div class="block-categories block-categories-4 kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+				<?php 
+                    if( $ids && count( $ids ) > 0 ):
+                    
+                        $arg_child = array(
+                			'orderby'    => $orderby,
+                			'order'      => $order,
+                			'hide_empty' => $hide,
+                			'pad_counts' => true,
+                            'number'     => $number
+                		);
+                        
+                        foreach($ids as $id):
+                            $term = get_term( $id, 'product_cat' ); 
+                            if( $term ):
+                                $arg_child['parent'] = $term->term_id;
+                                
+                                $term_link = esc_attr(get_term_link( $term ) );
+                                
+                                $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+                                
+                                if ( $thumbnail_id ) {
+                                	$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                                    if( is_array($image) && isset($image[0]) && $image[0] ){
+                                        $image = $image[0];
+                                    }else{
+                                        $image = wc_placeholder_img_src();
+                                    }
+                                } else {
+                                	$image = wc_placeholder_img_src();
+                                }
+                                
+                                $children = get_terms( 'product_cat', $arg_child );
+                            ?>
+                            <div class="block3 parent">
+            					<div class="block-head">
+            						<a href="<?php echo $term_link ?>"><?php echo $term->name ?></a>
+            					</div>
+            					<div class="block-inner">
+            						<a href="<?php echo $term_link ?>"><img src="<?php echo esc_attr($image) ?>" alt="<?php echo $term->name ?>" /></a>
+                                    <?php if( count( $children ) >0 ): ?>
+                                        <div class="sub-cat">
+                							<ul>
+                								<?php foreach($children as $child): ?>
+                                                    <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
+                                                    <li>
+                                                        <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                							</ul>
+                						</div>
+                                    <?php endif; ?>
+            					</div>
+            				</div><!-- block3 -->
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+			</div>
+			<!-- ./block categories -->
         </div>
         <?php
         endif;

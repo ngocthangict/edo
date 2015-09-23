@@ -25,7 +25,11 @@ vc_map( array(
                 __( 'Box 2', 'edo' ) => 'box-2',
                 __( 'Box 3', 'edo' ) => 'box-3',
                 __( 'Box 4', 'edo' ) => 'box-4',
-                __( 'Box 5', 'edo' ) => 'box-5'
+                __( 'Box 5', 'edo' ) => 'box-5',
+                //same box 3
+                __( 'Box 6', 'edo' ) => 'box-6',
+                //same box 4
+                __( 'Box 7', 'edo' ) => 'box-7'
         	),
         ),
         array(
@@ -161,14 +165,14 @@ vc_map( array(
     		'heading'     => __( 'Banner', 'edo' ),
     		'param_name'  => 'banner',
             'description' => __( 'Setup banner for the box on bottom', 'edo' ),
-            "dependency"  => array( "element" => "box_type", "value" => array( 'box-3' ) ),
+            "dependency"  => array( "element" => "box_type", "value" => array( 'box-3', 'box-6' ) ),
     	),
         array(
             "type"        => "textfield",
             "heading"     => __( "Link Banner", 'edo' ),
             "param_name"  => "link_banner",
             "admin_label" => false,
-            "dependency"  => array( "element" => "box_type", "value" => array( 'box-3' ) ),
+            "dependency"  => array( "element" => "box_type", "value" => array( 'box-3', 'box-6' ) ),
         ),
         array(
     		'type'        => 'attach_images',
@@ -555,12 +559,17 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 				</div>
 				<!-- ./block tabs -->
                 <?php
-            }elseif( $box_type == 'box-3' ){
+            }elseif( $box_type == 'box-3' || $box_type == 'box-6' ){
                 $cate_obj = array();
                 ?>
                 <!-- new-arrivals -->
+                <?php if( $box_type == 'box-3' ): ?>
                 <div class="option3">
 					<div class="block3 block-new-arrivals box-3">
+                <?php else: ?>
+                <div class="option4">
+					<div class="block3 block-new-arrivals box-6">
+                <?php endif; ?>
 						<div class="block-head">
 							<h3 class="block-title"><?php echo $title; ?></h3>
 							<ul class="nav-tab default">
@@ -619,11 +628,16 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 </div>
 				<!-- new-arrivals -->
                 <?php
-            }elseif( $box_type == 'box-4' ){
+            }elseif( $box_type == 'box-4' || $box_type == 'box-7' ){
                 ?>
                 <!-- Hot deals -->
+                <?php if( $box_type == 'box-4' ): ?>
                 <div class="option3">
 					<div class="block3 block-hotdeals box-4">
+                <?php else: ?>
+                <div class="option4">
+					<div class="block3 block-hotdeals box-7">
+                <?php endif; ?>
 						<div class="block-head">
 							<h3 class="block-title"><?php echo $title; ?></h3>
                             <?php if( $link ): ?>

@@ -622,6 +622,11 @@ a:focus{
 	color: #fff;
 	line-height: 24px;
 }
+.block-categories .sub-cat ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 .block-categories .sub-cat li{
 	padding-left: 20px;
 }
