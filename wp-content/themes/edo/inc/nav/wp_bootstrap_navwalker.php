@@ -34,9 +34,14 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
     private $megamenu_menu_page = 0;
     
     /**
-     * @string $megamenu_menu_color
+     * @string $megamenu_color
      */
     private $megamenu_color = '';
+    
+    /**
+     * @string $megamenu_css
+     * */
+    private $megamenu_css = array();
     
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -55,7 +60,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-        
+        global $custom_css;
         $this->megamenu_enable    = get_post_meta( $item->ID, '_menu_item_megamenu_enable', true );
         $this->megamenu_menu_page = get_post_meta( $item->ID, '_menu_item_megamenu_menu_page', true );
         $this->megamenu_img_icon  = get_post_meta( $item->ID, '_menu_item_megamenu_img_icon', true );
@@ -93,8 +98,12 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
             }
 			if ( in_array( 'current-menu-item', $classes ) )
 				$class_names .= ' active';
-
-			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+            
+            if( $this->megamenu_color ){
+                $class_names = 'custom_css_' .$item->ID;
+            }
+            
+            $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
@@ -103,6 +112,12 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
             
             if( $this->megamenu_color ){
                 $output .= 'data-color="' .$this->megamenu_color. '"';
+                $css = array( 'item' => 'custom_css_' .$item->ID, 'color' => $this->megamenu_color );
+                if( $custom_css && is_array( $custom_css ) ){
+                    $custom_css [] = $css;
+                }else{
+                    $custom_css = array($css);
+                }
             }
             $output .= '>';
 			$atts = array();
@@ -112,14 +127,12 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			// If item has_children add atts to a.
 			if ( $args->has_children && $depth === 0 ) {
-				$atts['href']   		= '#';
 				$atts['data-toggle']	= 'dropdown';
 				$atts['class']			= 'dropdown-toggle';
 				$atts['aria-haspopup']	= 'true';
-			} else {
-				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}
-
+            $atts['href'] = ! empty( $item->url ) ? $item->url : '';
+            
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
 
 			$attributes = '';
