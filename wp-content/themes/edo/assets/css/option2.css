@@ -35,6 +35,7 @@
 }
 .block-vertical-menu-style2{
 	position: relative;
+	min-height: 35px;
 }
 .block-vertical-menu-style2 .block-vertical-inner{
 	position: absolute;

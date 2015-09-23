@@ -409,6 +409,23 @@
             }
         })
 
+        // Find store
+        $(document).on('click','#find-store-button',function(){
+            
+            var t = $(this);
+            var value = $(this).closest('.find-store-form').find('input.input-box-text').val();
+            $(this).closest('.find-store-form').find('find-store-messages').html('');
+            if(value == ""){
+                $(this).closest('.find-store-form').find('.find-store-messages').html('Please enter Zipcode, City or Country');
+            }else{
+                $(this).html('Loading...');
+                setTimeout(function(){t.html('Go');}, 1000);
+                $(this).closest('.find-store-form').find('.find-store-messages').html('Did not find any results');
+            }
+            
+            
+        })
+
     });
     /* ---------------------------------------------
      Scripts initialization

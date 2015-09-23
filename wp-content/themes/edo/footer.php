@@ -17,6 +17,7 @@
     $kt_subscribe_title = edo_option('kt_subscribe_title','');
     $kt_subscribe_subtitle = edo_option('kt_subscribe_subtitle','');
     $kt_subscribe_description = edo_option('kt_subscribe_description','');
+    $kt_subscribe_success_message = edo_option('kt_subscribe_success_message','');
 ?>
 <!-- footer -->
 <footer id="footer">
@@ -39,9 +40,10 @@
 								<div class="block-info clearfix">
 									<?php _e( 'Enter your zip code, city or country to find the closest EDO Store near you!', 'edo');?>
 								</div>
-								<div class="block-input-box box-radius clearfix">
+								<div class="block-input-box box-radius clearfix find-store-form">
 									<input type="text" class="input-box-text" placeholder="Zip code, City, Country">
-									<button class="block-button main-bg"><?php _e( 'Go', 'edo');?></button>
+									<button id="find-store-button" class="block-button main-bg"><?php _e( 'Go', 'edo');?></button>
+									<div class="find-store-messages"></div>
 								</div>
 							</div>
 						</div>
@@ -62,8 +64,7 @@
 									<?php echo $kt_subscribe_description;?>
 								</div>
 								<div class="block-input-box box-radius clearfix">
-									<input type="text" class="input-box-text" placeholder="Email address">
-									<button class="block-button main-bg">Go</button>
+									<?php echo do_shortcode( '[mailchimp opt_in="yes" title="" text_before=""]'.$kt_subscribe_success_message.'[/mailchimp]' );?>
 								</div>
 							</div>
 						</div>

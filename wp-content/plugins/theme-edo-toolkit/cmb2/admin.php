@@ -297,6 +297,13 @@ class KT_Admin {
             'type' => 'textarea',
             'default'=>__( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'edo'),
         ) );
+        
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe form Success message', 'edo' ),
+            'id'   => 'kt_subscribe_success_message',
+            'type' => 'textarea',
+            'default'=>__( 'Success! Check your inbox or spam folder for a message containing a confirmation link.', 'edo'),
+        ) );
 
         $cmb_options_footer->add_field( array(
     		'name' => __( 'Copyrights', 'edo' ),

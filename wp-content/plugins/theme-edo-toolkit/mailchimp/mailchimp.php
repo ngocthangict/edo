@@ -111,8 +111,8 @@ class KT_Mailchimp{
                 $content = __('Success!  Check your inbox or spam folder for a message containing a confirmation link.', 'kt_mailchimp');
             
             $output .= '<form class="mailchimp-form clearfix mailchimp-layout-'.esc_attr($layout).'" action="#" method="post">';
-                $email = '<input name="email" class="form-control" required="" type="email" placeholder="'.__('E-mail address', 'kt_mailchimp').'"/>';
-                $button = '<button class="btn btn-default mailchimp-submit" data-loading="'.__('Loading ...', 'kt_mailchimp').'" data-text="'.__('Subscribe', 'kt_mailchimp').'"  type="submit">'.__('Subscribe', 'kt_mailchimp').'</button>';
+                $email = '<input name="email" class="mailchip-input-text" required="" type="email" placeholder="'.__('E-mail address', 'kt_mailchimp').'"/>';
+                $button = '<button class="btn btn-default mailchimp-submit" data-loading="'.__('Loading ...', 'kt_mailchimp').'" data-text="'.__('Go', 'kt_mailchimp').'"  type="submit">'.__('Go', 'kt_mailchimp').'</button>';
                 if($layout == 'one'){
                     $text_repate = '<div class="input-group">%s<div class="input-group-btn">%s</div></div>'; 
                 }else{

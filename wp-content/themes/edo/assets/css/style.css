@@ -2798,13 +2798,19 @@
   padding: 0 15px;
 
 }
-.footer-block-box .block-input-box .input-box-text{
+.footer-block-box .block-input-box .input-group,
+.footer-block-box .block-input-box .input-group-btn{
+	position: static;
+}
+.footer-block-box .block-input-box .input-box-text,
+.footer-block-box .block-input-box .mailchip-input-text{
   width: 100%;
   border: none;
   border-radius: 0;
   height: 32px;
 }
-.footer-block-box .block-input-box .block-button{
+.footer-block-box .block-input-box .block-button,
+.footer-block-box .block-input-box .mailchimp-submit{
   position: absolute;
   top: 2px;
   right: 2px;
@@ -2815,16 +2821,38 @@
   border: none;
   padding: 0 10px;
   line-height: 28px;
+  background-color: #5a88ca;
 }
-.footer-block-box .block-input-box .block-button:hover{
+.footer-block-box .block-input-box .block-button:hover,
+.footer-block-box .block-input-box .mailchimp-submit:hover{
 	opacity: 0.8;
 }
-.footer-block-box .block-input-box .block-button:after{
+.footer-block-box .block-input-box .block-button:after,
+.footer-block-box .block-input-box .mailchimp-submit:after{
   font-family: 'FontAwesome';
   content: "\f105";
   font-size: 14px;
   margin-left: 3px;
 }
+.footer-block-box .mailchimp-success{
+	position: absolute;
+	top: 35px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+	padding: 10px;
+	color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
+}
+.footer-block-box .mailchimp-error{
+	color: #a94442;
+}
+
 .footer-block-box .block-owl{
 	margin-top: 30px;
 }
