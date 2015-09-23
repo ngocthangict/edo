@@ -100,6 +100,11 @@ if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/banner_carouse
 if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php' ) ){
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php' ;
 }
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php' ;
+}
+
 if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ) ){
         require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ;

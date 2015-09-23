@@ -335,45 +335,44 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
             <h3 class="title"><?php echo $title; ?></h3>
             <?php 
             if( $ids && count( $ids ) > 0 ):
-                $meta_query = WC()->query->get_meta_query();
-                $args = array(
-        			'post_type'			  => 'product',
-        			'post_status'		  => 'publish',
-        			'ignore_sticky_posts' => 1,
-        			'posts_per_page' 	  => $number,
-                    'suppress_filter'     => true,
-        			'meta_query'          => $meta_query,
-                    'orderby'             => $orderby2,
-                    'order'               => $order
-        		);
                 $i = 1;
                 foreach($ids as $id):
                     $term = get_term( $id, 'product_cat' );
                     if( $term ):
-                        $args['tax_query'] = array(
-                            array(
-                    			'taxonomy' => 'product_cat',
-                    			'field' => 'id',
-                    			'terms' => $term->term_id
-                    		)
-                        );
-                        $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                        if( $products->have_posts() ):
+                        $arg_child['parent'] = $term->term_id;
+                        
+                        $children = get_terms( 'product_cat', $arg_child );
+                        
+                        if( $children ):
                         ?>
                             <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo $term->slug ?>">
                                 <div class="block-inner">
                                     <div class="cat-name"><?php echo $term->name ?></div>
                                     <div class="box-subcat">
                                         <ul class="list-subcat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                                            <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                            <?php foreach( $children as $child ): ?>
+                                                <?php 
+                                                    $child_link = esc_attr(get_term_link( $child ) ); 
+                                                    
+                                                    $thumbnail_id = absint( get_woocommerce_term_meta( $child->term_id, 'thumbnail_id', true ) );
+                                    
+                                                    if ( $thumbnail_id ) {
+                                                    	$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                                                        if( is_array($image) && isset($image[0]) && $image[0] ){
+                                                            $image = $image[0];
+                                                        }else{
+                                                            $image = wc_placeholder_img_src();
+                                                        }
+                                                    } else {
+                                                    	$image = wc_placeholder_img_src();
+                                                    }
+                                                ?>
                                                 <li class="item">
-                                                    <a href="<?php the_permalink(); ?>">
-                                                        <?php 
-                                    						echo woocommerce_get_product_thumbnail();
-                                    					?>
+                                                    <a href="<?php echo $child_link; ?>">
+                                                        <img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($child->name) ?>" />
                                                     </a>
                                                 </li>
-                                            <?php endwhile; ?>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
                                 </div>
