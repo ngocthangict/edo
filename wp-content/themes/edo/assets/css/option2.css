@@ -33,7 +33,21 @@
 .option2 .main-header .logo{
 	padding: 0;
 }
-
+.block-vertical-menu-style2{
+	position: relative;
+}
+.block-vertical-menu-style2 .block-vertical-inner{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+.block-vertical-menu-style2 .vertical-menu-content{
+	display: none;
+}
+.home .block-vertical-menu-style2 .vertical-menu-content{
+	display: block;
+}
 /*----------------
 [2. Styles for devices(>1200px)]
 */

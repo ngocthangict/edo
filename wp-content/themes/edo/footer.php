@@ -13,6 +13,10 @@
     $hotline   = edo_get_info_hotline();
     $copyright = edo_get_info_copyrights();
     $social_icons = edo_get_socials();
+
+    $kt_subscribe_title = edo_option('kt_subscribe_title','');
+    $kt_subscribe_subtitle = edo_option('kt_subscribe_subtitle','');
+    $kt_subscribe_description = edo_option('kt_subscribe_description','');
 ?>
 <!-- footer -->
 <footer id="footer">
@@ -27,17 +31,17 @@
 									<div class="block-icon">
 										<img src="<?php echo THEME_URL . 'assets/' ?>images/location-icon.png" alt="store icon" />
 									</div>
-									<div class="block-title-text text-sm">FIND A</div>
-									<div class="block-title-text text-lg">edo store</div>
+									<div class="block-title-text text-sm"><?php _e( 'FIND A', 'edo' );?></div>
+									<div class="block-title-text text-lg"><?php _e( 'edo store', 'edo' );?></div>
 								</div>
 							</div>
 							<div class="block-inner">
 								<div class="block-info clearfix">
-									Enter your zip code, city or country to find the closest EDO Store near you!
+									<?php _e( 'Enter your zip code, city or country to find the closest EDO Store near you!', 'edo');?>
 								</div>
 								<div class="block-input-box box-radius clearfix">
 									<input type="text" class="input-box-text" placeholder="Zip code, City, Country">
-									<button class="block-button main-bg">Go</button>
+									<button class="block-button main-bg"><?php _e( 'Go', 'edo');?></button>
 								</div>
 							</div>
 						</div>
@@ -49,13 +53,13 @@
 									<div class="block-icon">
 										<img src="<?php echo THEME_URL . 'assets/' ?>images/email-icon.png" alt="store icon">
 									</div>
-									<div class="block-title-text text-sm">SUBSCRIBE TO</div>
-									<div class="block-title-text text-lg">edo shop EMAILS</div>
+									<div class="block-title-text text-sm"><?php echo $kt_subscribe_title;?></div>
+									<div class="block-title-text text-lg"><?php echo $kt_subscribe_subtitle;?></div>
 								</div>
 							</div>
 							<div class="block-inner">
 								<div class="block-info clearfix">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry
+									<?php echo $kt_subscribe_description;?>
 								</div>
 								<div class="block-input-box box-radius clearfix">
 									<input type="text" class="input-box-text" placeholder="Email address">

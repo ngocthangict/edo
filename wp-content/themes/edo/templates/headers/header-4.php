@@ -11,7 +11,7 @@
 							</div>
 							<div class="shop-menu">
 								<div class="icon">
-									<span>Shop</span>
+									<span><?php _e( 'Shop', 'edo');?></span>
 								</div>
 								<!-- Block vertical-menu -->
 								<div class="block block-vertical-menu">

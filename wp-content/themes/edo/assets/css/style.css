@@ -108,6 +108,7 @@
 	padding: 0;
 }
 .advanced-search .search-input{
+	width: 80%;
 }
 .advanced-search .search-input>input{
 	width: 200px;

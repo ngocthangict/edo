@@ -400,7 +400,14 @@
               }
             }
         );
+        // Vertical menu
+        $(document).on('click','.block-vertical-menu-style2 .vertical-head',function(){
+            if($('body').hasClass('home')){
 
+            }else{
+                $('.block-vertical-menu-style2 .vertical-menu-content').slideToggle();
+            }
+        })
 
     });
     /* ---------------------------------------------

@@ -344,16 +344,20 @@ class KT_MailChimp_Settings
         if ( isset ( $api_key ) && !empty ( $api_key ) ) {
             $mcapi = new MCAPI($api_key);
         	$lists = $mcapi->lists();
-            
-            echo "<ul class='kt_mailchimp_lists'>";
-            foreach ($lists['data'] as $key => $item) {
-                printf(
-                    '<li>%s<br/>%s</li>',
-                    $item['name'],
-                    '<input type="text" onclick="this.select()" style="font-weight:bold;text-align:left;" size="40" value="[mailchimp list='.$item['id'].']" readonly="readonly">'
-                );
+            if($lists){
+                echo "<ul class='kt_mailchimp_lists'>";
+                foreach ($lists['data'] as $key => $item) {
+                    printf(
+                        '<li>%s<br/>%s</li>',
+                        $item['name'],
+                        '<input type="text" onclick="this.select()" style="font-weight:bold;text-align:left;" size="40" value="[mailchimp list='.$item['id'].']" readonly="readonly">'
+                    );
+                }
+                echo "</ul>";
+            }else{
+                echo 'No email list.';
             }
-            echo "</ul>";
+            
             
             printf(
                 '<p class="description">%s</p>',

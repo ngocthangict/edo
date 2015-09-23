@@ -106,25 +106,27 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 			<div class="row">
 				<div class="col-sm-3 col-md-2">
 					<!-- Block vertical-menu -->
-					<div class="block block-vertical-menu">
-						<div class="vertical-head">
-							<h5 class="vertical-title"><?php _e( 'Categories', 'edo'); ?></h5>
+					<div class="block-vertical-menu block-vertical-menu-style2">
+						<div class="block block-vertical-inner">
+							<div class="vertical-head">
+								<h5 class="vertical-title"><?php _e( 'Categories', 'edo'); ?></h5>
+							</div>
+							<div class="vertical-menu-content">
+							<?php
+	                        wp_nav_menu( array(
+	                            'menu'              => 'vertical-menu',
+	                            'theme_location'    => 'vertical-menu',
+	                            'depth'             => 2,
+	                            'container'         => '',
+	                            'container_class'   => '',
+	                            'container_id'      => '',
+	                            'menu_class'        => 'vertical-menu-list',
+	                            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+	                            'walker'            => new wp_bootstrap_navwalker())
+	                        );
+	                        ?><!--/.nav-collapse -->
+		                    </div>
 						</div>
-						<div class="vertical-menu-content">
-						<?php
-                        wp_nav_menu( array(
-                            'menu'              => 'vertical-menu',
-                            'theme_location'    => 'vertical-menu',
-                            'depth'             => 2,
-                            'container'         => '',
-                            'container_class'   => '',
-                            'container_id'      => '',
-                            'menu_class'        => 'vertical-menu-list',
-                            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                            'walker'            => new wp_bootstrap_navwalker())
-                        );
-                        ?><!--/.nav-collapse -->
-	                    </div>
 					</div>
 					<!-- ./Block vertical-menu -->
 				</div>

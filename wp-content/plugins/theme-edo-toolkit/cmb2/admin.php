@@ -279,7 +279,25 @@ class KT_Admin {
 				'value' => array( $this->key, )
 			),
 		) );
-        
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe form title', 'edo' ),
+            'id'   => 'kt_subscribe_title',
+            'default'=>__( 'SUBSCRIBE TO', 'edo'),
+            'type' => 'text',
+        ) );
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe form sub title', 'edo' ),
+            'id'   => 'kt_subscribe_subtitle',
+            'type' => 'text',
+            'default'=>__( 'EDO SHOP EMAILS', 'edo'),
+        ) );
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe form description', 'edo' ),
+            'id'   => 'kt_subscribe_description',
+            'type' => 'textarea',
+            'default'=>__( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'edo'),
+        ) );
+
         $cmb_options_footer->add_field( array(
     		'name' => __( 'Copyrights', 'edo' ),
     		'desc' => __( 'Copyrights your site', 'edo' ),
@@ -292,7 +310,6 @@ class KT_Admin {
             'type'    => 'file',
             'desc'    => __( 'Select a image', 'edo' ),
         ) );
-        
         
         /**
          * Woocommerce
