@@ -68,16 +68,14 @@ $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
 			</div>
 			<div class="product-right">
 				<div class="product-name">
-					<a href="<?php the_permalink();?>">
-						<?php
-						/**
-						* woocommerce_shop_loop_item_title hook
-						*
-						* @hooked woocommerce_template_loop_product_title - 10
-						*/
-						do_action( 'woocommerce_shop_loop_item_title' );
-						?>
-					</a>
+					<?php
+					/**
+					* woocommerce_shop_loop_item_title hook
+					*
+					* @hooked woocommerce_template_loop_product_title - 10
+					*/
+					do_action( 'woocommerce_shop_loop_item_title' );
+					?>
 				</div>
 				<?php
 				/**

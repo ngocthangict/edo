@@ -108,7 +108,7 @@
 	padding: 0;
 }
 .advanced-search .search-input{
-	width: 80%;
+	width: 50%;
 }
 .advanced-search .search-input>input{
 	width: 200px;
@@ -822,10 +822,10 @@
 }
 .block-shop-features ul li{
 	list-style: none;
-	margin-bottom: 10px;
+	margin-bottom: 11px;
 }
 .block-shop-features ul li:last-child{
-	margin-bottom: 0;
+	margin-bottom: 2px;
 }
 
 
@@ -2896,7 +2896,10 @@
 	font-size: 14px;
 	font-weight: 600;
     margin: 0;
-    margin-bottom: 10px;
+}
+.block-link .widget_nav_menu {
+	font-size: 12px;
+	line-height: 24px;
 }
 .block-link ul>li img{
 	margin-right: 5px;

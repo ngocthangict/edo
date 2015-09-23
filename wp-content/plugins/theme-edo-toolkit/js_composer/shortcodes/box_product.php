@@ -417,7 +417,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         
         if( $products->have_posts() ): 
             $new_title = $title;
-            $new_title = explode( ',', $new_title );
+            $new_title = explode( ' ', $new_title );
             
             if( count($new_title) > 1 ){
                 $title_sm = $new_title[0];

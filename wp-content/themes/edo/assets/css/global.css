@@ -664,7 +664,8 @@ img.alignright{
 .products .product-container .inner{
   overflow: hidden;
   position: relative;
-  padding-bottom: 70px;
+  padding-bottom: 57px;
+  line-height: 24px;
 }
 .products .product-thumb{
   position: relative;
@@ -698,6 +699,7 @@ img.alignright{
 .products .product-star{
   font-size: 12px;
   color: #ccc;
+  line-height: 24px;
 }
 .products .product-star .fa{
   margin-right: 3px;
@@ -737,7 +739,16 @@ img.alignright{
 .products .product-container:hover .btn-quick-view{
   opacity: 1;
 }
-
+.products .price-box{
+  width: 100%;
+  display: inline-block;
+  line-height: 24px;
+  height: 24px;
+  float: left;
+}
+.products .product-name{
+  line-height: 24px;
+}
 .products .product-price-old{
   padding-left: 15px;
 }
