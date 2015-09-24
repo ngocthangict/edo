@@ -2901,6 +2901,14 @@
 	font-size: 12px;
 	line-height: 24px;
 }
+
+.block-link .widget_edo_custom_image ul{
+	padding: 0;
+}
+.block-link .widget_edo_custom_image ul li{
+	list-style: none;
+	font-size: 12px;
+}
 .block-link ul>li img{
 	margin-right: 5px;
 }

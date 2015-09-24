@@ -10,6 +10,7 @@ del{
     font-size: 12px;
     text-decoration: line-through;
     line-height: 24px;
+    padding-left: 15px;
 }
 .woocommerce #respond input#submit, 
 .woocommerce a.button, 

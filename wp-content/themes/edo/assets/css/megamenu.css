@@ -45,3 +45,46 @@
 .wishlist_table tr td.product-thumbnail a img{
 	width: 100px;
 }
+
+
+.block-vertical-menu .dropdown-menu {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	z-index: 900;
+	transition: all 0.45s ease-out 0s;
+	transform: translate(100px, 0px);
+	opacity: 0;
+	display: block;
+	visibility: hidden;
+	height: 0px;
+	background: #FBFBFB none repeat scroll 0% 0%;
+	border: 1px solid #EAEAEA;
+	border-radius: 0;
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0);
+	padding: 30px;
+}
+.block-vertical-menu .vertical-menu-list>li:hover .dropdown-menu{
+	visibility: visible;
+	display: block;
+	height: auto;
+	transform: translate(0px, 0px);
+	opacity: 1;
+	visibility: none;
+}
+
+.block-vertical-menu .dropdown-menu .widget{
+	background: none;
+}
+.block-vertical-menu .dropdown-menu .widget .widgettitle{
+	height: 30px;
+    margin: 0;
+    background: #5a88ca;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    padding-left: 10px;
+    line-height: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}

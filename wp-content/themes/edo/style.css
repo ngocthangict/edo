@@ -317,6 +317,9 @@ a img.aligncenter {
     width: 100%;
     font-weight: normal;
 }
+#footer .widget-container:last-child{
+    margin-bottom: 0;
+}
 
 /*-----------
 [404]

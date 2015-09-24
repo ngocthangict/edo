@@ -127,8 +127,8 @@ if( class_exists( 'WPBakeryShortCode' ) ):
 			<div class="block block-category">
 				<div class="block-head">
 					<ul class="nav-tab">
-                        <li class="active"><a data-toggle="tab" href="#tab-categories">categories</a></li>
-                        <li><a data-toggle="tab" href="#tab-guarantee">GUARANTEE</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab-categories"><?php _e( 'categories', 'edo');?></a></li>
+                        <li><a data-toggle="tab" href="#tab-guarantee"><?php _e( 'GUARANTEE', 'edo' );?></a></li>
                   	</ul>
 				</div>
 				<div class="block-inner">
