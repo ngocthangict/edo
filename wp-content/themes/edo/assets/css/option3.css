@@ -620,6 +620,7 @@ a:focus{
 }
 .option3  .block-banner-owl .page-banner .list-banner{
 	padding: 0;
+    list-style: none;
 }
 .option3  .block-banner-owl .page-banner .list-banner li{
 	border-bottom: 1px solid #eaeaea;

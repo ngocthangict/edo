@@ -143,10 +143,11 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'number'     => $number,
 		);
         if( $ids && count( $ids ) > 0 ){
-            $arg[ 'exclude' ]= $ids;
+            $arg[ 'include' ]= $ids;
         }
+        
         $brands = get_terms( 'product_brand', $arg );
-        $count = count( $brands );
+        $count  = count( $brands );
         
         if( is_array( $brands ) && $brands && $count > 0 ):
             if( $box_type == 'box-2' ):
@@ -157,39 +158,41 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     $page = $count / $per_page + 1;
                 }
                 ?>
-                <div class="block block-banner-owl kt-owl-carousel" data-margin="0"  data-nav="true" data-items="1" <?php if( $page > 1 ):?> data-loop="true" <?php else: ?> data-loop="false" <?php endif; ?>>
-    				<?php for( $i = 1; $i <= $page ; $i++ ): ?>
-                    <div class="page-banner">
-    					<ul class="list-banner">
-                            <?php 
-                                $from = ( $i - 1 ) * $per_page; 
-                                $to   = $i * $per_page; 
-                            ?>
-                            <?php for( $from ; $from < $to; $from++ ): 
-                                    if( isset( $brands[$from] ) && $brands[$from] ):
-                                        $brand = $brands[ $from ];
-                                        $brand_link = esc_attr(get_term_link( $brand ) );
-                                        
-                                        $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
-                                        
-                                        if ( $thumbnail_id ) {
-                                            $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-                                            if( is_array($image) && isset($image[0]) && $image[0] ){
-                                                $image = $image[0];
-                                            }else{
+                <div class="option3">
+                    <div class="block block-type-2 block-banner-owl kt-owl-carousel" data-margin="0"  data-nav="true" data-items="1" <?php if( $page > 1 ):?> data-loop="true" <?php else: ?> data-loop="false" <?php endif; ?>>
+        				<?php for( $i = 1; $i <= $page ; $i++ ): ?>
+                        <div class="page-banner">
+        					<ul class="list-banner">
+                                <?php 
+                                    $from = ( $i - 1 ) * $per_page; 
+                                    $to   = $i * $per_page; 
+                                ?>
+                                <?php for( $from ; $from < $to; $from++ ): 
+                                        if( isset( $brands[$from] ) && $brands[$from] ):
+                                            $brand = $brands[ $from ];
+                                            $brand_link = esc_attr(get_term_link( $brand ) );
+                                            
+                                            $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
+                                            
+                                            if ( $thumbnail_id ) {
+                                                $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                                                if( is_array($image) && isset($image[0]) && $image[0] ){
+                                                    $image = $image[0];
+                                                }else{
+                                                    $image = wc_placeholder_img_src();
+                                                }
+                                            } else {
                                                 $image = wc_placeholder_img_src();
                                             }
-                                        } else {
-                                            $image = wc_placeholder_img_src();
-                                        }
-                                    ?>
-    						            <li><a target="_blank" href="<?php echo $brand_link; ?>"><img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" /></a></li>
-                                    <?php endif; ?>
-                            <?php endfor;?>
-    					</ul>
-    				</div>
-                    <?php endfor; ?>
-    			</div>
+                                        ?>
+        						            <li><a target="_blank" href="<?php echo $brand_link; ?>"><img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" /></a></li>
+                                        <?php endif; ?>
+                                <?php endfor;?>
+        					</ul>
+        				</div>
+                        <?php endfor; ?>
+        			</div>
+                </div>
             <?php
             else:
             ?>

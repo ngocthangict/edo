@@ -37,7 +37,13 @@ vc_map( array(
             "heading"     => __( "Link", 'edo' ),
             "param_name"  => "link",
             "admin_label" => false,
-            "dependency"  => array( "element" => "box_type", "value" => array( 'box-4' ) ),
+            "dependency"  => array( 
+                "element" => "box_type", 
+                "value"   => array( 
+                    'box-4', 
+                    'box-7' 
+                ) 
+            ),
         ),
         array(
 			"type"        => "edo_number",
