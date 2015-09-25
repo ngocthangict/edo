@@ -688,16 +688,23 @@ add_action( 'edo_wc_datatime_sale_product', 'edo_wc_datatime_sale_product' );
  * Mutil color vertical menu
  */
 function edo_mutil_color_vertical_menu(){
-    global $custom_css;
-    print_r($custom_css);
+    global $wpdb;
+    $all_meta_menu_color = $wpdb->get_results("SELECT meta_value,post_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_megamenu_color'" );
     $style = "";
-    if( $custom_css && is_array( $custom_css ) ){
-        
-        foreach($custom_css as $css){
-            $color =  $css['color'];
-            $class = $css['item'];
-            $style .="{$class} a:hover{ color: {$color};}"; 
-            $style .=".block-vertical-menu {$class} .dropdown-menu .widget .widgettitle{background-color: {$color};}";
+    if($all_meta_menu_color){
+        foreach($all_meta_menu_color as $item){
+            if($item->meta_value!=""){
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' a:hover{color:'.$item->meta_value.'}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .dropdown-menu .widget .widgettitle{background:'.$item->meta_value.'}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .block-content-vertical-menu .head{background:'.$item->meta_value.'}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .vertical-menu-link>li>a:hover .text, .block-vertical-menu .custom_css_'.$item->post_id.' .vertical-menu-link>li>a:hover:before{background:'.$item->meta_value.'}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .vertical-menu-link>li>a .text:after{border-left: 16px solid '.$item->meta_value.';}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .vertical-menu-link>li>a .text:before{background:'.$item->meta_value.';}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .vertical-menu-link>li>a:before{color:'.$item->meta_value.';}';
+                $style.='.block-vertical-menu .custom_css_'.$item->post_id.' .button-radius .icon:before{background-color:'.$item->meta_value.';}';
+                $style.='.option4 .block-vertical-menu .vertical-menu-list>li.custom_css_'.$item->post_id.'{border-color:'.$item->meta_value.';}';
+                $style.='.option3 .block-vertical-menu .vertical-menu-list>li.custom_css_'.$item->post_id.'{border-color:'.$item->meta_value.';}';
+            }
         }
     }
 

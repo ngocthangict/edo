@@ -134,4 +134,7 @@ if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/mega_category.php' ) ){
         require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/mega_category.php' ;
     }
+    if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/vertical-menu.php' ) ){
+        require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/vertical-menu.php' ;
+    }
 }

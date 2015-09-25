@@ -150,9 +150,43 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         
         if( is_array( $brand ) && $brands && $count > 0 ):
             if( $box_type == 2 ):
-            
-            ?>
-                
+                $page = 1;
+                if( $count % $per_page == 0 ){
+                    $page = $count / $per_page;
+                }else{
+                    $page = $count / $per_page + 1;
+                }
+                ?>
+                <div class="block block-banner-owl kt-owl-carousel" data-margin="0" data-loop="true" data-nav="true" data-items="1">
+    				<?php for( $i = 1; $i <= $page ; $i++ ): ?>
+                    <div class="page-banner">
+    					<ul class="list-banner">
+                            <?php 
+                                $from = ( $i -1 ) * $per_page; 
+                                $to = $i * $per_page; 
+                            ?>
+                            <?php for( $from = 1; $j < $to; $j++ ): 
+                                    if( isset( $brands[$j] ) && $brands[$j] ):
+                                        $brand_link = esc_attr(get_term_link( $brand ) );
+                                        
+                                        if ( $thumbnail_id ) {
+                                            $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                                            if( is_array($image) && isset($image[0]) && $image[0] ){
+                                                $image = $image[0];
+                                            }else{
+                                                $image = wc_placeholder_img_src();
+                                            }
+                                        } else {
+                                            $image = wc_placeholder_img_src();
+                                        }
+                                    ?>
+    						            <li><a target="_blank" href="<?php echo $brand_link; ?>"><img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" /></a></li>
+                                    <?php endif; ?>
+                            <?php endfor;?>
+    					</ul>
+    				</div>
+                    <?php endfor; ?>
+    			</div>
             <?php
             else:
             ?>
@@ -171,8 +205,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                     $image = wc_placeholder_img_src();
                                 }
                             } else {
-                            $image = wc_placeholder_img_src();
-}
+                                $image = wc_placeholder_img_src();
+                            }
                          ?>
         			     <a target="_blank" href="<?php echo $brand_link; ?>">
                             <img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" />
