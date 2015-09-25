@@ -192,6 +192,9 @@
             return false;
         });
       }
+    function hasOnlyCountdown(){
+        
+    }
     /* ---------------------------------------------
      Scripts ready
      --------------------------------------------- */
@@ -204,10 +207,11 @@
         // Select menu
         $( "#category-select" ).selectmenu();
         // count downt
-        if($('.countdown-lastest').length >0){
+        $count_down = $('.countdown-lastest');
+        if( $count_down.length > 0 ) {
             var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
             var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
-            $('.countdown-lastest').each(function() {
+            $count_down.each(function() {
                 var austDay = new Date($(this).data('y'),$(this).data('m') - 1,$(this).data('d'),$(this).data('h'),$(this).data('i'),$(this).data('s'));
                 $(this).countdown({
                     until: austDay,
@@ -311,69 +315,6 @@
                 console.log(response);
             })
         })
-
-        // Quick view product
-        $(document).on('click','.btn-quick-view',function(){
-            var product_id = $(this).data('id');
-            var data = {
-                action: 'frontend_product_quick_view',
-                security : ajax_frontend.security,
-                product_id: product_id
-            };
-            $(this).append('<i class="fa fa-spinner fa-spin"></i>');
-            var t = $(this);
-            $.post(ajax_frontend.ajaxurl, data, function(response){
-                $.fancybox(response, {
-                  // fancybox API options
-                  fitToView: false,
-                  autoSize: false,
-                  closeClick: false,
-                  openEffect: 'none',
-                  closeEffect: 'none',
-                  width:'60%',
-                }); // fancybox
-                // OWL Product thumb
-                $('.block-quick-view .thumbnails').owlCarousel(
-                    {
-                        dots:false,
-                        nav:true,
-                        navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-                        margin:20,
-                        responsive : {
-                          // breakpoint from 0 up
-                          0 : {
-                              items : 2,
-                          },
-                          // breakpoint from 480 up
-                          480 : {
-                              items : 2,
-                          },
-                          // breakpoint from 768 up
-                          768 : {
-                              items : 2,
-                          },
-                          1000 : {
-                              items : 3,
-                          }
-                      }
-                    }
-                );
-            })
-            return false;
-         })
-        // View image quick view
-        $(document).on('click','.block-quick-view .thumbnails a',function(){
-            var img = $(this).attr('href');
-            $(this).closest('.thumbnails').find('a').each(function(){
-                $(this).removeClass('selected');
-            })
-            $(this).addClass('selected');
-            $(this).closest('.images').find('.woocommerce-main-image img').attr('src',img);
-            return false;
-        })
-        $(document).on('click','.block-quick-view .woocommerce-main-image',function(){
-            return false;
-        })
         // OWL Product thumb
         $('.product .thumbnails').owlCarousel(
             {
@@ -433,12 +374,15 @@
     $(window).load(function() {
         resizeTopmenu();
         auto_width_megamenu();
+        custom_color_vertical_menu();
         /* Show hide scrolltop button */
         if( $(window).scrollTop() == 0 ) {
             $('.scroll_top').stop(false,true).fadeOut(600);
         }else{
             $('.scroll_top').stop(false,true).fadeIn(600);
         }
+
+
     });
     /* ---------------------------------------------
      Scripts resize

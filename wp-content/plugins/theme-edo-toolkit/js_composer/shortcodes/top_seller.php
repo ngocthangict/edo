@@ -152,7 +152,7 @@ class WPBakeryShortCode_Top_Seller extends WPBakeryShortCode {
        
         if( $products->have_posts() ): 
         
-        $new_title = $title;
+        $new_title = trim($title);
         $new_title = explode( ' ', $new_title );
         
         if( count($new_title) > 1 ){

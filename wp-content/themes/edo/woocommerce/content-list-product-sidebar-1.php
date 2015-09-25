@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                  * 
                  * @hook edo_wc_loop_function_quickview
                  * */
-                do_action( 'edo_wc_loop_function_quickview' ) 
+                do_action( 'edo_wc_loop_function_quickview' ); 
             ?>
 		</div>
 		<div class="product-status">
