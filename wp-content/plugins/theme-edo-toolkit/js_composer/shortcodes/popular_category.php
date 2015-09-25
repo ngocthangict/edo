@@ -22,9 +22,9 @@ vc_map( array(
             "admin_label" => true,
             'std'         => 'type-1',
             'value'       => array(
-        		__( 'Show children categories', 'edo' ) => 'type-1',
-                __( 'Show products', 'edo' ) => 'type-2',
-                __( 'Show box', 'edo' ) => 'type-3',
+        		__( 'Type 1', 'edo' ) => 'type-1',
+                __( 'Type 2', 'edo' ) => 'type-2',
+                __( 'Type 3', 'edo' ) => 'type-3',
         	),
         ),
         array(
@@ -278,9 +278,11 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         ?>
         <!-- block-popular-cat-->
 		<div class="block-popular-cat <?php echo $elementClass; ?>">
-			<h3 class="title">
-				<span class="text"><?php echo $title; ?></span>
-			</h3>
+            <?php if( $title ): ?>
+    			<h3 class="title">
+    				<span class="text"><?php echo $title; ?></span>
+    			</h3>
+            <?php endif; ?>
 			<div class="popular-inner">
 				<div class="list-popular-cat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
 					<?php 

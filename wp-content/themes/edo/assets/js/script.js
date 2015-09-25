@@ -221,11 +221,6 @@
             
             if( ( max_time > 0 ) && ( $y >= 2015 ) && ( $m >= 1 && $m <= 12 ) && ( $d >= 1 && $d <= 31 ) ){
                 var austDay = new Date( $y, $m - 1, $d, 0, 0, 0 );
-                console.log( austDay );
-                console.log( max_time );
-                console.log( $y );
-                console.log( $m );
-                console.log( $d );
                 selector_countdown.countdown({
                     until: austDay,
                     labels: labels, 

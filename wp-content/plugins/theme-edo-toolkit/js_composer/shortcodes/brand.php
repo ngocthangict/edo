@@ -106,7 +106,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                         
         $atts = shortcode_atts( array(
             'taxonomy'  => '',
-            'box_type'  => 1,
+            'box_type'  => 'box-1',
             'per_page'  => 4,
             'number'    => 24,
             'orderby'   => 'id',
@@ -148,8 +148,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         $brands = get_terms( 'product_brand', $arg );
         $count = count( $brands );
         
-        if( is_array( $brand ) && $brands && $count > 0 ):
-            if( $box_type == 2 ):
+        if( is_array( $brands ) && $brands && $count > 0 ):
+            if( $box_type == 'box-2' ):
                 $page = 1;
                 if( $count % $per_page == 0 ){
                     $page = $count / $per_page;
@@ -157,17 +157,20 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     $page = $count / $per_page + 1;
                 }
                 ?>
-                <div class="block block-banner-owl kt-owl-carousel" data-margin="0" data-loop="true" data-nav="true" data-items="1">
+                <div class="block block-banner-owl kt-owl-carousel" data-margin="0"  data-nav="true" data-items="1" <?php if( $page > 1 ):?> data-loop="true" <?php else: ?> data-loop="false" <?php endif; ?>>
     				<?php for( $i = 1; $i <= $page ; $i++ ): ?>
                     <div class="page-banner">
     					<ul class="list-banner">
                             <?php 
-                                $from = ( $i -1 ) * $per_page; 
-                                $to = $i * $per_page; 
+                                $from = ( $i - 1 ) * $per_page; 
+                                $to   = $i * $per_page; 
                             ?>
-                            <?php for( $from = 1; $j < $to; $j++ ): 
-                                    if( isset( $brands[$j] ) && $brands[$j] ):
+                            <?php for( $from ; $from < $to; $from++ ): 
+                                    if( isset( $brands[$from] ) && $brands[$from] ):
+                                        $brand = $brands[ $from ];
                                         $brand_link = esc_attr(get_term_link( $brand ) );
+                                        
+                                        $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
                                         
                                         if ( $thumbnail_id ) {
                                             $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
