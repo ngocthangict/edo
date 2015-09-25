@@ -674,3 +674,60 @@ if ( ! function_exists( 'kt_woocommerce_image_dimensions' ) ) {
     add_action( 'init', 'kt_woocommerce_image_dimensions', 1 );
 
 }
+
+
+//Lastest Deal
+
+if( ! function_exists('edo_wc_datatime_sale_product') ){
+    function edo_wc_datatime_sale_product( $product = false, $post = false ){
+        $product_id = 0;
+        if(is_int( $product )){
+            $product_id = $product;
+        }elseif( is_object( $product ) ){
+            $product_id = $product->id;
+        }elseif( is_object( $post) ){
+            $product_id = $post->ID;
+        }else{
+            global $post;
+            $product_id =  $post->ID;
+        }
+    
+        if( ! $product_id  ){
+            return;
+        }
+    
+        $cache_key = 'time_sale_price_'.$product_id;
+        $cache = wp_cache_get($cache_key);
+        if( $cache ){
+            echo $cache;
+            return;
+        }
+        $sale_price_dates_to = false;
+        
+        $date = get_post_meta( $product_id, '_sale_price_dates_to', true );
+        
+        $sale_price_dates_to    = ( $date ) ? date_i18n( 'Y-m-d', $date ) : false;
+        
+        if( ! $sale_price_dates_to ){
+            $sale_price_dates_to = date( 'Y-m-d' );
+        }
+        
+        $strtotime = strtotime( $sale_price_dates_to );
+        
+        $y = date( 'Y', $strtotime );
+        $m = date( 'm', $strtotime );
+        $d = date( 'd', $strtotime );
+    
+        if($sale_price_dates_to){
+            //$cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
+            $cache = 'data-time="' .$sale_price_dates_to. '" data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'. $strtotime .'"';
+            
+            wp_cache_add( $cache_key, $cache );
+            echo $cache;
+        }else{
+            wp_cache_delete( $cache_key );
+        }
+    }
+}
+
+add_action( 'edo_wc_datatime_sale_product', 'edo_wc_datatime_sale_product' );

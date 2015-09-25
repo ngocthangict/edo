@@ -487,7 +487,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             if( $box_type == 'box-1' ){
                 ?>
                 <!-- block  host deals -->
-                <div class="block block-hot-deals box-1">
+                <div class="block block-hot-deals box-1 has_countdown">
                 	<div class="block-head">
                 		<div class="block-title">
                 			<div class="block-icon">
@@ -502,7 +502,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 	</div>
                 	<div class="block-inner box-type-1">
                         <?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                    		<?php $this->edo_loop_product( $products, $carousel ) ?>
+                    		<?php $this->edo_loop_product( $products, $carousel, true ) ?>
                         <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
                 	</div>
                 </div>
@@ -754,15 +754,19 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
      * 
      * 
      */
-     public function edo_loop_product( $products, $data_carousel= '', $content = 'list-product'){
+     public function edo_loop_product( $products, $data_carousel= '', $content = 'list-product', $datetime = false){
         ?>
         <ul class="products kt-owl-carousel" <?php echo $data_carousel; ?>>
             <?php while( $products->have_posts() ): $products->the_post(); ?>
-                <?php edo_woocommerce_product_loop_item_before(); ?>
+                <?php if( $datetime ): ?>
+                    <li class="product has_time" <?php do_action( 'edo_wc_datatime_sale_product' ) ?>>
+                <?php else: ?>
+                    <li class="product">
+                <?php endif; ?>
 					<?php 
                         wc_get_template_part( 'content', $content );
                     ?>
-                <?php edo_woocommerce_product_loop_item_after(); ?>
+                </li>
 			<?php endwhile; ?>
 		</ul>
         <?php
