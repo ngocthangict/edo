@@ -158,6 +158,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     $page = $count / $per_page + 1;
                 }
                 ?>
+                
                 <div class="option3">
                     <div class="block block-type-2 block-banner-owl kt-owl-carousel" data-margin="0"  data-nav="true" data-items="1" <?php if( $page > 1 ):?> data-loop="true" <?php else: ?> data-loop="false" <?php endif; ?>>
         				<?php for( $i = 1; $i <= $page ; $i++ ): ?>

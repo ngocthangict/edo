@@ -645,7 +645,9 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 					<div class="block3 block-hotdeals box-7">
                 <?php endif; ?>
 						<div class="block-head">
+                            <?php if( $title ): ?>
 							<h3 class="block-title"><?php echo $title; ?></h3>
+                            <?php endif; ?>
                             <?php if( $link ): ?>
                                 <a class="link-all" href="<?php echo $link ?>"><?php _e( 'View All', 'edo' ) ?></a>
                             <?php endif; ?>
