@@ -148,7 +148,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         
         $brands = get_terms( 'product_brand', $arg );
         $count  = count( $brands );
-        
+    
         if( is_array( $brands ) && $brands && $count > 0 ):
             if( $box_type == 'box-2' ):
                 $page = 1;
