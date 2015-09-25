@@ -100,7 +100,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 				$class_names .= ' active';
             
             if( $this->megamenu_color ){
-                $class_names = 'custom_css_' .$item->ID;
+                $class_names .= ' custom_css_' .$item->ID;
             }
             
             $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
