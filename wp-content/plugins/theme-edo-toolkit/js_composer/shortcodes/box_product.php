@@ -557,6 +557,10 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                             <?php $this->edo_loop_product( $products, $carousel ) ?>
                                         <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
         							</div>
+                                    <?php else: ?>
+                                        <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
+                                            <?php $this->edo_tab_empty(); ?>
+                                        </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>
@@ -585,7 +589,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                         $term = get_term( $id, 'product_cat' ); 
                                         if( $term ):
                                             $cate_obj[] = $term;  ?>
-                                            <li <?php if( count( $cate_obj ) == 1 ): ?>class="active"<?php endif; ?> ><a data-toggle="" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
+                                            <li <?php if( count( $cate_obj ) == 1 ): ?>class="active"<?php endif; ?> ><a data-toggle="tab" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -595,23 +599,27 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 							<div class="tab-container">
 								<?php if( count( $cate_obj ) > 0 ): $i =1; ?>
                                     <?php foreach( $cate_obj as  $term ): 
-                                        $args['tax_query'] = array(
-                                            array(
-                                    			'taxonomy' => 'product_cat',
-                                    			'field' => 'id',
-                                    			'terms' => $term->term_id
-                                    		)
-                                        );
-                                        $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                                        if( $term_products->have_posts() ):
-                                            ?>
-                							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
-                								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                                                    <?php $this->edo_loop_product( $term_products, $carousel, 'list-product-3' ) ?>
-                                                <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
-                							</div>
-                                            <?php $i++; ?>
-                                        <?php endif; ?>
+                                            $args['tax_query'] = array(
+                                                array(
+                                        			'taxonomy' => 'product_cat',
+                                        			'field' => 'id',
+                                        			'terms' => $term->term_id
+                                        		)
+                                            );
+                                            $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                            if( $term_products->have_posts() ):
+                                                ?>
+                    							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                    								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                                        <?php $this->edo_loop_product( $term_products, $carousel, 'list-product-3' ) ?>
+                                                    <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+                    							</div>
+                                            <?php else: ?>
+                                                <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                                                    <?php $this->edo_tab_empty(); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php $i++; ?>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
 							</div>
@@ -684,61 +692,65 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
     						<div class="tab-container">
     							<?php if( count( $cate_obj ) > 0 ): $i =1; ?>
                                         <?php foreach( $cate_obj as  $term ): 
-                                            $args['tax_query'] = array(
-                                                array(
-                                        			'taxonomy' => 'product_cat',
-                                        			'field' => 'id',
-                                        			'terms' => $term->term_id
-                                        		)
-                                            );
-                                            $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                                            if( $term_products->have_posts() ):
-                                                $arg_child['parent'] = $term->term_id;
-                                                
-                                                $children = get_terms( 'product_cat', $arg_child );
-                                                ?>
-                    							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
-                    								<?php if( count( $children ) >0 ): ?>
-                                                        <div class="sub-cat">
-                                							<ul class="sub-categories">
-                                								<?php foreach($children as $child): ?>
-                                                                    <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
-                                                                    <li>
-                                                                        <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
-                                                                    </li>
-                                                                <?php endforeach; ?>
-                                							</ul>
-                    								    </div>
-                                                    <?php else: 
-                                                        if( $use_responsive ){
-                                                        $arr = array(   
-                                                            '0' => array(
-                                                                "items" => $items_mobile
-                                                            ), 
-                                                            '768' => array(
-                                                                "items" => $items_tablet
-                                                            ), 
-                                                            '992' => array(
-                                                                "items" => $items_destop + 1
-                                                            )
-                                                        );
-                                                        
-                                                        $data_responsive = json_encode($arr);
-                                                        $data_carousel["responsive"] = $data_responsive;
-                                                    }else{
-                                                        $data_carousel['items'] = $items_destop + 1;
-                                                    }
-                                                    $carousel = _data_carousel($data_carousel);
+                                                $args['tax_query'] = array(
+                                                    array(
+                                            			'taxonomy' => 'product_cat',
+                                            			'field' => 'id',
+                                            			'terms' => $term->term_id
+                                            		)
+                                                );
+                                                $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                                if( $term_products->have_posts() ):
+                                                    $arg_child['parent'] = $term->term_id;
+                                                    
+                                                    $children = get_terms( 'product_cat', $arg_child );
                                                     ?>
-                                                    <?php endif; ?>
-                    								<div class="cat-product <?php echo ( count( $children ) > 0 ) ? 'has_subcate' : 'hasnt_subcate'; ?>">
-                    									<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                                                    		<?php $this->edo_loop_product( $products, $carousel, 'list-product-3' ) ?>
-                                                        <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
-                    								</div>
-                                                    <?php $i++; ?>
+                        							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                        								<?php if( count( $children ) >0 ): ?>
+                                                            <div class="sub-cat">
+                                    							<ul class="sub-categories">
+                                    								<?php foreach($children as $child): ?>
+                                                                        <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
+                                                                        <li>
+                                                                            <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
+                                                                        </li>
+                                                                    <?php endforeach; ?>
+                                    							</ul>
+                        								    </div>
+                                                        <?php else: 
+                                                            if( $use_responsive ){
+                                                            $arr = array(   
+                                                                '0' => array(
+                                                                    "items" => $items_mobile
+                                                                ), 
+                                                                '768' => array(
+                                                                    "items" => $items_tablet
+                                                                ), 
+                                                                '992' => array(
+                                                                    "items" => $items_destop + 1
+                                                                )
+                                                            );
+                                                            
+                                                            $data_responsive = json_encode($arr);
+                                                            $data_carousel["responsive"] = $data_responsive;
+                                                        }else{
+                                                            $data_carousel['items'] = $items_destop + 1;
+                                                        }
+                                                        $carousel = _data_carousel($data_carousel);
+                                                        ?>
+                                                        <?php endif; ?>
+                        								<div class="cat-product <?php echo ( count( $children ) > 0 ) ? 'has_subcate' : 'hasnt_subcate'; ?>">
+                        									<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                                        		<?php $this->edo_loop_product( $products, $carousel, 'list-product-3' ) ?>
+                                                            <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+                        								</div>
+        							             </div>
+                                                 <?php else: ?>
+                                                    <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                                                        <?php $this->edo_tab_empty(); ?>
+                                                    </div>
                                                 <?php endif; ?>
-    							             </div>
+                                            <?php $i++; ?>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
         						</div>
@@ -801,5 +813,10 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         <?php
         wp_reset_query();
         wp_reset_postdata(); 
+     }
+     public function edo_tab_empty(){
+        ?>
+            <label><?php _e( 'Empty product', 'edo' ) ?></label>
+        <?php
      }
 }
