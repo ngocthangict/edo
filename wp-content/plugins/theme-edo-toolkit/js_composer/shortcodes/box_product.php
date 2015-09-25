@@ -595,7 +595,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                 <?php endif; ?>
 	                      	</ul>
 						</div>
-						<div class="block-inner">
+						<div class="block-inner controls-top-left">
 							<div class="tab-container">
 								<?php if( count( $cate_obj ) > 0 ): $i =1; ?>
                                     <?php foreach( $cate_obj as  $term ): 
@@ -660,7 +660,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                 <a class="link-all" href="<?php echo $link ?>"><?php _e( 'View All', 'edo' ) ?></a>
                             <?php endif; ?>
 						</div>
-						<div class="block-inner">
+						<div class="block-inner controls-top-left">
 							<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
                         		<?php $this->edo_loop_product( $products, $carousel, 'list-product-4' ) ?>
                             <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
