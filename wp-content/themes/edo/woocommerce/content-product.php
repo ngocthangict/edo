@@ -63,7 +63,27 @@ $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
 						do_action( 'woocommerce_before_shop_loop_item_title' );
 					?>
 					</a>
-					<a data-id="<?php echo esc_attr( $product->id );?>" title="<?php echo esc_attr( __('Quick View' , 'edo') );?>" href="#" class="btn-quick-view"><?php _e('Quick View' , 'edo')?></a>
+					<?php 
+		                /**
+		                 * edo_get_tool_quickview hook
+		                 * 
+		                 * @hook edo_wc_loop_function_quickview
+		                 * */
+		                do_action( 'edo_wc_loop_function_quickview' ); 
+		            ?>
+				</div>
+				<div class="product-status">
+					<div class="product-status">
+		                <?php 
+		                /**
+		        			 * edo_wc_loop_product_label hook
+		                     * 
+		        			 * @hooked edo_show_product_loop_new_flash - 5
+		        			 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		        			 */
+		        			do_action( 'edo_wc_loop_product_label' );
+		                 ?>
+		    		</div>
 				</div>
 			</div>
 			<div class="product-right">
@@ -90,21 +110,35 @@ $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
 					<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
 				</div>
                 <div class="product-button">
-                	<?php
-					if(class_exists('YITH_WCWL_UI')){
-			            echo do_shortcode('[yith_wcwl_add_to_wishlist]');    
-			        }
-			        if(defined( 'YITH_WOOCOMPARE' )){
-			            echo do_shortcode('[yith_compare_button]');
-			        }
-					/**
-					 * woocommerce_after_shop_loop_item hook
-					 *
-					 * @hooked woocommerce_template_loop_add_to_cart - 10
-					 */
-					do_action( 'woocommerce_after_shop_loop_item' );
-					?>
-                </div>
+	        	<?php
+	        		/**
+	        		 * edo_wc_loop_product_compare hook
+	        		 *
+	        		 * @hooked edo_get_tool_wishlish - 10
+	        		 */
+	        		do_action( 'edo_wc_loop_product_wishlish' );
+	        
+	        	?>
+	            
+	            <?php
+	        		/**
+	        		 * edo_wc_loop_product_compare hook
+	        		 *
+	        		 * @hooked edo_get_tool_compare - 10
+	        		 */
+	        		do_action( 'edo_wc_loop_product_compare' );
+	        
+	        	?>
+	            
+	            <?php
+	        		/**
+	        		 * woocommerce_after_shop_loop_item hook
+	        		 *
+	        		 * @hooked woocommerce_template_loop_add_to_cart - 10
+	        		 */
+	        		do_action( 'woocommerce_after_shop_loop_item' );
+	        	?>
+	        </div>
 			</div>
 		</div>
 	</div>

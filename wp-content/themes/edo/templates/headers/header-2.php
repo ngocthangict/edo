@@ -119,7 +119,7 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 	                            'depth'             => 2,
 	                            'container'         => '',
 	                            'container_class'   => '',
-	                            'container_id'      => '',
+	                            'container_id'      => 'vertial-menu',
 	                            'menu_class'        => 'vertical-menu-list',
 	                            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 	                            'walker'            => new wp_bootstrap_navwalker())
@@ -152,16 +152,4 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 		</div>
 	</div>
 </header>
-<?php 
-global $custom_css;
-if( $custom_css && is_array( $custom_css ) ){
-    echo '<style id="menu-settings-inline-css" type="text/css">';
-    foreach( $custom_css as $css ){
-        if( is_array( $css ) && isset( $css[ 'item' ] ) && isset( $css[ 'color' ] ) && $css[ 'item' ] && $css[ 'color' ] ){
-            echo ' .'.$css[ 'item' ].' a:hover{ color: '. $css[ 'color' ] .' }';
-        }
-    }
-    echo '</style>';
-}
-?>
 <!-- ./header -->

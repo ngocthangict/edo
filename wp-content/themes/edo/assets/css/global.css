@@ -647,7 +647,9 @@ img.alignright{
   text-transform: uppercase;
   font-weight: 600;
 }
-.products .product-status .new{
+.products .product-status .product-new,
+.woocommerce span.product-new, 
+.products .product-status span.product-new{
   background: #ffc000;
 }
 .products .product-status .sale{
@@ -837,6 +839,9 @@ img.alignright{
 .products .btn-add-cart{
   margin-top: 0;
   float: left;
+}
+.products .product-button .button.yith-wcqv-button{
+  display: none;
 }
 .summary .product-star{
   display: inline-block;
