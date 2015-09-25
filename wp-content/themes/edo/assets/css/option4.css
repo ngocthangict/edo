@@ -17,9 +17,7 @@
 /*----------------------
 [1. Common styles]
 ----------------------*/
-.option4{
-	background: #eee;
-}
+
 a:hover,
 a:focus{
 	color: #1bd172;
@@ -129,6 +127,7 @@ a:focus{
 	-ms-transform: translateY(0);
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
+	float: left;
 }
 .option4 .block-new-arrivals .owl-controls .owl-next{
 	float: right;
@@ -544,6 +543,7 @@ a:focus{
 	-ms-transform: translateY(0);
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
+	float: left;
 }
 .option4 .block-hotdeals .owl-controls .owl-next{
 	float: right;

@@ -67,6 +67,9 @@ a:focus{
 }
 .option3 .products .product-button{
 	margin-top: 20px;
+	display: inline-block;
+    width: 100%;
+    float: left;
 }
 .option3 .tagcloud a:hover{
 	background: #fd7400;
@@ -464,8 +467,8 @@ a:focus{
 
 }
 .block-specail3 .products .product-status{
-	left: 20px;
-	top: 20px;
+	left: 10px;
+	top: 10px;
 }
 .block-specail3 .owl-prev{
 	left: inherit;
@@ -654,6 +657,7 @@ a:focus{
 	-ms-transform: translateY(0);
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
+	float: left;
 }
 .option3 .block-new-arrivals .owl-controls .owl-next{
 	float: right;
@@ -682,6 +686,7 @@ a:focus{
 	-ms-transform: translateY(0);
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
+	float: left;
 }
 .option3 .block-hotdeals .owl-controls .owl-next{
 	float: right;
