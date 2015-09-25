@@ -12,14 +12,40 @@ vc_map( array(
             "type"        => "edo_taxonomy",
             "taxonomy"    => "product_brand",
             "class"       => "",
-            "heading"     => __("Category", 'edo'),
+            "heading"     => __("Brand", 'edo'),
             "param_name"  => "taxonomy",
             "value"       => '',
             'parent'      => 0,
             'hide_empty'  => false,
             'multiple'    => true,
-            'placeholder' => __('Choose categoy', 'edo'),
-            "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'edo')
+            'placeholder' => __('Choose brand', 'edo'),
+            "description" => __("Note: If you want to narrow output, select category(s) above.", 'edo')
+        ),
+        
+        array(
+            "type"        => "dropdown",
+        	"heading"     => __("Box Type", 'edo'),
+        	"param_name"  => "box_type",
+            "admin_label" => true,
+            'std'         => 'box-1',
+            'value'       => array(
+        		__( 'Box 1', 'edo' ) => 'box-1',
+                __( 'Box 2', 'edo' ) => 'box-2'
+        	),
+        ),
+        array(
+            "type"        => "edo_number",
+            "heading"     => __( "Perpage", 'edo' ),
+            "param_name"  => "per_page",
+            "value"       => "4",
+            "admin_label" => true,
+            'description' => __( 'Number of post to show per page.', 'edo' ),
+            "dependency"  => array( 
+                "element" => "box_type", 
+                "value" => array( 
+                    'box-2' 
+                ) 
+            ),
         ),
         array(
             "type"        => "edo_number",
@@ -40,13 +66,7 @@ vc_map( array(
 				__( 'Slug', 'edo' )  => 'slug',
                 __( 'Term Group ', 'edo' )  => 'term_group',
                 __( 'None', 'edo' )  => 'none',
-			),
-            "dependency"  => array( 
-                "element" => "type", 
-                "value" => array( 
-                    'type-1' 
-                ) 
-            ),
+			)
 		),
         array(
 			'type'       => 'dropdown',
@@ -86,6 +106,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                         
         $atts = shortcode_atts( array(
             'taxonomy'  => '',
+            'box_type'  => 1,
+            'per_page'  => 4,
             'number'    => 24,
             'orderby'   => 'id',
             'order'     => 'desc',
@@ -109,7 +131,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         ob_start();
         
         if($taxonomy){
-            $ids = explode( ',',$taxonomy );
+            $ids = explode( ',', $taxonomy );
         }else{
             $ids = array();
         }
@@ -124,8 +146,15 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             $arg[ 'exclude' ]= $ids;
         }
         $brands = get_terms( 'product_brand', $arg );
+        $count = count( $brands );
         
-        if( $brands ):
+        if( is_array( $brand ) && $brands && $count > 0 ):
+            if( $box_type == 2 ):
+            
+            ?>
+                
+            <?php
+            else:
             ?>
                 <!-- box band -->
         		<div class="box-band block3">
@@ -152,6 +181,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         		</div>
         		<!-- ./box band -->
             <?php
+            endif;
         endif;
         $result = ob_get_clean();
         return $result;

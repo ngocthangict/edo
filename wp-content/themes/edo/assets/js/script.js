@@ -3,6 +3,10 @@
     /**==============================
     ***  Effect tab category
     ===============================**/
+    
+    var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
+    var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
+            
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         var $this = jQuery(this);
         var $container = $this.closest('.block-tabs');
@@ -193,7 +197,42 @@
         });
       }
     function hasOnlyCountdown(){
-        
+        jQuery( '.only_countdown' ).each(function(){
+            var countdown = jQuery(this);
+            
+            var time = countdown.find( '.has_time' );
+            
+            var selector_countdown = countdown.find( '.countdown-only' );
+            var $y = 2015;
+            var $m = 1;
+            var $d = 1;
+            var max_time = 0;
+            
+            time.each( function( $index, $element ){
+                var $this = jQuery( $element );
+                var $strtotime = parseInt( $this.data( 'strtotime' ) );
+                if( $strtotime > max_time ){
+                    max_time = $strtotime;
+                    $y = parseInt( $this.data( 'y' ) );
+                    $m = parseInt( $this.data( 'm' ) );
+                    $d = parseInt( $this.data( 'd' ) );
+                }
+            } );
+            
+            if( ( max_time > 0 ) && ( $y >= 2015 ) && ( $m >= 1 && $m <= 12 ) && ( $d >= 1 && $d <= 31 ) ){
+                var austDay = new Date( $y, $m - 1, $d, 0, 0, 0 );
+                console.log( austDay );
+                console.log( max_time );
+                console.log( $y );
+                console.log( $m );
+                console.log( $d );
+                selector_countdown.countdown({
+                    until: austDay,
+                    labels: labels, 
+                    layout: layout
+                });
+            }
+        });
     }
     /* ---------------------------------------------
      Scripts ready
@@ -204,10 +243,12 @@
         kt_bxslider();
         auto_width_megamenu();
         woo_quantily();
+        
+        hasOnlyCountdown();
         // Select menu
         $( "#category-select" ).selectmenu();
         // count downt
-        $count_down = $('.countdown-lastest');
+        var $count_down = $('.countdown-lastest');
         if( $count_down.length > 0 ) {
             var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
             var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
@@ -374,7 +415,7 @@
     $(window).load(function() {
         resizeTopmenu();
         auto_width_megamenu();
-        custom_color_vertical_menu();
+        //custom_color_vertical_menu();
         /* Show hide scrolltop button */
         if( $(window).scrollTop() == 0 ) {
             $('.scroll_top').stop(false,true).fadeOut(600);

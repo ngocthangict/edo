@@ -471,7 +471,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 $data_responsive = json_encode($arr);
                 $data_carousel["responsive"] = $data_responsive;
             }else{
-                $data_carousel['items'] =  5;
+                $data_carousel['items'] =  $items_destop;
             }
             $unique_id = uniqid();
             $carousel = _data_carousel($data_carousel);
@@ -487,7 +487,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             if( $box_type == 'box-1' ){
                 ?>
                 <!-- block  host deals -->
-                <div class="block block-hot-deals box-1 has_countdown">
+                <div class="block block-hot-deals box-1 has_countdown only_countdown">
                 	<div class="block-head">
                 		<div class="block-title">
                 			<div class="block-icon">
@@ -497,12 +497,12 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 			<div class="block-title-text text-lg"><?php echo $title_lg; ?></div>
                 		</div>
                 		<div class="block-countdownt">
-                			<span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
+                			<span class="countdown-only"></span>
                 		</div>
                 	</div>
                 	<div class="block-inner box-type-1">
                         <?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                    		<?php $this->edo_loop_product( $products, $carousel, true ) ?>
+                    		<?php $this->edo_loop_product( $products, $carousel, 'list-product', true ) ?>
                         <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
                 	</div>
                 </div>
@@ -579,7 +579,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                         $term = get_term( $id, 'product_cat' ); 
                                         if( $term ):
                                             $cate_obj[] = $term;  ?>
-                                            <li <?php if( count( $cate_obj ) == 1 ): ?>class="active"<?php endif; ?> ><a data-toggle="tab" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
+                                            <li <?php if( count( $cate_obj ) == 1 ): ?>class="active"<?php endif; ?> ><a data-toggle="" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -701,6 +701,27 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                                                 <?php endforeach; ?>
                                 							</ul>
                     								    </div>
+                                                    <?php else: 
+                                                        if( $use_responsive ){
+                                                        $arr = array(   
+                                                            '0' => array(
+                                                                "items" => $items_mobile
+                                                            ), 
+                                                            '768' => array(
+                                                                "items" => $items_tablet
+                                                            ), 
+                                                            '992' => array(
+                                                                "items" => $items_destop + 1
+                                                            )
+                                                        );
+                                                        
+                                                        $data_responsive = json_encode($arr);
+                                                        $data_carousel["responsive"] = $data_responsive;
+                                                    }else{
+                                                        $data_carousel['items'] = $items_destop + 1;
+                                                    }
+                                                    $carousel = _data_carousel($data_carousel);
+                                                    ?>
                                                     <?php endif; ?>
                     								<div class="cat-product <?php echo ( count( $children ) > 0 ) ? 'has_subcate' : 'hasnt_subcate'; ?>">
                     									<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>

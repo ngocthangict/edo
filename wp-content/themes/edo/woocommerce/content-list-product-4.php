@@ -87,6 +87,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 	</div>
 	<div class="product-count-down">
-		<span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
+		<span class="countdown-lastest" <?php do_action( 'edo_wc_datatime_sale_product' ) ?>></span>
 	</div>
 </div>
