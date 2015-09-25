@@ -374,7 +374,6 @@
     $(window).load(function() {
         resizeTopmenu();
         auto_width_megamenu();
-        custom_color_vertical_menu();
         /* Show hide scrolltop button */
         if( $(window).scrollTop() == 0 ) {
             $('.scroll_top').stop(false,true).fadeOut(600);

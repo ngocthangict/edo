@@ -49,7 +49,7 @@
 
 .block-vertical-menu .dropdown-menu {
 	position: absolute;
-	top: 0;
+	top: -15px;
 	left: 100%;
 	z-index: 900;
 	transition: all 0.45s ease-out 0s;
@@ -87,4 +87,27 @@
     line-height: 30px;
     font-weight: 600;
     margin-bottom: 15px;
+}
+.block-vertical-menu .vertical-menu-content ul>li.dropdown>a:after{
+	position: absolute;
+    background: #fff;
+    height: 100%;
+    top: 0;
+    right: -2px;
+    width: 2px;
+    content: ' ';
+    z-index: 2000;
+    opacity: 0;
+}
+.block-vertical-menu .vertical-menu-content ul > li:hover > a:after{
+	opacity: 1;
+}
+.option3 .block-vertical-menu .vertical-menu-list>li.dropdown >a:before,
+.option4 .block-vertical-menu .vertical-menu-list>li.dropdown >a:before{
+	content: "\f105";
+    font-family: FontAwesome;
+    font-size: 15px;
+    float: right;
+    display: block;
+    margin-right: 10px;
 }
