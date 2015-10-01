@@ -23,7 +23,7 @@ if ( ! function_exists( 'kt_setup' ) ) :
  */
 function kt_setup() {
 
-	/*
+	/*`
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on edo, use a find and replace
@@ -52,10 +52,10 @@ function kt_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary-menu' => __( 'Primary Menu',      'edo' ),
-		'vertical-menu'  => __( 'Vertical Menu', 'edo' ),
-		'topbar-menu'  => __( 'Topbar Menu', 'edo' ),
-		'single-product-custom-menu'  => __( 'Single Product Custom link', 'edo' ),
+		'primary-menu'               => __( 'Primary Menu',      'edo' ),
+		'vertical-menu'              => __( 'Vertical Menu', 'edo' ),
+		'topbar-menu'                => __( 'Topbar Menu', 'edo' ),
+		'single-product-custom-menu' => __( 'Single Product Custom link', 'edo' ),
 	) );
 
 	/*
@@ -65,8 +65,6 @@ function kt_setup() {
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 	) );
-    
-      
     
 	// Image size
 	add_image_size ( 'edo-blog-thumb-small', 229, 105, true );
@@ -300,6 +298,35 @@ if(!function_exists('edo_comment')){
 		<?php
 	}
 }
+
+if ( ! function_exists( 'edo_comment_nav' ) ) :
+/**
+ * Display navigation to next/previous comments when applicable.
+ *
+ * @since edo 1.0
+ */
+function edo_comment_nav() {
+	// Are there comments to navigate through?
+	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+	?>
+	<nav class="navigation comment-navigation" role="navigation">
+		<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'edo' ); ?></h2>
+		<div class="nav-links">
+			<?php
+				if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'edo' ) ) ) :
+					printf( '<div class="nav-previous">%s</div>', $prev_link );
+				endif;
+
+				if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'edo' ) ) ) :
+					printf( '<div class="nav-next">%s</div>', $next_link );
+				endif;
+			?>
+		</div><!-- .nav-links -->
+	</nav><!-- .comment-navigation -->
+	<?php
+	endif;
+}
+endif;
 
 
 if( ! class_exists( 'wp_bootstrap_navwalker' ) && file_exists( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' ) ){

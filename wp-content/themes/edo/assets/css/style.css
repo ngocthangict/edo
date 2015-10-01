@@ -3094,6 +3094,15 @@
     color: #666;
     font-size: 13px;
 }
+.blog-posts .post-item .entry-meta-data .featured-post{
+	color: #000;
+}
+.blog-posts .post-item .entry-meta-data .featured-post:before{
+	content: "\e146";
+	font-size: 12px;
+	font-family: 'Glyphicons Halflings';
+	margin-right: 5px;
+}
 .blog-posts .post-item .entry-meta-data span{
   margin-right: 5px;
 }
@@ -3128,6 +3137,9 @@
 	padding: 30px;
 	border: 1px solid #f4dcab;
 	margin-bottom: 30px;
+}
+.blog-posts .sticky .entry-meta-data .date{
+	display: none;
 }
 /* Recent Comments*/
 .recent-comment-list{

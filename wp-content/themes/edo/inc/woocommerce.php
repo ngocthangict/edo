@@ -716,3 +716,17 @@ function edo_mutil_color_vertical_menu(){
 }
 
 add_action( 'wp_enqueue_scripts', 'edo_mutil_color_vertical_menu' );
+
+/**
+ * WooCommerce Extra Feature
+ * --------------------------
+ *
+ * Change number of related products on product page
+ * Set your own value for 'posts_per_page'
+ *
+ */ 
+add_filter( 'woocommerce_output_related_products_args', 'edo_related_products_args' );
+  function edo_related_products_args( $args ) {
+    $args['posts_per_page'] = 10; // Unlimit related products
+    return $args;
+}

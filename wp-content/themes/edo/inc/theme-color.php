@@ -15,7 +15,8 @@ if(!function_exists( 'edo_themne_color' )){
 	body .option4 .advanced-search .btn-search,
 	body .option4 .wrap-block-cl .user-info .fa,
 	body .option4 .wrap-block-cl .user-info .dropdown-menu .fa,
-	body .widget_product_categories .children>li>a:before{
+	body .widget_product_categories .children>li>a:before,
+	body .block-popular-cat .sub-categories li a:before{
 		color: {$main_color};
 	}
 
@@ -88,7 +89,11 @@ if(!function_exists( 'edo_themne_color' )){
 	body.woocommerce #respond input#submit.alt:hover, 
 	body.woocommerce a.button.alt:hover, 
 	body.woocommerce button.button.alt:hover, 
-	body.woocommerce input.button.alt:hover{
+	body.woocommerce input.button.alt:hover,
+	body.woocommerce #review_form #respond .form-submit input,
+	body input[type="submit"], button,
+	body.woocommerce .wishlist_table td.product-add-to-cart .add_to_cart_button:before,
+	body .block-category-list a:hover{
 		background-color: {$main_color};
 	}
 
@@ -109,7 +114,11 @@ if(!function_exists( 'edo_themne_color' )){
 	body .option4 .block3 .block-head .nav-tab.default li:hover>a, 
 	body .option4 .block3 .block-head .nav-tab.default li.active>a,
 	body .option3 .block3 .block-head .nav-tab.default li:hover>a, 
-	body .option3 .block3 .block-head .nav-tab.default li.active>a{
+	body .option3 .block3 .block-head .nav-tab.default li.active>a,
+	body.woocommerce #content div.product div.thumbnails a:hover img, 
+	body.woocommerce div.product div.thumbnails a:hover img, 
+	body.woocommerce-page #content div.product div.thumbnails a:hover img, 
+	body.woocommerce-page div.product div.thumbnails a:hover img{
 		border-color: {$main_color};
 	}
 	body .block-category .categories>li>a>.text:after{

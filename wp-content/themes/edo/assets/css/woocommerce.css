@@ -502,6 +502,11 @@ ul.products li.product .onsale{
 .woocommerce-page div.product div.images{
     width: 100%;
 }
+.woocommerce-page div.product div.images .notice{
+    margin-top: 15px;
+    color: #999;
+    margin-bottom: 15px;
+}
 .woocommerce #content div.product div.summary, 
 .woocommerce div.product div.summary, 
 .woocommerce-page #content div.product div.summary, 
@@ -838,6 +843,14 @@ div.swatch-wrapper.selected:before{
 .woocommerce #reviews #comments ol.commentlist li .comment-text{
     margin-left: 90px;
 }
+.woocommerce .single_variation{
+    width: 100%;
+    float: left;
+    padding-left: 64px;
+}
+.woocommerce div.product p.stock{
+    font-size: 14px;
+}
 /*---------------
 [ Quick view]
 ----------------*/
@@ -878,6 +891,13 @@ div.swatch-wrapper.selected:before{
 .woocommerce .cart-collaterals .cross-sells ul.products li, 
 .woocommerce-page .cart-collaterals .cross-sells ul.products li{
     width: 100%;
+}
+.woocommerce .cart-collaterals .cross-sells, 
+.woocommerce-page .cart-collaterals .cross-sells{
+    width: 60%;
+}
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+    width: 35%;
 }
 /*------------------
 [ Withlist]

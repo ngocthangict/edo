@@ -36,7 +36,37 @@ $products = new WP_Query( $args );
 $woocommerce_loop['columns'] = $columns;
 
 if ( $products->have_posts() ) : ?>
-
+	<?php
+	$kt_woo_single_sidebar_are = edo_option( 'kt_woo_single_sidebar_are' ,'full');
+	$item_desktop = 5;
+	$items_tablet = 3;
+	if( $kt_woo_single_sidebar_are !="full"){
+		$item_desktop = 4;
+		$items_tablet = 2;
+	}
+	$data_carousel = array(
+        "navigation" => 'true',
+        "margin"    => 20,
+        "autoheight" => 'false',
+        'nav' => 'true',
+        'dots' => 'false',
+        'loop' => 'true',
+        'autoplayHoverPause' => 'true'
+    );
+    $arr = array(   
+        '0' => array(
+            "items" => 1
+        ), 
+        '768' => array(
+            "items" => $items_tablet
+        ), 
+        '992' => array(
+            "items" => $item_desktop
+        )
+    );
+    $data_responsive = json_encode($arr);
+    $data_carousel["responsive"] = $data_responsive;
+	?>
 	<!-- Up-sell -->
 	<div class="block block-products-owl">
 		<div class="block-head">
@@ -45,7 +75,7 @@ if ( $products->have_posts() ) : ?>
 			</div>
 		</div>
 		<div class="block-inner">
-			<ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
+			<ul class="products kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
 
 				<?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
