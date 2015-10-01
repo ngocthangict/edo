@@ -20,20 +20,7 @@
 /*----------------------
 [1. Common styles]
 ----------------------*/
-a:hover,
-a:focus{
-	color: #fd7400;
-}
-.option3 .button-radius:before{
-	background-color: #fd7400;
-}
-.option3 .kt-owl-carousel .owl-prev:hover, 
-.option3 .kt-owl-carousel .owl-next:hover,
-.option3 .customNavigation-owl .prev:hover,
-.option3 .customNavigation-owl .next:hover{
-	background-color: #fd7400;
-	border-color: #fd7400;
-}
+
 .option3 .block .block-head{
 	border-top: 5px solid #fd7400;
 	background: #fff;
@@ -251,7 +238,8 @@ a:focus{
 }
 .option3 .main-menu .navbar-nav>li>a:hover, 
 .option3 .main-menu .navbar-nav>li.active>a, 
-.option3 .main-menu .navbar-nav>li>a:focus{
+.option3 .main-menu .navbar-nav>li>a:focus,
+.option3 .main-menu .navbar-nav>li>a:visited{
 	border-color: #fd7400;
 	background: #fff;
 	color: #004358;

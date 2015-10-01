@@ -189,7 +189,17 @@ class KT_Admin {
 				'value' => array( $this->key, )
 			),
 		) );
-        
+        /**
+         * Theme color
+         */
+        $cmb_options_general->add_field( array(
+            'name'    => __( 'Theme Color', 'edo' ),
+            'id'      => 'kt_theme_color',
+            'type'    => 'colorpicker',
+            'default' => '#5a88ca',
+            'desc'    => __( 'Setting main color for your site', 'edo' ),
+        ) );
+
         /**
     	 * Logo
     	 */

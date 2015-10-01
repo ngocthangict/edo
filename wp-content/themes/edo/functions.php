@@ -7,7 +7,7 @@ define( 'THEME_URL', trailingslashit( get_template_directory_uri() ));
  * @since Edo 1.0
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 660;
+	$content_width = 1170;
 }
 
 
@@ -48,7 +48,7 @@ function kt_setup() {
 	 * See: https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 825, 510, true );
+	set_post_thumbnail_size( 870, 400, true );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
@@ -66,21 +66,10 @@ function kt_setup() {
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 	) );
     
-    
-	$color_scheme  = edo_get_color_scheme();
-	$default_color = trim( $color_scheme[0], '#' );
-
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'edo_custom_background_args', array(
-		'default-color'      => $default_color,
-		'default-attachment' => 'fixed',
-	) ) );
-    
+      
     
 	// Image size
-	add_image_size ( 'blog-full', 1170, 543, true );
-	add_image_size ( 'blog-thumb', 870, 400, true );
-	add_image_size ( 'blog-thumb-small', 229, 105, true );
+	add_image_size ( 'edo-blog-thumb-small', 229, 105, true );
 }
 endif; // edo setup
 add_action( 'after_setup_theme', 'kt_setup' );
@@ -326,20 +315,20 @@ if( ! class_exists( 'KT_MEGAMENU' ) && file_exists( THEME_DIR. '/inc/nav/nav.php
  *
  * @since edo 1.0
  */
-require THEME_DIR . '/inc/custom-header.php';
+//require THEME_DIR . '/inc/custom-header.php';
 /**
  * Custom template tags for this theme.
  *
  * @since edo 1.0
  */
-require THEME_DIR . '/inc/template-tags.php';
+//require THEME_DIR . '/inc/template-tags.php';
 
 /**
  * Customizer additions.
  *
  * @since edo 1.0
  */
-require THEME_DIR . '/inc/customizer.php';
+//require THEME_DIR . '/inc/customizer.php';
 
 /**
  * Commond function
@@ -363,3 +352,8 @@ require THEME_DIR . '/inc/breadcrumbs.php';
  * Recommend plugins
  * */
 require THEME_DIR . '/inc/recommend-plugins.php';
+
+/**
+ * Theme color
+ * */
+require THEME_DIR . '/inc/theme-color.php';

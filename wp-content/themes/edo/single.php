@@ -36,7 +36,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                             <?php get_template_part( 'templates/post','meta' );?>
                             <?php if( has_post_thumbnail() ){ ?>
                                 <div class="entry-photo">
-                                    <?php the_post_thumbnail('blog-post'); ?>
+                                    <?php the_post_thumbnail('full'); ?>
                                 </div>
                             <?php } ?>
                             <div class="content-text entry-content clearfix">

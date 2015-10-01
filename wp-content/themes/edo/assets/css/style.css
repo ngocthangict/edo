@@ -3125,7 +3125,9 @@
   height: auto;
 }
 .blog-posts .sticky {
-
+	padding: 30px;
+	border: 1px solid #f4dcab;
+	margin-bottom: 30px;
 }
 /* Recent Comments*/
 .recent-comment-list{

@@ -18,23 +18,7 @@
 [1. Common styles]
 ----------------------*/
 
-a:hover,
-a:focus{
-	color: #1bd172;
-}
-.option4 .button-radius:before{
-	background-color: #1bd172;
-}
-.option4 .button-radius .icon:before{
-	background-color: #1bd172;
-}
-.option4 .kt-owl-carousel .owl-prev:hover, 
-.option4 .kt-owl-carousel .owl-next:hover,
-.option4 .customNavigation-owl .prev:hover,
-.option4 .customNavigation-owl .next:hover{
-	background-color: #1bd172;
-	border-color: #1bd172;
-}
+
 .option4 .block .block-head .widget-title{
 	font-size: 18px;
 	margin: 0;
@@ -235,6 +219,7 @@ a:focus{
 	color: #1bd172;
 	width: 20px;
 	float: left;
+	line-height: inherit;
 }
 .option4 .wrap-block-cl .inner-cl>.user-info>a:after{
 	display: none;

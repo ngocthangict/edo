@@ -4,7 +4,7 @@
         	<?php if(has_post_thumbnail()):?>
         	<div class="entry-thumb image-hover2">
                 <a href="<?php the_permalink();?>">
-                    <?php the_post_thumbnail('blog-thumb');?>
+                    <?php the_post_thumbnail('thumbnails');?>
                 </a>
             </div>
         	<?php endif;?>
