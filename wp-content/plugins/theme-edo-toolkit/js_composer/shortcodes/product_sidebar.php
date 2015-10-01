@@ -306,7 +306,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                 </div>
                 <?php
             }elseif( $template == 'template-3' ){
-                $i = 1;
+                $i = $j = 1;
                 ?>
                 <div class="option3">
                     <!-- Top review -->
@@ -322,18 +322,21 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                                     <?php endif; ?>
                                         <li class="product <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
                                             <div class="product-name">
-                                                <a class="product-name" href="<?php the_permalink(); ?>"><span class="order"><?php echo $i; ?></span><?php the_title(); ?></a>
+                                                <a class="product-name" href="<?php the_permalink(); ?>"><span class="order"><?php echo esc_attr( $j ) ; ?></span><?php the_title(); ?></a>
                                             </div>
                                             <?php wc_get_template_part( 'content', 'list-product-sidebar-3' ); ?>
                                         </li>
-                                     <?php  $i++; ?>
+                                     <?php  $i++; $j ++; ?>
                                      <?php if( $i == 6 ): $i = 1; ?>
     	      						   </ul>
                                      <?php endif; ?>
                                 <?php endwhile; ?>
                                 <?php 
-                                    wp_reset_query();
-                                    wp_reset_postdata(); 
+                                if( $i != 1 ){
+                                    echo '</ul>';
+                                }
+                                wp_reset_query();
+                                wp_reset_postdata(); 
                                 ?>
     						</div>
     					</div>

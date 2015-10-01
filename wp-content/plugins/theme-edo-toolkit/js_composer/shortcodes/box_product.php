@@ -497,10 +497,10 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 	<div class="block-head">
                 		<div class="block-title">
                 			<div class="block-icon">
-                				<img alt="<?php  echo $title;  ?>" title="<?php echo $title; ?>" src="<?php echo $att_icon_url; ?>" />
+                				<img alt="<?php  echo esc_attr( $title ) ;  ?>" title="<?php echo esc_attr( $title ) ; ?>" src="<?php echo esc_url( $att_icon_url ) ; ?>" />
                 			</div>
-                			<div class="block-title-text text-sm"><?php echo $title_sm; ?></div>
-                			<div class="block-title-text text-lg"><?php echo $title_lg; ?></div>
+                			<div class="block-title-text text-sm"><?php echo esc_html( $title_sm ) ; ?></div>
+                			<div class="block-title-text text-lg"><?php echo esc_html( $title_lg ) ; ?></div>
                 		</div>
                 		<div class="block-countdownt">
                 			<span class="countdown-only"></span>
@@ -521,21 +521,21 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 				<div class="block block-tabs box-2">
 					<div class="block-head">
 						<div class="block-title">
-							<div class="block-title-text text-lg"><?php echo $title; ?></div>
+							<div class="block-title-text text-lg"><?php echo esc_html( $title ) ; ?></div>
 						</div>
 						<ul class="nav-tab">                                   
 	                        <li class="active"><a data-toggle="tab" href="#tab-all-<?php echo $unique_id ?>"><?php _e( 'All', 'edo' ) ?></a></li>
 	                        <?php if( count( $cate_ids ) ): ?>
                                 <?php foreach( $cate_ids as $id ):  ?>
                                     <?php $term = get_term( $id, 'product_cat' ); $cate_obj[] = $term;  ?>
-                                    <li><a data-toggle="tab" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
+                                    <li><a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>"><?php echo esc_html( $term->name )   ?></a></li>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                       	</ul>
 					</div>
 					<div class="block-inner">
 						<div class="tab-container">
-							<div id="tab-all-<?php echo $unique_id ?>" class="tab-panel active">
+							<div id="tab-all-<?php echo esc_attr( $unique_id )  ?>" class="tab-panel active">
 								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
                                     <?php $this->edo_loop_product( $products, $carousel ) ?>
                                 <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>

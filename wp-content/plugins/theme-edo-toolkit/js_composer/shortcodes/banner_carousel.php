@@ -265,7 +265,7 @@ class WPBakeryShortCode_Banner_Carousel extends WPBakeryShortCodesContainer {
         ob_start();
         ?>
         <!-- block banner owl-->
-        <div class="<?php echo $elementClass; ?>" >
+        <div class="<?php echo esc_attr( $elementClass ) ; ?>" >
     		<div class="block-inner kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
     			<?php echo do_shortcode( shortcode_unautop( $content ) ); ?>
     		</div>
@@ -308,11 +308,11 @@ class WPBakeryShortCode_Banner extends WPBakeryShortCode{
         }
         ob_start();
         ?>
-        <div class="banner-text" <?php if( $style ): ?> style="<?php echo $style; ?>" <?php endif; ?> >
-             <h4><?php echo $title; ?></h4>
-             <h2><b><?php echo $sub_title; ?></b></h2>
-             <p><?php echo $desc; ?></p>
-             <a class="button-radius white" target="<?php echo $link_target ?>" href="<?php echo $link; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
+        <div class="banner-text" <?php if( $style ): ?> style="<?php echo esc_attr( $style ) ; ?>" <?php endif; ?> >
+             <h4><?php echo esc_html( $title ) ; ?></h4>
+             <h2><b><?php echo esc_html( $sub_title ) ; ?></b></h2>
+             <p><?php echo esc_html( $desc ) ; ?></p>
+             <a class="button-radius white" target="<?php echo esc_attr( $link_target )  ?>" href="<?php echo esc_url( $link ) ; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
          </div>
         <?php
         $result = ob_get_clean();

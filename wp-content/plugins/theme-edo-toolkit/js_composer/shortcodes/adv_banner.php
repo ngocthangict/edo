@@ -190,13 +190,13 @@ class WPBakeryShortCode_Banner_Adv extends WPBakeryShortCodesContainer {
         $style = "";
     
         if( $bg_color ){
-            $style .= "background-color: " . $bg_color . ";";
+            $style .= "background-color: " . esc_attr( $bg_color ) . ";";
         }
         if( $bg_image ){
             $att_icon = wp_get_attachment_image_src( $bg_image , 'full' );  
             $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ''; 
             if( $att_icon_url ){
-                $style .= "background-image: url('" . $att_icon_url . "');";
+                $style .= "background-image: url('" . esc_url( $att_icon_url ) . "');";
                 $style .= "background-repeat: no-repeat;";
                 $style .= "background-position: right center;";
             }
@@ -208,29 +208,30 @@ class WPBakeryShortCode_Banner_Adv extends WPBakeryShortCodesContainer {
         <div class="adv_banner">
             <div class="block block-banner2">
                 <div class="row">
-                    <div class="box-left col-sm-12 col-md-8" style="<?php echo $style; ?>">
+                    <div class="box-left col-sm-12 col-md-8" style="<?php echo esc_attr( $style ); ?>">
                         <div class="col-sm-6">
                             <div class="inner">
                                 <?php if( $title ): ?>
-                                    <h4 class="title"><i><?php echo $title; ?></i></h4>
+                                    <h4 class="title"><i><?php echo esc_html( $title ); ?></i></h4>
                                 <?php endif; ?>
                                 <?php if( $sub_title ): ?>
-                                    <h3 class="subtitle"><b><?php echo $sub_title ?></b></h3>
+                                    <h3 class="subtitle"><b><?php echo esc_html( $sub_title ); ?></b></h3>
                                 <?php endif; ?>
                                 <?php if( $desc ): ?>
                                 <div class="content-text desc">
-                                    <p><?php echo $desc; ?></p>
+                                    <p><?php echo esc_textarea( $desc ); ?></p>
                                 </div>
                                 <?php endif; ?>
-                                <a class="button-radius" target="<?php echo $link_target ?>" href="<?php echo $link; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
+                                <a class="button-radius" target="<?php echo esc_attr( $link_target )  ?>" href="<?php echo esc_url( $link ) ; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
                             </div>
                         </div>
-                        <?php if( isset( $img_url ) && $img_url ) ?>
+                        <?php if( isset( $img_url ) && $img_url ): ?>
                         <div class="col-sm-6">
-                            <a target="<?php echo $link_target ?>" href="<?php echo $link; ?>">
-                                <img src="<?php echo $img_url; ?>" alt="<?php echo $title; ?>" />
+                            <a target="<?php echo esc_attr( $link_target ); ?>" href="<?php echo esc_url( $link ) ; ?>">
+                                <img src="<?php echo esc_url( $img_url ) ; ?>" alt="<?php echo esc_attr( $title ) ; ?>" />
                             </a>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="box-right col-sm-12 col-md-4">
                         <?php echo do_shortcode( shortcode_unautop( $content ) ); ?>
@@ -264,34 +265,36 @@ class WPBakeryShortCode_Section_Banner extends WPBakeryShortCode{
         $style = "";
         
         if( $bg_color ){
-            $style .= "background-color: " . $bg_color . ";";
+            $style .= "background-color: " . esc_attr( $bg_color ) . ";";
         }
         if( $bg_image ){
             $att_icon = wp_get_attachment_image_src( $bg_image , 'full' );  
+            
             $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ''; 
+            
             if( $att_icon_url ){
-                $style .= "background-image: url('" . $att_icon_url . "');";
+                $style .= "background-image: url('" . esc_url( $att_icon_url ) . "');";
                 $style .= "background-repeat: no-repeat;";
                 $style .= "background-position: right center;";
             }
         }
         ob_start();
         ?>
-        <div class="item i2" style="<?php echo $style; ?>">
+        <div class="item i2" style="<?php echo esc_attr( $style ) ; ?>">
             <div class="row">
                 <div class="col-sm-8">
                     <?php if( $title ): ?>
-                        <h5 class="title"><i><?php echo $title; ?></i></h5>
+                        <h5 class="title"><i><?php echo esc_html( $title ) ; ?></i></h5>
                     <?php endif; ?>
                     <?php if( $sub_title ): ?>
-                        <h5 class="subtitle"><b><?php echo $sub_title; ?></b></h5>
+                        <h5 class="subtitle"><b><?php echo esc_html( $sub_title ) ; ?></b></h5>
                     <?php endif; ?>
                     <?php if( $desc ): ?>
                         <div class="content-text desc">
-                            <p><?php echo $desc; ?></p>
+                            <p><?php echo esc_textarea( $desc ); ?></p>
                         </div>
                     <?php endif; ?>
-                    <a class="button-radius" target="<?php echo $link_target ?>" href="<?php echo $link; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
+                    <a class="button-radius" target="<?php echo esc_attr( $link_target )  ?>" href="<?php echo esc_url( $link ) ; ?>"><?php _e( 'Shop now', 'edo' ) ?><span class="icon"></span></a>
                 </div>
             </div>
         </div>

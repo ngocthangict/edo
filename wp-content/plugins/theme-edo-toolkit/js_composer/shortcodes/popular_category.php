@@ -309,16 +309,16 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                             ?>
                             <div class="item">
         						<div class="image">
-        							<img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($term->name) ?>" />
+        							<img src="<?php echo esc_url($image) ?>" alt="<?php echo esc_attr($term->name) ?>" />
         						</div>
         						<div class="inner">
-        							<h5 class="parent-categories"><?php echo esc_attr($term->name) ?></h5>
+        							<h5 class="parent-categories"><?php echo esc_html($term->name) ?></h5>
                                     <?php if( count( $children ) >0 ): ?>
             							<ul class="sub-categories">
             								<?php foreach($children as $child): ?>
-                                                <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
+                                                <?php $chil_link = (get_term_link( $child ) ); ?>
                                                 <li>
-                                                    <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
+                                                    <a href="<?php echo esc_url( $chil_link ) ?>"><?php echo esc_html( $child->name )  ?></a>
                                                 </li>
                                             <?php endforeach; ?>
             							</ul>
@@ -347,14 +347,14 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                         
                         if( $children ):
                         ?>
-                            <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo $term->slug ?>">
+                            <div class="block block-popular-cat2-item box<?php echo $i; ?> block-<?php echo esc_attr( $term->slug )  ?>">
                                 <div class="block-inner">
-                                    <div class="cat-name"><?php echo $term->name ?></div>
+                                    <div class="cat-name"><?php echo esc_html( $term->name );  ?></div>
                                     <div class="box-subcat">
                                         <ul class="list-subcat kt-owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                             <?php foreach( $children as $child ): ?>
                                                 <?php 
-                                                    $child_link = esc_attr(get_term_link( $child ) ); 
+                                                    $child_link = (get_term_link( $child ) ); 
                                                     
                                                     $thumbnail_id = absint( get_woocommerce_term_meta( $child->term_id, 'thumbnail_id', true ) );
                                     
@@ -370,8 +370,8 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                                                     }
                                                 ?>
                                                 <li class="item">
-                                                    <a href="<?php echo $child_link; ?>">
-                                                        <img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($child->name) ?>" />
+                                                    <a href="<?php echo esc_url( $child_link ); ?>">
+                                                        <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr($child->name) ?>" />
                                                     </a>
                                                 </li>
                                             <?php endforeach; ?>
@@ -380,10 +380,6 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                                 </div>
                             </div>
                         <?php $i++; endif; ?>
-                        <?php 
-                            wp_reset_query();
-                            wp_reset_postdata(); 
-                        ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -408,7 +404,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                             if( $term ):
                                 $arg_child['parent'] = $term->term_id;
                                 
-                                $term_link = esc_attr(get_term_link( $term ) );
+                                $term_link = get_term_link( $term );
                                 
                                 $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
                                 
@@ -427,17 +423,17 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
                             ?>
                             <div class="block3 parent">
             					<div class="block-head">
-            						<a href="<?php echo $term_link ?>"><?php echo $term->name ?></a>
+            						<a href="<?php echo esc_url( $term_link ); ?>"><?php echo esc_html( $term->name )  ?></a>
             					</div>
             					<div class="block-inner">
-            						<a href="<?php echo $term_link ?>"><img src="<?php echo esc_attr($image) ?>" alt="<?php echo $term->name ?>" /></a>
+            						<a href="<?php echo esc_url( $term_link ); ?>"><img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" /></a>
                                     <?php if( count( $children ) >0 ): ?>
                                         <div class="sub-cat">
                 							<ul>
                 								<?php foreach($children as $child): ?>
-                                                    <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
+                                                    <?php $chil_link = (get_term_link( $child ) ); ?>
                                                     <li>
-                                                        <a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a>
+                                                        <a href="<?php echo esc_url($chil_link) ?>"><?php echo esc_html( $child->name ) ?></a>
                                                     </li>
                                                 <?php endforeach; ?>
                 							</ul>
