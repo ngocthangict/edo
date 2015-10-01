@@ -3,11 +3,11 @@
 if ( ! defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name" => __( "Box Products", 'edo'),
-    "base" => "box_products",
-    "category" => __('by Edo', 'edo' ),
+    "name"        => __( "Box Products", 'edo'),
+    "base"        => "box_products",
+    "category"    => __('by Edo', 'edo' ),
     "description" => __( "Show list product in box hot deal, best selling,...", 'edo'),
-    "params" => array(
+    "params"      => array(
         array(
             "type"        => "textfield",
             "heading"     => __( "Title", 'edo' ),
@@ -62,10 +62,10 @@ vc_map( array(
 	  	),
         
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'Order by (*sub category)', 'js_composer' ),
-			'param_name' => 'sub_orderby',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Order by (*sub category)', 'js_composer' ),
+            'param_name' => 'sub_orderby',
+            'value'      => array(
                 __( 'Id', 'edo' )    => 'id',
                 __( 'Count', 'edo' ) => 'count',
 				__( 'Name', 'edo' )  => 'name',
@@ -81,31 +81,31 @@ vc_map( array(
             ),
 		),
         array(
-			'type'       => 'dropdown',
-			'heading'    => __( 'Order Way (*sub category)', 'js_composer' ),
-			'param_name' => 'sub_order',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Order Way (*sub category)', 'js_composer' ),
+            'param_name' => 'sub_order',
+            'value'      => array(
 				__( 'Descending', 'js_composer' ) => 'desc',
 				__( 'Ascending', 'js_composer' ) => 'asc'
 			),
             "dependency"  => array( 
                 "element" => "box_type", 
-                "value" => array( 
+                "value"   => array( 
                     'box-5' 
                 ) 
             ),
 		),
         array(
-			'type'       => 'dropdown',
-			'heading'    => __( 'Hide Empty (*sub category)', 'js_composer' ),
-			'param_name' => 'sub_hide',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Hide Empty (*sub category)', 'js_composer' ),
+            'param_name' => 'sub_hide',
+            'value'      => array(
 				__( 'Yes', 'js_composer' ) => '1',
 				__( 'No', 'js_composer' ) => '0'
 			),
             "dependency"  => array( 
                 "element" => "box_type", 
-                "value" => array( 
+                "value"   => array( 
                     'box-5' 
                 ) 
             ),
@@ -137,10 +137,10 @@ vc_map( array(
         ),
         
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'edo'),
-        	"param_name" => "orderby",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order by", 'edo'),
+            "param_name" => "orderby",
+            "value"      => array(
         		__( 'None', 'edo' )     => 'none',
                 __( 'ID', 'edo' )       => 'ID',
                 __( 'Author', 'edo' )   => 'author',
@@ -150,20 +150,20 @@ vc_map( array(
                 __( 'Rand', 'edo' )     => 'rand',
                 __( 'Discount', 'edo' ) => 'discount'
         	),
-            'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",'edo'),
+            'std'         => 'date',
+            "description" => __("Select how to sort retrieved posts.",'edo'),
             "dependency"  => array( "element" => "type", "value" => array( 'hot-deals' ) ),
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order way", 'edo'),
-        	"param_name" => "order",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order way", 'edo'),
+            "param_name" => "order",
+            "value"      => array(
                 __('ASC', 'edo') => 'ASC',
                 __('DESC', 'edo') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",'edo'),
+            'std'         => 'DESC',
+            "description" => __("Designates the ascending or descending order.",'edo'),
             "dependency"  => array( "element" => "type", "value" => array( 'hot-deals' ) ),
         ),
         array(
@@ -197,21 +197,21 @@ vc_map( array(
         ),
         // Carousel
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'AutoPlay', 'edo' ),
-			'param_name' => 'autoplay',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'AutoPlay', 'edo' ),
+            'param_name' => 'autoplay',
+            'value'      => array(
 				__( 'Yes', 'js_composer' ) => 'true',
 				__( 'No', 'js_composer' )  => 'false'
 			),
-            'group' => __( 'Carousel settings', 'edo' ),
+            'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
 		),
         array(
-			'type'        => 'dropdown',
-            'heading'     => __( 'Navigation', 'edo' ),
-			'param_name'  => 'navigation',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Navigation', 'edo' ),
+            'param_name' => 'navigation',
+            'value'      => array(
 				__( 'Yes', 'js_composer' ) => 'true',
 				__( 'No', 'js_composer' )  => 'false'
 			),
@@ -220,15 +220,15 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-			'type' => 'dropdown',
-            'heading' => __( 'Loop', 'edo' ),
-			'param_name' => 'loop',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Loop', 'edo' ),
+            'param_name' => 'loop',
+            'value'      => array(
 				__( 'Yes', 'js_composer' ) => 'true',
 				__( 'No', 'js_composer' )  => 'false'
 			),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'edo' ),
-            'group' => __( 'Carousel settings', 'edo' ),
+            'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
 		),
         array(
@@ -252,10 +252,10 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-			'type'        => 'dropdown',
-            'heading'     => __( 'Use Carousel Responsive', 'edo' ),
-			'param_name'  => 'use_responsive',
-			'value' => array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Use Carousel Responsive', 'edo' ),
+            'param_name' => 'use_responsive',
+            'value'      => array(
 				__( 'Yes', 'js_composer' ) => 1,
 				__( 'No', 'js_composer' )  => 0
 			),
@@ -295,17 +295,17 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-        	'type'        => 'dropdown',
-        	'heading'     => __( 'CSS Animation', 'js_composer' ),
-        	'param_name'  => 'css_animation',
-        	'admin_label' => false,
-        	'value' => array(
-        		__( 'No', 'js_composer' ) => '',
-        		__( 'Top to bottom', 'js_composer' ) => 'top-to-bottom',
-        		__( 'Bottom to top', 'js_composer' ) => 'bottom-to-top',
-        		__( 'Left to right', 'js_composer' ) => 'left-to-right',
-        		__( 'Right to left', 'js_composer' ) => 'right-to-left',
-        		__( 'Appear from center', 'js_composer' ) => "appear"
+            'type'        => 'dropdown',
+            'heading'     => __( 'CSS Animation', 'js_composer' ),
+            'param_name'  => 'css_animation',
+            'admin_label' => false,
+            'value'       => array(
+                __( 'No', 'js_composer' )                 => '',
+                __( 'Top to bottom', 'js_composer' )      => 'top-to-bottom',
+                __( 'Bottom to top', 'js_composer' )      => 'bottom-to-top',
+                __( 'Left to right', 'js_composer' )      => 'left-to-right',
+                __( 'Right to left', 'js_composer' )      => 'right-to-left',
+                __( 'Appear from center', 'js_composer' ) => "appear"
         	),
         	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'js_composer' )
         ),
@@ -325,51 +325,51 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'box_products', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'       => __( 'hot deals', 'edo' ),
-            'icon'        => '',
-            'per_page'    => 5,
-            'box_type'    => 'box-1',
-            'type'        => 'hot-deals',
-            'taxonomy'    => 0,
-            'orderby'     => 'date',
-            'order'       => 'DESC',
+            'title'          => __( 'hot deals', 'edo' ),
+            'icon'           => '',
+            'per_page'       => 5,
+            'box_type'       => 'box-1',
+            'type'           => 'hot-deals',
+            'taxonomy'       => 0,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
             
             //box 5
-            'per_child'   => 8,
-            'sub_orderby' => 'id',
-            'sub_order'   => 'desc',
-            'sub_hide'    => false,
+            'per_child'      => 8,
+            'sub_orderby'    => 'id',
+            'sub_order'      => 'desc',
+            'sub_hide'       => false,
             //box 4
-            'link'        => '',
+            'link'           => '',
             
             //box 3
-            'banner'      => '',
-            'link_banner' => '',
+            'banner'         => '',
+            'link_banner'    => '',
             
             //Carousel            
-            'autoplay'    => 'false', 
-            'navigation'  => 'false',
-            'margin'      => 20,
-            'slidespeed'  => 250,
-            'nav'         => 'true',
-            'loop'        => 'true',
+            'autoplay'       => 'false', 
+            'navigation'     => 'false',
+            'margin'         => 20,
+            'slidespeed'     => 250,
+            'nav'            => 'true',
+            'loop'           => 'true',
             //Default
             'use_responsive' => 1,
             'items_destop'   => 5,
             'items_tablet'   => 3,
             'items_mobile'   => 1,
             
-            'css' => '',
-            'css_animation' => '',
-            'el_class' => '',
+            'css'            => '',
+            'css_animation'  => '',
+            'el_class'       => '',
         ), $atts ) );
         
          global $woocommerce_loop;
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
-        	'extra' => $this->getExtraClass( $el_class ),
-        	'css_animation' => $this->getCSSAnimation( $css_animation ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
+            'extra'            => $this->getExtraClass( $el_class ),
+            'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         

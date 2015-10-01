@@ -403,6 +403,16 @@
             
         })
 
+        // owl-nav postion
+        if( $('.controls-top-left').length >0 ){
+            $('.controls-top-left').each(function(){
+                var parent = $(this).closest('.block3');
+                var title_w = parent.find('.block-head .block-title').outerWidth()-21;
+                parent.find('.owl-controls').css('left',title_w+'px');
+
+            })
+        }
+
     });
     /* ---------------------------------------------
      Scripts initialization

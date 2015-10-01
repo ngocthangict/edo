@@ -30,7 +30,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="<?php echo THEME_URL . 'assets/' ?>images/location-icon.png" alt="store icon" />
+										<img src="<?php echo esc_url(THEME_URL . 'assets/images/location-icon.png'); ?>" alt="store icon" />
 									</div>
 									<div class="block-title-text text-sm"><?php _e( 'FIND A', 'edo' );?></div>
 									<div class="block-title-text text-lg"><?php _e( 'edo store', 'edo' );?></div>
@@ -53,7 +53,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="<?php echo THEME_URL . 'assets/' ?>images/email-icon.png" alt="store icon">
+										<img src="<?php echo esc_url( THEME_URL . 'assets/images/email-icon.png' ); ?>" alt="store icon">
 									</div>
 									<div class="block-title-text text-sm"><?php echo $kt_subscribe_title;?></div>
 									<div class="block-title-text text-lg"><?php echo $kt_subscribe_subtitle;?></div>

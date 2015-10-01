@@ -329,6 +329,8 @@ function edo_comment_nav() {
 endif;
 
 
+
+
 if( ! class_exists( 'wp_bootstrap_navwalker' ) && file_exists( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' ) ){
     require_once( THEME_DIR. '/inc/nav/wp_bootstrap_navwalker.php' );
 }

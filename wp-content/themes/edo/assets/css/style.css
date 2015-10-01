@@ -856,7 +856,9 @@
 	border-right: 1px solid #eaeaea;
 	overflow: hidden;
 }
-.block-offers .last-item .product{
+
+.block-offers .last-item .product,
+.block-offers .products .product.compare-button{
 	border: none;
 }
 /*----------------------

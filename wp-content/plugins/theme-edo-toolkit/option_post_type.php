@@ -41,8 +41,8 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','edo'),
-	        'hide'   => __( 'Hide', 'edo' ),
+			'show' =>__('Show','edo'),
+			'hide' => __( 'Hide', 'edo' ),
 	    ),
 	) );
 	$page_option->add_field( array(
@@ -52,8 +52,8 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','edo'),
-	        'hide'   => __( 'Hide', 'edo' ),
+			'show' =>__('Show','edo'),
+			'hide' => __( 'Hide', 'edo' ),
 	    ),
 	) );
 	$page_option->add_field( array(
@@ -63,9 +63,9 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'show_option_none' => true,
 	    'options'          => array(
-	    	'left'=>__('Left Sidebar','edo'),
-	    	'right'=>__('Right Sidebar','edo'),
-	        'full'   => __( 'Full width layout', 'edo' ),
+			'left'  =>__('Left Sidebar','edo'),
+			'right' =>__('Right Sidebar','edo'),
+			'full'  => __( 'Full width layout', 'edo' ),
 	    ),
 	) );
 
