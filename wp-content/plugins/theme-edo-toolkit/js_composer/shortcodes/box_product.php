@@ -657,7 +657,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 							<h3 class="block-title"><?php echo $title; ?></h3>
                             <?php endif; ?>
                             <?php if( $link ): ?>
-                                <a class="link-all" href="<?php echo $link ?>"><?php _e( 'View All', 'edo' ) ?></a>
+                                <a class="link-all" href="<?php echo esc_url( $link ); ?>"><?php _e( 'View All', 'edo' ) ?></a>
                             <?php endif; ?>
 						</div>
 						<div class="block-inner controls-top-left">
@@ -798,18 +798,34 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
      public function edo_loop_product( $products, $data_carousel= '', $content = 'list-product', $datetime = false){
         ?>
         <ul class="products kt-owl-carousel" <?php echo $data_carousel; ?>>
+            <?php $max_time = 0; ?>
             <?php while( $products->have_posts() ): $products->the_post(); ?>
-                <?php if( $datetime ): ?>
-                    <li class="product has_time" <?php do_action( 'edo_wc_datatime_sale_product' ) ?>>
-                <?php else: ?>
-                    <li class="product">
-                <?php endif; ?>
+                
+                <li class="product">
 					<?php 
                         wc_get_template_part( 'content', $content );
                     ?>
                 </li>
+                <?php
+                if( $datetime ){
+                    $time = edo_get_max_date_sale( get_the_ID() );
+                    if( $time > $max_time ){
+                        $max_time = $time;
+                    }
+                }
+                ?>
 			<?php endwhile; ?>
 		</ul>
+        <?php 
+        if( $datetime && $max_time > 0 ){
+            $y = date( 'Y', $max_time );
+            $m = date( 'm', $max_time );
+            $d = date( 'd', $max_time );
+            ?>
+            <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="">
+            <?php
+        }
+        ?>
         <?php
         wp_reset_query();
         wp_reset_postdata(); 

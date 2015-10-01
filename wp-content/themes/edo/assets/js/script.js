@@ -198,30 +198,13 @@
       }
     function hasOnlyCountdown(){
         jQuery( '.only_countdown' ).each(function(){
-            var countdown = jQuery(this);
-            
-            var time = countdown.find( '.has_time' );
-            
-            var selector_countdown = countdown.find( '.countdown-only' );
-            var $y = 2015;
-            var $m = 1;
-            var $d = 1;
-            var max_time = 0;
-            
-            time.each( function( $index, $element ){
-                var $this = jQuery( $element );
-                var $strtotime = parseInt( $this.data( 'strtotime' ) );
-                if( $strtotime > max_time ){
-                    max_time = $strtotime;
-                    $y = parseInt( $this.data( 'y' ) );
-                    $m = parseInt( $this.data( 'm' ) );
-                    $d = parseInt( $this.data( 'd' ) );
-                }
-            } );
-            
-            if( ( max_time > 0 ) && ( $y >= 2015 ) && ( $m >= 1 && $m <= 12 ) && ( $d >= 1 && $d <= 31 ) ){
-                var austDay = new Date( $y, $m - 1, $d, 0, 0, 0 );
-                selector_countdown.countdown({
+            var max_time = $(this).find('.max-time-sale');
+            if( max_time.length > 0 ){
+                var y = max_time.data('y');
+                var m = max_time.data('m');
+                var d = max_time.data('d');
+                var austDay = new Date( y, m - 1, d, 0, 0, 0 );
+                $(this).find('.countdown-only').countdown({
                     until: austDay,
                     labels: labels, 
                     layout: layout

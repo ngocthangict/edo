@@ -87,6 +87,16 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 	</div>
 	<div class="product-count-down">
-		<span class="countdown-lastest" <?php do_action( 'edo_wc_datatime_sale_product' ) ?>></span>
+        <?php
+            $time = edo_get_max_date_sale( get_the_ID() );
+            if($time > 0){
+                $y = date( 'Y', $time );
+                $m = date( 'm', $time );
+                $d = date( 'd', $time );
+                ?>
+                <span class="countdown-lastest" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" data-h="00" data-i="00" data-s="00"></span>
+                <?php
+            }
+        ?>
 	</div>
 </div>

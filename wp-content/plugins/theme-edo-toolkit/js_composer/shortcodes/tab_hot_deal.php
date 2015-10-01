@@ -3,14 +3,14 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name" => __( "Hot Deal Tab", 'edo'),
-    "base" => "hot_deal",
-    "category" => __('by Edo', 'edo' ),
-    "description" => __( "Show tab hot deal", 'edo'),
-    "as_parent" => array('only' => 'tab_section'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
-    "content_element" => true,
+    "name"                    => __( "Hot Deal Tab", 'edo'),
+    "base"                    => "hot_deal",
+    "category"                => __('by Edo', 'edo' ),
+    "description"             => __( "Show tab hot deal", 'edo'),
+    "as_parent"               => array('only' => 'tab_section'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
+    "content_element"         => true,
     "show_settings_on_create" => true,
-    "params" => array(
+    "params"                  => array(
         array(
             "type"        => "textfield",
             "heading"     => __( "Title", 'edo' ),
@@ -40,9 +40,9 @@ vc_map( array(
         
         array(
             "type"       => "dropdown",
-        	"heading"    => __("Order by", 'edo'),
-        	"param_name" => "orderby",
-        	"value" => array(
+            "heading"    => __("Order by", 'edo'),
+            "param_name" => "orderby",
+            "value"      => array(
         		__('None', 'edo')     => 'none',
                 __('ID', 'edo')       => 'ID',
                 __('Author', 'edo')   => 'author',
@@ -56,21 +56,21 @@ vc_map( array(
         ),
         array(
             "type"       => "dropdown",
-        	"heading"    => __("Order", 'edo'),
-        	"param_name" => "order",
-        	"value" => array(
+            "heading"    => __("Order", 'edo'),
+            "param_name" => "order",
+            "value"      => array(
                 __('ASC', 'edo')  => 'ASC',
                 __('DESC', 'edo') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __( "Designates the ascending or descending order.", 'edo' )
+            'std'         => 'DESC',
+            "description" => __( "Designates the ascending or descending order.", 'edo' )
         ),
         array(
-        	'type' => 'dropdown',
-        	'heading' => __( 'CSS Animation', 'js_composer' ),
-        	'param_name' => 'css_animation',
-        	'admin_label' => false,
-        	'value' => array(
+            'type'        => 'dropdown',
+            'heading'     => __( 'CSS Animation', 'js_composer' ),
+            'param_name'  => 'css_animation',
+            'admin_label' => false,
+            'value'       => array(
         		__( 'No', 'js_composer' ) => '',
         		__( 'Top to bottom', 'js_composer' ) => 'top-to-bottom',
         		__( 'Bottom to top', 'js_composer' ) => 'bottom-to-top',
@@ -83,7 +83,7 @@ vc_map( array(
         
         // Carousel
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
@@ -94,7 +94,7 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
@@ -106,7 +106,7 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
@@ -129,17 +129,17 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-			"type" => "edo_number",
-			"heading" => __("Margin", 'edo'),
-			"param_name" => "margin",
-			"value" => "30",
-            "suffix" => __("px", 'edo'),
-			"description" => __('Distance( or space) between 2 item', 'edo'),
-            'group' => __( 'Carousel settings', 'edo' ),
+            "type"        => "edo_number",
+            "heading"     => __("Margin", 'edo'),
+            "param_name"  => "margin",
+            "value"       => "30",
+            "suffix"      => __("px", 'edo'),
+            "description" => __('Distance( or space) between 2 item', 'edo'),
+            'group'       => __( 'Carousel settings', 'edo' ),
             'admin_label' => false,
 	  	),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 1,
                 __( 'No', 'js_composer' )  => 0
@@ -202,7 +202,7 @@ vc_map( array(
     "base"            => "tab_section",
     "content_element" => true,
     "as_child"        => array('only' => 'hot_deal'), // Use only|except attributes to limit parent (separate multiple values with comma)
-    "params" => array(
+    "params"          => array(
         // add params same as with any other content element
         array(
             "type"        => "textfield",
@@ -234,27 +234,27 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'hot_deal', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'      => 'Tabs Name',
-            'per_page'   => 5,
-            'taxonomy'   => 0,
-            'icon'       => '',
-            'orderby'    => 'date',
-            'order'      => 'DESC',
+            'title'          => 'Tabs Name',
+            'per_page'       => 5,
+            'taxonomy'       => 0,
+            'icon'           => '',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
             
             //Carousel            
-            'autoplay'   => 'false', 
-            'navigation' => 'false',
-            'loop'       => 'false',
-            'slidespeed' => 250,
-            'margin'     => 0,
+            'autoplay'       => 'false', 
+            'navigation'     => 'false',
+            'loop'           => 'false',
+            'slidespeed'     => 250,
+            'margin'         => 0,
             
-            'css'        => '',
-            'el_class'   => '',
-            'nav'        => 'true',
+            'css'            => '',
+            'el_class'       => '',
+            'nav'            => 'true',
             //Default
-            'items_destop'  => 3,
-            'items_tablet'  => 2,
-            'items_mobile'  => 1,
+            'items_destop'   => 3,
+            'items_tablet'   => 2,
+            'items_mobile'   => 1,
             
             'use_responsive' => 1,
             'css_animation'  => '',
@@ -263,9 +263,9 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
          global $woocommerce_loop;
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
-        	'extra' => $this->getExtraClass( $el_class ),
-        	'css_animation' => $this->getCSSAnimation( $css_animation ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
+            'extra'            => $this->getExtraClass( $el_class ),
+            'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         
@@ -283,15 +283,15 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'order'               => $order
 		);
         $data_carousel = array(
-            "autoplay"   => $autoplay,
-            "navigation" => $navigation,
-            "margin"     => $margin,
-            "slidespeed" => $slidespeed,
-            "theme"      => 'style-navigation-bottom',
-            "autoheight" => 'false',
-            'nav'        => 'true',
-            'dots'       => 'false',
-            'loop'       => $loop,
+            "autoplay"           => $autoplay,
+            "navigation"         => $navigation,
+            "margin"             => $margin,
+            "slidespeed"         => $slidespeed,
+            "theme"              => 'style-navigation-bottom',
+            "autoheight"         => 'false',
+            'nav'                => 'true',
+            'dots'               => 'false',
+            'loop'               => $loop,
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
@@ -325,13 +325,13 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         ?>
 		<!-- Block hot deals2 -->
 		<div class="col-sm-12">
-			<div class="block-hot-deals2">
+			<div class="block-hot-deals2 has_countdown only_countdown">
 				<h3 class="title">hot deals</h3>
 				<div class="row">
 					<div class="col-sm-4 col-md-3">
 						<div class="hot-deal-tab">
 							<div class="countdown">
-								<span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
+								<span class="countdown-only"></span>
 							</div>
 							<ul class="nav-tab">
                                 <?php $i = 1; ?>
@@ -352,6 +352,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
 						<div class="tab-container">
                             <?php $i = 1; ?>
                             <?php 
+                            $max_time = 0;
                             foreach( $tabs as $tab ) :
                                 extract( shortcode_atts( array(
                                     'header'         => __( 'Tab name', 'edo' ),
@@ -377,14 +378,22 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         							<div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
         								<?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
                                             <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
+                                                
             									<?php while( $products->have_posts() ): $products->the_post(); ?>
                                                     <?php edo_woocommerce_product_loop_item_before(); ?>
                                     					<?php 
                                                             wc_get_template_part( 'content', 'list-product' );
+                                                            // Get date sale 
+                                                            $time = edo_get_max_date_sale( get_the_ID() );
+                                                            if( $time > $max_time ){
+                                                                $max_time = $time;
+                                                            }
+
                                                         ?>
                                                     <?php edo_woocommerce_product_loop_item_after(); ?>
                                     			<?php endwhile; ?>
             								</ul>
+                                            
                                         <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
         							</div>
                                 <?php endif; ?>
@@ -394,6 +403,15 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 ?>
                                 <?php $i++; ?>
                             <?php endforeach; ?>
+                            <?php 
+                            if( $max_time > 0 )
+                                $y = date( 'Y', $max_time );
+                                $m = date( 'm', $max_time );
+                                $d = date( 'd', $max_time );
+                                ?>
+                                <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="">
+                                <?php
+                            ?>
 						</div>
 					</div>
 				</div>
