@@ -30,7 +30,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="<?php echo esc_url(THEME_URL . 'assets/images/location-icon.png'); ?>" alt="store icon" />
+										<img src="<?php echo esc_url(THEME_URL . 'assets/images/location-icon.png'); ?>" alt="<?php esc_attr_e( 'store icon', 'edo' ) ?>" />
 									</div>
 									<div class="block-title-text text-sm"><?php _e( 'FIND A', 'edo' );?></div>
 									<div class="block-title-text text-lg"><?php _e( 'edo store', 'edo' );?></div>
@@ -38,10 +38,10 @@
 							</div>
 							<div class="block-inner">
 								<div class="block-info clearfix">
-									<?php _e( 'Enter your zip code, city or country to find the closest EDO Store near you!', 'edo');?>
+									<?php esc_html_e( 'Enter your zip code, city or country to find the closest EDO Store near you!', 'edo');?>
 								</div>
 								<div class="block-input-box box-radius clearfix find-store-form">
-									<input type="text" class="input-box-text" placeholder="Zip code, City, Country">
+									<input type="text" class="input-box-text" placeholder="<?php esc_attr_e( 'Zip code, City, Country', 'edo' ) ?>" />
 									<button id="find-store-button" class="block-button main-bg"><?php _e( 'Go', 'edo');?></button>
 									<div class="find-store-messages"></div>
 								</div>
@@ -53,18 +53,18 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="<?php echo esc_url( THEME_URL . 'assets/images/email-icon.png' ); ?>" alt="store icon">
+										<img src="<?php echo esc_url( THEME_URL . 'assets/images/email-icon.png' ); ?>" alt="<?php esc_attr_e( 'emai icon', 'edo' ) ?>" />
 									</div>
-									<div class="block-title-text text-sm"><?php echo $kt_subscribe_title;?></div>
-									<div class="block-title-text text-lg"><?php echo $kt_subscribe_subtitle;?></div>
+									<div class="block-title-text text-sm"><?php echo edo_get_html( $kt_subscribe_title );?></div>
+									<div class="block-title-text text-lg"><?php echo edo_get_html( $kt_subscribe_subtitle );?></div>
 								</div>
 							</div>
 							<div class="block-inner">
 								<div class="block-info clearfix">
-									<?php echo $kt_subscribe_description;?>
+									<?php echo edo_get_html( $kt_subscribe_description ) ;?>
 								</div>
 								<div class="block-input-box box-radius clearfix">
-									<?php echo do_shortcode( '[mailchimp opt_in="yes" title="" text_before=""]'.$kt_subscribe_success_message.'[/mailchimp]' );?>
+									<?php echo do_shortcode( '[mailchimp opt_in="yes" title="" text_before=""]'. esc_attr( $kt_subscribe_success_message ) .'[/mailchimp]' );?>
 								</div>
 							</div>
 						</div>
@@ -85,7 +85,7 @@
                         <?php if( has_post_thumbnail() ):?>
                             <li class="partner">
                                 <a target="_blank" href="<?php the_permalink() ?>">
-                                    <?php the_post_thumbnail();?>
+                                    <?php the_post_thumbnail(); ?>
                                 </a>
                             </li>
                             <?php $i ++ ; ?>
@@ -104,7 +104,7 @@
 							<div class="block-head">
 								<div class="block-title">
 									<div class="block-icon">
-										<img src="<?php echo THEME_URL . 'assets/' ?>images/partners-icon.png" alt="store icon" />
+										<img src="<?php echo THEME_URL . 'assets/' ?>images/partners-icon.png" alt="<?php esc_attr_e( 'partner icon', 'edo' ) ?>" />
 									</div>
 									<div class="block-title-text text-sm"><?php _e( 'our', 'edo' ) ?></div>
 									<div class="block-title-text text-lg"><?php _e( 'partners', 'edo' ) ?></div>
@@ -113,7 +113,7 @@
 							<div class="block-inner">
 								<div class="block-owl">
 									<ul class="kt-owl-carousel list-partners" data-nav="true" data-autoplay="true" data-loop="<?php echo $loop; ?>" data-items="1">
-                                        <?php echo $html; ?>
+                                        <?php echo edo_get_html( $html ) ; ?>
 									</ul>
 								</div>
 							</div>
@@ -192,15 +192,15 @@
 			<div class="row">
 				<div class="block-social">
 					<ul class="list-social">
-						<?php echo $social_icons; ?>
+						<?php echo edo_get_html( $social_icons ) ; ?>
 					</ul>
 				</div>
 				<div class="block-payment">
 					<?php
                         $payment_logo = edo_option('kt_payment_logo','');
-                        if($payment_logo != ""){
+                        if( $payment_logo != "" ){
                         	?>
-                        	<img src="<?php echo esc_url( $payment_logo );?>" alt="Payment Logo">
+                        	<img src="<?php echo esc_url( $payment_logo );?>" alt="<?php esc_attr_e( 'Payment Logo', 'edo' ) ?>" />
                         	<?php
                         }
                     ?>
@@ -222,7 +222,7 @@
 	</div>
 </footer>
 <!-- ./footer -->
-<a href="#" class="scroll_top" title="Scroll to Top" style="display: block;">Scroll</a>
+<a href="#" class="scroll_top" title="<?php esc_attr_e( 'Scroll to Top', 'edo' ) ?>" style="display: block;"><?php esc_html_e( 'Scroll', 'edo' ) ?></a>
 <?php wp_footer(); ?>
 
 </body>

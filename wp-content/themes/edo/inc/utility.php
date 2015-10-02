@@ -480,3 +480,13 @@ function edo_hex2rgb( $color ) {
 
     return array( 'red' => $r, 'green' => $g, 'blue' => $b );
 }
+
+/**
+ * @return $html
+ */
+ if( ! function_exists('edo_get_html') ){
+    function edo_get_html( $html )
+    {
+        return balanceTags( $html );
+    }
+}
