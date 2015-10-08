@@ -144,7 +144,7 @@ if(!function_exists( 'edo_themne_color' )){
 CSS;
 		?>
 		<style id="edo-theme-color" type="text/css">
-	        <?php echo $css;?>
+	        <?php echo apply_filters( 'edo_customize_css', $css );?>
 	    </style>
 		<?php
 	}

@@ -19,7 +19,7 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 								<li class="item">
 									<a href="#">
 										<span class="icon phone"></span>
-										<span class="line1"><?php _e( 'Call us:', 'edo' ) ?><br /><strong><?php echo $kt_phone;?></strong></span>
+										<span class="line1"><?php esc_html_e( 'Call us:', 'edo' ) ?><br /><strong><?php echo esc_html( $kt_phone ) ;?></strong></span>
 									</a>
 								</li>
 								<?php if( function_exists( 'YITH_WCWL' ) && edo_is_wc() ):
@@ -27,7 +27,7 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 							        <li class="item">
 								        <a href="<?php echo esc_url( $wishlist_url ); ?>">
 											<span class="icon wish-list"></span>
-											<span class="line1"><?php _e( 'Wish' , 'edo' );?><br /><strong><?php _e('List' ,'edo'); ?></strong></span>
+											<span class="line1"><?php esc_html_e( 'Wish' , 'edo' );?><br /><strong><?php esc_html_e('List' ,'edo'); ?></strong></span>
 										</a>
 									</li>
 							    <?php endif; ?>
@@ -41,18 +41,18 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 										<span class="icon login"></span>
 										<span class="line1">
 										<?php if ( is_user_logged_in() ):  ?>
-										<?php _e('Welcome' , 'edo');?>
-										<b><?php echo $currentUser->display_name;?></b>
+										<?php esc_html_e('Welcome' , 'edo');?>
+										<b><?php echo esc_html( $currentUser->display_name ) ;?></b>
 										<?php else:?>
-											<?php _e('Login' , 'edo')?>
+											<?php esc_html_e('Login' , 'edo')?>
 										<?php endif;?>
-										<br /><strong><?php _e('My account' ,'edo');?></strong></span>
+										<br /><strong><?php esc_html_e('My account' ,'edo');?></strong></span>
 									</a>
 								</li>
 								<li class="item">
 									<a href="<?php echo WC()->cart->get_cart_url(); ?>">
 										<span class="icon checkout"></span>
-										<span class="line1"><?php _e( 'Checkout', 'edo' ) ?><br /><strong><?php _e( 'Order', 'edo' ) ?></strong></span>
+										<span class="line1"><?php esc_html_e( 'Checkout', 'edo' ) ?><br /><strong><?php esc_html_e( 'Order', 'edo' ) ?></strong></span>
 									</a>
 								</li>
             				    <li class="item item-cart block-wrap-cart">
@@ -78,7 +78,7 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="#"><?php _e( 'MENU', 'edo' ) ?></a>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'MENU', 'edo' ) ?></a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <?php
@@ -109,7 +109,7 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
 					<div class="block-vertical-menu block-vertical-menu-style2">
 						<div class="block block-vertical-inner">
 							<div class="vertical-head">
-								<h5 class="vertical-title"><?php _e( 'Categories', 'edo'); ?></h5>
+								<h5 class="vertical-title"><?php esc_html_e( 'Categories', 'edo'); ?></h5>
 							</div>
 							<div class="vertical-menu-content">
 							<?php

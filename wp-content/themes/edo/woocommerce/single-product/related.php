@@ -71,7 +71,7 @@ if ( $products->have_posts() ) : ?>
 	<div class="block block-products-owl">
 		<div class="block-head">
 			<div class="block-title">
-				<div class="block-title-text text-lg"><?php _e( 'Related Products', 'woocommerce' ) ?></div>
+				<div class="block-title-text text-lg"><?php esc_html_e( 'Related Products', 'woocommerce' ) ?></div>
 			</div>
 		</div>
 		<div class="block-inner">

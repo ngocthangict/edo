@@ -78,7 +78,7 @@
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="#"><?php _e( 'MENU', 'edo' ) ?></a>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'MENU', 'edo' ) ?></a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <?php

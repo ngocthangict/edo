@@ -53,17 +53,17 @@ function breadcrumb_trail( $args = array() ) {
         /* Labels for text used (see Breadcrumb_Trail::default_labels). */
         'labels' => array(
             'browse'              => '',
-            'home'                => __( 'Home',                                'edo' ),
-            'error_404'           => __( '404 Not Found',                       'edo'  ),
-            'archives'            => __( 'Archives',                            'edo' ),
+            'home'                => esc_attr__( 'Home',                                'edo' ),
+            'error_404'           => esc_attr__( '404 Not Found',                       'edo'  ),
+            'archives'            => esc_attr__( 'Archives',                            'edo' ),
             /* Translators: %s is the search query. The HTML entities are opening and closing curly quotes. */
-            'search'              => __( 'Search results for &#8220;%s&#8221;', 'edo' ),
+            'search'              => esc_attr__( 'Search results for &#8220;%s&#8221;', 'edo' ),
             /* Translators: %s is the page number. */
-            'paged'               => __( 'Page %s',                             'edo' ),
+            'paged'               => esc_attr__( 'Page %s',                             'edo' ),
             /* Translators: Minute archive title. %s is the minute time format. */
-            'archive_minute'      => __( 'Minute %s',                           'edo' ),
+            'archive_minute'      => esc_attr__( 'Minute %s',                           'edo' ),
             /* Translators: Weekly archive title. %s is the week date format. */
-            'archive_week'        => __( 'Week %s',                            'edo' ),
+            'archive_week'        => esc_attr__( 'Week %s',                            'edo' ),
 
             /* "%s" is replaced with the translated date/time format. */
             'archive_minute_hour' => '%s',
@@ -220,18 +220,18 @@ class Breadcrumb_Trail {
     public function default_labels() {
 
         $labels = array(
-            'browse'              => __( 'Browse:',                             'breadcrumb-trail' ),
-            'home'                => __( 'Home',                                'breadcrumb-trail' ),
-            'error_404'           => __( '404 Not Found',                       'breadcrumb-trail' ),
-            'archives'            => __( 'Archives',                            'breadcrumb-trail' ),
+            'browse'              => esc_attr__( 'Browse:',                             'breadcrumb-trail' ),
+            'home'                => esc_attr__( 'Home',                                'breadcrumb-trail' ),
+            'error_404'           => esc_attr__( '404 Not Found',                       'breadcrumb-trail' ),
+            'archives'            => esc_attr__( 'Archives',                            'breadcrumb-trail' ),
             /* Translators: %s is the search query. The HTML entities are opening and closing curly quotes. */
-            'search'              => __( 'Search results for &#8220;%s&#8221;', 'breadcrumb-trail' ),
+            'search'              => esc_attr__( 'Search results for &#8220;%s&#8221;', 'breadcrumb-trail' ),
             /* Translators: %s is the page number. */
-            'paged'               => __( 'Page %s',                             'breadcrumb-trail' ),
+            'paged'               => esc_attr__( 'Page %s',                             'breadcrumb-trail' ),
             /* Translators: Minute archive title. %s is the minute time format. */
-            'archive_minute'      => __( 'Minute %s',                           'breadcrumb-trail' ),
+            'archive_minute'      => esc_attr__( 'Minute %s',                           'breadcrumb-trail' ),
             /* Translators: Weekly archive title. %s is the week date format. */
-            'archive_week'        => __( 'Week %s',                             'breadcrumb-trail' ),
+            'archive_week'        => esc_attr__( 'Week %s',                             'breadcrumb-trail' ),
 
             /* "%s" is replaced with the translated date/time format. */
             'archive_minute_hour' => '%s',
@@ -1177,7 +1177,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
             $this->items[] = '<a href="' . bbp_get_topic_tag_link() . '">' . bbp_get_topic_tag_name() . '</a>';
 
             if ( true === $this->args['show_title'] )
-                $this->items[] = __( 'Edit', 'breadcrumb-trail' );
+                $this->items[] = esc_attr__( 'Edit', 'breadcrumb-trail' );
         }
 
         /* If viewing a "view" page. */
@@ -1205,15 +1205,15 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
 
             /* If viewing a topic split page. */
             if ( bbp_is_topic_split() && true === $this->args['show_title'] )
-                $this->items[] = __( 'Split', 'breadcrumb-trail' );
+                $this->items[] = esc_attr__( 'Split', 'breadcrumb-trail' );
 
             /* If viewing a topic merge page. */
             elseif ( bbp_is_topic_merge() && true === $this->args['show_title'] )
-                $this->items[] = __( 'Merge', 'breadcrumb-trail' );
+                $this->items[] = esc_attr__( 'Merge', 'breadcrumb-trail' );
 
             /* If viewing a topic edit page. */
             elseif ( bbp_is_topic_edit() && true === $this->args['show_title'] )
-                $this->items[] = __( 'Edit', 'breadcrumb-trail' );
+                $this->items[] = esc_attr__( 'Edit', 'breadcrumb-trail' );
         }
 
         /* If viewing a single reply page. */
@@ -1230,7 +1230,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
                 $this->items[] = '<a href="' . bbp_get_reply_url( $reply_id ) . '">' . bbp_get_reply_title( $reply_id ) . '</a>';
 
                 if ( true === $this->args['show_title'] )
-                    $this->items[] = __( 'Edit', 'breadcrumb-trail' );
+                    $this->items[] = esc_attr__( 'Edit', 'breadcrumb-trail' );
 
             } elseif ( true === $this->args['show_title'] ) {
                 $this->items[] = bbp_get_reply_title( $reply_id );
@@ -1261,7 +1261,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
                 $this->items[] = '<a href="' . bbp_get_user_profile_url() . '">' . bbp_get_displayed_user_field( 'display_name' ) . '</a>';
 
                 if ( true === $this->args['show_title'] )
-                    $this->items[] = __( 'Edit', 'breadcrumb-trail' );
+                    $this->items[] = esc_attr__( 'Edit', 'breadcrumb-trail' );
             } elseif ( true === $this->args['show_title'] ) {
                 $this->items[] = bbp_get_displayed_user_field( 'display_name' );
             }

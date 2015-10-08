@@ -52,10 +52,10 @@ function kt_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary-menu'               => __( 'Primary Menu',      'edo' ),
-		'vertical-menu'              => __( 'Vertical Menu', 'edo' ),
-		'topbar-menu'                => __( 'Topbar Menu', 'edo' ),
-		'single-product-custom-menu' => __( 'Single Product Custom link', 'edo' ),
+		'primary-menu'               => esc_attr__( 'Primary Menu',      'edo' ),
+		'vertical-menu'              => esc_attr__( 'Vertical Menu', 'edo' ),
+		'topbar-menu'                => esc_attr__( 'Topbar Menu', 'edo' ),
+		'single-product-custom-menu' => esc_attr__( 'Single Product Custom link', 'edo' ),
 	) );
 
 	/*
@@ -81,18 +81,18 @@ add_action( 'after_setup_theme', 'kt_setup' );
  */
 function kt_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Widget Area', 'edo' ),
+		'name'          => esc_attr__( 'Widget Area', 'edo' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'edo' ),
+		'description'   => esc_attr__( 'Add widgets here to appear in your sidebar.', 'edo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
     register_sidebar( array(
-		'name'          => __( 'Widget Shop Area', 'edo' ),
+		'name'          => esc_attr__( 'Widget Shop Area', 'edo' ),
 		'id'            => 'sidebar-shop',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'edo' ),
+		'description'   => esc_attr__( 'Add widgets here to appear in your sidebar.', 'edo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -100,9 +100,9 @@ function kt_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-		'name'          => __( 'Widget Shop single Area', 'edo' ),
+		'name'          => esc_attr__( 'Widget Shop single Area', 'edo' ),
 		'id'            => 'sidebar-shop-single',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'edo' ),
+		'description'   => esc_attr__( 'Add widgets here to appear in your sidebar.', 'edo' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -110,9 +110,9 @@ function kt_widgets_init() {
 	) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 1', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 1', 'edo'),
         'id'            => 'footer-menu-1',
-        'description'   => __( 'The footer menu 1 widget area', 'edo'),
+        'description'   => esc_attr__( 'The footer menu 1 widget area', 'edo'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -120,9 +120,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 2', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 2', 'edo'),
         'id'            => 'footer-menu-2',
-        'description'   => __( 'The footer menu 2 widget area', 'edo'),
+        'description'   => esc_attr__( 'The footer menu 2 widget area', 'edo'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -130,9 +130,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 3', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 3', 'edo'),
         'id'            => 'footer-menu-3',
-        'description'   => __( 'The footer menu 3 widget area', 'edo'),
+        'description'   => esc_attr__( 'The footer menu 3 widget area', 'edo'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -140,9 +140,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 4', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 4', 'edo'),
         'id'            => 'footer-menu-4',
-        'description'   => __( 'The footer menu 4 widget area', 'edo'),
+        'description'   => esc_attr__( 'The footer menu 4 widget area', 'edo'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -150,9 +150,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 5', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 5', 'edo'),
         'id'            => 'footer-menu-5',
-        'description'   => __( 'The footer menu 5 widget area', 'edo'),
+        'description'   => esc_attr__( 'The footer menu 5 widget area', 'edo'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -161,9 +161,9 @@ function kt_widgets_init() {
     
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 6', 'edo'),
+        'name'          => esc_attr__( 'Footer Menu 6', 'edo'),
         'id'            => 'footer-menu-6',
-        'description'   => __( 'The footer menu 6 widget area', 'edo' ),
+        'description'   => esc_attr__( 'The footer menu 6 widget area', 'edo' ),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -258,7 +258,7 @@ if( ! function_exists("edo_enqueue_script")){
         wp_enqueue_script( 'kt_image', THEME_URL.'assets/js/kt_image.js', array('jquery'), '1.0.0', true);
         
         wp_localize_script( 'kt_image', 'kt_image_lange', array(
-            'frameTitle' => __( 'Select your image', 'edo' )
+            'frameTitle' => esc_attr__( 'Select your image', 'edo' )
         ));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         
         wp_register_script( 'framework-core', THEME_URL.'assets/js/framework-core.js', array('jquery', 'jquery-ui-tabs'), '1.0.0', true);
@@ -279,7 +279,7 @@ if(!function_exists('edo_comment')){
 			<div class="comment-content">
 				<div class="comment-meta">
 					<span class="comment-author"><?php printf( '%s', get_comment_author_link()) ?></span>
-					<span class="comment-date"><?php comment_date(); ?> <?php _e('at','edo');?> <?php comment_time(); ?></span>
+					<span class="comment-date"><?php comment_date(); ?> <?php esc_html_e('at','edo');?> <?php comment_time(); ?></span>
 				</div>
 				<div class="comment-entry">
 					<?php comment_text(); ?>
@@ -310,14 +310,14 @@ function edo_comment_nav() {
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 	?>
 	<nav class="navigation comment-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'edo' ); ?></h2>
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'edo' ); ?></h2>
 		<div class="nav-links">
 			<?php
-				if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'edo' ) ) ) :
+				if ( $prev_link = get_previous_comments_link( esc_attr__( 'Older Comments', 'edo' ) ) ) :
 					printf( '<div class="nav-previous">%s</div>', $prev_link );
 				endif;
 
-				if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'edo' ) ) ) :
+				if ( $next_link = get_next_comments_link( esc_attr__( 'Newer Comments', 'edo' ) ) ) :
 					printf( '<div class="nav-next">%s</div>', $next_link );
 				endif;
 			?>

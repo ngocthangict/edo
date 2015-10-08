@@ -192,7 +192,7 @@ if( ! function_exists( 'edo_wc_loop_product_rating' )){
         if ( ! is_numeric( $rating ) ) {
             $rating = $product->get_average_rating();
         }
-        $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+        $rating_html  = '<div class="product-star" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'edo' ), $rating > 0 ? $rating : 0  ) . '">';
         for($i = 1;$i <= 5 ;$i++){
             if($rating >= $i){
                 if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
@@ -215,7 +215,7 @@ if(!function_exists('edo_display_rating')){
         if ( ! is_numeric( $rating ) ) {
             $rating = $product->get_average_rating();
         }
-        $rating_html  = '<div class="product-star edo-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+        $rating_html  = '<div class="product-star edo-star" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'edo' ), $rating > 0 ? $rating : 0  ) . '">';
         for($i = 1;$i <= 5 ;$i++){
             if($rating >= $i){
                 if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
@@ -406,7 +406,7 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'edo_custom_cart_button_text
 
 if( ! function_exists( 'edo_custom_cart_button_text' ) ){
     function edo_custom_cart_button_text() {
-        return __( 'Buy', 'woocommerce' );
+        return esc_attr__( 'Buy', 'woocommerce' );
     }
 } 
 //Remove pagination on the bottom of shop page 
@@ -436,10 +436,10 @@ if( ! function_exists( 'edo_custom_display_view' ) ){
        ?>
        <ul class="display-product-option">
             <li data-type="grid" class="view-as-grid <?php if($shop_products_list_style=='grid'): echo esc_attr( 'selected' ); endif;?>">
-                <span><?php _e( 'grid', 'edo' ) ?></span>
+                <span><?php esc_html_e( 'grid', 'edo' ) ?></span>
             </li>
             <li data-type="list" class="view-as-list <?php if($shop_products_list_style=='list'): echo esc_attr( 'selected' ); endif;?>">
-                <span><?php _e( 'list', 'edo' ) ?></span>
+                <span><?php esc_html_e( 'list', 'edo' ) ?></span>
             </li>
         </ul>
        <?php
@@ -478,7 +478,7 @@ add_filter("woocommerce_single_product_summary", "woocommerce_template_single_ra
 function edo_single_add_to_cart_text( $wcpgsk_single_cart_button_text, $number ) 
 {
     // make filter magic happen here...
-    $wcpgsk_single_cart_button_text = __('Buy','edo');
+    $wcpgsk_single_cart_button_text = esc_attr__( 'Buy', 'edo' );
     return $wcpgsk_single_cart_button_text;
 };
         
@@ -503,8 +503,8 @@ if(!function_exists('edo_group_button_single_product')){
 	function edo_group_button_single_product(){
 		?>
 		<div class="box-control-button">
-	        <a class="link-sendmail" href="#"><?php _e( 'Email to a Friend', 'edo' ) ?></a>
-	        <a class="link-print" href="#"><?php _e( 'Print', 'edo' ) ?></a>
+	        <a class="link-sendmail" href="#"><?php esc_html_e( 'Email to a Friend', 'edo' ) ?></a>
+	        <a class="link-print" href="#"><?php esc_html_e( 'Print', 'edo' ) ?></a>
 		</div>
 		<?php
 	}
@@ -567,19 +567,19 @@ function edo_custom_woocommerce_product_add_to_cart_text() {
     $product_type = $product->product_type;
     switch ( $product_type ) {
         case 'external':
-            return __( 'Buy', 'woocommerce' );
+            return esc_attr__( 'Buy', 'woocommerce' );
         break;
         case 'grouped':
-            return __( 'View', 'woocommerce' );
+            return esc_attr__( 'View', 'woocommerce' );
         break;
         case 'simple':
-            return __( 'Buy', 'woocommerce' );
+            return esc_attr__( 'Buy', 'woocommerce' );
         break;
         case 'variable':
-            return __( 'View', 'woocommerce' );
+            return esc_attr__( 'View', 'woocommerce' );
         break;
         default:
-            return __( 'Read more', 'woocommerce' );
+            return esc_attr__( 'Read more', 'woocommerce' );
     }
     
 }
@@ -589,7 +589,7 @@ function edo_custom_woocommerce_product_add_to_cart_text() {
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'edo_custom_cart_button_text' );    // 2.1 +
 function edo_custom_cart_button_text() {
  
-        return __( 'Buy', 'woocommerce' );
+        return esc_attr__( 'Buy', 'woocommerce' );
  
 }
 /**
@@ -655,7 +655,7 @@ function edo_mutil_color_vertical_menu(){
 
     ?>
     <style type="text/css">
-        <?php echo $style; ?>
+        <?php echo apply_filters( 'edo_mutil_color_vertical_menu', $style ); ?>
     </style>
     <?php
 }

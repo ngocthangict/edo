@@ -21,6 +21,6 @@ $newness 		= edo_option( 'kt_woo_newness', 7 ); 	// Newness in days as defined b
 ?>
 <?php if ( ( time() - ( 60 * 60 * 24 * $newness ) ) < $postdatestamp ) : ?>
 
-	<?php echo apply_filters( 'woocommerce_new_flash', '<span class="product-new">' . __( 'New', 'woocommerce' ) . '</span>', $post, $product ); ?>
+	<?php echo apply_filters( 'woocommerce_new_flash', '<span class="product-new">' . esc_attr__( 'New', 'woocommerce' ) . '</span>', $post, $product ); ?>
 
 <?php endif; ?>

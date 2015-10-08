@@ -49,8 +49,8 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 						</td>
 
 						<td class="label">
-							<label for="product-<?php echo $product_id; ?>">
-								<?php echo $product->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', get_permalink(), $product_id ) ) . '">' . esc_html( get_the_title() ) . '</a>' : esc_html( get_the_title() ); ?>
+							<label for="product-<?php echo esc_attr( $product_id ) ; ?>">
+								<?php echo esc_attr( $product->is_visible() )  ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', get_permalink(), $product_id ) ) . '">' . esc_html( get_the_title() ) . '</a>' : esc_html( get_the_title() ); ?>
 							</label>
 						</td>
 
@@ -58,7 +58,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 						<td class="price">
 							<?php
-								echo $product->get_price_html();
+								echo edo_get_html( $product->get_price_html() ) ;
 
 								if ( $availability = $product->get_availability() ) {
 									$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
@@ -84,7 +84,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+		<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_attr( $product->single_add_to_cart_text() ) ; ?></button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="variations-table quantity-table">
     <tbody>
     <tr>
-        <td class="table-label"><?php _e('Qty', 'edo') ?></td>
+        <td class="table-label"><?php esc_html_e('Qty', 'edo') ?></td>
         <td class="table-value">
             <div class="box-qty">
                 <a href="#" class="quantity-minus">-</a>

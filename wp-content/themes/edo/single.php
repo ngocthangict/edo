@@ -43,7 +43,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                                 <?php the_content(); ?>
                                 <?php
                                 wp_link_pages( array(
-                                    'before'      => '<div class="nav-links"><span class="page-links-title">' . __( 'Pages:', 'edo' ) . '</span>',
+                                    'before'      => '<div class="nav-links"><span class="page-links-title">' . esc_attr__( 'Pages:', 'edo' ) . '</span>',
                                     'after'       => '</div>',
                                     'link_before' => '<span>',
                                     'link_after'  => '</span>',
@@ -52,7 +52,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                                 ) );
                                 ?>
                             </div>
-                            <?php the_tags( '<div class="entry-tags">'.__('Tags:', 'edo' ).' ', ', ', '<div>' );?>
+                            <?php the_tags( '<div class="entry-tags">'.esc_attr__('Tags:', 'edo' ).' ', ', ', '<div>' );?>
                         </article>
                         <div class="single-box">
                         <?php

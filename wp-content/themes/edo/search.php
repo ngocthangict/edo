@@ -24,7 +24,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
             <div class="row">
                 <div class="<?php echo esc_attr($col_class);?>">
                     <?php if ( have_posts() ) : ?>
-            			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'edo' ), get_search_query() ); ?></h1>
+            			<h1 class="page-title"><?php printf( esc_attr__( 'Search Results for: %s', 'edo' ), get_search_query() ); ?></h1>
             			<div class="main-page">
             				<div class="page-content clearfix">
             					<ul class="blog-posts">

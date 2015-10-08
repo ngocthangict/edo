@@ -13,12 +13,12 @@ class Widget_KT_Product_Special extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_product_special', 
-                        'description' => __( 'Box special product on sidebar.', 'edo' ) );
-		parent::__construct( 'widget_kt_product_special', __('Edo Special Product', 'edo' ), $widget_ops );
+                        'description' => esc_attr__( 'Box special product on sidebar.', 'edo' ) );
+		parent::__construct( 'widget_kt_product_special', esc_attr__('Edo Special Product', 'edo' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
-        echo $args['before_widget'];
+        echo apply_filters( 'edo_wg_before_widget', $args['before_widget'] ) ;
         
         $title          = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : 'Specials';
         
@@ -37,9 +37,9 @@ class Widget_KT_Product_Special extends WP_Widget {
             'order'	                => $order
 		);
         if( $title ){
-            echo $args['before_title'];
-            echo $title;
-            echo $args['after_title'];
+            echo apply_filters( 'edo_wg_after_title', $args[ 'before_title' ] ) ;
+            echo esc_html( $title );
+            echo apply_filters( 'edo_wg_after_title', $args[ 'after_title' ] ) ;
         }
         $product = new WP_Query( $params );
         ?>
@@ -69,11 +69,11 @@ class Widget_KT_Product_Special extends WP_Widget {
             wp_reset_postdata();
             $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );            
             ?>
-            <a href="<?php echo $shop_page_url; ?>" class="button-radius"><?php _e( 'All Products', 'edo' ) ?><span class="icon"></span></a>
+            <a href="<?php echo esc_url( $shop_page_url ) ; ?>" class="button-radius"><?php esc_html_e( 'All Products', 'edo' ) ?><span class="icon"></span></a>
         </div> 
         <!-- ./SPECIAL -->
         <?php
-        echo $args[ 'after_widget' ];
+        echo apply_filters( 'edo_wg_after_widget', $args[ 'after_widget' ] ) ;
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -97,30 +97,30 @@ class Widget_KT_Product_Special extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'edo'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ; ?>"><?php esc_html_e( 'Title:', 'edo'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('title') ) ; ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'edo'); ?></label> 
-            <select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name('orderby'); ?>">
-                <option value="id" <?php selected( 'id', $orderby ) ?>><?php _e( 'ID', 'edo' ) ?></option>
-            	<option class="author" value="author" <?php selected( 'author', $orderby ) ?>><?php _e( 'Author', 'edo' ) ?></option>
-            	<option class="name" value="name" <?php selected( 'name', $orderby ) ?>><?php _e( 'Name', 'edo' ) ?></option>
-            	<option class="date" value="date" <?php selected( 'date', $orderby ) ?>><?php _e( 'Date', 'edo' ) ?></option>
-            	<option class="modified" value="modified" <?php selected( 'modified', $orderby ) ?>><?php _e( 'Modified', 'edo' ) ?></option>
-            	<option class="rand" value="rand" <?php selected( 'rand', $orderby ) ?>><?php _e( 'Rand', 'edo' ) ?></option>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ) ; ?>"><?php esc_html_e( 'Order By:', 'edo'); ?></label> 
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('orderby') ) ; ?>">
+                <option value="id" <?php selected( 'id', $orderby ) ?>><?php esc_html_e( 'ID', 'edo' ) ?></option>
+            	<option class="author" value="author" <?php selected( 'author', $orderby ) ?>><?php esc_html_e( 'Author', 'edo' ) ?></option>
+            	<option class="name" value="name" <?php selected( 'name', $orderby ) ?>><?php esc_html_e( 'Name', 'edo' ) ?></option>
+            	<option class="date" value="date" <?php selected( 'date', $orderby ) ?>><?php esc_html_e( 'Date', 'edo' ) ?></option>
+            	<option class="modified" value="modified" <?php selected( 'modified', $orderby ) ?>><?php esc_html_e( 'Modified', 'edo' ) ?></option>
+            	<option class="rand" value="rand" <?php selected( 'rand', $orderby ) ?>><?php esc_html_e( 'Rand', 'edo' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'edo'); ?></label> 
-            <select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name('order'); ?>">
-                <option value="desc" <?php selected( 'desc', $order ) ?>><?php _e( 'DESC', 'edo' ) ?></option>
-            	<option value="asc" <?php selected( 'asc', $order ) ?>><?php _e( 'ASC', 'edo' ) ?></option>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ) ; ?>"><?php esc_html_e( 'Order Way:', 'edo'); ?></label> 
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('order') ) ; ?>">
+                <option value="desc" <?php selected( 'desc', $order ) ?>><?php esc_html_e( 'DESC', 'edo' ) ?></option>
+            	<option value="asc" <?php selected( 'asc', $order ) ?>><?php esc_html_e( 'ASC', 'edo' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Products per page:', 'edo'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" type="text" value="<?php echo esc_attr($posts_per_page); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ) ; ?>"><?php esc_html_e( 'Products per page:', 'edo'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('posts_per_page') ) ; ?>" type="text" value="<?php echo esc_attr($posts_per_page); ?>" />
         </p>
         
     <?php

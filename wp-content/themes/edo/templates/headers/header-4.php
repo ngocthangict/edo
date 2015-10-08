@@ -11,12 +11,12 @@
 						</div>
 						<div class="shop-menu">
 							<div class="icon">
-								<span><?php _e( 'Shop', 'edo');?></span>
+								<span><?php esc_html_e( 'Shop', 'edo');?></span>
 							</div>
 							<!-- Block vertical-menu -->
 							<div class="block block-vertical-menu">
 								<div class="vertical-head">
-									<h5 class="vertical-title"><?php _e( 'Categories', 'edo');?></h5>
+									<h5 class="vertical-title"><?php esc_html_e( 'Categories', 'edo');?></h5>
 								</div>
 								<div class="vertical-menu-content">
 			                        <?php
@@ -44,29 +44,29 @@
 						<div class="wrap-block-cl">
 							<div class="inner-cl box-radius">
 								<div class="dropdown user-info <?php if(!edo_is_wpml()) echo esc_attr( 'not-language' );?>">
-								  <a class="main-link" data-toggle="dropdown" role="button"><i class="fa fa-user"></i> <?php _e( 'My Account', 'edo' ) ?></a>
+								  <a class="main-link" data-toggle="dropdown" role="button"><i class="fa fa-user"></i> <?php esc_html_e( 'My Account', 'edo' ) ?></a>
 								  <ul class="dropdown-menu">
 								  		<?php if( edo_is_wc() && is_user_logged_in() ): ?>
 							                <?php $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
-							                <li><a href="<?php echo $url; ?>"><i class="fa fa-user"></i> <?php _e( 'My Account', 'edo' ) ?></a></li>
+							                <li><a href="<?php echo esc_url( $url ) ; ?>"><i class="fa fa-user"></i> <?php esc_html_e( 'My Account', 'edo' ) ?></a></li>
 							            <?php endif; ?>
 							            <?php if( edo_is_wc() && edo_is_wl() && is_user_logged_in() ):
 							                $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-							                <li><a href="<?php echo $wishlist_url; ?>"><i class="fa fa-heart-o"></i> <?php _e( 'My Wishlist', 'edo' ) ?></a></li>
+							                <li><a href="<?php echo esc_url( $wishlist_url ) ; ?>"><i class="fa fa-heart-o"></i> <?php esc_html_e( 'My Wishlist', 'edo' ) ?></a></li>
 							            <?php endif; ?>
 							            <?php if( edo_is_wc() ): ?>
 							                <?php $check_out_url = WC()->cart->get_cart_url(); ?>
-							                <li><a href="<?php echo $check_out_url; ?>"><i class="fa fa-arrow-circle-right"></i> <?php _e( 'Checkout', 'edo' ); ?></a></li>
+							                <li><a href="<?php echo esc_url( $check_out_url ) ; ?>"><i class="fa fa-arrow-circle-right"></i> <?php esc_html_e( 'Checkout', 'edo' ); ?></a></li>
 							            <?php endif; ?>
 							            <?php if ( is_user_logged_in() ):  ?>
-							                <li><a href="<?php echo wp_logout_url(); ?>"><i class="fa fa-sign-out"></i> <?php _e('Logout', 'edo') ?></a></li>
+							                <li><a href="<?php echo wp_logout_url(); ?>"><i class="fa fa-sign-out"></i> <?php esc_html_e('Logout', 'edo') ?></a></li>
 							            <?php else: ?>
-							                <li><a href="<?php echo wp_login_url(); ?>"><i class="fa fa-sign-in"></i> <?php _e('Login', 'edo') ?></a></li>
+							                <li><a href="<?php echo wp_login_url(); ?>"><i class="fa fa-sign-in"></i> <?php esc_html_e('Login', 'edo') ?></a></li>
 							            <?php endif; ?>
 								  </ul>
 								</div>
 								<?php do_action( 'edo_header_language' ) ;?>
-								<div class="block-wrap-cart <?php if(!edo_is_wpml()) echo esc_attr( 'not-language' );?>">
+								<div class="block-wrap-cart <?php if( ! edo_is_wpml() ) echo esc_attr( 'not-language' );?>">
 									<?php do_action( 'edo_mini_cart' ); ?>
 								</div>
 							</div>

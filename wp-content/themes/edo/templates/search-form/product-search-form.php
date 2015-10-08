@@ -1,6 +1,6 @@
 <?php 
 $args = array(
-  'show_option_none' => __( 'All Categries', 'kutetheme' ),
+  'show_option_none' => esc_attr__( 'All Categries', 'edo' ),
   'taxonomy'    => 'product_cat',
   'class'      => 'search-category-select',
   'id'          => 'category-select',
@@ -18,7 +18,7 @@ $args = array(
 		</div>
 		<div class="form-group search-input">
 			<input type="hidden" name="post_type" value="product" />
-			<input type="text" name="s" placeholder="<?php _e( 'What are you looking for?', 'edo' ); ?>" value="<?php echo esc_attr( get_search_query() );?>" />
+			<input type="text" name="s" placeholder="<?php esc_attr_e( 'What are you looking for?', 'edo' ); ?>" value="<?php echo esc_attr( get_search_query() );?>" />
 		</div>
 		<button type="submit" class="btn-search main-bg"><i class="fa fa-search"></i></button>
 	</form>

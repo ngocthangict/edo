@@ -6,7 +6,7 @@
                 <?php the_excerpt(); ?>
             </div>
             <div class="entry-more">
-                <a class="button" href="<?php the_permalink();?>"><?php _e('Read more', 'edo' );?></a>
+                <a class="button" href="<?php the_permalink();?>"><?php esc_html_e('Read more', 'edo' );?></a>
             </div>
         </div>
     </article>

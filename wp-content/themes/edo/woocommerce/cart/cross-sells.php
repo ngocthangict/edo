@@ -37,7 +37,7 @@ if ( $products->have_posts() ) : ?>
 
 	<div class="cross-sells">
 
-		<h2><?php _e( 'You may be interested in&hellip;', 'woocommerce' ) ?></h2>
+		<h2><?php esc_html_e( 'You may be interested in&hellip;', 'woocommerce' ) ?></h2>
 
 		<ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":2},"1000":{"items":3}}'>
 

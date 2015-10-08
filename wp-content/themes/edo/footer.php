@@ -32,8 +32,8 @@
 									<div class="block-icon">
 										<img src="<?php echo esc_url(THEME_URL . 'assets/images/location-icon.png'); ?>" alt="<?php esc_attr_e( 'store icon', 'edo' ) ?>" />
 									</div>
-									<div class="block-title-text text-sm"><?php _e( 'FIND A', 'edo' );?></div>
-									<div class="block-title-text text-lg"><?php _e( 'edo store', 'edo' );?></div>
+									<div class="block-title-text text-sm"><?php esc_html_e( 'FIND A', 'edo' );?></div>
+									<div class="block-title-text text-lg"><?php esc_html_e( 'edo store', 'edo' );?></div>
 								</div>
 							</div>
 							<div class="block-inner">
@@ -42,7 +42,7 @@
 								</div>
 								<div class="block-input-box box-radius clearfix find-store-form">
 									<input type="text" class="input-box-text" placeholder="<?php esc_attr_e( 'Zip code, City, Country', 'edo' ) ?>" />
-									<button id="find-store-button" class="block-button main-bg"><?php _e( 'Go', 'edo');?></button>
+									<button id="find-store-button" class="block-button main-bg"><?php esc_html_e( 'Go', 'edo');?></button>
 									<div class="find-store-messages"></div>
 								</div>
 							</div>
@@ -106,13 +106,13 @@
 									<div class="block-icon">
 										<img src="<?php echo THEME_URL . 'assets/' ?>images/partners-icon.png" alt="<?php esc_attr_e( 'partner icon', 'edo' ) ?>" />
 									</div>
-									<div class="block-title-text text-sm"><?php _e( 'our', 'edo' ) ?></div>
-									<div class="block-title-text text-lg"><?php _e( 'partners', 'edo' ) ?></div>
+									<div class="block-title-text text-sm"><?php esc_html_e( 'our', 'edo' ) ?></div>
+									<div class="block-title-text text-lg"><?php esc_html_e( 'partners', 'edo' ) ?></div>
 								</div>
 							</div>
 							<div class="block-inner">
 								<div class="block-owl">
-									<ul class="kt-owl-carousel list-partners" data-nav="true" data-autoplay="true" data-loop="<?php echo $loop; ?>" data-items="1">
+									<ul class="kt-owl-carousel list-partners" data-nav="true" data-autoplay="true" data-loop="<?php echo esc_attr( $loop ); ?>" data-items="1">
                                         <?php echo edo_get_html( $html ) ; ?>
 									</ul>
 								</div>
@@ -215,7 +215,7 @@
 					<?php echo esc_attr( $copyright ) ?>
 				</div>
 				<div class="block-shop-phone">
-					<?php _e( 'Shop by phone', 'edo' ) ?> <strong><?php echo esc_attr( $hotline ) ?></strong>
+					<?php esc_html_e( 'Shop by phone', 'edo' ) ?> <strong><?php echo esc_attr( $hotline ) ?></strong>
 				</div>
 			</div>
 		</div>

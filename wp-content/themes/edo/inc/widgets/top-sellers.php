@@ -13,8 +13,8 @@ class Widget_KT_Topsellers extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_topsellers', 
-                        'description' => __( 'Box top sellers product on sidebar.', 'edo' ) );
-		parent::__construct( 'widget_kt_topsellers', __('Edo Top sellers', 'edo' ), $widget_ops );
+                        'description' => esc_attr__( 'Box top sellers product on sidebar.', 'edo' ) );
+		parent::__construct( 'widget_kt_topsellers', esc_attr__('Edo Top sellers', 'edo' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -38,12 +38,12 @@ class Widget_KT_Topsellers extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'edo'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ; ?>"><?php esc_html_e( 'Title:', 'edo'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('title') ) ; ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Products per page:', 'edo'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" type="text" value="<?php echo esc_attr($posts_per_page); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ) ; ?>"><?php esc_html_e( 'Products per page:', 'edo'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('posts_per_page') ) ; ?>" type="text" value="<?php echo esc_attr($posts_per_page); ?>" />
         </p>
         
     <?php

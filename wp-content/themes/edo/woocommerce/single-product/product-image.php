@@ -39,11 +39,11 @@ global $post, $woocommerce, $product;
 
 		} else {
 
-			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $post->ID );
+			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), esc_attr__( 'Placeholder', 'woocommerce' ) ), $post->ID );
 
 		}
 	?>
-	<p class="notice text-center"><?php _e( 'Click on the image to zoom', 'edo' ); ?></p>
+	<p class="notice text-center"><?php esc_html_e( 'Click on the image to zoom', 'edo' ); ?></p>
 	<?php do_action( 'woocommerce_product_thumbnails' ); ?>
 	
 </div>

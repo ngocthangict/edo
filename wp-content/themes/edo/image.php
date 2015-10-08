@@ -21,7 +21,7 @@ get_header(); ?>
 
 					<nav id="image-navigation" class="navigation image-navigation">
 						<div class="nav-links">
-							<div class="nav-previous"><?php previous_image_link( false, __( 'Previous Image', 'edo' ) ); ?></div><div class="nav-next"><?php next_image_link( false, __( 'Next Image', 'edo' ) ); ?></div>
+							<div class="nav-previous"><?php previous_image_link( false, esc_attr__( 'Previous Image', 'edo' ) ); ?></div><div class="nav-next"><?php next_image_link( false, esc_attr__( 'Next Image', 'edo' ) ); ?></div>
 						</div><!-- .nav-links -->
 					</nav><!-- .image-navigation -->
 
@@ -56,11 +56,11 @@ get_header(); ?>
 						<?php
 							the_content();
 							wp_link_pages( array(
-								'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'edo' ) . '</span>',
+								'before'      => '<div class="page-links"><span class="page-links-title">' . esc_attr__( 'Pages:', 'edo' ) . '</span>',
 								'after'       => '</div>',
 								'link_before' => '<span>',
 								'link_after'  => '</span>',
-								'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'edo' ) . ' </span>%',
+								'pagelink'    => '<span class="screen-reader-text">' . esc_attr__( 'Page', 'edo' ) . ' </span>%',
 								'separator'   => '<span class="screen-reader-text">, </span>',
 							) );
 						?>
@@ -68,7 +68,7 @@ get_header(); ?>
 
 					<footer class="entry-footer">
 						<?php edo_entry_meta(); ?>
-						<?php edit_post_link( __( 'Edit', 'edo' ), '<span class="edit-link">', '</span>' ); ?>
+						<?php edit_post_link( esc_attr__( 'Edit', 'edo' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer><!-- .entry-footer -->
 
 				</article><!-- #post-## -->

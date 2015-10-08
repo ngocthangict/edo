@@ -59,7 +59,7 @@ if( ! function_exists( 'edo_get_banner_header_option_1' ) ){
     			<li>
                     <div class="banner1">
                         <a href="<?php echo esc_attr( $link_1 ); ?>">
-                            <img src="<?php echo esc_url( $banner_1 ) ?>" alt="<?php _e( 'Banner', 'edo' ); ?>" />
+                            <img src="<?php echo esc_url( $banner_1 ) ?>" alt="<?php esc_attr_e( 'Banner', 'edo' ); ?>" />
                         </a>
                     </div>
                 </li>
@@ -69,7 +69,7 @@ if( ! function_exists( 'edo_get_banner_header_option_1' ) ){
     			<li>
                     <div class="banner1">
                         <a href="<?php echo esc_attr( $link_1 ); ?>">
-                            <img src="<?php echo esc_url( $banner_2 ) ?>" alt="<?php _e( 'Banner', 'edo' ); ?>" />
+                            <img src="<?php echo esc_url( $banner_2 ) ?>" alt="<?php esc_attr_e( 'Banner', 'edo' ); ?>" />
                         </a>
                     </div>
                 </li>
@@ -238,31 +238,31 @@ if( ! function_exists('edo_menu_my_account')){
         <ul class="top-bar-link top-bar-link-right dot">
             <?php if( edo_is_wc() && is_user_logged_in() ): ?>
                 <?php $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
-                <li><a href="<?php echo $url; ?>"><?php _e( 'My Account', 'edo' ) ?></a></li>
+                <li><a href="<?php echo esc_url( $url ) ; ?>"><?php esc_html_e( 'My Account', 'edo' ) ?></a></li>
             <?php endif; ?>
             <?php if( edo_is_wc() && edo_is_wl() && is_user_logged_in() ):
                 $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                <li><a href="<?php echo $wishlist_url; ?>"><?php _e( 'My Wishlist', 'edo' ) ?></a></li>
+                <li><a href="<?php echo esc_url( $wishlist_url ) ; ?>"><?php esc_html_e( 'My Wishlist', 'edo' ) ?></a></li>
             <?php endif; ?>
             <?php if( edo_is_wc() ): ?>
                 <?php $check_out_url = WC()->cart->get_cart_url(); ?>
-                <li><a href="<?php echo $check_out_url; ?>"><?php _e( 'Checkout', 'edo' ); ?></a></li>
+                <li><a href="<?php echo esc_url( $check_out_url ) ; ?>"><?php esc_html_e( 'Checkout', 'edo' ); ?></a></li>
             <?php endif; ?>
             <?php if ( is_user_logged_in() ):  ?>
-                <li><a href="<?php echo wp_logout_url(); ?>"><?php _e('Logout', 'edo') ?></a></li>
+                <li><a href="<?php echo wp_logout_url(); ?>"><?php esc_html_e('Logout', 'edo') ?></a></li>
             <?php else: ?>
-                <li><a href="<?php echo wp_login_url(); ?>"><?php _e('Login', 'edo') ?></a></li>
+                <li><a href="<?php echo wp_login_url(); ?>"><?php esc_html_e('Login', 'edo') ?></a></li>
             <?php endif; ?>
             <?php if( edo_is_wc() && edo_is_cp() ): 
                 global $yith_woocompare; 
                 $count = count($yith_woocompare->obj->products_list); ?>
-                <li><a class="yith-woocompare-open" href="#"><?php _e( "Compare", 'edo') ?></a></li>
+                <li><a class="yith-woocompare-open" href="#"><?php esc_html_e( "Compare", 'edo') ?></a></li>
             <?php endif; ?>
 		</ul>
         <?php
         $return = ob_get_contents();
         ob_clean();
-        echo $return;
+        echo apply_filters( 'edo_menu_my_account', $return ) ;
     }
 }
 add_action( 'edo_menu_header_top', 'edo_menu_my_account' );
@@ -289,7 +289,7 @@ if( ! function_exists( "edo_get_wpml" )){
             ?>
             <div class="dropdown language">
                 <a class="curent-laguage" data-toggle="dropdown" role="button">
-                    <img src="<?php echo esc_url($active_lang['country_flag_url']); ?>" alt="<?php echo $active_lang["translated_name"]; ?>" />
+                    <img src="<?php echo esc_url($active_lang['country_flag_url']); ?>" alt="<?php echo esc_attr( $active_lang["translated_name"] ) ; ?>" />
                     <?php echo esc_attr( $active_lang["translated_name"] ) ?>
                 </a>
                 <ul class="dropdown-menu">
