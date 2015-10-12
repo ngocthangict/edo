@@ -201,11 +201,6 @@ table, th, td {
   padding-left: 20px;
   padding-right: 40px;
 }
-.required:after{
-  color: red;
-  content: ' (*)';
-  font-size: 12px;
-}
 .bold{
   font-weight: bold;
 }
