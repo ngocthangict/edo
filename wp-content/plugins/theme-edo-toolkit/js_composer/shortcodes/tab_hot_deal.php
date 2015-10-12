@@ -282,6 +282,17 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'orderby'             => $orderby,
             'order'               => $order
 		);
+        
+        if( $taxonomy ){
+            $args['tax_query'] = 
+                array(
+            		array(
+            			'taxonomy' => 'product_cat',
+            			'field' => 'id',
+            			'terms' => explode( ",", $taxonomy )
+            	)
+            );
+        }
         $data_carousel = array(
             "autoplay"           => $autoplay,
             "navigation"         => $navigation,
