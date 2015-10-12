@@ -856,6 +856,7 @@ img.alignright{
   line-height: 34px;
   padding-left: 15px;
   padding-right: 35px;
+  display: inline-block;
 }
 .products a.added_to_cart:before{
   width: 28px;
@@ -866,7 +867,12 @@ img.alignright{
   border-radius: 90%;
   margin-top: 2px;
   margin-right: -33px;
-  background: #5a88ca url('../images/cart-icon.png') no-repeat center center;
+  background: #5a88ca;
+  font-family: 'FontAwesome';
+  content: "\f00c";
+  text-align: center;
+  line-height: 28px;
+  color: #fff;
 }
 .products .yith-wcwl-wishlistexistsbrowse a,
 .products .yith-wcwl-add-button a,
