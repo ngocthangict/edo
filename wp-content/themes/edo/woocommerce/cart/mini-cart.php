@@ -26,12 +26,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php if( $edo_used_header == 2 ): ?>
     <a class="link-cart" href="<?php echo esc_url( $check_out_url ); ?>">
 		<span class="icon cart"></span>
-		<span class="line1"><?php esc_html_e( 'Shopping Cart', 'edo' ) ?><br /><strong><?php echo esc_attr( $total ) ; ?></strong></span>
+		<span class="line1"><?php esc_html_e( 'Shopping Cart', 'edo' ) ?><br /><strong><?php echo WC()->cart->get_cart_total() ; ?></strong></span>
 	</a>
     <?php elseif( $edo_used_header == 3):?>
         <div class="iner-block-cart">
             <a href="<?php echo esc_url( $check_out_url ); ?>">
-                <span class="total"><?php echo esc_attr( $total ) ; ?></span>
+                <span class="total"><?php echo WC()->cart->get_cart_total(); ?></span>
             </a>
         </div>
     <?php elseif( $edo_used_header == 4 ):?>
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php else: //Option 1 ?>
     <div class="iner-block-cart box-radius">
     	<a href="<?php echo esc_url( $check_out_url ) ; ?>">
-    		<span class="total"><?php echo esc_attr( $total ) ; ?></span>
+    		<span class="total"><?php echo WC()->cart->get_cart_total() ?></span>
     	</a>
     </div>
     <?php endif; ?>
@@ -90,7 +90,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                         <div class="p-right">
                             <p class="p-name"><?php echo esc_html( $product_name ) ; ?></p>
-                            <p class="product-price"><?php echo esc_html( $product_price )  ?></p>
+                            <p class="product-price"><?php echo sprintf( '%s',$product_price ) ?></p>
                             <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( esc_attr__('Qty: ', 'edo').__('%s', 'edo'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
                         </div>
                     </li>
@@ -100,7 +100,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
             <div class="toal-cart">
                 <span><?php esc_html_e( 'Total', 'edo' ); ?></span>
-                <span class="toal-price pull-right"><?php echo esc_attr( $total ); ?></span>
+                <span class="toal-price pull-right"><?php echo WC()->cart->get_cart_subtotal(); ?></span>
             </div>
             <div class="cart-buttons">
                 <a href="<?php echo esc_url( $check_out_url ); ?>" class="button-radius btn-check-out"><?php echo esc_html_e( 'Checkout', 'edo' ); ?><span class="icon"></span></a>

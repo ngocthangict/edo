@@ -7,35 +7,23 @@
     var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
     var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
             
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var $this = jQuery(this);
-        var $container = $this.closest('.block-tabs');
-        var $href = $this.attr('href');
-        var $tab_active = $container.find($href);
-        var $item_active = $tab_active.find( '.owl-item.active' );
-        var $carousel_active = $tab_active.find('.owl-carousel');
-        
-        if( $carousel_active.length > 0 ){
-            if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
-              settingCarousel( $carousel_active );
-            }else{
-                $item_active.each(function($i){
-                    var $item = jQuery(this);
-                    var $style = $item.attr( "style" );
-                    var delay = $i * 300;
-                    $item.attr("style",$style +
-                              "-webkit-animation-delay:" + delay + "ms;"
-                            + "-moz-animation-delay:" + delay + "ms;"
-                            + "-o-animation-delay:" + delay + "ms;"
-                            + "animation-delay:" + delay + "ms;"
-                    ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                        $item.removeClass('slideInTop animated');
-                        $item.attr("style", $style);
-                    }); 
-                });
-            }
-        }
-    });
+    function tab_animated(){
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var href = $(this).attr('href');
+
+            $(href).find('.owl-item.active').each(function(i){
+                var style = $(this).attr('style');
+               $(this).attr("style",style+
+                    "-webkit-animation-delay:" + i * 200 + "ms;"
+                    + "-moz-animation-delay:" + i * 200 + "ms;"
+                    + "-o-animation-delay:" + i * 200 + "ms;"
+                    + "animation-delay:" + i * 200 + "ms;").addClass('fadeInUp animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('fadeInUp animated');
+                }); 
+            })
+        });
+    }
+
     /* ---------------------------------------------
      Owl carousel
      --------------------------------------------- */
@@ -218,6 +206,7 @@
         kt_bxslider();
         auto_width_megamenu();
         woo_quantily();
+        tab_animated();
         
         hasOnlyCountdown();
         // Select menu
@@ -408,7 +397,11 @@
             $('.scroll_top').stop(false,true).fadeIn(600);
         }
 
-
+        // Mini cart Scrollbar
+        if($('.block-mini-cart .mini-cart-content').length >0 ){
+            $(".block-mini-cart .mini-cart-content").mCustomScrollbar();
+        }
+        
     });
     /* ---------------------------------------------
      Scripts resize

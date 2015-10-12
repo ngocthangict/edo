@@ -267,7 +267,7 @@
 	top: 100%;
 	right: -1px;
 	z-index: 1002;
-	max-height: 500px;
+	
 	overflow-y: auto;
 	background: #FFF;
 	color: #666;
@@ -289,6 +289,7 @@
 	visibility: hidden;
 	line-height: 24px;
 	font-size: 14px;
+	padding: 20px 10px 20px 20px;
 }
 .block-wrap-cart .block-mini-cart .remove_link{
 	width: 9px;
@@ -309,8 +310,7 @@
 	visibility: visible;
 }
 .block-wrap-cart:hover .block-mini-cart .mini-cart-content{
-	padding: 20px;
-	overflow: hidden;
+	max-height: 400px;
 }
 .block-wrap-cart:hover .block-mini-cart .mini-cart-head{
 	text-transform: uppercase;
@@ -348,6 +348,17 @@
 .block-wrap-cart .toal-cart .toal-price{
 	font-size: 18px;
 }
+._mCS_1 .mCSB_dragger .mCSB_dragger_bar{ background-color: #5a88ca; }
+
+._mCS_2 .mCSB_dragger .mCSB_dragger_bar{ background-color: green; }
+
+#mCSB_3_dragger_vertical .mCSB_dragger_bar{ background-color: blue; }
+
+#mCSB_1_scrollbar_vertical .mCSB_dragger{ height: 100px; }
+
+#mCSB_1_scrollbar_horizontal .mCSB_dragger{ width: 100px; }
+
+.mCSB_1_scrollbar .mCSB_dragger .mCSB_draggerRail{ width: 4px; }
 /*--------------------
 [5. Main header]
 ---------------------*/
@@ -931,6 +942,7 @@
 ------------------------*/
 .block-popular-cat{
 	margin-top: 30px;
+	background: #fff;
 }
 .block-popular-cat .title{
 	position: relative;
@@ -2741,9 +2753,6 @@
 /*----------------------
 [29. Footer]
 ------------------------*/
-#footer{
-	margin-top: 30px;
-}
 .footer-top{
 	background: #fbfbfb;
 	border-top: 1px solid #eaeaea;

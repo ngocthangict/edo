@@ -192,6 +192,7 @@ function kt_scripts() {
 	// Jquery Ui
 	wp_enqueue_style( 'jquery-ui-style', THEME_URL . '/assets/lib/jquery-ui/jquery-ui.css', array( ), '1.0' );
 	wp_enqueue_style( 'fancyBox-style', THEME_URL . '/assets/lib/fancyBox/jquery.fancybox.css', array( ), '1.0' );
+	wp_enqueue_style( 'edo-custom-scrollbar-style', THEME_URL . '/assets/css/jquery.mCustomScrollbar.css', array( ), '1.0' );
 	// Load our main stylesheet.
 	wp_enqueue_style( 'edo-main-style', get_stylesheet_uri() );
 	// Global style 
@@ -226,6 +227,7 @@ function kt_scripts() {
 	// COUNT DOWN
 	wp_enqueue_script( 'edo-countdown-plugin-js', THEME_URL . '/assets/lib/countdown/jquery.plugin.js', array( 'jquery' ) );
 	wp_enqueue_script( 'edo-countdown-js', THEME_URL . '/assets/lib/countdown/jquery.countdown.js', array( 'jquery' ) );
+	wp_enqueue_script( 'edo-custom-scrollbar-js', THEME_URL . '/assets/js/jquery.mCustomScrollbar.concat.min.js', array( 'jquery' ) );
 	// Main javasript
 	wp_enqueue_script( 'edo-main-js', THEME_URL . '/assets/js/script.js', array( 'jquery' ) );
 	wp_enqueue_script( 'edo-actual-js', THEME_URL . '/assets/js/jquery.actual.min.js', array( 'jquery' ) );
