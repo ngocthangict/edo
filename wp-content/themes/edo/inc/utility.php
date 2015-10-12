@@ -251,7 +251,7 @@ if( ! function_exists('edo_menu_my_account')){
             <?php if ( is_user_logged_in() ):  ?>
                 <li><a href="<?php echo wp_logout_url(); ?>"><?php esc_html_e('Logout', 'edo') ?></a></li>
             <?php else: ?>
-                <li><a href="<?php echo wp_login_url(); ?>"><?php esc_html_e('Login', 'edo') ?></a></li>
+                <li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><?php esc_html_e('Login', 'edo') ?></a></li>
             <?php endif; ?>
             <?php if( edo_is_wc() && edo_is_cp() ): 
                 global $yith_woocompare; 

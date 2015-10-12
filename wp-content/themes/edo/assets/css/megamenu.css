@@ -40,13 +40,11 @@
 .megamenu .wpb_content_element, 
 .megamenu ul.wpb_thumbnails-fluid > li, 
 .megamenu .wpb_button{
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 .wishlist_table tr td.product-thumbnail a img{
 	width: 100px;
 }
-
-
 .block-vertical-menu .dropdown-menu {
 	position: absolute;
 	top: -15px;
