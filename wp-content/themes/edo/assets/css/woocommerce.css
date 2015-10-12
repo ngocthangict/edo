@@ -501,6 +501,7 @@ ul.products li.product .onsale{
 .woocommerce-page #content div.product div.images, 
 .woocommerce-page div.product div.images{
     width: 100%;
+    margin-bottom: 0;
 }
 .woocommerce-page div.product div.images .notice{
     margin-top: 15px;
@@ -569,7 +570,6 @@ ul.products li.product .onsale{
 .woocommerce div.product p.price del ,
 .woocommerce div.product span.price del{
     font-weight: normal;
-    margin-left: 10px;
 }
 .woocommerce div.product div[itemprop="description"]{
     margin: 0;
@@ -577,7 +577,9 @@ ul.products li.product .onsale{
     border-bottom: 1px solid #eaeaea;
     margin-bottom: 10px;
 }
-
+.woocommerce div.product div[itemprop="description"] p{
+    margin-bottom: 0;
+}
 .variations-table{
     border: none;
     padding: 0;
@@ -1000,4 +1002,7 @@ div.swatch-wrapper.selected:before{
 #cboxMiddleRight,
 #cboxBottomLeft{
     display: none;
+}
+.woocommerce table.shop_attributes td{
+    padding: 10px;
 }

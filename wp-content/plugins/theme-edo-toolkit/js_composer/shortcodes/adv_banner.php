@@ -37,13 +37,13 @@ vc_map( array(
             "admin_label" => false,
             'description' => __( 'It shows image of banner', 'edo' )
         ),
-        array(
-            "type"        => "colorpicker",
-            "heading"     => __("Background Color", 'edo'),
-            "param_name"  => "bg_color",
-            "admin_label" => false,
-            'description' => __( 'It shows background color of banner', 'edo' )
-        ),
+        // array(
+        //     "type"        => "colorpicker",
+        //     "heading"     => __("Background Color", 'edo'),
+        //     "param_name"  => "bg_color",
+        //     "admin_label" => false,
+        //     'description' => __( 'It shows background color of banner', 'edo' )
+        // ),
         array(
             "type"        => "attach_image",
             "heading"     => __("Background Image", 'edo'),
