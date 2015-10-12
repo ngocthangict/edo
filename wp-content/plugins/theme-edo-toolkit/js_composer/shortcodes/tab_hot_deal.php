@@ -404,13 +404,14 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 <?php $i++; ?>
                             <?php endforeach; ?>
                             <?php 
-                            if( $max_time > 0 )
+                            if( $max_time > 0 ){
                                 $y = date( 'Y', $max_time );
                                 $m = date( 'm', $max_time );
                                 $d = date( 'd', $max_time );
                                 ?>
                                 <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="">
                                 <?php
+                            }
                             ?>
 						</div>
 					</div>
