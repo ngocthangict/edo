@@ -36,18 +36,19 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                     $image  = isset( $instance[ 'image' ][$i])   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
                     $link   = isset( $instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
                     $target = isset( $instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
-                    
+                    $preview = false;
                     $img_preview = "";
                     if($image){
                         $img_preview = wp_get_attachment_url($image);
                         $preview = true;
                     }
-                    if($title):
+                    if($preview):
                     ?>
-                    <li>
+                    <li class="banner-hover">
                         <a target="<?php echo esc_attr( $target ) ?>" href="<?php echo esc_url($link) ?>">
-                        <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr($title) ?>" />
-                        <span class="title"><?php echo esc_attr($title) ?></span></a>
+                            <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr($title) ?>" />
+                            <span class="title"><?php echo esc_attr($title) ?></span>
+                        </a>
                     </li>
                     <?php endif; ?>
                 <?php endfor; ?>
@@ -62,20 +63,20 @@ class Widget_Edo_Custom_Image extends WP_Widget {
 		$instance = $new_instance;
 		$instance[ 'wtitle' ] = $new_instance[ 'wtitle' ] ? $new_instance[ 'wtitle' ] : '';
         
-        if( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] && count( $new_instance[ 'title' ] ) > 0 ){
+        if( isset( $new_instance[ 'image' ] ) && $new_instance[ 'image' ] && count( $new_instance[ 'image' ] ) > 0 ){
             $tmp = array();
-            for( $i = 0; $i < count($new_instance['title']); $i++ ){
+            for( $i = 0; $i < count( $new_instance['image'] ); $i++ ){
                 
                 $title  = isset($new_instance[ 'title' ][$i]) ? $new_instance[ 'title' ][$i] : '';
                 $image  = isset($new_instance[ 'image' ][$i]) ? $new_instance[ 'image' ][$i] : '';
                 $link   = isset($new_instance[ 'link' ][$i]) ? $new_instance[ 'link' ][$i] : '#';
                 $target = isset($new_instance[ 'target' ][$i]) ? $new_instance[ 'target' ][$i] : '_blank';
                 
-                if($title){
-                    $tmp[ 'title' ][]  = esc_html( trim( $title ) ) ?  esc_html( trim( $title ) ) : '';
-                    $tmp[ 'image' ][]  = esc_html( trim( $image ) ) ? esc_html( trim( $image ) ) : '';
-                    $tmp[ 'link' ][]   = esc_html( trim($link ) ) ? esc_html( trim( $link ) ) : '#';
-                    $tmp[ 'target '][] = esc_html( trim( $target ) ) ? esc_html( trim( $target ) ) : '_blank';
+                if($image){
+                    $tmp[ 'title' ][]  = esc_html( $title ) ?  esc_html( $title ) : '';
+                    $tmp[ 'image' ][]  = intval( $image ) ? intval( $image ) : '';
+                    $tmp[ 'link' ][]   = esc_url( $link ) ? esc_url( $link ) : '#';
+                    $tmp[ 'target '][] = esc_attr( $target  ) ? esc_attr( $target  ) : '_blank';
                 }
             }
             $instance[ 'title' ] = $tmp[ 'title' ];
@@ -96,22 +97,22 @@ class Widget_Edo_Custom_Image extends WP_Widget {
         </p>
         <div class="content multi-item">
             <?php
-                if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ){
-                    for( $i = 0; $i < count($instance['title']); $i++ ){
+                if(isset($instance[ 'image' ]) && $instance[ 'image' ] && count($instance[ 'image' ]) > 0 ){
+                    for( $i = 0; $i < count( $instance['image'] ); $i++ ){
                         
-                        $title = isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
-                        $image = isset($instance[ 'image' ][$i])   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
-                        $link  = isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
-                        $target = isset($instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
+                        $title  = isset( $instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
+                        $image  = isset( $instance[ 'image' ][$i] )   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
+                        $link   = isset( $instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
+                        $target = isset( $instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
                         
                         $img_preview = "";
-                        if($image){
+                        if( $image ){
                             $img_preview = wp_get_attachment_url($image);
                             $preview = true;
                         }
-                        if($title){?>
+                        if($preview){?>
                         <div class="item widget-content">
-                            <span class="remove">X</span>
+                            <span class="remove"><?php _e( 'X', 'edo' ) ?></span>
                             <p>
                                 <label><?php esc_html_e( 'Title:', 'edo'); ?></label> 
                                 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title') ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('title') ) ; ?>[]" type="text" value="<?php echo esc_attr($title); ?>" />
@@ -138,7 +139,7 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                     <?php }}
                 }else{?>
                     <div class="item widget-content">
-                        <span class="remove">X</span>
+                        <span class="remove"><?php _e( 'X', 'edo' ) ?></span>
                         <p>
                             <label><?php esc_html_e( 'Title:', 'edo'); ?></label> 
                             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ) ; ?>[]" type="text" />
@@ -168,7 +169,7 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                 <input type="button" class="button btn-plus" value="+" />
                 <div class="template" style="display: none;">
                     <div class="item widget-content">
-                        <span class="remove">X</span>
+                        <span class="remove"><?php _e( 'X', 'edo' ) ?></span>
                         <p>
                             <label><?php esc_html_e('Title:', 'edo'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo esc_attr( $this->get_field_id('title') ) ; ?>" tpl-name="<?php echo esc_attr( $this->get_field_name('title') ) ; ?>[]" type="text" />

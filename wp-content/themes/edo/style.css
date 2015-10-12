@@ -337,3 +337,12 @@ a img.aligncenter {
 .wpp-list{
     padding: 0;
 }
+.widget_edo_custom_image{
+    padding: 0;
+}
+.widget_edo_custom_image ul{
+    padding: 0;
+}
+.widget_edo_custom_image ul li{
+    list-style: none;
+}

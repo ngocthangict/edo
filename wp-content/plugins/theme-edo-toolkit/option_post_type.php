@@ -77,17 +77,6 @@ function kt_register_demo_metabox() {
         'options' => $sidebars,
         'desc'    => __( 'Setting sidebar in the area sidebar', 'edo' ),
 	) );
-
-	/**
-     * Page color
-     */
-    $page_option->add_field( array(
-        'name'    => __( 'Custom page Background Color', 'edo' ),
-        'id'      => 'kt_page_background_color',
-        'type'    => 'colorpicker',
-        'default' => '',
-        'desc'    => __( 'Setting  Background Color for your page', 'edo' ),
-    ) );
         
 	$page_option->add_field( array(
 		'name' => __( 'Extra page class', 'edo' ),

@@ -19,7 +19,6 @@ $kt_sidebar_are = edo_option('kt_sidebar_are','full');
 $kt_page_layout = edo_get_post_meta( get_the_ID(), 'kt_page_layout', 'none' );
 
 $kt_show_page_breadcrumb = edo_get_post_meta( get_the_ID(), 'kt_show_page_breadcrumb', 'show' );
-$kt_page_background_color = edo_get_post_meta( get_the_ID(), 'kt_page_background_color','');
 if( $kt_page_layout != "none" ){
 	$kt_sidebar_are = $kt_page_layout;
 }
@@ -32,7 +31,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content page-full-width col-sm-12";
 }
 ?>
-<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>"<?php if($kt_page_background_color):?> style="background:<?php echo esc_attr($kt_page_background_color);?>;"<?php endif;?>>
+<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
 	<main id="main" class="site-main" role="main">
         <div class="container">
         	<?php
