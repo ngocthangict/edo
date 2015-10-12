@@ -36,18 +36,19 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                     $image  = isset( $instance[ 'image' ][$i])   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
                     $link   = isset( $instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
                     $target = isset( $instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
-                    
+                    $preview = false;
                     $img_preview = "";
                     if($image){
                         $img_preview = wp_get_attachment_url($image);
                         $preview = true;
                     }
-                    if($title):
+                    if($preview):
                     ?>
                     <li>
                         <a target="<?php echo esc_attr( $target ) ?>" href="<?php echo esc_url($link) ?>">
-                        <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr($title) ?>" />
-                        <span class="title"><?php echo esc_attr($title) ?></span></a>
+                            <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr($title) ?>" />
+                            <span class="title"><?php echo esc_attr($title) ?></span>
+                        </a>
                     </li>
                     <?php endif; ?>
                 <?php endfor; ?>
@@ -71,7 +72,7 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                 $link   = isset($new_instance[ 'link' ][$i]) ? $new_instance[ 'link' ][$i] : '#';
                 $target = isset($new_instance[ 'target' ][$i]) ? $new_instance[ 'target' ][$i] : '_blank';
                 
-                if($title){
+                if($image){
                     $tmp[ 'title' ][]  = esc_html( $title ) ?  esc_html( $title ) : '';
                     $tmp[ 'image' ][]  = intval( $image ) ? intval( $image ) : '';
                     $tmp[ 'link' ][]   = esc_url( $link ) ? esc_url( $link ) : '#';
@@ -83,10 +84,6 @@ class Widget_Edo_Custom_Image extends WP_Widget {
             $instance[ 'link' ] = $tmp[ 'link' ];
             $instance[ 'target' ] = $tmp[ 'target' ];
         }
-        echo '<pre>';
-        print_r($instance);
-        echo '</pre>';
-        die();
 		return $instance;
 	}
 
@@ -109,7 +106,7 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                         $target = isset( $instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
                         
                         $img_preview = "";
-                        if($image){
+                        if( $image ){
                             $img_preview = wp_get_attachment_url($image);
                             $preview = true;
                         }
