@@ -3,11 +3,11 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name" => __( "Brand", 'edo'),
-    "base" => "brand",
-    "category" => __('by Edo', 'edo' ),
+    "name"        => __( "Brand", 'edo'),
+    "base"        => "brand",
+    "category"    => __('by Edo', 'edo' ),
     "description" => __( "Display brand in option 4", 'edo'),
-    "params" => array(
+    "params"      => array(
         array(
             "type"        => "edo_taxonomy",
             "taxonomy"    => "product_brand",
@@ -42,7 +42,7 @@ vc_map( array(
             'description' => __( 'Number of post to show per page.', 'edo' ),
             "dependency"  => array( 
                 "element" => "box_type", 
-                "value" => array( 
+                "value"   => array( 
                     'box-2' 
                 ) 
             ),
@@ -56,47 +56,47 @@ vc_map( array(
             'description' => __( 'The `number` field is used to display the number of subcategory.', 'edo' )
         ),
         array(
-			'type' => 'dropdown',
-			'heading' => __( 'Order by', 'js_composer' ),
-			'param_name' => 'orderby',
-			'value' => array(
-                __( 'Id', 'edo' )    => 'id',
-                __( 'Count', 'edo' ) => 'count',
-				__( 'Name', 'edo' )  => 'name',
-				__( 'Slug', 'edo' )  => 'slug',
-                __( 'Term Group ', 'edo' )  => 'term_group',
-                __( 'None', 'edo' )  => 'none',
+            'type'       => 'dropdown',
+            'heading'    => __( 'Order by', 'js_composer' ),
+            'param_name' => 'orderby',
+            'value'      => array(
+                __( 'Id', 'edo' )          => 'id',
+                __( 'Count', 'edo' )       => 'count',
+                __( 'Name', 'edo' )        => 'name',
+                __( 'Slug', 'edo' )        => 'slug',
+                __( 'Term Group ', 'edo' ) => 'term_group',
+                __( 'None', 'edo' )        => 'none',
 			)
 		),
         array(
-			'type'       => 'dropdown',
-			'heading'    => __( 'Order Way', 'js_composer' ),
-			'param_name' => 'order',
-			'value' => array(
-				__( 'Descending', 'js_composer' ) => 'desc',
-				__( 'Ascending', 'js_composer' ) => 'asc'
+            'type'       => 'dropdown',
+            'heading'    => __( 'Order Way', 'js_composer' ),
+            'param_name' => 'order',
+            'value'      => array(
+                __( 'Descending', 'js_composer' ) => 'desc',
+                __( 'Ascending', 'js_composer' )  => 'asc'
 			)
 		),
         
         array(
-			'type'       => 'dropdown',
-			'heading'    => __( 'Hide Empty', 'js_composer' ),
-			'param_name' => 'hide',
-			'value' => array(
-				__( 'Yes', 'js_composer' ) => '1',
-				__( 'No', 'js_composer' ) => '0'
+            'type'       => 'dropdown',
+            'heading'    => __( 'Hide Empty', 'js_composer' ),
+            'param_name' => 'hide',
+            'value'      => array(
+                __( 'Yes', 'js_composer' ) => '1',
+                __( 'No', 'js_composer' )  => '0'
 			)
 		),
         array(
-            "type"      => "textfield",
-            "heading"   => __( "Extra class name", 'edo' ),
+            "type"        => "textfield",
+            "heading"     => __( "Extra class name", 'edo' ),
             "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         ),array(
-			'type'       => 'css_editor',
-			'heading'    => __( 'Css', 'js_composer' ),
-			'param_name' => 'css',
-            'group' => __( 'Design options', 'js_composer' )
+            'type'       => 'css_editor',
+            'heading'    => __( 'Css', 'js_composer' ),
+            'param_name' => 'css',
+            'group'      => __( 'Design options', 'js_composer' )
 		),
     )
 ));
@@ -105,13 +105,13 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'brand', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
-            'taxonomy'  => '',
-            'box_type'  => 'box-1',
-            'per_page'  => 4,
-            'number'    => 24,
-            'orderby'   => 'id',
-            'order'     => 'desc',
-            'hide'      => 1,
+            'taxonomy'      => '',
+            'box_type'      => 'box-1',
+            'per_page'      => 4,
+            'number'        => 24,
+            'orderby'       => 'id',
+            'order'         => 'desc',
+            'hide'          => 1,
             
             'css_animation' => '',
             'el_class'      => '',

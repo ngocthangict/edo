@@ -311,7 +311,7 @@ function edo_comment_nav() {
 	// Are there comments to navigate through?
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 	?>
-	<nav class="navigation comment-navigation" role="navigation">
+	<nav class="navigation comment-navigation">
 		<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'edo' ); ?></h2>
 		<div class="nav-links">
 			<?php

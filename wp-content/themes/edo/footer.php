@@ -10,14 +10,14 @@
  */
 ?>
 <?php 
-    $hotline   = edo_get_info_hotline();
-    $copyright = edo_get_info_copyrights();
-    $social_icons = edo_get_socials();
-
-    $kt_subscribe_title = edo_option('kt_subscribe_title','');
-    $kt_subscribe_subtitle = edo_option('kt_subscribe_subtitle','');
-    $kt_subscribe_description = edo_option('kt_subscribe_description','');
-    $kt_subscribe_success_message = edo_option('kt_subscribe_success_message','');
+	$hotline                      = edo_get_info_hotline();
+	$copyright                    = edo_get_info_copyrights();
+	$social_icons                 = edo_get_socials();
+	
+	$kt_subscribe_title           = edo_option('kt_subscribe_title','');
+	$kt_subscribe_subtitle        = edo_option('kt_subscribe_subtitle','');
+	$kt_subscribe_description     = edo_option('kt_subscribe_description','');
+	$kt_subscribe_success_message = edo_option('kt_subscribe_success_message','');
 ?>
 <!-- footer -->
 <footer id="footer">

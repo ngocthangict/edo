@@ -28,7 +28,7 @@ class Widget_Edo_Custom_Image extends WP_Widget {
                     <?php echo esc_attr( $wtitle ); ?>
                 <?php echo apply_filters( 'edo_wg_after_title', $args[ 'after_title' ] ) ; ?>
             <?php endif; ?>
-            <ul id="list-link images">
+            <ul id="list-link_images">
             <?php 
              if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ):
                 for( $i = 0; $i < count($instance['title']); $i++ ):

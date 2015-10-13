@@ -59,7 +59,6 @@ $kt_phone = edo_option( 'kt_phone', '(0123) 456 789');
                                     <?php do_action( 'edo_mini_cart' ); ?>
             				    </li>
                                 <?php endif; ?>
-								</li>
 							</ul>
 						</div>
 					</div>

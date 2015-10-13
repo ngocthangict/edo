@@ -111,7 +111,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$output .= $indent . '<li' . $id . $value . $class_names;
             
             if( $this->megamenu_color ){
-                $output .= 'data-color="' .$this->megamenu_color. '"';
+                $output .= ' data-color="' .$this->megamenu_color. '"';
                 $css = array( 'item' => 'custom_css_' .$item->ID, 'color' => $this->megamenu_color );
                 if( $custom_css && is_array( $custom_css ) ){
                     $custom_css [] = $css;
