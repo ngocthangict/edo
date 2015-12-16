@@ -6,7 +6,7 @@
  *
  * @author 		KuteTheme
  * @package 	THEME/WooCommerce
- * @version     1.0.0
+ * @version     2.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,6 +37,30 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php elseif( $edo_used_header == 4 ):?>
         <div class="iner-block-cart">
             <a href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="total">
+                    <?php 
+                    if( $count > 1){
+                        echo intval( $count )." ".__( 'Items', 'edo');
+                    }else{
+                        echo intval( $count )." ".__( 'Item', 'edo');
+                    }
+                    ?>
+                </span>
+            </a>
+        </div>
+    <?php elseif( $edo_used_header == 5 ):?>
+        <div class="iner-block-cart">
+            <a href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="total">
+                    <?php echo intval( $count ); ?>
+                </span>
+                <?php _e('Cart','edo');?>
+            </a>
+        </div>
+    <?php elseif( $edo_used_header == 6 ):?>
+        <div class="iner-block-cart">
+            <a href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="text"><?php _e('My cart','edo');?></span>
                 <span class="total">
                     <?php 
                     if( $count > 1){

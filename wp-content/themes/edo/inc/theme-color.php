@@ -2,6 +2,7 @@
 if(!function_exists( 'edo_themne_color' )){
 	function edo_themne_color(){
 		$main_color = edo_option( 'kt_theme_color', '#5a88ca' );
+		$kt_theme_color_2 = edo_option('kt_theme_color_2','#f2d03b');
 		$rgb_color = edo_hex2rgb($main_color);
 		$css = <<<CSS
 	/* Color Scheme */
@@ -16,7 +17,9 @@ if(!function_exists( 'edo_themne_color' )){
 	body .option4 .wrap-block-cl .user-info .fa,
 	body .option4 .wrap-block-cl .user-info .dropdown-menu .fa,
 	body .widget_product_categories .children>li>a:before,
-	body .block-popular-cat .sub-categories li a:before{
+	body .block-popular-cat .sub-categories li a:before,
+	.header.style5 .advanced-search .btn-search,
+	.header.style5 .user-info .main-link{
 		color: {$main_color};
 	}
 
@@ -93,7 +96,11 @@ if(!function_exists( 'edo_themne_color' )){
 	body.woocommerce #review_form #respond .form-submit input,
 	body input[type="submit"], button,
 	body.woocommerce .wishlist_table td.product-add-to-cart .add_to_cart_button:before,
-	body .block-category-list a:hover{
+	body .block-category-list a:hover,
+	.header.style5 .block-wrap-cart,
+	body .button,
+	.header.style6 .main-menu
+	{
 		background-color: {$main_color};
 	}
 
@@ -140,6 +147,12 @@ if(!function_exists( 'edo_themne_color' )){
 	body .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
 	body .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content{
 		background: {$main_color};
+	}
+
+	.header.style6 .advanced-search .btn-search,
+	.header.style6 .hotline .icon,
+	.header.style6 .block-wrap-cart .iner-block-cart>a:after{
+		background-color: {$kt_theme_color_2};
 	}
 CSS;
 		?>

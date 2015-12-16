@@ -23,7 +23,6 @@ p.yit-wcan-display-color,
 p#yit-wcan-style,
 p#yit-wcan-show-count,
 p.yit-wcan-display-tags,
-p.yit-wcan-display-brands,
 div.yit-wcan-widget-tag-list {
     display: none;
 }
@@ -74,6 +73,10 @@ label.yith-wcan-reset-table{
 
 .yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options .option {
     width: 270px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options .option.yit-upload {
+    width: 350px;
 }
 
 .yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options.on_off_container .option {
@@ -198,4 +201,10 @@ textarea#yit_wcan_options_yith_wcan_custom_style {
     min-height: 300px;
     padding: 8px;
     resize: none;
+}
+
+div#yit_wcan_options_yith_wcan_seo_value-container .option,
+div#yit_wcan_options_yith_wcan_seo_value-container .option .select_wrapper,
+#yit_wcan_options_yith_wcan_seo_option-container .select_wrapper {
+    width: auto;
 }

@@ -55,6 +55,7 @@ function kt_setup() {
 		'primary-menu'               => esc_attr__( 'Primary Menu',      'edo' ),
 		'vertical-menu'              => esc_attr__( 'Vertical Menu', 'edo' ),
 		'topbar-menu'                => esc_attr__( 'Topbar Menu', 'edo' ),
+		'topbar-menu-right'          => esc_attr__( 'Topbar Menu right', 'edo' ),
 		'single-product-custom-menu' => esc_attr__( 'Single Product Custom link', 'edo' ),
 	) );
 

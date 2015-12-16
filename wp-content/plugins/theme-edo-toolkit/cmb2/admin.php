@@ -200,6 +200,15 @@ class KT_Admin {
             'desc'    => __( 'Setting main color for your site', 'edo' ),
         ) );
 
+        $cmb_options_general->add_field( array(
+            'name'    => __( 'Theme Color 2', 'edo' ),
+            'id'      => 'kt_theme_color_2',
+            'type'    => 'colorpicker',
+            'default' => '#f2d03b',
+            'desc'    => __( 'Setting main color 2 for your site', 'edo' ),
+        ) );
+
+
         /**
     	 * Logo
     	 */
@@ -245,9 +254,26 @@ class KT_Admin {
     			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v2.jpg',
     			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
                 '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v4.jpg',
+                '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
+                '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
     		),
     	) );
+        $cmb_options_header->add_field( array(
+            'name'    => __( 'Top Banner Header', 'edo' ),
+            'id'      => 'kt_banner_header',
+            'type'    => 'file',
+            'desc'    => __( 'Setting Top Banner Header', 'edo' )
+        ) );
+        $cmb_options_header->add_field( array(
+            'name'    => __( 'Link top banner header', 'edo' ),
+            'id'      => 'kt_link_banner_header',
+            'type'    => 'text',
+            'desc'    => __( 'Link of top banner header', 'edo' ),
+        ) );
         
+        
+        
+
         $cmb_options_header->add_field( array(
     		'name'    => __( 'Link 1', 'edo' ),
     		'id'      => 'kt_link_header_1',

@@ -19,4 +19,15 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php
+$kt_banner_header = edo_option('kt_banner_header','');
+$kt_link_banner_header = edo_option('kt_link_banner_header','#');
+?>
+<?php if($kt_banner_header):?>
+<div class="top-banner-header">
+	<a href="<?php echo esc_url( $kt_link_banner_header );?>">
+	<img src="<?php echo esc_url( $kt_banner_header );?>" alt="">
+	</a>
+</div>
+<?php endif;?>
 <?php edo_get_header();?>

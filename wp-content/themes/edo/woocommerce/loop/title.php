@@ -4,7 +4,7 @@
  *
  * @author  AngelsIT
  * @package Edo/wooCommerce/
- * @version 1.0
+ * @version 2.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
