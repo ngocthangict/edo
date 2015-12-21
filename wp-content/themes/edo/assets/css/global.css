@@ -231,6 +231,16 @@ img.alignright{
   display: table;
 }
 
+/* OWL */
+.kt-owl-carousel.nav-style2 .owl-next,
+.kt-owl-carousel.nav-style2 .owl-prev{
+  width: 23px;
+  height: 23px;
+  border-radius: 0;
+  border: none;
+  background-position: center center;
+  background-color: #f5f6fa;
+}
 
 /*-----------------------------
 [2. Banner]

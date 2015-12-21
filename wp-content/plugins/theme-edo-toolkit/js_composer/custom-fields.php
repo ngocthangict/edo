@@ -21,8 +21,8 @@ function edo_add_vc_global_params(){
     vc_add_params( 'vc_column', $vc_setting_col );
     vc_add_params( 'vc_column_inner', $vc_setting_column_inner );
     
-    add_shortcode_param('edo_number' , 'edo_number_settings_field');
-    add_shortcode_param('edo_taxonomy', 'edo_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+    vc_add_shortcode_param ('edo_number' , 'edo_number_settings_field');
+    vc_add_shortcode_param ('edo_taxonomy', 'edo_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
 }
 /**
  * Number field.
@@ -104,6 +104,22 @@ if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php
 if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php' ) ){
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php' ;
 }
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_banner_text.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_banner_text.php' ;
+}
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php' ;
+}
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_find_store.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_find_store.php' ;
+}
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_subscribe.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_subscribe.php' ;
+}
+
 
 if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ) ){

@@ -2,7 +2,7 @@
 /*
 Plugin Name:       Woocommerce Monster Widget
 Description:       A widget that allows for quick and easy testing of multiple woocommerce widgets. Suggested for woocommmerce developer and not intended for production.
-Version:           1.0.1
+Version:           1.0.2
 Author:            Alispx
 Author URI:        http://alispx.me/
 License:           GPLv2 or later
@@ -73,7 +73,7 @@ class WC_Monster_Widget extends WP_Widget {
 
 			$args['before_widget'] = sprintf(
 				$before_widget,
-				'tokokoo-monster-widget-placeholder-' . self::$iterator,
+				'woo-monster-widget-placeholder-' . self::$iterator,
 				$this->get_widget_class( $widget[0] )
 			);
 
@@ -103,13 +103,15 @@ class WC_Monster_Widget extends WP_Widget {
 	 * @since 0.1
 	 */
 	public function get_widget_config() {
+
 		$widgets = array(
-			array( 'WC_Widget_Product_Search', array(
-				'title'    		=> __( 'Search Product', 'wc-monster-widget' ),
-			) ),
 
 			array( 'WC_Widget_Cart', array(
 				'title'    		=> __( 'Cart', 'wc-monster-widget' ),
+			) ),
+
+			array( 'WC_Widget_Product_Search', array(
+				'title'    		=> __( 'Search Product', 'wc-monster-widget' ),
 			) ),
 
 			array( 'WC_Widget_Layered_Nav_Filters', array(
@@ -201,7 +203,6 @@ class WC_Monster_Widget extends WP_Widget {
 				'number'    		=> 5,
 			) ),
 
-			
 		);
 
 
@@ -234,5 +235,5 @@ class WC_Monster_Widget extends WP_Widget {
 		return $widget_obj->widget_options['classname'];
 	}
 
-	
+
 }

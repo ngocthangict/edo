@@ -69,6 +69,10 @@ function kt_setup() {
     
 	// Image size
 	add_image_size ( 'edo-blog-thumb-small', 229, 105, true );
+	add_image_size ( 'edo_blog_lasttest', 377, 362, true );
+
+	//Support woocommerce
+        add_theme_support( 'woocommerce' );
 }
 endif; // edo setup
 add_action( 'after_setup_theme', 'kt_setup' );

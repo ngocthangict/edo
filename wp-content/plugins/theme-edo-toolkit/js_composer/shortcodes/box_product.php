@@ -29,7 +29,8 @@ vc_map( array(
                 //same box 3
                 __( 'Box 6', 'edo' ) => 'box-6',
                 //same box 4
-                __( 'Box 7', 'edo' ) => 'box-7'
+                __( 'Box 7', 'edo' ) => 'box-7',
+                __( 'Box 8', 'edo' ) => 'box-8'
         	),
         ),
         array(
@@ -295,6 +296,18 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
+            "type"       => "dropdown",
+            "heading"    => __("Box title position", 'edo'),
+            "param_name" => "box_position",
+            "value"      => array(
+                __('Left', 'edo') => 'left',
+                __('Right', 'edo') => 'right'
+            ),
+            'std'         => 'left',
+            "dependency"  => array( "element" => "box_type", "value" => array( 'box-8' ) ),
+        ),
+
+        array(
             'type'        => 'dropdown',
             'heading'     => __( 'CSS Animation', 'js_composer' ),
             'param_name'  => 'css_animation',
@@ -333,6 +346,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             'taxonomy'       => 0,
             'orderby'        => 'date',
             'order'          => 'DESC',
+            'box_position'   =>'left',
             
             //box 5
             'per_child'      => 8,
@@ -454,7 +468,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 "slidespeed"  => $slidespeed,
                 "theme"       => 'style-navigation-top',
                 "autoheight"  => 'false',
-                'nav'         => 'true',
+                'nav'         => $navigation,
                 'dots'        => 'false',
                 'loop'        => $loop,
                 'autoplayTimeout' => 1000,
@@ -759,6 +773,72 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     </div>
                 <!-- ./end group banner -->
             <?php
+            }elseif( $box_type == 'box-8'){
+                ?>
+                <div class="box-product-style8 <?php echo esc_attr( $box_position );?> <?php echo esc_attr( $elementClass );?>">
+                    <div class="box-head">
+                        <div class="inner">
+                            <?php if($title):?>
+                            <span class="text"><?php echo esc_html($title);?></span>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <div class="box-tab">
+                            <ul class="nav-tab default">
+                                <?php if( isset( $cate_ids) && count( $cate_ids ) ): ?>
+                                    <?php foreach( $cate_ids as $id ):  ?>
+                                        <?php 
+                                        $term = get_term( $id, 'product_cat' ); 
+                                        if( $term ):
+                                            $cate_obj[] = $term;  ?>
+                                            <li <?php if( count( $cate_obj ) == 1 ): ?>class="active"<?php endif; ?> ><a data-toggle="tab" href="#tab-<?php echo $term->term_id . '-' . $unique_id ?>"><?php echo $term->name  ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                        <div class="tab-container">
+                            <?php if( isset($cate_obj) && count( $cate_obj ) > 0 ): $i =1; ?>
+                                <?php foreach( $cate_obj as  $term ): 
+                                        $args['tax_query'] = array(
+                                            array(
+                                                'taxonomy' => 'product_cat',
+                                                'field' => 'id',
+                                                'terms' => $term->term_id
+                                            )
+                                        );
+                                        $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                        if( $term_products->have_posts() ):
+                                            ?>
+                                            <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                                                <?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                                    <ul class="products kt-owl-carousel nav-style2" <?php echo $carousel; ?>>
+                                                        <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                                            <li class="product style5">
+                                                                <?php 
+                                                                    wc_get_template_part( 'content', 'list-product-5' );
+                                                                ?>
+                                                            </li>
+                                                        <?php endwhile; ?>
+                                                    </ul>
+                                                <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+                                            </div>
+                                        <?php else: ?>
+                                            <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php echo ( $i == 1 ) ? 'active' :'' ?>">
+                                                <?php $this->edo_tab_empty(); ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="box-link">
+                            <a href="#"><?php _e('View all products','edo');?></a>
+                        </div>
+                    </div>
+                </div>
+                <?php
             }
         if( $type == 'most-review' ){
             remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );

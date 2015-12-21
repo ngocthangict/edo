@@ -19,7 +19,14 @@ if(!function_exists( 'edo_themne_color' )){
 	body .widget_product_categories .children>li>a:before,
 	body .block-popular-cat .sub-categories li a:before,
 	.header.style5 .advanced-search .btn-search,
-	.header.style5 .user-info .main-link{
+	.header.style5 .user-info .main-link,
+	.box-product-style8 .nav-tab li.active a,
+	.box-product-style8 .nav-tab li:hover a,
+	.box-product-style8 .box-link a,
+	.product.style5 .btn-quick-view:before,
+	.lasttest-blogs .item-blog .title a:hover,
+	.lasttest-blogs .item-blog .readmore{
+
 		color: {$main_color};
 	}
 
@@ -99,7 +106,12 @@ if(!function_exists( 'edo_themne_color' )){
 	body .block-category-list a:hover,
 	.header.style5 .block-wrap-cart,
 	body .button,
-	.header.style6 .main-menu
+	.header.style6 .main-menu,
+	.product.style5 .yith-wcwl-add-button a:hover,
+	.product.style5 .yith-wcwl-wishlistaddedbrowse a:hover,
+	.product.style5 .yith-wcwl-wishlistexistsbrowse a:hover,
+	.product.style5 .compare.button:hover,
+	.product.style5 .compare:hover
 	{
 		background-color: {$main_color};
 	}
@@ -125,7 +137,12 @@ if(!function_exists( 'edo_themne_color' )){
 	body.woocommerce #content div.product div.thumbnails a:hover img, 
 	body.woocommerce div.product div.thumbnails a:hover img, 
 	body.woocommerce-page #content div.product div.thumbnails a:hover img, 
-	body.woocommerce-page div.product div.thumbnails a:hover img{
+	body.woocommerce-page div.product div.thumbnails a:hover img,
+	.product.style5 .yith-wcwl-add-button a:hover,
+	.product.style5 .yith-wcwl-wishlistaddedbrowse a:hover,
+	.product.style5 .yith-wcwl-wishlistexistsbrowse a:hover,
+	.product.style5 .compare.button:hover,
+	.product.style5 .compare:hover{
 		border-color: {$main_color};
 	}
 	body .block-category .categories>li>a>.text:after{
