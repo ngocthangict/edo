@@ -3562,6 +3562,9 @@
     height: auto;
     border-radius: 0;
 }
+.header.style5 .main-menu .navbar-nav>li>a>img{
+	top: 5px;
+}
 .header.style5 .top-bar .top-bar-link{
 	font-size: 14px;
 }

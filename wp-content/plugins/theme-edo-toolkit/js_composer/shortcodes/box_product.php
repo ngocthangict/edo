@@ -834,7 +834,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                             <?php endif; ?>
                         </div>
                         <div class="box-link">
-                            <a href="<?php echo esc_attr( $link );?>"><?php _e('View all products','edo');?></a>
+                            <a href="<?php echo esc_url( $link );?>"><?php _e('View all products','edo');?></a>
                         </div>
                     </div>
                 </div>
