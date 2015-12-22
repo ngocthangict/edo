@@ -168,8 +168,18 @@ if(!function_exists( 'edo_themne_color' )){
 
 	.header.style6 .advanced-search .btn-search,
 	.header.style6 .hotline .icon,
-	.header.style6 .block-wrap-cart .iner-block-cart>a:after{
+	.header.style6 .block-wrap-cart .iner-block-cart>a:after,
+	.edo_icon:hover .icon,
+	.product.style6 .btn-add-cart
+	{
 		background-color: {$kt_theme_color_2};
+	}
+	.edo_icon:hover .icon{
+		border-color: {$kt_theme_color_2};
+	}
+	.edo_icon .icon,
+	.edo_icon:hover .title{
+		color: {$kt_theme_color_2};
 	}
 CSS;
 		?>

@@ -114,7 +114,7 @@
             var header_height = offset.top;
             var h = $(window).scrollTop();
             var width = $(window).width();
-            if(width > 767){
+            if(width > 991){
 
                 if(h > 250){
                     $('#header .main-menu').addClass('main-menu-ontop');

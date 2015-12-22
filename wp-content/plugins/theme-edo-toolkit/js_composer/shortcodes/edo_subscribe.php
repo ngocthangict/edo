@@ -23,10 +23,17 @@ vc_map( array(
             'admin_label' => true,
         ),
         array(
-            'type' => 'textfield',
+            'type' => 'textarea',
             'heading' => __( 'Description', 'edo' ),
             'value' => '',
             'param_name' => 'desc',
+            'admin_label' => false,
+        ),
+        array(
+            'type' => 'textarea',
+            'heading' => __( 'Success message', 'edo' ),
+            'value' => '',
+            'param_name' => 'message',
             'admin_label' => false,
         ),
         array(
@@ -55,6 +62,7 @@ class WPBakeryShortCode_Edo_subscribe_form extends WPBakeryShortCode {
             'small_title' => '',
             'big_title'   => '',
             'desc'        => '',
+            'message'     =>'',
             'el_class'    => '',
             'css'         => ''
             
@@ -82,10 +90,10 @@ class WPBakeryShortCode_Edo_subscribe_form extends WPBakeryShortCode {
             </div>
             <div class="block-inner">
                 <div class="block-info clearfix">
-                    <?php esc_html( $desc );?>
+                    <?php echo esc_html( $desc );?>
                 </div>
                 <div class="block-input-box box-radius clearfix">
-                    <?php echo do_shortcode( '[mailchimp opt_in="yes" title="" text_before=""]'. esc_attr( '' ) .'[/mailchimp]' );?>
+                    <?php echo do_shortcode( '[mailchimp opt_in="yes" title="" text_before=""]'. esc_attr( $message ) .'[/mailchimp]' );?>
                 </div>
             </div>
         </div>

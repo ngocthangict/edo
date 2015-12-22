@@ -120,6 +120,14 @@ if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_subscribe.
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_subscribe.php' ;
 }
 
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_partners.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_partners.php' ;
+}
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_icon.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_icon.php' ;
+}
+
 
 if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ) ){
@@ -155,5 +163,8 @@ if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     }
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_tags.php' ) ){
         require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_tags.php' ;
+    }
+    if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_carousel.php' ) ){
+        require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/product_carousel.php' ;
     }
 }

@@ -37,12 +37,12 @@
 		<div class="row">
 			<div class="row">
 				<div class="main-header">
-					<div class="col-sm-5">
+					<div class="col-sm-12 col-md-5">
 						<div class="logo">
 							<?php echo edo_get_logo();?>
 						</div>
 					</div>
-					<div class="col-sm-7">
+					<div class="col-sm-12 col-md-7">
 						<div class="box-control-header">
 							<?php do_action( 'edo_search_form_template' ) ?>
 							<div class="dropdown user-info <?php if(!edo_is_wpml()) echo esc_attr( 'not-language' );?>">

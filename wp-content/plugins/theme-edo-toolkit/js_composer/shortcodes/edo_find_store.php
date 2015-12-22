@@ -82,7 +82,7 @@ class WPBakeryShortCode_Edo_find_store extends WPBakeryShortCode {
             </div>
             <div class="block-inner">
                 <div class="block-info clearfix">
-                    <?php esc_html( $desc );?>
+                    <?php echo  esc_html( $desc );?>
                 </div>
                 <div class="block-input-box box-radius clearfix find-store-form">
                     <input type="text" class="input-box-text" placeholder="<?php esc_attr_e( 'Zip code, City, Country', 'edo' ) ?>" />

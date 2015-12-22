@@ -143,7 +143,7 @@ class WPBakeryShortCode_Edo_banner_text extends WPBakeryShortCode {
         $button_css[] = 'color:'.$main_color.';';
         ob_start();
         ?>
-        <div class="edo-banner-text <?php echo esc_attr( $elementClass );?>">
+        <div class="edo-banner-text <?php echo esc_attr( $content_align );?> <?php echo esc_attr( $elementClass );?>">
             <?php if($url_bg):?>
             <div class="banner-img">
                 <img src="<?php echo esc_url( $url_bg );?>" alt="">

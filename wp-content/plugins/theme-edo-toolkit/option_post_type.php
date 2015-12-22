@@ -124,6 +124,21 @@ function kt_register_demo_metabox() {
 		'type' => 'text',
 	) );
 
+	/**
+	 * Partner option
+	 */
+	$partner_option = new_cmb2_box( array(
+		'id'            => $prefix . 'partner_metabox',
+		'title'         => __( 'Partner Option', 'edo' ),
+		'object_types'  => array( 'partner' )
+	) );
+
+	$partner_option->add_field( array(
+		'name' => __( 'Partner URL', 'edo' ),
+		'id'   => $prefix . 'partner_url',
+		'type' => 'text',
+	) );
+
 
 	/**
 	 * Product
