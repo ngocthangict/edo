@@ -23,6 +23,16 @@ vc_map( array(
             'admin_label' => true,
         ),
         array(
+            "type"       => "dropdown",
+            "heading"    => __("Display Style", 'kutetheme'),
+            "param_name" => "style",
+            "value"      => array(
+                __('Style 1', 'kutetheme') => '1',
+                __('Style 2', 'kutetheme') => '2'
+            ),
+            'std'         => '1',
+        ),
+        array(
             'type'       => 'attach_image',
             'heading'    => __( 'Background', 'edo' ),
             'param_name' => 'background',
@@ -34,7 +44,13 @@ vc_map( array(
             'value'      => array(
                 __( 'Left', 'edo' )   => 'left',
                 __( 'Right', 'edo' ) => 'right',
-            )
+            ),
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '1' 
+                ) 
+            ),
         ),
         array(
             'type'       => 'dropdown',
@@ -77,12 +93,24 @@ vc_map( array(
             "heading"     => __("Main Color", 'edo'),
             "param_name"  => "main_color",
             "admin_label" => false,
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '1' 
+                ) 
+            ),
         ),
         array(
             "type"        => "colorpicker",
             "heading"     => __("Text Color", 'edo'),
             "param_name"  => "text_color",
             "admin_label" => false,
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '1' 
+                ) 
+            ),
         ),
         array(
             "type" => "textfield",
@@ -111,6 +139,7 @@ class WPBakeryShortCode_Edo_banner_text extends WPBakeryShortCode {
             'title'         => '',
             'sub_title'     =>'',
             'background'    =>'',
+            'style'         =>'1',
             'main_color'    =>'#d8b748',
             'text_color'    =>'#fff',
             'enable_button' =>'true',
@@ -143,6 +172,7 @@ class WPBakeryShortCode_Edo_banner_text extends WPBakeryShortCode {
         $button_css[] = 'color:'.$main_color.';';
         ob_start();
         ?>
+        <?php if( $style ==1 ):?>
         <div class="edo-banner-text <?php echo esc_attr( $content_align );?> <?php echo esc_attr( $elementClass );?>">
             <?php if($url_bg):?>
             <div class="banner-img">
@@ -163,6 +193,29 @@ class WPBakeryShortCode_Edo_banner_text extends WPBakeryShortCode {
                 </div>
             </div>
         </div>
+        <?php endif;?>
+        <?php if( $style == 2):?>
+            <div class="edo-banner-text2 <?php echo esc_attr( $elementClass );?>">
+            <?php if($url_bg):?>
+            <div class="banner-img">
+                <img src="<?php echo esc_url( $url_bg );?>" alt="">
+            </div>
+            <?php endif;?>
+            <div class="box-content">
+                <div class="content-text">
+                    <?php if( $title):?>
+                    <h3 class="title"><?php echo esc_html( $title );?></h3>
+                    <?php endif;?>
+                    <?php if( $sub_title):?>
+                    <div class="subtitle"><?php echo esc_html( $sub_title );?></div>
+                    <?php endif;?>
+                    <?php if( $enable_button =="true"):?>
+                    <a href="<?php echo esc_url( $link );?>" class="button" style="<?php echo implode(' ',$button_css)?>"><i class="icon fa fa-plus"></i></a>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+        <?php endif;?>
         <?php 
         return ob_get_clean();
     }

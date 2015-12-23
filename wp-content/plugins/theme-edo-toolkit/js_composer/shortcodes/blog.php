@@ -26,9 +26,10 @@ vc_map( array(
             "heading"    => __("Display Style", 'kutetheme'),
             "param_name" => "style",
             "value"      => array(
-                __('Style 1', 'kutetheme') => '1'
+                __('Style 1', 'kutetheme') => '1',
+                __('Style 2', 'kutetheme') => '2'
         	),
-            'std'         => 'DESC',
+            'std'         => '1',
             "description" => __("Show blog carousel by difference style.",'kutetheme')
         ),
         array(
@@ -72,6 +73,45 @@ vc_map( array(
         	),
             'std'         => 'DESC',
             "description" => __("Designates the ascending or descending order.",'kutetheme')
+        ),
+        array(
+            "type"        => "colorpicker",
+            "heading"     => __("Color 1", 'edo'),
+            "param_name"  => "color1",
+            "admin_label" => false,
+            'value'     =>'#f2d03b',
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '2' 
+                ) 
+            ),
+        ),
+        array(
+            "type"        => "colorpicker",
+            "heading"     => __("Color 2", 'edo'),
+            "param_name"  => "color2",
+            "admin_label" => false,
+            'value'     =>'#666666',
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '2' 
+                ) 
+            ),
+        ),
+        array(
+            "type"        => "colorpicker",
+            "heading"     => __("Color 3", 'edo'),
+            "param_name"  => "color3",
+            "admin_label" => false,
+            'value'     =>'#f25f43',
+            "dependency"  => array( 
+                "element" => "style", 
+                "value" => array( 
+                    '2' 
+                ) 
+            ),
         ),
         // Carousel
         array(
@@ -196,6 +236,9 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'per_page'       => 10,
             'orderby'        => 'date',
             'order'          => 'desc',
+            'color3'         => '#f25f43',
+            'color2'         => '#666666',
+            'color1'         => '#f25f43',
             
             'style'          => '1',
             //Carousel            
@@ -217,7 +260,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
          global $woocommerce_loop;
         
         $elementClass = array(
-            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, '', $this->settings['base'], $atts ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' style'.$style.' ', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
             'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -268,22 +311,33 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         
         ob_start();
         if( $posts->have_posts() ):
+        $i = 0;
         ?>
-        <?php if( $style == 1):?>
+        <?php if( $style == 1 || $style == 2):?>
         <div class="lasttest-blogs <?php echo esc_attr( $elementClass );?>">
             <?php if( $title ):?>
             <div class="head"><?php echo esc_html( $title );?></div>
             <?php endif;?>
             <div class="box-content">
                 <ul class="list  kt-owl-carousel nav-style2" <?php echo _data_carousel($data_carousel);?>>
-                    <?php while( $posts->have_posts() ): $posts->the_post(); ?>
-                    <li <?php post_class('item-blog'); ?>>
+                    <?php while( $posts->have_posts() ): $posts->the_post(); 
+                    $i++;
+                    $item_color ="#666";
+
+                    if( $i == 1 ) $item_color = $color1; 
+                    if( $i == 2 ) $item_color = $color2;
+                    if( $i == 3 ){
+                        $item_color = $color3;
+                        $i = 0;
+                    }
+                    ?>
+                    <li style="background-color: <?php echo esc_attr($item_color); ?>;" <?php post_class('item-blog'); ?>>
                         <?php if( has_post_thumbnail( )):?>
                         <div class="thumb">
                             <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'edo_blog_lasttest' );?></a>
                         </div>
                         <?php endif;?>
-                        <div class="info">
+                        <div class="info" style="background-color: <?php echo esc_attr($item_color); ?>;">
                             <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h3>
                             <div class="meta">
                                 <span class="author"><i class="fa fa-user"></i> <?php the_author();?></span>

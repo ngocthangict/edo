@@ -57,7 +57,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     			do_action( 'woocommerce_shop_loop_item_title' );
                 ?>
     		</div>
-    		<div class="price-box">
     			<?php 
                     /**
                      * edo_wc_loop_product_price hook
@@ -66,7 +65,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                      * */
                     do_action( 'edo_wc_loop_product_price' )
                  ?>
-    		</div>
             <?php 
                 /**
                  * edo_wc_loop_product_rating hook

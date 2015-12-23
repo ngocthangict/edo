@@ -310,20 +310,27 @@ class WPBakeryShortCode_Product_carousel extends WPBakeryShortCode {
             $unique_id = uniqid();
             $carousel = _data_carousel($data_carousel);
             ?>
-            <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
-                <?php
-                while( $products->have_posts()){
-                    $products->the_post();
-                    ?>
-                    <li class="product style6">
+            <div class="box-product-carousel">
+                <?php if( $title):?>
+                <div class="box-title">
+                    <h3 class="title"><?php echo esc_html($title);?></h3>
+                </div>
+                <?php endif;?>
+                <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
                     <?php
-                    wc_get_template_part( 'content','product-carousel' );
+                    while( $products->have_posts()){
+                        $products->the_post();
+                        ?>
+                        <li class="product style6 <?php if( $style == 2):echo esc_attr('no-hiden'); endif;?>">
+                        <?php
+                        wc_get_template_part( 'content','product-carousel'.$style );
+                        ?>
+                        </li>
+                        <?php
+                    }
                     ?>
-                    </li>
-                    <?php
-                }
-                ?>
-            </ul>
+                </ul>
+            </div>
             <?php else:?>
                 <p><?php _e('No Product.','edo')?></p>
             <?php endif;?>

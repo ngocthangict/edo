@@ -41,19 +41,23 @@
             config.animateIn = animateIn;
           }
           var owl = $(this);
-          owl.owlCarousel(config);
-          $(this).find('.owl-item').removeClass('last-item');
-          $(this).find('.owl-item.active').last().addClass('last-item');
+          setTimeout(function(){
+            owl.owlCarousel(config);
 
-          var t = $(this);
-          owl.on('changed.owl.carousel', function(event) {
-            var item      = event.item.index;
-            t.find('.owl-item').removeClass('last-item');
-            setTimeout(function(){
-                t.find('.owl-item.active').last().addClass('last-item');
-            }, 100);
-            
-          })
+              $(this).find('.owl-item').removeClass('last-item');
+              $(this).find('.owl-item.active').last().addClass('last-item');
+
+              var t = $(this);
+              owl.on('changed.owl.carousel', function(event) {
+                var item      = event.item.index;
+                t.find('.owl-item').removeClass('last-item');
+                setTimeout(function(){
+                    t.find('.owl-item.active').last().addClass('last-item');
+                }, 100);
+                
+              })
+          }, 1000);
+          
         });
     }
 
@@ -389,6 +393,7 @@
     $(window).load(function() {
         resizeTopmenu();
         auto_width_megamenu();
+        init_carousel();
         //custom_color_vertical_menu();
         /* Show hide scrolltop button */
         if( $(window).scrollTop() == 0 ) {

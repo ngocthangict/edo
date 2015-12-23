@@ -26,6 +26,37 @@ vc_map( array(
             'param_name'  => 'title',
             'admin_label' => false,
 		),
+        array(
+            'type'        => 'textarea',
+            'heading'     => __( 'Sub title', 'edo' ),
+            'value'       => '',
+            'param_name'  => 'subtitle',
+            'admin_label' => false,
+            "dependency"  => array( 
+                "element" => "style", 
+                "value"   => array( 
+                    '2' 
+                ) 
+            )
+        ),
+
+        array(
+            'type'       => 'dropdown',
+            'heading'    => __( 'Align', 'edo' ),
+            'param_name' => 'align',
+            'default'=>'1',
+            'value'      => array(
+                __( 'Left', 'edo' )   => 'left',
+                __( 'Right', 'edo' ) => 'right',
+            ),
+            "dependency"  => array( 
+                "element" => "style", 
+                "value"   => array( 
+                    '2' 
+                ) 
+            )
+        ),
+        
 
 		array(
             'type'        => 'textfield',
@@ -62,6 +93,8 @@ class WPBakeryShortCode_Edo_icon extends WPBakeryShortCode {
             'title'      => '',
             'icon_class' => 'fa-truck',
             'style'      =>'',
+            'subtitle'   =>'',
+            'align'      =>'left',
             'el_class'   => '',
             'css'        => ''
             
@@ -79,12 +112,25 @@ class WPBakeryShortCode_Edo_icon extends WPBakeryShortCode {
         ob_start();
         
         ?>
+        <?php if( $style == 1):?>
          <div class="edo_icon <?php echo esc_attr( $elementClass );?>">
              <span class="icon"><i class="fa <?php echo esc_attr( $icon_class );?>"></i></span>
              <div class="icon-info">
                  <h4 class="title"><?php echo edo_get_html( $title);?></h4>
              </div>
          </div>
+        <?php endif;?>
+        <?php if( $style == 2):?>
+         <div class="edo_icon  <?php echo esc_attr($align);?> <?php echo esc_attr( $elementClass );?>">
+             <span class="icon"><i class="fa <?php echo esc_attr( $icon_class );?>"></i></span>
+             <div class="icon-info">
+                 <h4 class="title"><?php echo edo_get_html( $title);?></h4>
+                 <div class="subtitle">
+                     <?php echo edo_get_html($subtitle);?>
+                 </div>
+             </div>
+         </div>
+        <?php endif;?>
         <?php 
         return ob_get_clean();
     }

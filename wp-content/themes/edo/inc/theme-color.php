@@ -25,7 +25,11 @@ if(!function_exists( 'edo_themne_color' )){
 	.box-product-style8 .box-link a,
 	.product.style5 .btn-quick-view:before,
 	.lasttest-blogs .item-blog .title a:hover,
-	.lasttest-blogs .item-blog .readmore{
+	.lasttest-blogs .item-blog .readmore,
+	.popular-tabs .nav-tab li.active a,
+	.popular-tabs .nav-tab li a:hover,
+	.popular-tabs .nav-tab li a:focus,
+	.edo_icon.style2:hover .icon-info .title{
 
 		color: {$main_color};
 	}
@@ -111,7 +115,10 @@ if(!function_exists( 'edo_themne_color' )){
 	.product.style5 .yith-wcwl-wishlistaddedbrowse a:hover,
 	.product.style5 .yith-wcwl-wishlistexistsbrowse a:hover,
 	.product.style5 .compare.button:hover,
-	.product.style5 .compare:hover
+	.product.style5 .compare:hover,
+	.lasttest-blogs.style2 .owl-carousel .owl-next:hover,
+	.lasttest-blogs.style2 .owl-carousel .owl-prev:hover,
+	.edo_icon.style2:hover .icon
 	{
 		background-color: {$main_color};
 	}
@@ -142,7 +149,10 @@ if(!function_exists( 'edo_themne_color' )){
 	.product.style5 .yith-wcwl-wishlistaddedbrowse a:hover,
 	.product.style5 .yith-wcwl-wishlistexistsbrowse a:hover,
 	.product.style5 .compare.button:hover,
-	.product.style5 .compare:hover{
+	.product.style5 .compare:hover,
+	.lasttest-blogs.style2 .owl-carousel .owl-next:hover,
+	.lasttest-blogs.style2 .owl-carousel .owl-prev:hover,
+	.edo_icon.style2:hover .icon{
 		border-color: {$main_color};
 	}
 	body .block-category .categories>li>a>.text:after{
@@ -170,11 +180,25 @@ if(!function_exists( 'edo_themne_color' )){
 	.header.style6 .hotline .icon,
 	.header.style6 .block-wrap-cart .iner-block-cart>a:after,
 	.edo_icon:hover .icon,
-	.product.style6 .btn-add-cart
+	.product.style6 .btn-add-cart,
+	.box-product-carousel .owl-carousel .owl-prev, 
+	.box-product-carousel .owl-carousel .owl-next,
+	.popular-tabs .nav-tab li:after,
+	.popular-tabs .owl-carousel .owl-prev, 
+	.popular-tabs .owl-carousel .owl-next,
+	.lasttest-blogs.style2 .owl-carousel .owl-next,
+    .lasttest-blogs.style2 .owl-carousel .owl-prev,
+    .edo_icon.style2 .icon
 	{
 		background-color: {$kt_theme_color_2};
 	}
-	.edo_icon:hover .icon{
+	.edo_icon:hover .icon,
+	.box-product-carousel .owl-carousel .owl-prev, 
+	.box-product-carousel .owl-carousel .owl-next,
+	.popular-tabs .owl-carousel .owl-prev, 
+	.popular-tabs .owl-carousel .owl-next,
+	.lasttest-blogs.style2 .owl-carousel .owl-next,
+	.lasttest-blogs.style2 .owl-carousel .owl-prev{
 		border-color: {$kt_theme_color_2};
 	}
 	.edo_icon .icon,

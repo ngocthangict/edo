@@ -6,7 +6,7 @@ vc_map( array(
     "name"        => __( "Brand", 'edo'),
     "base"        => "brand",
     "category"    => __('by Edo', 'edo' ),
-    "description" => __( "Display brand in option 4", 'edo'),
+    "description" => __( "Display brand list", 'edo'),
     "params"      => array(
         array(
             "type"        => "edo_taxonomy",
@@ -30,7 +30,8 @@ vc_map( array(
             'std'         => 'box-1',
             'value'       => array(
         		__( 'Box 1', 'edo' ) => 'box-1',
-                __( 'Box 2', 'edo' ) => 'box-2'
+                __( 'Box 2', 'edo' ) => 'box-2',
+                __( 'Box 3', 'edo' ) => 'box-3'
         	),
         ),
         array(
@@ -87,6 +88,108 @@ vc_map( array(
                 __( 'No', 'js_composer' )  => '0'
 			)
 		),
+        // Carousel
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'AutoPlay', 'kutetheme' ),
+            'param_name'  => 'autoplay',
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false
+        ),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'Navigation', 'kutetheme' ),
+            'param_name'  => 'navigation',
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'Loop', 'kutetheme' ),
+            'param_name'  => 'loop',
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("Slide Speed", 'kutetheme'),
+            "param_name"  => "slidespeed",
+            "value"       => "250",
+            "suffix"      => __("milliseconds", 'kutetheme'),
+            "description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("Margin", 'kutetheme'),
+            "param_name"  => "margin",
+            "value"       => "0",
+            "suffix"      => __("px", 'kutetheme'),
+            "description" => __('Distance( or space) between 2 item', 'kutetheme'),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'std'         => 1,
+            'heading'     => __( 'Use Carousel Responsive', 'kutetheme' ),
+            'param_name'  => 'use_responsive',
+            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
+            "param_name"  => "items_destop",
+            "value"       => "4",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
+            "param_name"  => "items_tablet",
+            "value"       => "2",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
+            "param_name"  => "items_mobile",
+            "value"       => "1",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The numbers of item on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+        ),
         array(
             "type"        => "textfield",
             "heading"     => __( "Extra class name", 'edo' ),
@@ -112,6 +215,20 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'orderby'       => 'id',
             'order'         => 'desc',
             'hide'          => 1,
+            //Carousel            
+            'autoplay'       => 'false', 
+            'navigation'     => 'false',
+            'margin'         => 30,
+            'slidespeed'     => 250,
+            'css'            => '',
+            'css_animation'  => '',
+            'el_class'       => '',
+            'loop'           => 'true',
+            //Default
+            'use_responsive' => 1,
+            'items_destop'   => 4,
+            'items_tablet'   => 2,
+            'items_mobile'   => 1,
             
             'css_animation' => '',
             'el_class'      => '',
@@ -127,7 +244,38 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
+
+        $data_carousel = array(
+            "autoplay"           => $autoplay,
+            "nav"                => $navigation,
+            "margin"             => $margin,
+            "slidespeed"         => $slidespeed,
+            "theme"              => 'style-navigation-bottom',
+            "autoheight"         => 'false',
+            'dots'               => 'false',
+            'loop'               => $loop,
+            'autoplayTimeout'    => 1000,
+            'autoplayHoverPause' => 'true'
+        );
         
+        if( $use_responsive ){
+            $arr = array( 
+                '0'   => array( 
+                    "items" => $items_mobile 
+                ), 
+                '768' => array( 
+                    "items" => $items_tablet 
+                ), 
+                '992' => array(
+                    "items" => $items_destop
+                )
+            );
+            $data_responsive = json_encode($arr);
+            $data_carousel["responsive"] = $data_responsive;
+        }else{
+            $data_carousel['items'] = 4;
+        }
+
         ob_start();
         
         if($taxonomy){
@@ -145,12 +293,38 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         if( $ids && count( $ids ) > 0 ){
             $arg[ 'include' ]= $ids;
         }
-        
+
         $brands = get_terms( 'product_brand', $arg );
         $count  = count( $brands );
-    
+
         if( is_array( $brands ) && $brands && $count > 0 ):
-            if( $box_type == 'box-2' ):
+            if($box_type == 'box-3'):
+            ?>
+            <div class="list kt-owl-carousel" <?php echo _data_carousel($data_carousel);?>>
+            <?php
+            foreach( $brands as $brand){
+                $brand_link = esc_attr(get_term_link( $brand ) );
+                $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
+                if ( $thumbnail_id ) {
+                    $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                    if( is_array($image) && isset($image[0]) && $image[0] ){
+                        $image = $image[0];
+                    }else{
+                        $image = wc_placeholder_img_src();
+                    }
+                } else {
+                    $image = wc_placeholder_img_src();
+                }
+                ?>
+                <a href="<?php echo esc_url($brand_link); ?>">
+                    <img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" />
+                </a>
+                <?php
+            }
+            ?>
+            </div>
+            <?php
+            elseif( $box_type == 'box-2' ):
                 $page = 1;
                 if( $count % $per_page == 0 ){
                     $page = $count / $per_page;
@@ -158,7 +332,6 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     $page = $count / $per_page + 1;
                 }
                 ?>
-                
                 <div class="option3">
                     <div class="block block-type-2 block-banner-owl kt-owl-carousel" data-margin="0"  data-nav="true" data-items="1" <?php if( $page > 1 ):?> data-loop="true" <?php else: ?> data-loop="false" <?php endif; ?>>
         				<?php for( $i = 1; $i <= $page ; $i++ ): ?>
@@ -197,32 +370,36 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             <?php
             else:
             ?>
-                <!-- box band -->
-        		<div class="box-band block3">
-                    <?php foreach( $brands as $brand ): ?>
-                         <?php $brand_link = esc_attr(get_term_link( $brand ) ); ?>
-                         <?php 
-                            $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
-                                
-                            if ( $thumbnail_id ) {
-                                $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-                                if( is_array($image) && isset($image[0]) && $image[0] ){
-                                    $image = $image[0];
-                                }else{
-                                    $image = wc_placeholder_img_src();
-                                }
-                            } else {
+            <!-- box band -->
+    		<div class="box-band block3">
+                <?php foreach( $brands as $brand ): ?>
+                     <?php $brand_link = esc_attr(get_term_link( $brand ) ); ?>
+                     <?php 
+                        $thumbnail_id = absint( get_woocommerce_term_meta( $brand->term_id, 'thumbnail_id', true ) );
+                            
+                        if ( $thumbnail_id ) {
+                            $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                            if( is_array($image) && isset($image[0]) && $image[0] ){
+                                $image = $image[0];
+                            }else{
                                 $image = wc_placeholder_img_src();
                             }
-                         ?>
-        			     <a target="_blank" href="<?php echo $brand_link; ?>">
-                            <img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" />
-                        </a>
-                    <?php endforeach; ?>
-        		</div>
-        		<!-- ./box band -->
+                        } else {
+                            $image = wc_placeholder_img_src();
+                        }
+                     ?>
+    			     <a target="_blank" href="<?php echo $brand_link; ?>">
+                        <img src="<?php echo $image ?>" alt="<?php echo $brand->name ?>" />
+                    </a>
+                <?php endforeach; ?>
+    		</div>
+    		<!-- ./box band -->
             <?php
             endif;
+        else:
+        ?>
+        <div class="alert alert-warning"><?php _e('No Brand.','edo');?></div>
+        <?php
         endif;
         $result = ob_get_clean();
         return $result;

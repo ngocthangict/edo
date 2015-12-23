@@ -234,7 +234,7 @@ function kt_scripts() {
 	wp_enqueue_script( 'edo-countdown-js', THEME_URL . '/assets/lib/countdown/jquery.countdown.js', array( 'jquery' ) );
 	wp_enqueue_script( 'edo-custom-scrollbar-js', THEME_URL . '/assets/js/jquery.mCustomScrollbar.concat.min.js', array( 'jquery' ) );
 	// Main javasript
-	wp_enqueue_script( 'edo-main-js', THEME_URL . '/assets/js/script.js', array( 'jquery' ) );
+	wp_enqueue_script( 'edo-main-js', THEME_URL . '/assets/js/script.js', array( 'jquery' ),'1.0',true );
 	wp_enqueue_script( 'edo-actual-js', THEME_URL . '/assets/js/jquery.actual.min.js', array( 'jquery' ) );
 
     wp_localize_script( 'edo-main-js', 'ajax_frontend', array(
