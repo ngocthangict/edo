@@ -386,6 +386,10 @@
             })
         }
 
+        $(document).on('click','.top-banner-header .close-banner-top',function(){
+            $(this).closest('.top-banner-header').slideUp();
+        })
+
     });
     /* ---------------------------------------------
      Scripts initialization

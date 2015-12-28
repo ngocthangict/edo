@@ -313,8 +313,8 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         if( $posts->have_posts() ):
         $i = 0;
         ?>
-        <?php if( $style == 1 || $style == 2):?>
-        <div class="lasttest-blogs <?php echo esc_attr( $elementClass );?>">
+        <?php if($style == 2):?>
+        <div class="lasttest-blogs style2 <?php echo esc_attr( $elementClass );?>">
             <?php if( $title ):?>
             <div class="head"><?php echo esc_html( $title );?></div>
             <?php endif;?>
@@ -338,6 +338,46 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                         </div>
                         <?php endif;?>
                         <div class="info" style="background-color: <?php echo esc_attr($item_color); ?>;">
+                            <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h3>
+                            <div class="meta">
+                                <span class="author"><i class="fa fa-user"></i> <?php the_author();?></span>
+                                <span class="comment">
+                                <i class="fa fa-comment"></i> 
+                                <?php comments_number(
+                                    __('0 Comment', 'kutetheme'),
+                                    __('1 Comment', 'kutetheme'),
+                                    __('% Comments', 'kutetheme')
+                                ); ?>
+                                </span>
+                            </div>
+                            <div class="desc">
+                                <?php the_excerpt();?>
+                            </div>
+                            <a href="<?php the_permalink();?>" class="readmore"><?php _e('Readmore','edo');?></a>
+                        </div>
+                    </li>
+                    <?php endwhile; ?>
+                </ul>
+            </div>
+        </div>
+        <?php endif;?>
+        <?php if( $style == 1 ):?>
+        <div class="lasttest-blogs <?php echo esc_attr( $elementClass );?>">
+            <?php if( $title ):?>
+            <div class="head"><?php echo esc_html( $title );?></div>
+            <?php endif;?>
+            <div class="box-content">
+                <ul class="list  kt-owl-carousel nav-style2" <?php echo _data_carousel($data_carousel);?>>
+                    <?php while( $posts->have_posts() ): $posts->the_post(); 
+                    
+                    ?>
+                    <li  <?php post_class('item-blog'); ?>>
+                        <?php if( has_post_thumbnail( )):?>
+                        <div class="thumb">
+                            <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'edo_blog_lasttest' );?></a>
+                        </div>
+                        <?php endif;?>
+                        <div class="info">
                             <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h3>
                             <div class="meta">
                                 <span class="author"><i class="fa fa-user"></i> <?php the_author();?></span>

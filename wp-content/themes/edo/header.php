@@ -28,6 +28,7 @@ $kt_link_banner_header = edo_option('kt_link_banner_header','#');
 	<a href="<?php echo esc_url( $kt_link_banner_header );?>">
 	<img src="<?php echo esc_url( $kt_banner_header );?>" alt="">
 	</a>
+	<div class="container"><span class="close-banner-top"><i class="fa fa-times"></i></span></div>
 </div>
 <?php endif;?>
 <?php edo_get_header();?>

@@ -331,8 +331,8 @@ if(!function_exists('edo_shop_page_title')){
 /**
 * Custom loop colums
 **/
+add_filter('loop_shop_columns', 'edo_loop_columns');
 if(!function_exists('edo_loop_columns')){
-	add_filter('loop_shop_columns', 'edo_loop_columns');
 	if (!function_exists('edo_loop_columns')) {
 		function edo_loop_columns() {
 			$kt_woo_grid_column = edo_option('kt_woo_grid_column',3);

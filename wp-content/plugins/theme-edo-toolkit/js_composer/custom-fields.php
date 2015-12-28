@@ -14,7 +14,7 @@ function edo_init_vc_global(){
 
 function edo_add_vc_global_params(){
     vc_set_shortcodes_templates_dir( THEME_DIR . '/js_composer/templates/' );
-    
+    kt_enqueue_custom_script();
     global $vc_setting_row, $vc_setting_col, $vc_setting_column_inner, $vc_setting_icon_shortcode;
     
     vc_add_params( 'vc_icon', $vc_setting_icon_shortcode );
@@ -23,6 +23,18 @@ function edo_add_vc_global_params(){
     
     vc_add_shortcode_param ('edo_number' , 'edo_number_settings_field');
     vc_add_shortcode_param ('edo_taxonomy', 'edo_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+
+    vc_add_shortcode_param( 'kt_datetimepicker' , 'vc_kt_datetimepicker_settings_field' );
+}
+
+
+function kt_enqueue_custom_script(){
+    
+    wp_enqueue_script( 'kt-datetimepicker-js', KUTETHEME_PLUGIN_URL . 'js_composer/js/jquery-ui-timepicker-addon.js', array( 'jquery' ), '1.5.0', true );
+        
+    wp_enqueue_style( 'kt-datetimepicker-css', KUTETHEME_PLUGIN_URL . 'js_composer/css/jquery-ui-timepicker-addon.css' );
+        
+        
 }
 /**
  * Number field.
@@ -84,6 +96,22 @@ function edo_taxonomy_settings_field($settings, $value) {
     
     return $output;
 }
+
+function vc_kt_datetimepicker_settings_field($settings, $value)
+{
+    $dependency = '';
+    $param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
+    $type = isset($settings['type']) ? $settings['type'] : '';
+    $class = isset($settings['class']) ? $settings['class'] : '';
+    $uni = uniqid();
+    $output = '<div class="kt-datetime"><input id="kt-date-time'.$uni.'" data-format="yyyy/MM/dd hh:mm:ss" class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '" style="width:258px;" value="'.$value.'" '.$dependency.'/><div class="add-on" >  <i data-time-icon="Defaults-time" data-date-icon="Defaults-time"></i></div></div>';
+    $output .= '<script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery("#kt-date-time'.$uni.'").datetimepicker();
+        })
+        </script>';
+    return $output;
+}
 if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/categories.php' ) ){
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/categories.php' ;
 }
@@ -128,6 +156,13 @@ if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_icon.php' 
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_icon.php' ;
 }
 
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_box_text.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_box_text.php' ;
+}
+
+if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_box_countdown.php' ) ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/edo_box_countdown.php' ;
+}
 
 if ( edo_check_active_plugin( 'woocommerce/woocommerce.php' ) ){
     if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/top_seller.php' ) ){

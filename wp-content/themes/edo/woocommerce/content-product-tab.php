@@ -75,7 +75,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                  * 
                  * @hook woocommerce_template_loop_rating - 10
                  * */
-                do_action( 'edo_wc_loop_product_rating' )
+                //do_action( 'edo_wc_loop_product_rating' )
              ?>
     		
             <div class="product-button">

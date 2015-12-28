@@ -69,15 +69,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="desc">
                 <?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
             </div>
-            <?php 
-                /**
-                 * edo_wc_loop_product_rating hook
-                 * 
-                 * @hook woocommerce_template_loop_rating - 10
-                 * */
-                do_action( 'edo_wc_loop_product_rating' )
-             ?>
-    		
             <div class="product-button">
                 <?php
             		/**
